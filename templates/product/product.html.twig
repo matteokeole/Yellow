@@ -1,6 +1,6 @@
 {% extends "base.html.twig" %}
 
-{% block title %}{{ficheProduit.ProductName}} • Yellow{% endblock %}
+{% block title %}{{ficheProduit.ProductName}} ({{ficheProduit.ProductCategory}}) • Yellow{% endblock %}
 {% block body %}
 	<style>
 		/* Cover container */
@@ -13,10 +13,14 @@
 		/* Product info container */
 		.info-container {margin-top: 50px}
 		/* Product price (in title) */
-		.product-price {font-size: 28px}
+		.product-price {
+			opacity: .9;
+			font-size: 28px
+		}
 		/* Actions container */
 		.actions-container {margin-bottom: 20px}
 		/* Valid & invalid */
+		.product-stock {font-size: 20px}
 		.valid {color: green}
 		.invalid {color: red}
 		/* Add to basket link */
@@ -25,7 +29,7 @@
 			border-radius: 50px;
 			background-color: #000;
 			color: #fff !important;
-			font-size: 16px;
+			font-size: 18px;
 			text-decoration: none !important;
 			transition-duration: .2s
 		}
@@ -39,16 +43,17 @@
 		/* Author/date */
 		.product-author {
 			opacity: .65;
-			font-size: 14px
+			font-size: 16px
 		}
 		/* Category container */
 		.product-category-container {
 			opacity: .65;
-			font-size: 14px;
+			font-size: 16px;
 			font-style: italic
 		}
 		/* Category */
 		.product-category {text-transform: uppercase}
+		.product-desc {margin-top: 10px}
 		/* Media queries */
 		@media screen and (max-width: 991px) {
 			.cover-container::before {
@@ -81,9 +86,9 @@
 				</h1>
 				<div class="actions-container d-flex align-items-center">
 					{% if ficheProduit.ProductStock > 0 %}
-						<span class="product-quantity flex-grow-1 valid">En stock</span>
+						<span class="product-stock flex-grow-1 valid">En stock</span>
 					{% else %}
-						<span class="product-quantity flex-grow-1 invalid">Rupture de stock</span>
+						<span class="product-stock flex-grow-1 invalid">Rupture de stock</span>
 					{% endif %}
 					<a href="#" class="add-to-basket">Ajouter au panier</a>
 				</div>
@@ -91,9 +96,9 @@
 					{{ficheProduit.ProductAuthor}} <span class="product-date">• {{ficheProduit.ProductDate}}</span>
 				</span><br>
 				<span class="product-category-container">
-					<span class="product-category">{{ficheProduit.ProductCategory}}</span> • <a href="#">En voir plus de ce type</a>
+					<span class="product-category">{{ficheProduit.ProductCategory}}</span> • <a href="#">Voir plus de mangas de ce type</a>
 				</span><br>
-				<span class="desc">{{ficheProduit.ProductDesc}}</span>
+				<span class="product-desc d-block">{{ficheProduit.ProductDesc}}</span>
 			</div>
 		</div>
 	</div>
