@@ -5,13 +5,11 @@
 {% block body %}
 	<style>
 		html {box-sizing: border-box}
-		body {padding-top: 0}
-		.bg {
+		.banner {
 			display: flex;
 			justify-content: center;
 			align-items: center;
 			height: 300px;
-			margin-top: 60px;
 			background: url(images/banner.jpg) center no-repeat;
 			background-size: cover
 		}
@@ -35,7 +33,7 @@
 			position: relative;
 			border-radius: 10px
 		}
-		input, button {
+		input, .btn-search {
 			height: 80px;
 			border: 0;
 			color: #000
@@ -50,7 +48,7 @@
 			transition-duration: .5s;
 			z-index: 1
 		}
-		button {
+		.btn-search {
 			display: none;
 			width: 100px;
 			position: absolute;
@@ -64,7 +62,7 @@
 			width: calc(100% - 100px);
 			border-radius: 10px 0 0 10px
 		}
-		input:not(:placeholder-shown) + button {display: block}
+		input:not(:placeholder-shown) + .btn-search {display: block}
 		{# best sellers #}
 		.bs-cadre {
 			padding: 5px;
@@ -82,7 +80,7 @@
 		.cover {width: 150px}
 		.text-center {text-align: center}
 	</style>
-	<div class="bg">
+	<div class="banner">
 		<a href="#">
 			<span class="button-accueil">Consulter notre catalogue de manga</span>
 		</a>
@@ -90,7 +88,7 @@
 	<div class="searchbar">
 		<form>
 			<input id="search" type="search" placeholder="Rechercher un produit">
-			<button type="submit">Go</button>
+			<button type="submit" class="btn-search">Go</button>
 		</form>
 	</div>
 	<div class="bs-cadre">
