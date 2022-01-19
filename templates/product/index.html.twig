@@ -26,7 +26,7 @@
 			filter: brightness(.9);
 			-webkit-transform: scale(1.1);
 			transform: scale(1.1);
-			transition-duration: 0.4s;
+			transition-duration: .4s
 		}
 		.product:active {
 			box-shadow: 0 10px 20px rgba(0, 0, 0, .1), inset 0 0 0 300px rgba(0, 0, 0, .2);
@@ -56,8 +56,8 @@
 		/* Price (€) */
 		.product-price {
 			padding-left: 8px;
-			font-size: 20px;
-			font-weight: bold
+			opacity: .9;
+			font-size: 20px
 		}
 		/* Short description */
 		.product-desc {
@@ -88,7 +88,7 @@
 								</div>
 								<div class="product-price d-flex align-items-center">{{product.ProductPrice}}€</div>
 							</div>
-							<div class="product-desc">{{product.ProductDesc}}</div>
+							<span class="product-desc">{{product.ProductDesc}}</span>
 						</div>
 					</a>
 				</div>

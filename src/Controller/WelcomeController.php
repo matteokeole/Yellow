@@ -6,7 +6,7 @@
 
 	class WelcomeController extends AbstractController {
 		/**
-		 * @Route("/", name="accueil")
+		 * @Route("/", name="welcome")
 		 */
 		public function index(): Response {
 			return $this->render("welcome/index.html.twig");
