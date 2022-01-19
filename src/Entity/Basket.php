@@ -21,7 +21,7 @@ class Basket
      * @ORM\OneToOne(targetEntity=Customer::class, cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
      */
-    private $customer_id;
+    private $customer;
 
     public function getId(): ?int
     {
@@ -30,12 +30,12 @@ class Basket
 
     public function getCustomerId(): ?Customer
     {
-        return $this->customer_id;
+        return $this->customer;
     }
 
     public function setCustomerId(Customer $customer_id): self
     {
-        $this->customer_id = $customer_id;
+        $this->customer = $customer_id;
 
         return $this;
     }
