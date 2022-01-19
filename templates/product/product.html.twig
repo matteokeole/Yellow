@@ -10,6 +10,8 @@
 			height: 650px;
 			border-radius: 5px
 		}
+		/* Product info container */
+		.info-container {margin-top: 50px}
 		/* Product price (in title) */
 		.product-price {
 			font-size: 26px;
@@ -50,13 +52,12 @@
 				bottom: 0;
 				left: 0;
 				position: absolute;
-				background: url(/images/{{ficheProduit.Cover}}) center no-repeat;
+				background: url(/images/{{ficheProduit.ProductCover}}.jpg) center no-repeat;
 				background-size: cover;
 				-webkit-filter: blur(20px);
 				filter: blur(20px);
 				z-index: -1
 			}
-			.title {margin-top: 30px}
 		}
 		@media screen and (max-width: 500px) {
 			.cover {height: 450px}
@@ -65,19 +66,19 @@
 	<div class="container-fluid">
 		<div class="row justify-content-center">
 			<div class="col-12 col-lg-6 col-xl-5 d-flex justify-content-center cover-container">
-				<img src="/images/{{ficheProduit.Cover}}" alt="Image de couverture" class="cover">
+				<img src="/images/{{ficheProduit.ProductCover}}.jpg" alt="Image de couverture" class="cover">
 			</div>
 			<div class="col-12 col-lg-4 col-xl-3 info-container">
 				<h1 class="title d-flex align-items-center">
 					<span class="product-title flex-grow-1">{{ficheProduit.ProductName}}</span>
-					<span class="product-price">{{ficheProduit.Price}}€</span>
+					<span class="product-price">{{ficheProduit.ProductPrice}}€</span>
 				</h1>
 				<div class="actions-container d-flex align-items-center">
-					<span class="product-quantity flex-grow-1">{{ficheProduit.stock}} en stock</span>
+					<span class="product-quantity flex-grow-1">{{ficheProduit.ProductStock}} en stock</span>
 					<a href="#" class="add-to-basket">Ajouter au panier</a>
 				</div>
 				<span class="product-author">
-					Author <span class="product-date">• Date</span>
+					{{ficheProduit.ProductAuthor}} <span class="product-date">• {{ficheProduit.ProductDate}}</span>
 				</span><br>
 				<span class="desc">{{ficheProduit.ProductDesc}}</span>
 			</div>

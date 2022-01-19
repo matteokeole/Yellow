@@ -59,7 +59,7 @@ Kodomo :
 Pokemon
 Nos jeunes héros sont prêts à tout pour devenir les meilleurs éleveurs de Pokémon de la planète. Pour cela, il faut en attraper le plus possible, les entrainer pour les livrer à des combats durant lesquels ils vont prendre du galon. Arrivés à un certain seuil de force, les Pokémon subissent ce que les initiés appellent une "évolution", se transformant en monstres beaucoup plus puissants.
 Asada Miho
-10
+10.00
 1997
 
 Doraemon
