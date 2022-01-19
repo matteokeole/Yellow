@@ -4,153 +4,122 @@
 
 {% block body %}
 	<style>
-body {
-    padding-top:0;
-}
-
-.bg {
-    background-image: url(images/img_manga_banniere.jpeg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-top:200px;
-    padding-bottom:200px;
-    margin-top:67px;
-}
-
-.button-accueil {
-    padding: 10px 30px;
-    display: inline-block;
-    transition: 0.5s;
-    border-radius: 10px;
-    background-color: #f5c943;
-    color: white;
-}
-
-{# searchbar #}
-.searchbar {
-    margin-top:30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 50px;
-    margin-bottom: 50px;
-}
-
-html {
-    box-sizing: border-box;
-}
-
-form {
-    position: relative;
-    width: 30%;
-    border-radius: 10px;
-}
-
-input, button {
-    height: 80px;
-    border: 0;
-    color: black;
-}
-
-input {
-    outline: 0;
-    width: 100%;
-    background-color: lightgrey;
-    padding: 0 25px;
-    border-radius: 10px;
-    transition: all 0.5s;
-    z-index: 1;
-    position: relative;
-}
-
-button {
-    display: none;
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 100px;
-    font-weight: bold;
-    background: #f5c943;
-    border-radius: 0 10px 10px 0;
-}
-
-input:not(:placeholder-shown) {
-    border-radius: 10px 0 0 10px;
-    width: calc(100% - 100px);
-}
-
-input:not(:placeholder-shown) + button {
-    display: block;
-}
-
-{# best sellers #}
-.bs-cadre {
-    background-color:#f5c943;
-    padding: 5px;
-}
-
-.best-seller {
-    background-color: white;
-    margin: 5px;
-}
-
-.flex {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-}
-
-.cover {
-    width: 150px;
-}
-
-.text-center {
-    text-align: center;
-}
-
-</style>
-
-
-<div class="bg">
-    <a href=""><span class="button-accueil">Consulter notre catalogue de manga</a></span>
-</div>
-
-<div class="searchbar">
-    <form>
-        <input id="search" type="search" placeholder="Rechercher un produit">
-        <button type="submit">Go</button>
-    </form>
-</div>
-
-<div class="bs-cadre">
-    <div class="best-seller">
-        <div>
-            <hr>
-        </div>
-        <div class="flex">
-            NOS BEST-SELLERS
-        </div>
-        <div class="bs-produit flex">
-            <div class="text-center">
-                <a href=""><img src="images/cover/onepiece.jpg" class="cover"></a>
-                <p>One Piece</p>
-                <p>1000€</p>
-            </div>
-            <div class="text-center">
-                <a href=""><img src="images/cover/dragonball.jpg" class="cover"></a>
-                <p>Dragon Ball</p>
-                <p>1000€</p>
-            </div>
-            <div class="text-center">
-                <a href=""><img src="images/cover/naruto.jpg" class="cover"></a>
-                <p>Naruto</p>
-                <p>1000€</p>
-            </div>
-        </div>
-    </div>
-</div>
+		html {box-sizing: border-box}
+		body {padding-top: 0}
+		.bg {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 300px;
+			margin-top: 60px;
+			background: url(images/banner.jpg) center no-repeat;
+			background-size: cover
+		}
+		.button-accueil {
+			display: inline-block;
+			padding: 10px 30px;
+			border-radius: 10px;
+			background-color: var(--primary);
+			color: #fff;
+			transition-duration: .5s
+		}
+		{# searchbar #}
+		.searchbar {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			margin: 30px 0
+		}
+		form {
+			width: 30%;
+			position: relative;
+			border-radius: 10px
+		}
+		input, button {
+			height: 80px;
+			border: 0;
+			color: #000
+		}
+		input {
+			width: 100%;
+			padding: 0 25px;
+			position: relative;
+			outline: 0;
+			border-radius: 10px;
+			background-color: lightgrey;
+			transition-duration: .5s;
+			z-index: 1
+		}
+		button {
+			display: none;
+			width: 100px;
+			position: absolute;
+			top: 0;
+			right: 0;
+			border-radius: 0 10px 10px 0;
+			font-weight: bold;
+			background-color: var(--primary)
+		}
+		input:not(:placeholder-shown) {
+			width: calc(100% - 100px);
+			border-radius: 10px 0 0 10px
+		}
+		input:not(:placeholder-shown) + button {display: block}
+		{# best sellers #}
+		.bs-cadre {
+			padding: 5px;
+			background-color: var(--primary)
+		}
+		.best-seller {
+			margin: 5px;
+			background-color: #fff
+		}
+		.flex {
+			display: flex;
+			justify-content: space-evenly;
+			align-items: center
+		}
+		.cover {width: 150px}
+		.text-center {text-align: center}
+	</style>
+	<div class="bg">
+		<a href="#">
+			<span class="button-accueil">Consulter notre catalogue de manga</span>
+		</a>
+	</div>
+	<div class="searchbar">
+		<form>
+			<input id="search" type="search" placeholder="Rechercher un produit">
+			<button type="submit">Go</button>
+		</form>
+	</div>
+	<div class="bs-cadre">
+		<div class="best-seller">
+			<hr>
+			<div class="flex">NOS BEST-SELLERS</div>
+			<div class="bs-produit flex">
+				<div class="text-center">
+					<a href="#">
+						<img src="images/cover/onepiece.jpg" class="cover">
+					</a>
+					<p>One Piece</p>
+					<p>6.90€</p>
+				</div>
+				<div class="text-center">
+					<a href="#">
+						<img src="images/cover/dragonball.jpg" class="cover">
+					</a>
+					<p>Dragon Ball</p>
+					<p>6.90€</p>
+				</div>
+				<div class="text-center">
+					<a href="#">
+						<img src="images/cover/naruto.jpg" class="cover">
+					</a>
+					<p>Naruto</p>
+					<p>6.90€</p>
+				</div>
+			</div>
+		</div>
+	</div>
 {% endblock %}
