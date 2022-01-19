@@ -1,0 +1,34 @@
+customer
+	customer_id
+	customer_admin
+	customer_first_name
+	customer_last_name
+	customer_email
+	customer_phone
+	customer_password
+	customer_address
+	customer_post_code
+	customer_city
+category
+	category_id
+	category_name
+product
+	category_id
+	product_id
+	product_name
+	product_author
+	product_date
+	product_desc
+	product_cover
+	product_price
+	product_stock
+basket
+	customer_id
+	product_id
+	basket_product_quantity
+order
+	order_content
+	order_id
+	order_date
+	order_total
+	order_status (0: submitted, 1: finished, 2: delivered)
