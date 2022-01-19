@@ -15,7 +15,7 @@ class Customer
 	 * @ORM\GeneratedValue
 	 * @ORM\Column(type="integer")
 	 */
-	private $customer_id;
+	private $id;
 
 	/**
 	 * @ORM\Column(type="integer")
@@ -62,9 +62,9 @@ class Customer
 	 */
 	private $customer_city;
 
-	public function getCustomerId(): ?int
+	public function getId(): ?int
 	{
-		return $this->customer_id;
+		return $this->id;
 	}
 
 	public function getCustomerAdmin(): ?int

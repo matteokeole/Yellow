@@ -15,7 +15,7 @@ class Product
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $product_id;
+    private $id;
 
     /**
      * @ORM\Column(type="string", length=250)
@@ -57,9 +57,9 @@ class Product
      */
     private $product_category;
 
-    public function getProductId(): ?int
+    public function getId(): ?int
     {
-        return $this->product_id;
+        return $this->id;
     }
 
     public function getProductName(): ?string

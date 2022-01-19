@@ -16,7 +16,7 @@ class Order
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $order_id;
+    private $id;
 
     /**
      * @ORM\Column(type="json")
@@ -44,9 +44,9 @@ class Order
      */
     private $basket_id;
 
-    public function getOrderId(): ?int
+    public function getId(): ?int
     {
-        return $this->order_id;
+        return $this->id;
     }
 
     public function getOrderContent(): ?array

@@ -13,24 +13,36 @@ use Doctrine\ORM\Mapping as ORM;
 class Content
 {
     /**
+     * @ORM\Id
+     * @ORM\GeneratedValue
+     * @ORM\Column(type="integer")
+     */
+    private $id;
+
+    /**
      * @ORM\Column(type="integer")
      */
     private $content_product_quantity;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Product::class)
+     * @ORM\OneToOne(targetEntity=Basket::class)
      */
-    private $product_id;
+    private $basket;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Basket::class)
+     * @ORM\OneToOne(targetEntity=Product::class)
      */
-    private $basket_id;
+    private $product;
 
     public function __construct()
     {
-        $this->product_id = new ArrayCollection();
-        $this->basket_id = new ArrayCollection();
+        $this->basket = new ArrayCollection();
+        $this->product = new ArrayCollection();
+    }
+
+    public function getId(): ?int
+    {
+        return $this->id;
     }
 
     public function getContentProductQuantity(): ?int
@@ -46,41 +58,17 @@ class Content
     }
 
     /**
-     * @return Collection|Product[]
-     */
-    public function getProductId(): Collection
-    {
-        return $this->product_id;
-    }
-
-    public function addProductId(Product $productId): self
-    {
-        if (!$this->product_id->contains($productId)) {
-            $this->product_id[] = $productId;
-        }
-
-        return $this;
-    }
-
-    public function removeProductId(Product $productId): self
-    {
-        $this->product_id->removeElement($productId);
-
-        return $this;
-    }
-
-    /**
      * @return Collection|Basket[]
      */
     public function getBasketId(): Collection
     {
-        return $this->basket_id;
+        return $this->basket;
     }
 
     public function addBasketId(Basket $basketId): self
     {
-        if (!$this->basket_id->contains($basketId)) {
-            $this->basket_id[] = $basketId;
+        if (!$this->basket->contains($basketId)) {
+            $this->basket[] = $basketId;
         }
 
         return $this;
@@ -88,7 +76,31 @@ class Content
 
     public function removeBasketId(Basket $basketId): self
     {
-        $this->basket_id->removeElement($basketId);
+        $this->basket->removeElement($basketId);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Product[]
+     */
+    public function getProductId(): Collection
+    {
+        return $this->product;
+    }
+
+    public function addProductId(Product $productId): self
+    {
+        if (!$this->product->contains($productId)) {
+            $this->product[] = $productId;
+        }
+
+        return $this;
+    }
+
+    public function removeProductId(Product $productId): self
+    {
+        $this->product->removeElement($productId);
 
         return $this;
     }

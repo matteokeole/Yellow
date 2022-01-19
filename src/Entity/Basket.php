@@ -15,7 +15,7 @@ class Basket
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $basket_id;
+    private $id;
 
     /**
      * @ORM\OneToOne(targetEntity=Customer::class, cascade={"persist", "remove"})
@@ -23,9 +23,9 @@ class Basket
      */
     private $customer_id;
 
-    public function getBasketId(): ?int
+    public function getId(): ?int
     {
-        return $this->basket_id;
+        return $this->id;
     }
 
     public function getCustomerId(): ?Customer
