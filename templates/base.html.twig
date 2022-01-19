@@ -22,6 +22,7 @@
 				padding-top: 90px;
 				overflow-x: hidden
 			}
+			/* Navbar */
 			.navbar {
 				height: 60px;
 				box-shadow: 0 4px 8px rgba(0, 0, 0, .2);
@@ -43,17 +44,23 @@
 				transform: scale(.95);
 				transition-duration: .1s
 			}
-			.nav-link {color: #fff !important}
-			.navbar .nav-link .icon {
-				width: 35px;
-				height: auto
+			.nav-link {
+				display: flex;
+				align-items: center;
+				color: #fff !important;
+				font-size: 20px;
+				transition-duration: .2s
 			}
+			.nav-link:hover {opacity: .65}
+			.nav-link ion-icon {font-size: 28px}
+			/* Titles */
 			h1 {
 				margin: 20px 0;
 				padding-bottom: 4px;
 				border-bottom: 1px solid #ddd;
 				font-size: 38px
 			}
+			/* Footer */
 			footer {
 				margin-top: 50px;
 				padding: 20px 50px;
@@ -99,11 +106,10 @@
 				aria-expanded="false"
 				aria-label="Toggle navigation"
 			>
-				<span class="navbar-toggler-icon"></span>
+				<ion-icon name="menu-outline"></ion-icon>
 			</button>
-			<div class="collapse navbar-collapse justify-content-end" id="navbarsExampleDefault">
+			<div id="navbarsExampleDefault" class="collapse navbar-collapse justify-content-end">
 				<ul class="navbar-nav">
-				<div class="d-flex flex-row align-items-center">
 					<li class="nav-item">
 						<a href="/" class="nav-link">Accueil</a>
 					</li>
@@ -113,19 +119,16 @@
 					<li class="nav-item">
 						<a href="/contact" class="nav-link">Contact</a>
 					</li>
-				</div>
-				<div class="d-flex flex-row">
 					<li class="nav-item">
-						<a href="/panier" class="nav-link">
-							<img src="../../naviconPanier.png" alt="Logo Yellow" class="icon">
+						<a href="/panier" class="nav-link" title="Panier">
+							<ion-icon name="cart-outline"></ion-icon>
 						</a>
 					</li>
 					<li class="nav-item">
-						<a href="/compte" class="nav-link">
-							<img src="../../naviconCompte.png" alt="Logo Yellow" class="icon">
+						<a href="/compte" class="nav-link" title="Compte">
+							<ion-icon name="person-outline"></ion-icon>
 						</a>
 					</li>
-				</div>
 				</ul>
 			</div>
 		</nav>
@@ -179,6 +182,8 @@
 		{% block javascripts %}
 			<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 			<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+			<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+			<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 		{% endblock %}
 	</body>
 </html>
