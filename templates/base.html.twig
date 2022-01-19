@@ -48,9 +48,13 @@
 				transform: scale(.95);
 				transition-duration: .1s
 			}
+			.navbar-links {
+				/*display: flex;*/
+			}
 			.navbar-toggler ion-icon {
 				color: #fff;
-				font-size: 28px
+				font-size: 28px;
+				transition-duration: .2s
 			}
 			.nav-link {
 				display: flex;
@@ -59,7 +63,7 @@
 				font-size: 20px;
 				transition-duration: .2s
 			}
-			.nav-link:hover {color: var(--primary) !important}
+			.navbar-toggler:hover ion-icon, .nav-link:hover {color: var(--primary) !important}
 			.nav-link ion-icon {font-size: 28px}
 			.navbar-collapse {
 				padding: 20px 20px 10px 20px;
@@ -106,6 +110,13 @@
 				transition-duration: .2s
 			}
 			footer ul li a:hover {color: #000 !important}
+			/* Media queries */
+			@media screen and (max-width: 768px) {
+				.navbar-links {display: none !important}
+			}
+			@media screen and (min-width: 769px) {
+				.navbar-collapse {display: none !important}
+			}
 		</style>
 		<title>{% block title %}Yellow : bienvenue dans l'univers des mangas{% endblock %}</title>
 	</head>
@@ -113,8 +124,19 @@
 		<!-- Nav -->
 		<nav class="navbar navbar-expand-md fixed-top">
 			<a href="/" class="navbar-brand">
-				<img src="../../favicon.ico" alt="Logo Yellow" class="logo">
+				<img src="/favicon.ico" alt="Logo Yellow" class="logo">
 			</a>
+			<div class="navbar-links d-flex flex-grow-1 justify-content-end">
+				<a href="/" class="nav-link">Accueil</a>
+				<a href="/produit" class="nav-link">Nos mangas</a>
+				<a href="/contact" class="nav-link">Contact</a>
+				<a href="/panier" class="nav-link" title="Panier">
+					<ion-icon name="cart-outline"></ion-icon>
+				</a>
+				<a href="/compte" class="nav-link" title="Compte">
+					<ion-icon name="person-outline"></ion-icon>
+				</a>
+			</div>
 			<button
 				class="navbar-toggler"
 				type="button"
