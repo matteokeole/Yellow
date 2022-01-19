@@ -19,8 +19,9 @@
 		}
 		/* Actions container */
 		.actions-container {margin-bottom: 20px}
-		/* Product quantity */
-		.product-quantity {color: green}
+		/* Valid & invalid */
+		.valid {color: green}
+		.invalid {color: red}
 		/* Add to basket link */
 		.add-to-basket {
 			padding: 6px 12px;
@@ -43,6 +44,14 @@
 			opacity: .65;
 			font-size: 14px
 		}
+		/* Category container */
+		.product-category-container {
+			opacity: .65;
+			font-size: 14px;
+			font-style: italic
+		}
+		/* Category */
+		.product-category {text-transform: uppercase}
 		/* Media queries */
 		@media screen and (max-width: 991px) {
 			.cover-container::before {
@@ -74,11 +83,18 @@
 					<span class="product-price">{{ficheProduit.ProductPrice}}€</span>
 				</h1>
 				<div class="actions-container d-flex align-items-center">
-					<span class="product-quantity flex-grow-1">{{ficheProduit.ProductStock}} en stock</span>
+					{% if ficheProduit.ProductStock > 0 %}
+						<span class="product-quantity flex-grow-1 valid">En stock</span>
+					{% else %}
+						<span class="product-quantity flex-grow-1 invalid">Rupture de stock</span>
+					{% endif %}
 					<a href="#" class="add-to-basket">Ajouter au panier</a>
 				</div>
 				<span class="product-author">
 					{{ficheProduit.ProductAuthor}} <span class="product-date">• {{ficheProduit.ProductDate}}</span>
+				</span><br>
+				<span class="product-category-container">
+					<span class="product-category">{{ficheProduit.ProductCategory}}</span> • <a href="#">En voir plus de ce type</a>
 				</span><br>
 				<span class="desc">{{ficheProduit.ProductDesc}}</span>
 			</div>
