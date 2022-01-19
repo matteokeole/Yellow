@@ -42,7 +42,7 @@ class Order
      * @ORM\OneToOne(targetEntity=Basket::class, cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
      */
-    private $basket_id;
+    private $basket;
 
     public function getId(): ?int
     {
@@ -99,12 +99,12 @@ class Order
 
     public function getBasketId(): ?Basket
     {
-        return $this->basket_id;
+        return $this->basket;
     }
 
     public function setBasketId(Basket $basket_id): self
     {
-        $this->basket_id = $basket_id;
+        $this->basket = $basket_id;
 
         return $this;
     }
