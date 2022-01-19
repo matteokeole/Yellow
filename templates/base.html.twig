@@ -1,19 +1,180 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-        {% endblock %}
 
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+<html lang="fr">
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+		<!-- CSS -->
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				font-family: Arial, sans-serif
+			}
+			body {
+				padding-top: 90px;
+				overflow-x: hidden
+			}
+			.navbar {
+				height: 60px;
+				box-shadow: 0 4px 8px rgba(0, 0, 0, .2);
+				background-color: #000
+			}
+			.navbar-brand {
+				width: 40px;
+				height: 40px
+			}
+			.logo {
+				width: 60px;
+				border-radius: 5px;
+				box-shadow: 0 4px 8px rgba(0, 0, 0, .1);
+				transition-duration: .2s
+			}
+			.logo:hover {opacity: .9}
+			.logo:active {
+				-webkit-transform: scale(.95);
+				transform: scale(.95);
+				transition-duration: .1s
+			}
+			.nav-link {color: #fff !important}
+			.navbar .nav-link .icon {
+				width: 35px;
+				height: auto
+			}
+			h1 {
+				margin: 20px 0;
+				padding-bottom: 4px;
+				border-bottom: 1px solid #ddd;
+				font-size: 34px
+			}
+			footer {
+				margin-top: 50px;
+				padding: 20px 50px;
+				background-color: #f5c943
+			}
+			.footer-logo {
+				width: 100px;
+				height: 100px;
+				margin-bottom: 20px
+			}
+			.footer-subtitle {
+				margin-bottom: 10px;
+				color: #000;
+				font-size: 20px
+			}
+			footer ul {
+				padding: 0;
+				list-style-type: none
+			}
+			footer ul li {color: #7a6421}
+			footer ul li a {
+				color: #7a6421 !important;
+				cursor: pointer;
+				text-decoration: none !important;
+				transition-duration: .2s
+			}
+			footer ul li a:hover {color: #000 !important}
+		</style>
+		<title>{% block title %}Yellow : bienvenue dans l'univers des mangas{% endblock %}</title>
+	</head>
+	<body>
+		<!-- Nav -->
+		<nav class="navbar navbar-expand-md fixed-top">
+			<a href="/" class="navbar-brand">
+				<img src="../../favicon.ico" alt="Logo Yellow" class="logo">
+			</a>
+			<button
+				class="navbar-toggler text-white"
+				type="button"
+				data-toggle="collapse"
+				data-target="#navbarsExampleDefault"
+				aria-controls="navbarsExampleDefault"
+				aria-expanded="false"
+				aria-label="Toggle navigation"
+			>
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse justify-content-end" id="navbarsExampleDefault">
+				<ul class="navbar-nav">
+				<div class="d-flex flex-row align-items-center">
+					<li class="nav-item">
+						<a href="/" class="nav-link">Accueil</a>
+					</li>
+					<li class="nav-item">
+						<a href="/produit" class="nav-link">Nos mangas</a>
+					</li>
+					<li class="nav-item">
+						<a href="/contact" class="nav-link">Contact</a>
+					</li>
+				</div>
+				<div class="d-flex flex-row">
+					<li class="nav-item">
+						<a href="/panier" class="nav-link">
+							<img src="../../naviconPanier.png" alt="Logo Yellow" class="icon">
+						</a>
+					</li>
+					<li class="nav-item">
+						<a href="/compte" class="nav-link">
+							<img src="../../naviconCompte.png" alt="Logo Yellow" class="icon">
+						</a>
+					</li>
+				</div>
+				</ul>
+			</div>
+		</nav>
+		<!-- Body -->
+		{% block body %}
+		{% endblock %}
+		<!-- Footer -->
+		<footer class="">
+			<div class="row">
+				<div class="col-sm-6 col-md-6 col-lg-3">
+					<a href="/"><img src="../../favicon.ico" alt="Yellow" class="footer-logo"></a>
+				</div>
+				<div class="col-sm-6 col-md-6 col-lg-3">
+					<div class="footer-subtitle">Catégories</div>
+					<ul>
+						<li>Shonen</li>
+						<li>Seinen</li>
+						<li>Shojo</li>
+						<li>Josei</li>
+						<li>Kodomo</li>
+					</ul>
+				</div>
+				<div class="col-sm-6 col-md-6 col-lg-3">
+					<div class="footer-subtitle">Nous contacter</div>
+					<ul>
+						<li>contact@yellow.com</li>
+						<li>07 12 34 56 78</li>
+						<li>3 rue de la Condamine<br>34000 Montpellier</li>
+						<li>
+							<a href="/contact">Formulaire de contact</a>
+						</li>
+					</ul>
+				</div>
+				<div class="col-sm-6 col-md-6 col-lg-3">
+					<div class="footer-subtitle">A propos de Yellow</div>
+					<ul>
+						<li>
+							<a href="/mentions-legales">Mentions légales</a>
+						</li>
+						<li>
+							<a href="/cgv">CGV</a>
+						</li>
+						<li>
+							<a href="/retours-remboursements">Politique des retours<br>et remboursements</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</footer>
+		<!-- Scripts -->
+		{% block javascripts %}
+			<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+			<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+		{% endblock %}
+	</body>
 </html>

@@ -1,0 +1,92 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Nos mangas • Yellow{% endblock %}
+{% block body %}
+	<style>
+		/* Product container & inner container */
+		.product-container {margin-bottom: 50px}
+		footer {margin-top: 0}
+		.product {
+			width: 250px;
+			padding: 8px 0 4px 0;
+			position: relative;
+			overflow: hidden;
+			border-radius: 8px;
+			color: #000 !important;
+			text-align: center;
+			text-decoration: none !important;
+			transition-duration: .2s
+		}
+		.product:hover {
+			box-shadow: 0 10px 20px rgba(0, 0, 0, .1), inset 0 0 0 300px rgba(0, 0, 0, .1);
+			-webkit-filter: brightness(.9);
+			filter: brightness(.9)
+		}
+		.product:active {
+			box-shadow: 0 10px 20px rgba(0, 0, 0, .1), inset 0 0 0 300px rgba(0, 0, 0, .2);
+			-webkit-filter: brightness(.8);
+			filter: brightness(.8);
+			-webkit-transform: scale(.95);
+			transform: scale(.95);
+			transition-duration: .1s
+		}
+		/* Product cover */
+		.product .cover {
+			height: 300px;
+			margin-bottom: 5px
+		}
+		/* Product footer (more infos) */
+		.product-footer {
+			padding: 0 8px;
+			text-align: left
+		}
+		/* Title */
+		.product-title {font-size: 18px}
+		/* Author/date */
+		.product-subtitle {
+			opacity: .65;
+			font-size: 14px
+		}
+		/* Price (€) */
+		.product-price {
+			padding-left: 8px;
+			font-size: 20px;
+			font-weight: bold
+		}
+		/* Short description */
+		.product-desc {
+			overflow: hidden;
+			opacity: .65;
+			font-size: 16px;
+			text-overflow: ellipsis;
+			white-space: nowrap
+		}
+	</style>
+	<div class="container-fluid">
+		<h1>Nos mangas</h1>
+		<p>Découvrez notre catalogue de shonens, seinens, shojos, joseis ainsi que kodamos.</p>
+		<div class="row">
+			{% for product in products %}
+				<div class="col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center product-container">
+					<a href="{{path('ficheProduit', {id: product.id})}}" class="product" style="">
+						<img src="/images/{{product.Cover}}" alt="Image de couverture" class="cover">
+						<div class="product-footer d-flex flex-column">
+							<div class="product-primary-info d-flex">
+								<div class="product-info d-flex flex-column flex-grow-1">
+									<span class="product-title">{{product.ProductName}}</span>
+									<span class="product-subtitle">
+										<span class="product-author">
+											Author <span class="product-date">• Date</span>
+										</span>
+									</span>
+								</div>
+								<div class="product-price d-flex align-items-center">{{product.Price}}€</div>
+							</div>
+							<div class="product-desc">{{product.productDesc}}</div>
+						</div>
+					</a>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+{% endblock %}

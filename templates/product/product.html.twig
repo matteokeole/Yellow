@@ -1,0 +1,86 @@
+{% extends "base.html.twig" %}
+
+{% block title %}{{ficheProduit.ProductName}} • Yellow{% endblock %}
+{% block body %}
+	<style>
+		/* Cover container */
+		.cover-container {position: relative}
+		/* Product cover */
+		.cover {
+			height: 650px;
+			border-radius: 5px
+		}
+		/* Product price (in title) */
+		.product-price {
+			font-size: 26px;
+			font-weight: bold
+		}
+		/* Actions container */
+		.actions-container {margin-bottom: 20px}
+		/* Product quantity */
+		.product-quantity {color: green}
+		/* Add to basket link */
+		.add-to-basket {
+			padding: 6px 12px;
+			border-radius: 50px;
+			background-color: #000;
+			color: #fff !important;
+			font-size: 16px;
+			text-decoration: none !important;
+			transition-duration: .2s
+		}
+		.add-to-basket:hover {opacity: .8}
+		.add-to-basket:active {
+			opacity: .65;
+			-webkit-transform: scale(.95);
+			transform: scale(.95);
+			transition-duration: .1s
+		}
+		/* Author/date */
+		.product-author {
+			opacity: .65;
+			font-size: 14px
+		}
+		/* Media queries */
+		@media screen and (max-width: 991px) {
+			.cover-container::before {
+				content: "";
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				position: absolute;
+				background: url(/images/{{ficheProduit.Cover}}) center no-repeat;
+				background-size: cover;
+				-webkit-filter: blur(20px);
+				filter: blur(20px);
+				z-index: -1
+			}
+			.title {margin-top: 30px}
+		}
+		@media screen and (max-width: 500px) {
+			.cover {height: 450px}
+		}
+	</style>
+	<div class="container-fluid">
+		<div class="row justify-content-center">
+			<div class="col-12 col-lg-6 col-xl-5 d-flex justify-content-center cover-container">
+				<img src="/images/{{ficheProduit.Cover}}" alt="Image de couverture" class="cover">
+			</div>
+			<div class="col-12 col-lg-4 col-xl-3 info-container">
+				<h1 class="title d-flex align-items-center">
+					<span class="product-title flex-grow-1">{{ficheProduit.ProductName}}</span>
+					<span class="product-price">{{ficheProduit.Price}}€</span>
+				</h1>
+				<div class="actions-container d-flex align-items-center">
+					<span class="product-quantity flex-grow-1">{{ficheProduit.stock}} en stock</span>
+					<a href="#" class="add-to-basket">Ajouter au panier</a>
+				</div>
+				<span class="product-author">
+					Author <span class="product-date">• Date</span>
+				</span><br>
+				<span class="desc">{{ficheProduit.ProductDesc}}</span>
+			</div>
+		</div>
+	</div>
+{% endblock %}
