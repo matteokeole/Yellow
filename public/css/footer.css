@@ -1,9 +1,15 @@
 /* Footer */
 
 footer {
-	margin-top: 50px;
-	padding: 20px 50px;
+	display: flex;
+	margin-top: 60px;
+	padding: 20px 0 40px 0;
 	background-color: var(--primary)
+}
+
+.footer-section {
+	width: 25%;
+	/*background-color: saddlebrown*/
 }
 
 .footer-logo {
