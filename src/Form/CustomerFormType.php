@@ -14,46 +14,50 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class CustomerFormType extends AbstractType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options): void
-    {
-        $builder
-        ->add("customer_first_name", TextType::class, [
-            "label" => "Votre prénom *",
-            "required" => true
-        ])
-        ->add("customer_last_name", TextType::class, [
-            "label" => "Votre nom *",
-            "required" => true
-        ])
-        ->add("customer_email", EmailType::class, [
-            "label" => "Votre email *",
-            "required" => true
-        ])
-        ->add("customer_phone", TextType::class, [
-            "label" => "Votre téléphone",
-            "required" => false
-        ])
-        ->add("customer_address", TextType::class, [
-            "label" => "Votre adresse postale *",
-            "required" => true
-        ])
-        ->add("customer_post_code", IntegerType::class, [
-            "label" => "Votre code postal *",
-            "required" => true
-        ])
-        ->add("customer_city", TextType::class, [
-            "label" => "Votre ville *",
-            "required" => true
-        ])
-        ->add("submit", SubmitType::class, [
-            "label" => "Modifier"
-        ]);
-    }
+	public function buildForm(FormBuilderInterface $builder, array $options): void
+	{
+		$builder
+		->add("customer_first_name", TextType::class, [
+			"label" => "Votre prénom *",
+			"required" => true
+		])
+		->add("customer_last_name", TextType::class, [
+			"label" => "Votre nom *",
+			"required" => true
+		])
+		->add("customer_email", EmailType::class, [
+			"label" => "Votre email *",
+			"required" => true
+		])
+		->add("customer_phone", TextType::class, [
+			"label" => "Votre téléphone",
+			"required" => false
+		])
+		->add("customer_password", PasswordType::class, [
+			"label" => "Votre mot de passe",
+			"required" => true
+		])
+		->add("customer_address", TextType::class, [
+			"label" => "Votre adresse postale *",
+			"required" => true
+		])
+		->add("customer_post_code", IntegerType::class, [
+			"label" => "Votre code postal *",
+			"required" => true
+		])
+		->add("customer_city", TextType::class, [
+			"label" => "Votre ville *",
+			"required" => true
+		])
+		->add("submit", SubmitType::class, [
+			"label" => "Modifier"
+		]);
+	}
 
-    public function configureOptions(OptionsResolver $resolver): void
-    {
-        $resolver->setDefaults([
-            'data_class' => Customer::class,
-        ]);
-    }
+	public function configureOptions(OptionsResolver $resolver): void
+	{
+		$resolver->setDefaults([
+			'data_class' => Customer::class,
+		]);
+	}
 }

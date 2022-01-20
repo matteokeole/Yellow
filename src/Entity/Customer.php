@@ -138,7 +138,7 @@ class Customer
 
 	public function setCustomerPassword(string $customer_password): self
 	{
-		$this->customer_password = $customer_password;
+		$this->customer_password = md5($customer_password);
 
 		return $this;
 	}

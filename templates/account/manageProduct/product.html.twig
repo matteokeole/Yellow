@@ -5,13 +5,15 @@
 	<link rel="stylesheet" href="/css/account.css">
 	<main>
 		<h1>Gestion des produits</h1>
+		<!-- Actions -->
 		<div class="actions">
 			<!-- Back to catalog link -->
 			<a href="{{path('compte_admin')}}" class="back">
 				<ion-icon name="chevron-back-outline"></ion-icon>
 				Retour
 			</a>
-			<a href="{{path('manageProductNew')}}" class="new-product">
+			<!-- Add new product -->
+			<a href="{{path('manageProductNew')}}" class="add-row">
 				<ion-icon name="add-outline"></ion-icon>
 				Nouveau produit
 			</a>
@@ -47,8 +49,6 @@
 					</td>
 				</tr>
 			{% endfor %}
-		</table> 
-		<div>
-		</div>
+		</table>
 	</main>
 {% endblock %}

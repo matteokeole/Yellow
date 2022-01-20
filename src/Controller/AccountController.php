@@ -29,7 +29,7 @@
 				foreach ($customers as $customer) {
 					if (
 						$customer->getCustomerEmail() == $email &&
-						$customer->getCustomerPassword() == $password
+						$customer->getCustomerPassword() == md5($password)
 					) {
 						// User successfully connected
 						$session->set("customer", [

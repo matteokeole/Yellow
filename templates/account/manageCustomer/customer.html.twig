@@ -1,21 +1,54 @@
 {% extends "base.html.twig" %}
 
-{% block title %}Gestion des clients{% endblock %}
+{% block title %}Gestion des clients • Yellow{% endblock %}
 {% block body %}
+	<link rel="stylesheet" href="/css/account.css">
 	<main>
 		<h1>Gestion des clients</h1>
-		<button type="submit">
-			<a href="{{path('manageCustomerNew')}}">Ajouter un client</a>
-		</button>
-		<div>
-			{%for customer in customers %}
-				<ul>
-					<li>
-						<a href="{{path('manageCustomerId',{id:customer.id})}}">{{customer.customerLastName}}</a>
-						~
-						{{customer.customerFirstName}}</li>
-				</ul>
-			{% endfor %}
+		<!-- Actions -->
+		<div class="actions">
+			<!-- Back to catalog link -->
+			<a href="{{path('compte_admin')}}" class="back">
+				<ion-icon name="chevron-back-outline"></ion-icon>
+				Retour
+			</a>
+			<!-- Add new customer -->
+			<a href="{{path('manageCustomerNew')}}" class="add-row">
+				<ion-icon name="add-outline"></ion-icon>
+				Nouveau client
+			</a>
 		</div>
+		<!-- Customers table -->
+		<table>
+			<tr>
+				<th>ID</th>
+				<th>Prénom</th>
+				<th>Nom</th>
+				<th>E-mail</th>
+				<th>Téléphone</th>
+				<th>Mot de passe</th>
+				<th>Adresse</th>
+				<th>Code postal</th>
+				<th>Ville</th>
+				<th>Actions</th>
+			</tr>
+			{%for customer in customers %}
+				<tr>
+					<td>{{customer.id}}</td>
+					<td>{{customer.customerFirstName}}</td>
+					<td>{{customer.customerLastName}}</td>
+					<td>{{customer.customerEmail}}</td>
+					<td>{{customer.customerPhone}}</td>
+					<td>{{customer.customerPassword}}</td>
+					<td>{{customer.customerAddress}}</td>
+					<td>{{customer.customerPostCode}}</td>
+					<td>{{customer.customerCity}}</td>
+					<td>
+						<a href="{{path('manageCustomerId', {id: customer.id})}}">Modifier</a>
+						<a href="#">Supprimer</a>
+					</td>
+				</tr>
+			{% endfor %}
+		</table>
 	</main>
 {% endblock %}

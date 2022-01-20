@@ -44,20 +44,20 @@ a {
 	font-size: 22px
 }
 
-/* New product link */
+/* Add row link */
 
-.new-product {
+.add-row {
 	display: inline-flex;
 	align-items: center;
 	color: var(--success);
 	font-size: 18px
 }
-.new-product:hover {
+.add-row:hover {
 	opacity: .65;
 	text-decoration: underline
 }
 
-.new-product ion-icon {
+.add-row ion-icon {
 	margin-right: 4px;
 	font-size: 22px
 }
