@@ -1,29 +1,37 @@
 /* Footer */
 
 footer {
-	display: flex;
 	margin-top: 60px;
-	padding: 20px 0 40px 0;
-	background-color: var(--primary)
+	padding: 20px 10px 0 10px;
+	background-color: var(--primary);
+	text-align: center
 }
 
+/* Footer logo */
 .footer-logo {
 	width: 130px;
 	height: 130px;
-	margin-bottom: 20px
+	margin-left: 20px
 }
 
+/* Footer sections */
 .footer-section {
-	width: 25%;
-	/*background-color: saddlebrown*/
+	vertical-align: top;
+	display: inline-block;
+	width: 24%;
+	margin-bottom: 20px;
+	text-align: left
 }
-.footer
+.footer-section:first-child {margin-bottom: 0}
 
+/* Footer section subtitles */
 .footer-subtitle {
-	margin-bottom: 5px;
+	margin-bottom: 8px;
 	color: #000;
 	font-size: 22px
 }
+
+/* Footer link lists */
 
 footer ul {
 	padding: 0;
@@ -36,10 +44,25 @@ footer ul li {
 	font-size: 17px
 }
 
-footer ul li a {
-	color: rgba(0, 0, 0, .5);
-	cursor: pointer;
-	text-decoration: none !important;
-	transition-duration: .2s
+footer ul li a {color: rgba(0, 0, 0, .5)}
+footer ul li a:hover {color: #000}
+
+/* Copyright section */
+.copyright {
+	padding: 20px 0 10px 0;
+	opacity: .5;
+	font-size: 14px;
+	font-style: italic
 }
-footer ul li a:hover {color: #000 !important}
+
+/* Media queries */
+@media screen and (max-width: 800px) {
+	.footer-logo {margin: 0 0 20px 0}
+	.footer-section {width: 49%}
+}
+@media screen and (max-width: 450px) {
+	.footer-section {
+		width: 99%;
+		text-align: center
+	}
+}

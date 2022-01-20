@@ -43,55 +43,60 @@
 		{% block body %}{% endblock %}
 		<!-- Footer -->
 		<footer>
-			<div class="footer-section">
-				<a href="{{path('home')}}">
-					<img src="../../favicon.ico" alt="Yellow" class="footer-logo">
-				</a>
+			<div class="footer-container">
+				<div class="footer-section">
+					<a href="{{path('home')}}">
+						<img src="../../favicon.ico" alt="Yellow" class="footer-logo">
+					</a>
+				</div>
+				<div class="footer-section">
+					<h3 class="footer-subtitle">Catégories</h3>
+					<ul>
+						<li>Shonen</li>
+						<li>Seinen</li>
+						<li>Shojo</li>
+						<li>Josei</li>
+						<li>Kodomo</li>
+					</ul>
+				</div>
+				<div class="footer-section">
+					<h3 class="footer-subtitle">Nous contacter</h3>
+					<ul>
+						<li>
+							<a href="mailto:contact@yellow.com" target="_blank" title="Envoyez-nous un mail !" aria-label="Envoyez-nous un mail !">contact@yellow.com</a>
+						</li>
+						<li>
+							<a href="tel:0712345678" target="_blank" title="Appelez-nous !" aria-label="Appelez-nous !">07 12 34 56 78</a>
+						</li>
+						<li>
+							3 rue de la Condamine<br>
+							34000 Montpellier
+						</li>
+						<li>
+							<a href="{{path('contact')}}">Formulaire de contact</a>
+						</li>
+					</ul>
+				</div>
+				<div class="footer-section">
+					<h3 class="footer-subtitle">A propos de Yellow</h3>
+					<ul>
+						<li>
+							<a href="{{path('mentions-legales')}}">Mentions légales</a>
+						</li>
+						<li>
+							<a href="{{path('cgv')}}">CGV</a>
+						</li>
+						<li>
+							<a href="{{path('retours-remboursements')}}">
+								Politique des retours<br>
+								et remboursements
+							</a>
+						</li>
+					</ul>
+				</div>
 			</div>
-			<div class="footer-section">
-				<h3 class="footer-subtitle">Catégories</h3>
-				<ul>
-					<li>• Shonen</li>
-					<li>• Seinen</li>
-					<li>• Shojo</li>
-					<li>• Josei</li>
-					<li>• Kodomo</li>
-				</ul>
-			</div>
-			<div class="footer-section">
-				<h3 class="footer-subtitle">Nous contacter</h3>
-				<ul>
-					<li>
-						<a href="mailto:contact@yellow.com" target="_blank" title="Envoyez-nous un mail !" aria-label="Envoyez-nous un mail !">contact@yellow.com</a>
-					</li>
-					<li>
-						<a href="tel:0712345678" target="_blank" title="Appelez-nous !" aria-label="Appelez-nous !">07 12 34 56 78</a>
-					</li>
-					<li>
-						3 rue de la Condamine<br>
-						34000 Montpellier
-					</li>
-					<li>
-						<a href="{{path('contact')}}">Formulaire de contact</a>
-					</li>
-				</ul>
-			</div>
-			<div class="footer-section">
-				<h3 class="footer-subtitle">A propos de Yellow</h3>
-				<ul>
-					<li>
-						<a href="{{path('mentions-legales')}}">Mentions légales</a>
-					</li>
-					<li>
-						<a href="{{path('cgv')}}">CGV</a>
-					</li>
-					<li>
-						<a href="{{path('retours-remboursements')}}">
-							Politique des retours<br>
-							et remboursements
-						</a>
-					</li>
-				</ul>
+			<div class="copyright">
+				Copyright &copy; 2021 Yellow. Tous droits réservés.
 			</div>
 		</footer>
 		<!-- Scripts -->
