@@ -6,6 +6,8 @@
 	<style></style>
 	<div class="container-fluid">
 		<h1>Connexion</h1>
+		<h2>{{test}}</h2>
+		<div class="form-error"></div>
 		{{form(form)}}
 		<p>
 			Vous n'avez pas encore de compte ?
@@ -13,10 +15,22 @@
 		</p>
 	</div>
 	<script>
-		const form = document.querySelector("form[name='login_form']");
+		const form = document.querySelector("form[name='login_form']"),
+			emailInput = document.querySelector("#login_form_customer_email"),
+			passwordInput = document.querySelector("#login_form_customer_password"),
+			blankExpr = /^\s*$/,
+			formError = document.querySelector(".form-error");
+		// Clean up fields
+		emailInput.value = "";
+		passwordInput.value = "";
 		form.addEventListener("submit", e => {
 			e.preventDefault();
+			formError.textContent = "";
 			// Form check-up
+			if (blankExpr.test(emailInput.value) || blankExpr.test(passwordInput.value)) {
+				// Invalid field value
+				formError.textContent = "Vous devez renseignez tous les champs."
+			} else form.submit()
 		})
 	</script>
 {% endblock %}

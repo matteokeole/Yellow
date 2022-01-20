@@ -13,11 +13,16 @@
 		/**
 		 * @Route("/connexion", name="login")
 		 */
-		public function index(Request $request, EntityManagerInterface $entityManager): Response {
+		public function index(Request $request): Response {
+			$test = "pas co";
 			$form = $this->createForm(LoginFormType::class);
 			$form->handleRequest($request);
+			if ($form->isSubmitted() && $form->isValid()) {
+				$test = "pouet";
+			}
 			return $this->render("form/login.html.twig", [
-				"form" => $form->createView()
+				"form" => $form->createView(),
+				"test" => $test
 			]);
 		}
 		/**

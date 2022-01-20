@@ -12,4 +12,30 @@
 			<a href="{{path('login')}}">Connectez-vous</a>
 		</p>
 	</div>
+	<script>
+		/*const form = document.querySelector("form[name='login_form']"),
+			emailInput = document.querySelector("#login_form_customer_email"),
+			emailExpr = /^[\w-]+@[\w-]+\.[\w-]{2,}$/,
+			validEmail = false,
+			passwordInput = document.querySelector("#login_form_customer_password"),
+			passwordExpr = /^$/,
+			validPassword = false,
+			formError = document.querySelector(".form-error");
+		form.addEventListener("submit", e => {
+			e.preventDefault();
+			formError.textContent = "";
+			// Email check-up
+			if (!emailExpr.test(emailInput)) {
+				// Invalid email
+				formError.textContent += "L'email que vous avez rentré est invalide.\n"
+			} else validEmail = true;
+			// Password check-up
+			if (!passwordExpr.test(passwordInput)) {
+				// Invalid password
+				formError.textContent += "Le mot de pass que vous avez rentré est invalide.\n"
+			} else validPassword = true;
+			// Final check-up
+			if (validEmail && validPassword) form.submit()
+		})*/
+	</script>
 {% endblock %}
