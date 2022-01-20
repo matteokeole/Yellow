@@ -26,7 +26,7 @@
 					"required" => true
 				])
 				->add("customer_phone", TextType::class, [
-					"label" => ">Votre téléphone",
+					"label" => "Votre téléphone",
 					"required" => false
 				])
 				->add("customer_password", PasswordType::class, [
