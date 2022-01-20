@@ -1,6 +1,9 @@
 <?php
+	// session_start();
+
 	namespace App\Controller;
 	use App\Entity\Customer;
+	use App\Repository\CustomerRepository;
 	use App\Form\LoginFormType;
 	use App\Form\SignupFormType;
 	use Doctrine\ORM\EntityManagerInterface;
@@ -13,16 +16,25 @@
 		/**
 		 * @Route("/connexion", name="login")
 		 */
-		public function index(Request $request): Response {
-			$test = "pas co";
+		public function index(Request $request, CustomerRepository $customerRepository): Response {
 			$form = $this->createForm(LoginFormType::class);
 			$form->handleRequest($request);
+			$loginError = 0;
 			if ($form->isSubmitted() && $form->isValid()) {
-				$test = "pouet";
+				$email = $form["customer_email"]->getData();
+				$password = $form["customer_password"]->getData();
+				$customers = $customerRepository->findAll();
+				$loginError = 1;
+				foreach ($customers as $customer) {
+					if (
+						$customer->getCustomerEmail() == $email &&
+						$customer->getCustomerPassword() == $password
+					) return $this->redirectToRoute("welcome");
+				}
 			}
 			return $this->render("form/login.html.twig", [
 				"form" => $form->createView(),
-				"test" => $test
+				"loginError" => $loginError
 			]);
 		}
 		/**

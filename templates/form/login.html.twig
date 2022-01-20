@@ -6,8 +6,14 @@
 	<style></style>
 	<div class="container-fluid">
 		<h1>Connexion</h1>
-		<h2>{{test}}</h2>
-		<div class="form-error"></div>
+		<div class="form-error">
+			{% if loginError == 1 %}
+				Erreur lors de la tentative de connexion
+			{% endif %}
+			{% if loginError == 2 %}
+				Connecté !
+			{% endif %}
+		</div>
 		{{form(form)}}
 		<p>
 			Vous n'avez pas encore de compte ?
