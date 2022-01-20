@@ -33,7 +33,7 @@
 					) {
 						// User successfully connected
 						$session->set("customer", $customer->getCustomerEmail());
-						return $this->redirectToRoute("home");
+						return $this->redirectToRoute("account");
 					}
 				}
 			}
