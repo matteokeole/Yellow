@@ -28,4 +28,9 @@
 	font-weight: normal
 }
 
-main {margin: 0 20px}
+body {background-color: var(--primary)}
+
+main {
+	padding: 0 20px 60px 20px;
+	background-color: #FFF
+}
