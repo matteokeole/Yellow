@@ -7,16 +7,17 @@ footer {
 	background-color: var(--primary)
 }
 
-.footer-section {
-	width: 25%;
-	/*background-color: saddlebrown*/
-}
-
 .footer-logo {
 	width: 130px;
 	height: 130px;
 	margin-bottom: 20px
 }
+
+.footer-section {
+	width: 25%;
+	/*background-color: saddlebrown*/
+}
+.footer
 
 .footer-subtitle {
 	margin-bottom: 5px;
@@ -30,12 +31,13 @@ footer ul {
 }
 
 footer ul li {
-	color: #7a6421;
+	margin-bottom: 2px;
+	color: rgba(0, 0, 0, .5);
 	font-size: 17px
 }
 
 footer ul li a {
-	color: #7a6421 !important;
+	color: rgba(0, 0, 0, .5);
 	cursor: pointer;
 	text-decoration: none !important;
 	transition-duration: .2s
