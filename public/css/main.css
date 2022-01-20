@@ -7,7 +7,6 @@
 @import url(formErrorAlert.css);
 @import url(required-fields.css);
 @import url(login.css);
-@import url(product.css);
 
 /* Colors (border colors are a brighter variant of background colors) */
 :root {

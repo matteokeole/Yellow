@@ -2,55 +2,7 @@
 
 {% block title %}{{product.ProductName}} ({{product.ProductCategory}}) • Yellow{% endblock %}
 {% block body %}
-<style>
-/* Product price (in title) */
-.product-price {
-	opacity: .9;
-	font-size: 28px
-}
-/* Actions container */
-.actions {
-	display: flex;
-	justify-content: space-between;
-	margin-bottom: 20px
-}
-/* Valid & invalid */
-.product-stock {font-size: 20px}
-.valid {color: var(--success)}
-.invalid {color: var(--error)}
-/* Add to basket link */
-.add-to-basket {
-	padding: 6px 12px;
-	border-radius: 50px;
-	background-color: #000;
-	color: #fff !important;
-	font-size: 18px;
-	text-decoration: none !important;
-	transition-duration: .2s
-}
-.add-to-basket:hover {opacity: .8}
-.add-to-basket:active {
-	opacity: .65;
-	-webkit-transform: scale(.95);
-	transform: scale(.95);
-	transition-duration: .1s
-}
-/* Author/date */
-.product-author {
-	margin-bottom:-15px;
-	opacity: .65;
-	font-size: 16px
-}
-/* Category container */
-.product-category-container {
-	opacity: .65;
-	font-size: 16px;
-	font-style: italic
-}
-/* Category */
-.product-category {text-transform: uppercase}
-.product-desc {margin-top: 10px}
-</style>
+	<link rel="stylesheet" href="/css/product.css">
 	<style>
 		@media screen and (max-width: 991px) {
 			.cover::before {background-image: url(/images/cover/{{product.ProductCover}}.jpg)}
@@ -68,26 +20,33 @@
 				<img src="/images/cover/{{product.ProductCover}}.jpg" alt="Image de couverture">
 			</div>
 			<div class="informations">
+				<!-- Product title & price -->
 				<h1 class="title">
 					<span class="product-title">{{product.ProductName}}</span>
 					<span class="product-price">{{product.ProductPrice}}€</span>
 				</h1>
 				<div class="blank"></div>
+				<!-- Actions -->
 				<div class="actions">
 					{% if product.ProductStock > 0 %}
 						<span class="product-stock valid">En stock</span>
+						<a href="#" class="add-to-basket">Ajouter au panier</a>
 					{% else %}
 						<span class="product-stock invalid">Rupture de stock</span>
 					{% endif %}
-					<a href="#" class="add-to-basket">Ajouter au panier</a>
 				</div>
+				<div class="blank"></div>
+				<!-- Product author & date (year) -->
 				<div class="product-author">
-					Écrit par {{product.ProductAuthor}} <span class="product-date">• {{product.ProductDate}}</span>
-				</div><br>
-				<div class="product-category-container">
-					<span class="product-category">{{product.ProductCategory}}</span> • <a href="#">Voir plus de mangas de ce type</a>
-				</div><br>
-				<span class="product-desc">{{product.ProductDesc}}</span>
+					Ecrit par {{product.ProductAuthor}} <span class="product-date">• {{product.ProductDate}}</span>
+				</div>
+				<!-- Product category name -->
+				<div class="product-category">
+					<span>{{product.ProductCategory}}</span> • 
+					<a href="#">En voir plus de ce type</a>
+				</div>
+				<!-- Product description -->
+				<div class="product-desc">{{product.ProductDesc}}</div>
 			</div>
 		</div>
 	</main>
