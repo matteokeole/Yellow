@@ -2,27 +2,12 @@
 
 namespace App\Controller;
 
-use App\Entity\Product;
-use App\Form\ProductFormType;
-use App\Repository\ProductRepository;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class InterfaceAdminController extends AbstractController
+class AdminOrderController extends AbstractController
 {
-    /**
-     * @Route("/admin", name="interfaceAdmin")
-     */
-    public function index(): Response
-    {
-        return $this->render('interfaceAdmin/index.html.twig', [
-            'controller_name' => 'InterfaceAdminController',
-        ]);
-    }
-
     //Affichage des produits de la BDD
     /**
      * @Route("/admin/gestion-des-produits", name="manageProduct")
