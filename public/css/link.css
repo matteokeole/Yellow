@@ -11,6 +11,9 @@ a {
 	color: #000 !important;
 	font-size: 18px
 }
-.back-to-catalog:hover {opacity: .65}
+.back-to-catalog:hover {
+	opacity: .65;
+	text-decoration: underline
+}
 
 .back-to-catalog ion-icon {margin-right: 5px}

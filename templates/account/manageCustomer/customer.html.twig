@@ -1,17 +1,12 @@
 {% extends "base.html.twig" %}
 
-{% block title %}Gestion des Clients
-{% endblock %}
-
+{% block title %}Gestion des clients{% endblock %}
 {% block body %}
-	<style></style>
-
-	<div class="example-wrapper">
-		<h1>Gestion des Clients</h1>
+	<main>
+		<h1>Gestion des clients</h1>
 		<button type="submit">
 			<a href="{{path('manageCustomerNew')}}">Ajouter un client</a>
 		</button>
-        </p>
 		<div>
 			{%for customer in customers %}
 				<ul>
@@ -22,5 +17,5 @@
 				</ul>
 			{% endfor %}
 		</div>
-	</div>
+	</main>
 {% endblock %}

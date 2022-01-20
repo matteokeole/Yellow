@@ -2,7 +2,7 @@
 
 {% block title %}Inscription • Yellow{% endblock %}
 {% block body %}
-	<div class="container-fluid">
+	<main>
 		<h1>Inscription</h1>
 		<span class="required-fields">Les champs marqués d'un * sont obligatoires.</span>
 		{{form(form)}}
@@ -10,7 +10,7 @@
 			Vous avez déjà un compte ?
 			<a href="{{path('login')}}">Connectez-vous !</a>
 		</p>
-	</div>
+	</main>
 	<script>
 		/*const form = document.querySelector("form[name='login_form']"),
 			emailInput = document.querySelector("#login_form_customer_email"),

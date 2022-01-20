@@ -2,11 +2,10 @@
 
 {% block title %}Compte • Yellow{% endblock %}
 {% block body %}
-<div class="example-wrapper">
-	<h1>Compte Administrateur</h1>
-
-	<button type="submit"><a href="{{path('manageProduct')}}">Gestion des produits</a></button>
-	<button type="submit"><a href="{{path('manageCustomer')}}">Gestion des clients</a></button>
-	<button type="submit"><a href="">Gestion des commandes</a></button>
-</div>
+	<main>
+		<h1>Compte Administrateur</h1>
+		<button type="submit"><a href="{{path('manageProduct')}}">Gestion des produits</a></button>
+		<button type="submit"><a href="{{path('manageCustomer')}}">Gestion des clients</a></button>
+		<button type="submit"><a href="">Gestion des commandes</a></button>
+	</main>
 {% endblock %}

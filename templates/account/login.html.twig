@@ -2,7 +2,7 @@
 
 {% block title %}Connexion • Yellow{% endblock %}
 {% block body %}
-	<div class="container-fluid">
+	<main>
 		<h1>Connexion</h1>
 		<div class="form-error-alert">
 			<ion-icon name="alert-circle-outline" class="error-icon"></ion-icon>
@@ -17,7 +17,7 @@
 			Vous n'avez pas encore de compte ?
 			<a href="{{path('signup')}}">Inscrivez-vous !</a>
 		</p>
-	</div>
+	</main>
 	<script>
 		{% if loginError == 1 %}
 			displayFormError("Impossible de se connecter", "Veuillez vérifier vos identifiants de connexion.")

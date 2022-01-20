@@ -1,27 +1,22 @@
 {% extends "base.html.twig" %}
 
-{% block title %}Gestion des Produits{% endblock %}
-
+{% block title %}Gestion des produits{% endblock %}
 {% block body %}
-<style>
-</style>
-
-<div class="example-wrapper">
-    <h1>Gestion du livre : {{ product.ProductName }}</h1>
-    <ul>
-    <li>Nom : {{ product.ProductName }}</li>
-    <li>Auteur : {{ product.ProductAuthor }}</li>
-    <li>Date de parution : {{ product.ProductDate }}</li>
-    <li>Description : {{ product.ProductDesc }}</li>
-    <li>Cover : {{ product.ProductCover }}</li>
-    <li>Prix : {{ product.ProductPrice }}</li>
-    <li>Stock : {{ product.ProductStock }}</li>
-    <li>Catégorie : {{ product.ProductCategory }}</li>
-    </ul>
-    <div class="col-12 text-center">
-    <a href="{{path('manageProduct') }}" class="btn btn-primary">Retour</a>
-    <a href="{{ path('manageProductUpdate',{id:product.id}) }}" class="btn btn-primary">Modifier la fiche produit</a>
-    </div>
-
-</div>
+	<main>
+		<h1>Gestion du manga {{ product.ProductName }}</h1>
+		<ul>
+		<li>Nom : {{ product.ProductName }}</li>
+		<li>Auteur : {{ product.ProductAuthor }}</li>
+		<li>Date de parution : {{ product.ProductDate }}</li>
+		<li>Description : {{ product.ProductDesc }}</li>
+		<li>Cover : {{ product.ProductCover }}</li>
+		<li>Prix : {{ product.ProductPrice }}</li>
+		<li>Stock : {{ product.ProductStock }}</li>
+		<li>Catégorie : {{ product.ProductCategory }}</li>
+		</ul>
+		<div class="col-12 text-center">
+		<a href="{{path('manageProduct') }}" class="btn btn-primary">Retour</a>
+		<a href="{{ path('manageProductUpdate',{id:product.id}) }}" class="btn btn-primary">Modifier la fiche produit</a>
+		</div>
+	</main>
 {% endblock %}

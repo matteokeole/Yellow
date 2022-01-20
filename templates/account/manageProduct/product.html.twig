@@ -1,17 +1,14 @@
 {% extends "base.html.twig" %}
 
-{% block title %}Gestion des Produits
+{% block title %}Gestion des produits
 {% endblock %}
 
 {% block body %}
-	<style></style>
-
-	<div class="example-wrapper">
-		<h1>Gestion des Produits</h1>
+	<main>
+		<h1>Gestion des produits</h1>
 		<button type="submit">
 			<a href="{{path('manageProductNew')}}">Ajouter un produit</a>
 		</button>
-        </p>
 		<div>
 			{%for product in products %}
 				<ul>
@@ -24,5 +21,5 @@
 				</ul>
 			{% endfor %}
 		</div>
-	</div>
+	</main>
 {% endblock %}

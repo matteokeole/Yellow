@@ -83,40 +83,41 @@
 			<span class="button-accueil">Consulter notre catalogue de manga</span>
 		</a>
 	</div>
-	<div class="searchbar">
-		<form>
-			<input id="search" type="search" placeholder="Rechercher un produit">
-			<button type="submit" class="btn-search">Go</button>
-		</form>
-	</div>
-	<div class="bs-cadre">
-		<div class="best-seller">
-			<hr>
-			<div class="flex">NOS BEST-SELLERS</div>
-			<div class="bs-produit flex">
-				<div class="text-center">
-					<a href="/produit/1">
-						<img src="images/cover/onepiece.jpg" class="cover">
-					</a>
-					<p>One Piece</p>
-					<p>6.90€</p>
-				</div>
-				<div class="text-center">
-					<a href="/produit/2">
-						<img src="images/cover/dragonball.jpg" class="cover">
-					</a>
-					<p>Dragon Ball</p>
-					<p>6.90€</p>
-				</div>
-				<div class="text-center">
-					<a href="/produit/3">
-						<img src="images/cover/naruto.jpg" class="cover">
-					</a>
-					<p>Naruto</p>
-					<p>6.90€</p>
+	<main>
+		<div class="searchbar">
+			<form>
+				<input id="search" type="search" placeholder="Rechercher un produit">
+				<button type="submit" class="btn-search">Go</button>
+			</form>
+		</div>
+		<div class="bs-cadre">
+			<div class="best-seller">
+				<hr>
+				<div class="flex">NOS BEST-SELLERS</div>
+				<div class="bs-produit flex">
+					<div class="text-center">
+						<a href="/produit/1">
+							<img src="images/cover/onepiece.jpg" class="cover">
+						</a>
+						<p>One Piece</p>
+						<p>6.90€</p>
+					</div>
+					<div class="text-center">
+						<a href="/produit/2">
+							<img src="images/cover/dragonball.jpg" class="cover">
+						</a>
+						<p>Dragon Ball</p>
+						<p>6.90€</p>
+					</div>
+					<div class="text-center">
+						<a href="/produit/3">
+							<img src="images/cover/naruto.jpg" class="cover">
+						</a>
+						<p>Naruto</p>
+						<p>6.90€</p>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	{{app.session.get('id')}}
+	</main>
 {% endblock %}
