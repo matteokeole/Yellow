@@ -62,8 +62,11 @@ class Customer
 	 */
 	private $customer_city;
 
-	public function getId(): ?int
-	{
+	public function __toString(): ?string {
+		return $this->id;
+	}
+
+	public function getId(): ?int {
 		return $this->id;
 	}
 
