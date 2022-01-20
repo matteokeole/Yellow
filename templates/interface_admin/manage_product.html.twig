@@ -1,38 +1,28 @@
-{% extends 'base.html.twig' %}
+{% extends "base.html.twig" %}
 
-{% block title %}Gestion des produits
+{% block title %}Gestion des Produits
 {% endblock %}
 
 {% block body %}
 	<style></style>
 
 	<div class="example-wrapper">
-		<h1>Gestion des produits</h1>
-		<table>
-			<thead>
-				<tr>
-					<th colspan="1">Nom du produit</th>
-                    <th colspan="1">catégorie du produit</th>
-					<th colspan="1">Prix</th>
-				</tr>
-			</thead>
-			<tbody>
-                {%for product in products %}
-				<tr>
-                    <td>{{product.ProductName}}</td>
-                                        <td>{{product.ProductName}}</td>
-
-				</tr>
-			{% endfor %}
-			</tbody>
-		</table>
-		<ul class="list group">
+		<h1>Gestion des Produits</h1>
+		<button type="submit">
+			<a href="{{path('manageProductNew')}}">Ajouter un produit</a>
+		</button>
+        </p>
+		<div>
 			{%for product in products %}
-				<li class"list-group-item list-group-item-action">
-					{{product.ProductName}}
-				</li>
+				<ul>
+					<li>
+						<a href="{{path('manageProductId',{id:product.id})}}">{{product.ProductName}}</a>
+						~
+						{{product.ProductCategory}}
+						~
+						{{product.ProductPrice}}</li>
+				</ul>
 			{% endfor %}
-		</ul>
-
+		</div>
 	</div>
 {% endblock %}
