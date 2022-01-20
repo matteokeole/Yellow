@@ -12,11 +12,11 @@
 		.row{
 			display:flex;
 			flex-wrap:wrap;
-			margin:0% 3%;
+			justify-content:space-between;
 		}
 		footer {margin-top: 0}
 		.product {
-			width: 250px;
+			width: 280px;
 			padding: 8px 0 4px 0;
 			position: relative;
 			overflow: hidden;
@@ -56,22 +56,38 @@
 		.product-title {font-size: 18px}
 		/* Author/date */
 		.product-subtitle {
+			display:flex;
+			flex-direction:row;
 			opacity: .65;
-			font-size: 14px
+			font-size: 14px;
 		}
 		/* Price (€) */
 		.product-price {
 			padding-left: 8px;
 			opacity: .9;
-			font-size: 20px
+			font-size: 23px
 		}
 		/* Short description */
 		.product-desc {
-			overflow: hidden;
+			display:block;
 			opacity: .65;
 			font-size: 16px;
-			text-overflow: ellipsis;
+			overflow:hidden;
 			white-space: nowrap;
+			text-overflow:ellipsis;
+		}
+		.product-primary-info{
+			display:flex;
+			flex-direction:row;
+			justify-content:space-between;
+		}
+		.product-price{
+			display:flex;
+			align-items:center;
+		}
+		.product-author{
+			margin-top:4px;
+			margin-bottom:4px;
 		}
 	</style>
 	<div class="container-fluid">
@@ -82,9 +98,9 @@
 				<div class="product-container">
 					<a href="{{path('product', {id: product.id})}}" class="product">
 						<img src="/images/cover/{{product.ProductCover}}.jpg" alt="Image de couverture" class="cover">
-						<div class="product-footer d-flex flex-column">
-							<div class="product-primary-info d-flex">
-								<div class="product-info d-flex flex-column flex-grow-1">
+						<div class="product-footer">
+							<div class="product-primary-info">
+								<div class="product-info">
 									<span class="product-title">{{product.ProductName}}</span>
 									<span class="product-subtitle">
 										<span class="product-author">
@@ -92,7 +108,7 @@
 										</span>
 									</span>
 								</div>
-								<div class="product-price d-flex align-items-center">{{product.ProductPrice}}€</div>
+								<div class="product-price">{{product.ProductPrice}}€</div>
 							</div>
 							<span class="product-desc">{{product.ProductDesc}}</span>
 						</div>
