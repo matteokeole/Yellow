@@ -1,9 +1,7 @@
 {% extends "base.html.twig" %}
 
 {% block title %}Connexion • Yellow{% endblock %}
-
 {% block body %}
-	<script src="/js/displayFormError.js"></script>
 	<div class="container-fluid">
 		<h1>Connexion</h1>
 		<div class="form-error-alert">
@@ -13,11 +11,6 @@
 				<span class="error-subtitle"></span>
 			</span>
 		</div>
-		{% if loginError == 1 %}
-			<script>
-				displayFormError("Impossible de se connecter", "Veuillez vérifier vos identifiants de connexion.")
-			</script>
-		{% endif %}
 		<span class="required-fields">Les champs marqués d'un * sont obligatoires.</span>
 		{{form(form)}}
 		<p>
@@ -26,6 +19,9 @@
 		</p>
 	</div>
 	<script>
+		{% if loginError == 1 %}
+			displayFormError("Impossible de se connecter", "Veuillez vérifier vos identifiants de connexion.")
+		{% endif %}
 		const form = document.querySelector("form[name='login_form']"),
 			emailInput = document.querySelector("#login_form_customer_email"),
 			passwordInput = document.querySelector("#login_form_customer_password"),

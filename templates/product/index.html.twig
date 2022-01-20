@@ -70,11 +70,11 @@
 	</style>
 	<div class="container-fluid">
 		<h1>Nos mangas</h1>
-		<p>Découvrez notre catalogue de shonens, seinens, shojos, joseis ainsi que kodamos.</p>
+		<p>Découvrez notre catalogue de shonens, seinens, shojos, joseis et kodomos !</p>
 		<div class="row">
 			{% for product in products %}
 				<div class="col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center product-container">
-					<a href="{{path('ficheProduit', {id: product.id})}}" class="product" style="">
+					<a href="{{path('product', {id: product.id})}}" class="product" style="">
 						<img src="/images/cover/{{product.ProductCover}}.jpg" alt="Image de couverture" class="cover">
 						<div class="product-footer d-flex flex-column">
 							<div class="product-primary-info d-flex">
