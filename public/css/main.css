@@ -1,8 +1,10 @@
-@import url(form.css);
 @import url(/fonts/fonts.css);
-@import url(formErrorAlert.css);
 @import url(header.css);
+@import url(footer.css);
 @import url(link.css);
+@import url(titles.css);
+@import url(form.css);
+@import url(formErrorAlert.css);
 @import url(required-fields.css);
 
 /* Colors (border colors are a brighter variant of background colors) */
@@ -23,8 +25,4 @@
 	margin: 0;
 	padding: 0;
 	font-family: Coolvetica, Arial, sans-serif
-}
-
-body {
-	overflow-x: hidden
 }

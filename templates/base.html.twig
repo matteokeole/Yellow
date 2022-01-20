@@ -9,142 +9,95 @@
 		<meta name="author" content="Clothilde Pautis, Thomas Quinton, Victor Petiot, Mattéo Legagneux">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<link rel="stylesheet" href="/css/main.css">
-		<style>
-.navbar-collapse {
-	width: 170px;
-	padding: 0 20px 10px 20px;
-	right: 0;
-	position: fixed;
-	box-shadow: 0 4px 8px rgba(0, 0, 0, .2);
-	background-color: #000;
-	transition-duration: .3s;
-	z-index: 1
-}
-.navbar-collapse.collapsing {padding: 0 20px}
-.navbar-collapse.collapsing .nav-link, .navbar-collapse.collapsing {color: #000 !important}
-/* Titles */
-h1 {
-	margin: 20px 0 14px 0;
-	padding-bottom: 4px;
-	border-bottom: 1px solid #ddd;
-	font-size: 38px
-}
-/* Footer */
-footer {
-	margin-top: 50px;
-	padding: 20px 50px;
-	background-color: var(--primary)
-}
-.footer-logo {
-	width: 130px;
-	height: 130px;
-	margin-bottom: 20px
-}
-.footer-subtitle {
-	margin-bottom: 5px;
-	color: #000;
-	font-size: 22px
-}
-footer ul {
-	padding: 0;
-	list-style-type: none
-}
-footer ul li {
-	color: #7a6421;
-	font-size: 17px
-}
-footer ul li a {
-	color: #7a6421 !important;
-	cursor: pointer;
-	text-decoration: none !important;
-	transition-duration: .2s
-}
-footer ul li a:hover {color: #000 !important}
-/* Media queries */
-@media screen and (max-width: 768px) {
-	.navbar-links {display: none !important}
-}
-@media screen and (min-width: 769px) {
-	.navbar-collapse {display: none !important}
-}
-		</style>
-		<script src="/js/displayFormError.js" defer></script>
 		<title>{% block title %}{% endblock %}</title>
 	</head>
 	<body>
-		<!-- Nav -->
+		<!-- Header -->
 		<header>
-			<a href="{{path('home')}}" id="logo" title="Yellow">
+			<a href="{{path('home')}}" id="logo" title="Yellow" aria-label="Yellow">
 				<img src="/favicon.ico" alt="Logo">
 			</a>
+			<div class="blank"></div>
+			<!-- Navigation bar -->
 			<nav>
 				<a href="{{path('home')}}">Accueil</a>
 				<a href="{{path('catalog')}}">Nos mangas</a>
 				<a href="{{path('contact')}}">Contact</a>
 				<div class="link-icons">
-					<a href="#" title="Panier">
+					<a href="#" title="Panier" aria-label="Panier">
 						<ion-icon name="cart-outline"></ion-icon>
 					</a>
-					<span class="separation-dot">•</span>
-					<a href="{{path('login')}}" title="Compte">
+					<span id="separation-dot">•</span>
+					<a href="{{path('login')}}" title="Compte" aria-label="Compte">
 						<ion-icon name="person-outline"></ion-icon>
 					</a>
 				</div>
 			</nav>
-			<a href="#" title="Menu">
+			<a href="javascript:void(0)" id="menu" title="Menu" aria-label="Menu">
 				<ion-icon name="menu-outline"></ion-icon>
+				<ion-icon name="close-outline"></ion-icon>
 			</a>
 		</header>
 		<!-- Body -->
 		{% block body %}{% endblock %}
 		<!-- Footer -->
 		<footer>
-			<div class="row">
-				<div class="col-sm-6 col-md-6 col-lg-3">
-					<a href="{{path('home')}}">
-						<img src="../../favicon.ico" alt="Yellow" class="footer-logo">
-					</a>
-				</div>
-				<div class="col-sm-6 col-md-6 col-lg-3">
-					<div class="footer-subtitle">Catégories</div>
-					<ul>
-						<li>• Shonen</li>
-						<li>• Seinen</li>
-						<li>• Shojo</li>
-						<li>• Josei</li>
-						<li>• Kodomo</li>
-					</ul>
-				</div>
-				<div class="col-sm-6 col-md-6 col-lg-3">
-					<div class="footer-subtitle">Nous contacter</div>
-					<ul>
-						<li>contact@yellow.com</li>
-						<li>07 12 34 56 78</li>
-						<li>3 rue de la Condamine<br>34000 Montpellier</li>
-						<li>
-							<a href="{{path('contact')}}">Formulaire de contact</a>
-						</li>
-					</ul>
-				</div>
-				<div class="col-sm-6 col-md-6 col-lg-3">
-					<div class="footer-subtitle">A propos de Yellow</div>
-					<ul>
-						<li>
-							<a href="{{path('mentions-legales')}}">Mentions légales</a>
-						</li>
-						<li>
-							<a href="{{path('cgv')}}">CGV</a>
-						</li>
-						<li>
-							<a href="{{path('retours-remboursements')}}">Politique des retours<br>et remboursements</a>
-						</li>
-					</ul>
-				</div>
+			<div class="footer-section">
+				<a href="{{path('home')}}">
+					<img src="../../favicon.ico" alt="Yellow" class="footer-logo">
+				</a>
+			</div>
+			<div class="footer-section">
+				<div class="footer-subtitle">Catégories</div>
+				<ul>
+					<li>• Shonen</li>
+					<li>• Seinen</li>
+					<li>• Shojo</li>
+					<li>• Josei</li>
+					<li>• Kodomo</li>
+				</ul>
+			</div>
+			<div class="footer-section">
+				<div class="footer-subtitle">Nous contacter</div>
+				<ul>
+					<li>
+						<a href="mailto:contact@yellow.com" target="_blank">contact@yellow.com</a>
+					</li>
+					<li>
+						<a href="tel:0712345678" target="_blank">07 12 34 56 78</a>
+					</li>
+					<li>
+						3 rue de la Condamine<br>
+						34000 Montpellier
+					</li>
+					<li>
+						<a href="{{path('contact')}}">Formulaire de contact</a>
+					</li>
+				</ul>
+			</div>
+			<div class="footer-section">
+				<div class="footer-subtitle">A propos de Yellow</div>
+				<ul>
+					<li>
+						<a href="{{path('mentions-legales')}}">Mentions légales</a>
+					</li>
+					<li>
+						<a href="{{path('cgv')}}">CGV</a>
+					</li>
+					<li>
+						<a href="{{path('retours-remboursements')}}">
+							Politique des retours<br>
+							et remboursements
+						</a>
+					</li>
+				</ul>
 			</div>
 		</footer>
 		<!-- Scripts -->
 		<!-- Ionicons -->
 		<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 		<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+		<script src="/js/main.js"></script>
+		<script src="/js/displayFormError.js"></script>
 	</body>
 </html>
