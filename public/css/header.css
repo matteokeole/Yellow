@@ -1,0 +1,55 @@
+/* Header */
+
+header {
+	display: flex;
+	align-items: center;
+	height: 60px;
+	right: 0;
+	left: 0;
+	position: fixed;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, .2);
+	background-color: #000;
+	z-index: 1
+}
+
+/* Header logo */
+
+#logo {width: 40px}
+
+#logo img {
+	display: block;
+	width: 100%
+}
+
+/* Header links */
+
+header a {
+	display: inline-block;
+	padding: 0 8px;
+	color: #fff;
+	font-size: 20px;
+	transition-duration: .2s
+}
+header a:hover {color: var(--primary)}
+
+header a ion-icon {font-size: 28px}
+
+/* Navigation bar */
+
+header nav {
+	display: flex;
+	flex-direction: row;
+	justify-content: end;
+	align-items: center;
+	flex-grow: 1;
+	background-color: orange
+}
+
+/* Separation between the navbar icons */
+#separation-dot {
+	display: inline-block;
+	margin: 0 10px;
+	opacity: .5;
+	color: #fff;
+	transition-duration: .2s
+}
