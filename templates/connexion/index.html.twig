@@ -1,19 +1,19 @@
-{% extends 'base.html.twig' %}
+{% extends "base.html.twig" %}
 
 {% block title %}Connexion • Yellow{% endblock %}
 
 {% block body %}
-<style>
-</style>
-
-<h1>Connexion</h1>  
-
-<div class="example-wrapper">
-Identifiant :</br>
-<input></p>
-Mot de passe : </br>
-<input></P>
-<button>Se connecter</button>
-<a href="{{path('inscription')}}">S'inscrire</a>
-</div>
+	<style></style>
+	<div class="container-fluid">
+		<form method="POST" class="login-form">
+			<h1>Connexion</h1>
+			<input type="text" name="email" placeholder="Votre adresse mail"><br><br>
+			<input type="password" name="password" placeholder="Votre mot de passe"><br><br>
+			<input type="submit" value="Se connecter">
+		</form>
+		<p>
+			Vous n'avez pas encore de compte ?
+			<a href="{{path('inscription')}}">Inscrivez-vous</a>
+		</p>
+	</div>
 {% endblock %}
