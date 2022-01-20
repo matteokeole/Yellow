@@ -7,6 +7,7 @@ a {
 .back-to-catalog {
 	display: flex;
 	align-items: center;
+	width: fit-content;
 	padding: 20px 0;
 	color: #000 !important;
 	font-size: 18px

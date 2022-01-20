@@ -2,10 +2,10 @@
 	display: none;
 	margin-bottom: 14px;
 	padding: 10px;
-	border: 1px solid var(--error-border);
+	border: 1px solid var(--error);
 	border-radius: 8px;
-	background-color: var(--error);
-	color: var(--error-border)
+	background-color: var(--error-light);
+	color: var(--error)
 }
 
 .form-error-alert .error-icon {

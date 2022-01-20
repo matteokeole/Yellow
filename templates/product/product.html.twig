@@ -2,102 +2,58 @@
 
 {% block title %}{{product.ProductName}} ({{product.ProductCategory}}) • Yellow{% endblock %}
 {% block body %}
+<style>
+/* Product price (in title) */
+.product-price {
+	opacity: .9;
+	font-size: 28px
+}
+/* Actions container */
+.actions {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 20px
+}
+/* Valid & invalid */
+.product-stock {font-size: 20px}
+.valid {color: var(--success)}
+.invalid {color: var(--error)}
+/* Add to basket link */
+.add-to-basket {
+	padding: 6px 12px;
+	border-radius: 50px;
+	background-color: #000;
+	color: #fff !important;
+	font-size: 18px;
+	text-decoration: none !important;
+	transition-duration: .2s
+}
+.add-to-basket:hover {opacity: .8}
+.add-to-basket:active {
+	opacity: .65;
+	-webkit-transform: scale(.95);
+	transform: scale(.95);
+	transition-duration: .1s
+}
+/* Author/date */
+.product-author {
+	margin-bottom:-15px;
+	opacity: .65;
+	font-size: 16px
+}
+/* Category container */
+.product-category-container {
+	opacity: .65;
+	font-size: 16px;
+	font-style: italic
+}
+/* Category */
+.product-category {text-transform: uppercase}
+.product-desc {margin-top: 10px}
+</style>
 	<style>
-		/* Cover container */
-		.cover-container {
-			display:flex;
-			justify-content:center;
-			margin-right:2%;
-			position: relative;
-		}
-		/* Product cover */
-		.cover {
-			height: 650px;
-			border-radius: 5px
-		}
-		/* Product info container */
-		.info-container {
-			width:400px;
-			margin-left:2%;
-			margin-top: 50px
-			}
-		/* Product price (in title) */
-		.product-price {
-			opacity: .9;
-			font-size: 28px
-		}
-		/* Actions container */
-		.actions-container {
-			display: flex;
-    		justify-content: space-between;
-			margin-bottom: 20px
-		}
-		/* Valid & invalid */
-		.product-stock {font-size: 20px}
-		.valid {color: green}
-		.invalid {color: red}
-		/* Add to basket link */
-		.add-to-basket {
-			padding: 6px 12px;
-			border-radius: 50px;
-			background-color: #000;
-			color: #fff !important;
-			font-size: 18px;
-			text-decoration: none !important;
-			transition-duration: .2s
-		}
-		.add-to-basket:hover {opacity: .8}
-		.add-to-basket:active {
-			opacity: .65;
-			-webkit-transform: scale(.95);
-			transform: scale(.95);
-			transition-duration: .1s
-		}
-		/* Author/date */
-		.product-author {
-			margin-bottom:-15px;
-			opacity: .65;
-			font-size: 16px
-		}
-		/* Category container */
-		.product-category-container {
-			opacity: .65;
-			font-size: 16px;
-			font-style: italic
-		}
-		/* Category */
-		.product-category {text-transform: uppercase}
-		.product-desc {margin-top: 10px}
-		/* Media queries */
 		@media screen and (max-width: 991px) {
-			.cover-container::before {
-				content: "";
-				top: 0;
-				right: 0;
-				bottom: 0;
-				left: 0;
-				position: absolute;
-				background: url(/images/cover/{{product.ProductCover}}.jpg) center no-repeat;
-				background-size: cover;
-				-webkit-filter: blur(20px);
-				filter: blur(20px);
-				z-index: -1
-			}
-		}
-		@media screen and (max-width: 500px) {
-			.cover {height: 450px}
-		}
-		.row{
-			display:flex;
-			justify-content:center;
-		}
-		.title{
-			display: flex;
-    		justify-content: space-between;
-			align-items:center;	
-		}
-		.back-to-catalog{
-			width: fit-content;
+			.cover::before {background-image: url(/images/cover/{{product.ProductCover}}.jpg)}
 		}
 	</style>
 	<main>
@@ -106,16 +62,18 @@
 			<ion-icon name="chevron-back-outline"></ion-icon>
 			Retour au catalogue
 		</a>
-		<div class="row">
-			<div class="cover-container">
-				<img src="/images/cover/{{product.ProductCover}}.jpg" alt="Image de couverture" class="cover">
+		<!-- Product container -->
+		<div class="product-container">
+			<div class="cover">
+				<img src="/images/cover/{{product.ProductCover}}.jpg" alt="Image de couverture">
 			</div>
-			<div class="info-container">
+			<div class="informations">
 				<h1 class="title">
-					<span class="product-title flex-grow-1">{{product.ProductName}}</span>
+					<span class="product-title">{{product.ProductName}}</span>
 					<span class="product-price">{{product.ProductPrice}}€</span>
 				</h1>
-				<div class="actions-container">
+				<div class="blank"></div>
+				<div class="actions">
 					{% if product.ProductStock > 0 %}
 						<span class="product-stock valid">En stock</span>
 					{% else %}
