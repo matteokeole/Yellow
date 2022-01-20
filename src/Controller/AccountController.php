@@ -79,7 +79,7 @@
 		 */
 		public function disconnect(CustomerSession $session): Response {
 			$session->clear("customer");
-			return $this->redirectToRoute("home");
+			return $this->redirectToRoute("login");
 		}
 	}
 ?>
