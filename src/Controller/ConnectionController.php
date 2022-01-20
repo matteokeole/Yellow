@@ -1,19 +1,24 @@
 <?php
 	namespace App\Controller;
 	use App\Entity\Customer;
-	use App\Form\InscriptionFormType;
+	use App\Form\LoginFormType;
+	use App\Form\SignupFormType;
 	use Doctrine\ORM\EntityManagerInterface;
 	use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 	use Symfony\Component\HttpFoundation\Request;
 	use Symfony\Component\HttpFoundation\Response;
 	use Symfony\Component\Routing\Annotation\Route;
 
-	class ConnexionController extends AbstractController {
+	class ConnectionController extends AbstractController {
 		/**
 		 * @Route("/connexion", name="login")
 		 */
-		public function index(): Response {
-			return $this->render("form/login.html.twig");
+		public function index(Request $request, EntityManagerInterface $entityManager): Response {
+			$form = $this->createForm(LoginFormType::class);
+			$form->handleRequest($request);
+			return $this->render("form/login.html.twig", [
+				"form" => $form->createView()
+			]);
 		}
 		/**
 		 * @Route("/compte/admin/{id}", name="compte_admin")
@@ -32,7 +37,7 @@
 		 */
 		public function newInscription(Request $request, EntityManagerInterface $entityManager): Response {
 			$customer = new Customer();
-			$form = $this->createForm(InscriptionFormType::class, $customer);
+			$form = $this->createForm(SignupFormType::class, $customer);
 			$form->handleRequest($request);
 			if ($form->isSubmitted() && $form->isValid()) {
 				$customer->setCustomerAdmin(0);
@@ -42,7 +47,7 @@
 			}
 			return $this->render("form/signup.html.twig",[
 				"customer" => $customer,
-				"form_inscription" => $form->createView()
+				"form" => $form->createView()
 			]);
 		}
 	}

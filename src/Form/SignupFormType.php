@@ -10,7 +10,7 @@
 	use Symfony\Component\Form\FormBuilderInterface;
 	use Symfony\Component\OptionsResolver\OptionsResolver;
 
-	class InscriptionFormType extends AbstractType {
+	class SignupFormType extends AbstractType {
 		public function buildForm(FormBuilderInterface $builder, array $options): void {
 			$builder
 				->add("customer_first_name", TextType::class, [

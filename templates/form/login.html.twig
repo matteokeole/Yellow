@@ -5,15 +5,18 @@
 {% block body %}
 	<style></style>
 	<div class="container-fluid">
-		<form method="POST" class="login-form">
-			<h1>Connexion</h1>
-			<input type="text" name="email" placeholder="Votre adresse mail"><br><br>
-			<input type="password" name="password" placeholder="Votre mot de passe"><br><br>
-			<input type="submit" value="Se connecter">
-		</form>
+		<h1>Connexion</h1>
+		{{form(form)}}
 		<p>
 			Vous n'avez pas encore de compte ?
 			<a href="{{path('signup')}}">Inscrivez-vous</a>
 		</p>
 	</div>
+	<script>
+		const form = document.querySelector("form[name='login_form']");
+		form.addEventListener("submit", e => {
+			e.preventDefault();
+			// Form check-up
+		})
+	</script>
 {% endblock %}
