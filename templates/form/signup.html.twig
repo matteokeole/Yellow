@@ -1,15 +1,14 @@
 {% extends "base.html.twig" %}
 
 {% block title %}Inscription • Yellow{% endblock %}
-
 {% block body %}
-	<style></style>
 	<div class="container-fluid">
 		<h1>Inscription</h1>
+		<span class="required-fields">Les champs marqués d'un * sont obligatoires.</span>
 		{{form(form)}}
 		<p>
 			Vous avez déjà un compte ?
-			<a href="{{path('login')}}">Connectez-vous</a>
+			<a href="{{path('login')}}">Connectez-vous !</a>
 		</p>
 	</div>
 	<script>

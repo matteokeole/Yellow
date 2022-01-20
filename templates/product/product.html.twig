@@ -1,6 +1,6 @@
 {% extends "base.html.twig" %}
 
-{% block title %}{{ficheProduit.ProductName}} ({{ficheProduit.ProductCategory}}) • Yellow{% endblock %}
+{% block title %}{{product.ProductName}} ({{product.ProductCategory}}) • Yellow{% endblock %}
 {% block body %}
 	<style>
 		/* Cover container */
@@ -63,7 +63,7 @@
 				bottom: 0;
 				left: 0;
 				position: absolute;
-				background: url(/images/cover/{{ficheProduit.ProductCover}}.jpg) center no-repeat;
+				background: url(/images/cover/{{product.ProductCover}}.jpg) center no-repeat;
 				background-size: cover;
 				-webkit-filter: blur(20px);
 				filter: blur(20px);
@@ -75,17 +75,22 @@
 		}
 	</style>
 	<div class="container-fluid">
+		<!-- Back to catalog link -->
+		<a href="{{path('catalog')}}" class="back-to-catalog">
+			<ion-icon name="chevron-back-outline"></ion-icon>
+			Retour au catalogue
+		</a>
 		<div class="row justify-content-center">
 			<div class="col-12 col-lg-6 col-xl-5 d-flex justify-content-center cover-container">
-				<img src="/images/cover/{{ficheProduit.ProductCover}}.jpg" alt="Image de couverture" class="cover">
+				<img src="/images/cover/{{product.ProductCover}}.jpg" alt="Image de couverture" class="cover">
 			</div>
 			<div class="col-12 col-lg-4 col-xl-3 info-container">
 				<h1 class="title d-flex align-items-center">
-					<span class="product-title flex-grow-1">{{ficheProduit.ProductName}}</span>
-					<span class="product-price">{{ficheProduit.ProductPrice}}€</span>
+					<span class="product-title flex-grow-1">{{product.ProductName}}</span>
+					<span class="product-price">{{product.ProductPrice}}€</span>
 				</h1>
 				<div class="actions-container d-flex align-items-center">
-					{% if ficheProduit.ProductStock > 0 %}
+					{% if product.ProductStock > 0 %}
 						<span class="product-stock flex-grow-1 valid">En stock</span>
 					{% else %}
 						<span class="product-stock flex-grow-1 invalid">Rupture de stock</span>
@@ -93,12 +98,12 @@
 					<a href="#" class="add-to-basket">Ajouter au panier</a>
 				</div>
 				<span class="product-author">
-					{{ficheProduit.ProductAuthor}} <span class="product-date">• {{ficheProduit.ProductDate}}</span>
+					{{product.ProductAuthor}} <span class="product-date">• {{product.ProductDate}}</span>
 				</span><br>
 				<span class="product-category-container">
-					<span class="product-category">{{ficheProduit.ProductCategory}}</span> • <a href="#">Voir plus de mangas de ce type</a>
+					<span class="product-category">{{product.ProductCategory}}</span> • <a href="#">Voir plus de mangas de ce type</a>
 				</span><br>
-				<span class="product-desc d-block">{{ficheProduit.ProductDesc}}</span>
+				<span class="product-desc d-block">{{product.ProductDesc}}</span>
 			</div>
 		</div>
 	</div>

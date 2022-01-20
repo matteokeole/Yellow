@@ -7,25 +7,22 @@
 	use Symfony\Component\HttpFoundation\Response;
 	use Symfony\Component\Routing\Annotation\Route;
 
-	class ProductController extends AbstractController {		
-
+	class ProductController extends AbstractController {
 		/**
-		* @Route("/produit", name="produit")
+		* @Route("/mangas", name="catalog")
 		*/
-		public function index(ProductRepository $productRepository) : Response
-		{
-			return $this->render('product/index.html.twig', [
-				'products' => $productRepository->findAll(),
+		public function index(ProductRepository $productRepository): Response {
+			return $this->render("product/index.html.twig", [
+				"products" => $productRepository->findAll()
 			]);
 		}
-
 		/**
-		* @Route("/produit/{id}", name="ficheProduit")
+		* @Route("/manga/{id}", name="product")
 		*/
-		public function product(Product $product): Response
-		{
-			return $this->render('product/product.html.twig', [
-				'ficheProduit' => $product]);
+		public function product(Product $product): Response {
+			return $this->render("product/product.html.twig", [
+				"product" => $product
+			]);
 		}
 	}
 ?>

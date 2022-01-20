@@ -1,0 +1,10 @@
+.back-to-catalog {
+	display: flex;
+	align-items: center;
+	padding: 20px 0;
+	color: #000 !important;
+	font-size: 18px
+}
+.back-to-catalog:hover {opacity: .65}
+
+.back-to-catalog ion-icon {margin-right: 5px}

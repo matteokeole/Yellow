@@ -1,41 +1,41 @@
 {% extends "base.html.twig" %}
 
 {% block title %}Connexion • Yellow{% endblock %}
-
 {% block body %}
-	<style></style>
 	<div class="container-fluid">
 		<h1>Connexion</h1>
-		<div class="form-error">
-			{% if loginError == 1 %}
-				Erreur lors de la tentative de connexion
-			{% endif %}
-			{% if loginError == 2 %}
-				Connecté !
-			{% endif %}
+		<div class="form-error-alert">
+			<ion-icon name="alert-circle-outline" class="error-icon"></ion-icon>
+			<span class="error-content">
+				<span class="error-title"></span>
+				<span class="error-subtitle"></span>
+			</span>
 		</div>
+		<span class="required-fields">Les champs marqués d'un * sont obligatoires.</span>
 		{{form(form)}}
 		<p>
 			Vous n'avez pas encore de compte ?
-			<a href="{{path('signup')}}">Inscrivez-vous</a>
+			<a href="{{path('signup')}}">Inscrivez-vous !</a>
 		</p>
 	</div>
 	<script>
+		{% if loginError == 1 %}
+			displayFormError("Impossible de se connecter", "Veuillez vérifier vos identifiants de connexion.")
+		{% endif %}
 		const form = document.querySelector("form[name='login_form']"),
 			emailInput = document.querySelector("#login_form_customer_email"),
 			passwordInput = document.querySelector("#login_form_customer_password"),
-			blankExpr = /^\s*$/,
-			formError = document.querySelector(".form-error");
+			blankExpr = /^\s*$/;
 		// Clean up fields
 		emailInput.value = "";
 		passwordInput.value = "";
 		form.addEventListener("submit", e => {
 			e.preventDefault();
-			formError.textContent = "";
+			clearFormError();
 			// Form check-up
 			if (blankExpr.test(emailInput.value) || blankExpr.test(passwordInput.value)) {
 				// Invalid field value
-				formError.textContent = "Vous devez renseignez tous les champs."
+				displayFormError("Champs non renseignés", "Veuillez renseigner tous les champs du formulaire.")
 			} else form.submit()
 		})
 	</script>
