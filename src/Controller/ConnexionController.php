@@ -22,6 +22,20 @@ class ConnexionController extends AbstractController
         ]);
     }
     /**
+     * @Route("/compte/admin/{id}", name="compte_admin")
+     */
+    public function connexionAdmin(): Response
+    {
+        return $this->render('interface_admin/index.html.twig');
+    }
+    /**
+     * @Route("/compte/customer/{id}", name="compte_customer")
+     */
+    public function connexionCustomer(): Response
+    {
+        return $this->render('interface_customer/index.html.twig');
+    }
+    /**
      * @Route("/compte/inscription", name="inscription")
      */
     public function newInscription(Request $request, EntityManagerInterface $entityManager): Response
