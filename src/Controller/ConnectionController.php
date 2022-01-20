@@ -1,6 +1,4 @@
 <?php
-	// session_start();
-
 	namespace App\Controller;
 	use App\Entity\Customer;
 	use App\Repository\CustomerRepository;
@@ -9,6 +7,7 @@
 	use Doctrine\ORM\EntityManagerInterface;
 	use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 	use Symfony\Component\HttpFoundation\Request;
+	use Symfony\Component\HttpFoundation\Session\Session;
 	use Symfony\Component\HttpFoundation\Response;
 	use Symfony\Component\Routing\Annotation\Route;
 
@@ -29,7 +28,13 @@
 					if (
 						$customer->getCustomerEmail() == $email &&
 						$customer->getCustomerPassword() == $password
-					) return $this->redirectToRoute("home");
+					) {
+						// User successfully connected
+						$session = new Session();
+						$session->start();
+						$session->set("id", $customer->getId());
+						return $this->redirectToRoute("home");
+					}
 				}
 			}
 			return $this->render("form/login.html.twig", [
@@ -62,7 +67,7 @@
 				$entityManager->flush();
 				return $this->redirectToRoute("login");
 			}
-			return $this->render("form/signup.html.twig",[
+			return $this->render("form/signup.html.twig", [
 				"customer" => $customer,
 				"form" => $form->createView()
 			]);
