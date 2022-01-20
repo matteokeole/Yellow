@@ -29,7 +29,7 @@
 					if (
 						$customer->getCustomerEmail() == $email &&
 						$customer->getCustomerPassword() == $password
-					) return $this->redirectToRoute("welcome");
+					) return $this->redirectToRoute("home");
 				}
 			}
 			return $this->render("form/login.html.twig", [
