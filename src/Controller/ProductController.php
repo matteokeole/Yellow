@@ -11,8 +11,8 @@
 		/**
 		* @Route("/mangas", name="catalog")
 		*/
-		public function index(ProductRepository $productRepository): Response {
-			return $this->render("product/index.html.twig", [
+		public function catalog(ProductRepository $productRepository): Response {
+			return $this->render("product/catalog.html.twig", [
 				"products" => $productRepository->findAll()
 			]);
 		}

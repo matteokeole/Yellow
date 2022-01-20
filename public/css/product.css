@@ -94,7 +94,7 @@
 
 /* Media queries */
 
-@media screen and (max-width: 991px) {
+@media screen and (max-width: 1000px) {
 	.product-container {flex-direction: column}
 	.cover::before {
 		content: "";
@@ -115,6 +115,6 @@
 	}
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 600px) {
 	.cover img {height: 450px}
 }

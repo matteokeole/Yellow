@@ -4,8 +4,8 @@
 {% block body %}
 	<link rel="stylesheet" href="/css/product.css">
 	<style>
-		@media screen and (max-width: 991px) {
-			.cover::before {background-image: url(/images/cover/{{product.ProductCover}}.jpg)}
+		@media screen and (max-width: 1000px) {
+			.cover::before {background-image: url(/images/cover/{{product.productCover}}.jpg)}
 		}
 	</style>
 	<main>
@@ -17,18 +17,18 @@
 		<!-- Product container -->
 		<div class="product-container">
 			<div class="cover">
-				<img src="/images/cover/{{product.ProductCover}}.jpg" alt="Image de couverture">
+				<img src="/images/cover/{{product.productCover}}.jpg" alt="Image de couverture">
 			</div>
 			<div class="informations">
 				<!-- Product title & price -->
 				<h1 class="title">
-					<span class="product-title">{{product.ProductName}}</span>
-					<span class="product-price">{{product.ProductPrice}}€</span>
+					<span class="product-title">{{product.productName}}</span>
+					<span class="product-price">{{product.productPrice}}€</span>
 				</h1>
 				<div class="blank"></div>
 				<!-- Actions -->
 				<div class="actions">
-					{% if product.ProductStock > 0 %}
+					{% if product.productStock > 0 %}
 						<span class="product-stock valid">En stock</span>
 						<a href="#" class="add-to-basket">Ajouter au panier</a>
 					{% else %}
@@ -38,15 +38,15 @@
 				<div class="blank"></div>
 				<!-- Product author & date (year) -->
 				<div class="product-author">
-					Ecrit par {{product.ProductAuthor}} <span class="product-date">• {{product.ProductDate}}</span>
+					Ecrit par {{product.productAuthor}} <span class="product-date">• {{product.productDate}}</span>
 				</div>
 				<!-- Product category name -->
 				<div class="product-category">
-					<span>{{product.ProductCategory}}</span> • 
+					<span>{{product.productCategory}}</span> • 
 					<a href="#">En voir plus de ce type</a>
 				</div>
 				<!-- Product description -->
-				<div class="product-desc">{{product.ProductDesc}}</div>
+				<div class="product-desc">{{product.productDesc}}</div>
 			</div>
 		</div>
 	</main>

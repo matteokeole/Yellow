@@ -1,0 +1,30 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Nos mangas • Yellow{% endblock %}
+{% block body %}
+	<link rel="stylesheet" href="/css/catalog.css">
+	<main>
+		<h1>Nos mangas</h1>
+		<div class="catalog-container">
+			{% for product in products %}
+				<div class="product-container">
+					<a href="{{path('product', {id: product.id})}}" class="product">
+						<img src="/images/cover/{{product.productCover}}.jpg" alt="Image de couverture" class="cover">
+						<div class="product-footer">
+							<div class="product-primary-info">
+								<div class="product-info">
+									<span class="product-title">{{product.productName}}</span>
+									<span class="product-subtitle">
+										{{product.productAuthor}} • <span class="product-date">{{product.productDate}}</span>
+									</span>
+								</div>
+								<div class="product-price">{{product.productPrice}}€</div>
+							</div>
+							<div class="product-desc">{{product.productDesc}}</div>
+						</div>
+					</a>
+				</div>
+			{% endfor %}
+		</div>
+	</main>
+{% endblock %}
