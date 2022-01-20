@@ -2,7 +2,7 @@
 
 {% block title %}Connexion • Yellow{% endblock %}
 {% block body %}
-	<main>
+	<main class="login-container">
 		<h1>Connexion</h1>
 		<div class="form-error-alert">
 			<ion-icon name="alert-circle-outline" class="error-icon"></ion-icon>
@@ -11,12 +11,14 @@
 				<span class="error-subtitle"></span>
 			</span>
 		</div>
-		<span class="required-fields">Les champs marqués d'un * sont obligatoires.</span>
-		{{form(form)}}
-		<p>
-			Vous n'avez pas encore de compte ?
-			<a href="{{path('signup')}}">Inscrivez-vous !</a>
-		</p>
+		<div class="login-container">
+			<span class="required-fields">Les champs marqués d'un * sont obligatoires.</span>
+			{{form(form)}}
+			<p>
+				Vous n'avez pas encore de compte ?
+				<a href="{{path('signup')}}">Inscrivez-vous !</a>
+			</p>
+		<div>
 	</main>
 	<script>
 		{% if loginError == 1 %}
