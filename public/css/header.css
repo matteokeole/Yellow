@@ -3,6 +3,7 @@
 header {
 	display: flex;
 	height: 60px;
+	top: 0;
 	right: 0;
 	left: 0;
 	position: fixed;
@@ -10,6 +11,8 @@ header {
 	background-color: #000;
 	z-index: 1
 }
+
+header + .blank {height: 60px}
 
 /* Header logo */
 
