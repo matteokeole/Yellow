@@ -75,7 +75,7 @@
 			]);
 		}
 		/**
-		 * @Route("/compte/admin/{id}", name="compte_admin")
+		 * @Route("/admin/", name="compte_admin")
 		 */
 		public function adminAccount(): Response {
 			return $this->render("account/admin.html.twig");
