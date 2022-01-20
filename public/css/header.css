@@ -7,7 +7,7 @@ header {
 	right: 0;
 	left: 0;
 	position: fixed;
-	box-shadow: 0 4px 8px rgba(0, 0, 0, .2);
+	box-shadow: 0 4px 8px rgba(0, 0, 0, .3);
 	background-color: #000;
 	z-index: 1
 }
@@ -15,7 +15,12 @@ header {
 header + .blank {height: 60px}
 
 /* Header logo */
-#logo img {width: 60px}
+#logo img {
+	margin-left:5px;
+	margin-top:30px;
+	width: 60px;
+	border-radius:5px;
+}
 
 /* Header links */
 
