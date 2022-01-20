@@ -1,19 +1,26 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Connexion • Yellow{% endblock %}
+{% block title %}Inscription • Yellow{% endblock %}
 
 {% block body %}
 <style>
 </style>
 
-<h1>Connexion</h1>  
+<h1>Inscription</h1>  
 
 <div class="example-wrapper">
-Identifiant :</br>
-<input></p>
-Mot de passe : </br>
-<input></P>
-<button>Se connecter</button>
-<a href="{{path('welcome')}}"">S'inscrire</a>
+
+{# {{form_row(form_inscription.customer_last_name)}}
+{{form_row(form_inscription.customer_first_name)}}
+{{form_row(form_inscription.customer_email)}}
+{{form_row(form_inscription.customer_phone)}}
+{{form_row(form_inscription.customer_password)}}
+{{form_row(form_inscription.customer_address)}}
+{{form_row(form_inscription.customer_post_code)}}
+{{form_row(form_inscription.customer_city)}}
+{{form_row(form_inscription.submit)}} #}
+
+{{form(form_inscription)}}
+
 </div>
 {% endblock %}
