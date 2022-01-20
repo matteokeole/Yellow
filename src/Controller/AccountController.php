@@ -15,7 +15,7 @@
 		/**
 		 * @Route("/connexion", name="login")
 		 */
-		public function index(Request $request, CustomerRepository $customerRepository): Response {
+		public function login(Request $request, CustomerRepository $customerRepository): Response {
 			$form = $this->createForm(LoginFormType::class);
 			$form->handleRequest($request);
 			$loginError = 0;
@@ -45,7 +45,7 @@
 		/**
 		 * @Route("/inscription", name="signup")
 		 */
-		public function newInscription(Request $request, EntityManagerInterface $entityManager): Response {
+		public function signup(Request $request, EntityManagerInterface $entityManager): Response {
 			$customer = new Customer();
 			$form = $this->createForm(SignupFormType::class, $customer);
 			$form->handleRequest($request);
@@ -63,7 +63,7 @@
 		/**
 		 * @Route("/compte", name="account")
 		 */
-		public function index(): Response {
+		public function account(): Response {
 			if ($this->get("session")) {
 				return $this->render("account/index.html.twig");
 			} else return $this->redirectToRoute("login");
@@ -71,7 +71,7 @@
 		/**
 		 * @Route("/compte/admin/{id}", name="compte_admin")
 		 */
-		public function connexionAdmin(): Response {
+		public function adminAccount(): Response {
 			return $this->render("account/admin.html.twig");
 		}
 		/**
