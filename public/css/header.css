@@ -15,13 +15,7 @@ header {
 header + .blank {height: 60px}
 
 /* Header logo */
-
-#logo {
-	display: flex;
-	align-items: center
-}
-
-#logo img {width: 46px}
+#logo img {width: 60px}
 
 /* Header links */
 
@@ -55,7 +49,7 @@ nav .link-icons {
 
 /* Separation between the navbar icons */
 #separation-dot {
-	visibility: hidden;
+	display: none;
 	opacity: .5;
 	color: #FFF;
 	cursor: default
@@ -89,5 +83,5 @@ nav .link-icons {
 	nav.opened + #menu ion-icon:last-child {display: block}
 	nav a {padding-bottom: 12px}
 	nav .link-icons a {padding-bottom: 0}
-	#separation-dot {visibility: visible}
+	#separation-dot {display: flex}
 }
