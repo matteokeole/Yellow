@@ -1,0 +1,87 @@
+/* Header */
+
+header {
+	display: flex;
+	height: 60px;
+	top: 0;
+	right: 0;
+	left: 0;
+	position: fixed;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, .2);
+	background-color: #000;
+	z-index: 1
+}
+
+header + .blank {height: 60px}
+
+/* Header logo */
+#logo img {width: 60px}
+
+/* Header links */
+
+header a {
+	display: flex;
+	align-items: center;
+	height: 100%;
+	padding: 0 8px;
+	color: #FFF;
+	font-size: 20px;
+	transition-duration: .2s
+}
+header a:hover {color: var(--primary)}
+
+header a ion-icon {font-size: 28px}
+
+/* Navigation bar */
+
+nav {
+	display: flex;
+	flex-direction: row;
+	justify-content: end;
+	flex-grow: 1;
+	background-color: #000
+}
+
+nav .link-icons {
+	display: flex;
+	align-items: center
+}
+
+/* Separation between the navbar icons */
+#separation-dot {
+	display: none;
+	opacity: .5;
+	color: #FFF;
+	cursor: default
+}
+
+/* Menu toggler */
+#menu {
+	display: none;
+	padding: 0 14px
+}
+
+/* Media queries */
+@media screen and (max-width: 530px) {
+	.blank {flex-grow: 1}
+	nav {
+		display: none;
+		flex-direction: column;
+		align-items: flex-end;
+		width: 150px;
+		padding: 0 10px 10px 0;
+		top: 60px;
+		right: 0;
+		position: fixed;
+		box-shadow: 0 4px 8px rgba(0, 0, 0, .2)
+	}
+	nav.opened {display: flex}
+	#menu {display: flex}
+	nav + #menu ion-icon:first-child {display: block}
+	nav + #menu ion-icon:last-child {display: none}
+	nav.opened + #menu ion-icon:first-child {display: none}
+	nav.opened + #menu ion-icon:last-child {display: block}
+	nav a {padding-bottom: 12px}
+	nav .link-icons a {padding-bottom: 0}
+	#separation-dot {display: flex}
+}

@@ -5,19 +5,25 @@
 	<style>
 		/* Product container & inner container */
 		.product-container {
-			margin-bottom: 50px;
+			display:flex;
+			margin:20px 35px 35px 35px;
 			padding:0px;
+		}
+		.row{
+			display:flex;
+			flex-wrap:wrap;
+			justify-content:space-evenly;
 		}
 		footer {margin-top: 0}
 		.product {
-			width: 250px;
+			width: 280px;
 			padding: 8px 0 4px 0;
 			position: relative;
 			overflow: hidden;
 			border-radius: 8px;
-			color: #000 !important;
+			color: #000;
 			text-align: center;
-			text-decoration: none !important;
+			text-decoration: none;
 			transition-duration: .2s
 		}
 		.product:hover {
@@ -50,22 +56,38 @@
 		.product-title {font-size: 18px}
 		/* Author/date */
 		.product-subtitle {
+			display:flex;
+			flex-direction:row;
 			opacity: .65;
-			font-size: 14px
+			font-size: 14px;
 		}
 		/* Price (€) */
 		.product-price {
 			padding-left: 8px;
 			opacity: .9;
-			font-size: 20px
+			font-size: 23px
 		}
 		/* Short description */
 		.product-desc {
-			overflow: hidden;
+			display:block;
 			opacity: .65;
 			font-size: 16px;
-			text-overflow: ellipsis;
-			white-space: nowrap
+			overflow:hidden;
+			white-space: nowrap;
+			text-overflow:ellipsis;
+		}
+		.product-primary-info{
+			display:flex;
+			flex-direction:row;
+			justify-content:space-between;
+		}
+		.product-price{
+			display:flex;
+			align-items:center;
+		}
+		.product-author{
+			margin-top:4px;
+			margin-bottom:4px;
 		}
 	</style>
 	<div class="container-fluid">
@@ -73,12 +95,12 @@
 		<p>Découvrez notre catalogue de shonens, seinens, shojos, joseis et kodomos !</p>
 		<div class="row">
 			{% for product in products %}
-				<div class="col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center product-container">
-					<a href="{{path('product', {id: product.id})}}" class="product" style="">
+				<div class="product-container">
+					<a href="{{path('product', {id: product.id})}}" class="product">
 						<img src="/images/cover/{{product.ProductCover}}.jpg" alt="Image de couverture" class="cover">
-						<div class="product-footer d-flex flex-column">
-							<div class="product-primary-info d-flex">
-								<div class="product-info d-flex flex-column flex-grow-1">
+						<div class="product-footer">
+							<div class="product-primary-info">
+								<div class="product-info">
 									<span class="product-title">{{product.ProductName}}</span>
 									<span class="product-subtitle">
 										<span class="product-author">
@@ -86,7 +108,7 @@
 										</span>
 									</span>
 								</div>
-								<div class="product-price d-flex align-items-center">{{product.ProductPrice}}€</div>
+								<div class="product-price">{{product.ProductPrice}}€</div>
 							</div>
 							<span class="product-desc">{{product.ProductDesc}}</span>
 						</div>
