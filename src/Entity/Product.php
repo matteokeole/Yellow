@@ -57,6 +57,11 @@ class Product
      */
     private $product_category;
 
+    public function __toString(): string
+    {
+        return $this->product_name . $this->product_category . $this->product_price;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
