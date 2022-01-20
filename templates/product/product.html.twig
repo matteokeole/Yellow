@@ -4,21 +4,34 @@
 {% block body %}
 	<style>
 		/* Cover container */
-		.cover-container {position: relative}
+		.cover-container {
+			display:flex;
+			justify-content:center;
+			margin-right:2%;
+			position: relative;
+		}
 		/* Product cover */
 		.cover {
 			height: 650px;
 			border-radius: 5px
 		}
 		/* Product info container */
-		.info-container {margin-top: 50px}
+		.info-container {
+			width:400px;
+			margin-left:2%;
+			margin-top: 50px
+			}
 		/* Product price (in title) */
 		.product-price {
 			opacity: .9;
 			font-size: 28px
 		}
 		/* Actions container */
-		.actions-container {margin-bottom: 20px}
+		.actions-container {
+			display: flex;
+    		justify-content: space-between;
+			margin-bottom: 20px
+		}
 		/* Valid & invalid */
 		.product-stock {font-size: 20px}
 		.valid {color: green}
@@ -42,6 +55,7 @@
 		}
 		/* Author/date */
 		.product-author {
+			margin-bottom:-15px;
 			opacity: .65;
 			font-size: 16px
 		}
@@ -73,6 +87,15 @@
 		@media screen and (max-width: 500px) {
 			.cover {height: 450px}
 		}
+		.row{
+			display:flex;
+			justify-content:center;
+		}
+		.title{
+			display: flex;
+    		justify-content: space-between;
+			align-items:center;	
+		}
 	</style>
 	<div class="container-fluid">
 		<!-- Back to catalog link -->
@@ -80,30 +103,30 @@
 			<ion-icon name="chevron-back-outline"></ion-icon>
 			Retour au catalogue
 		</a>
-		<div class="row justify-content-center">
-			<div class="col-12 col-lg-6 col-xl-5 d-flex justify-content-center cover-container">
+		<div class="row">
+			<div class="cover-container">
 				<img src="/images/cover/{{product.ProductCover}}.jpg" alt="Image de couverture" class="cover">
 			</div>
-			<div class="col-12 col-lg-4 col-xl-3 info-container">
-				<h1 class="title d-flex align-items-center">
+			<div class="info-container">
+				<h1 class="title">
 					<span class="product-title flex-grow-1">{{product.ProductName}}</span>
 					<span class="product-price">{{product.ProductPrice}}€</span>
 				</h1>
-				<div class="actions-container d-flex align-items-center">
+				<div class="actions-container">
 					{% if product.ProductStock > 0 %}
-						<span class="product-stock flex-grow-1 valid">En stock</span>
+						<span class="product-stock valid">En stock</span>
 					{% else %}
-						<span class="product-stock flex-grow-1 invalid">Rupture de stock</span>
+						<span class="product-stock invalid">Rupture de stock</span>
 					{% endif %}
 					<a href="#" class="add-to-basket">Ajouter au panier</a>
 				</div>
-				<span class="product-author">
-					{{product.ProductAuthor}} <span class="product-date">• {{product.ProductDate}}</span>
-				</span><br>
-				<span class="product-category-container">
+				<div class="product-author">
+					Écrit par {{product.ProductAuthor}} <span class="product-date">• {{product.ProductDate}}</span>
+				</div><br>
+				<div class="product-category-container">
 					<span class="product-category">{{product.ProductCategory}}</span> • <a href="#">Voir plus de mangas de ce type</a>
-				</span><br>
-				<span class="product-desc d-block">{{product.ProductDesc}}</span>
+				</div><br>
+				<span class="product-desc">{{product.ProductDesc}}</span>
 			</div>
 		</div>
 	</div>
