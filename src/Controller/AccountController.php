@@ -1,22 +1,23 @@
 <?php
 	namespace App\Controller;
+	use App\CustomerSession\CustomerSession;
 	use App\Entity\Customer;
-	use App\Repository\CustomerRepository;
 	use App\Form\LoginFormType;
 	use App\Form\SignupFormType;
+	use App\Repository\CustomerRepository;
 	use Doctrine\ORM\EntityManagerInterface;
 	use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 	use Symfony\Component\HttpFoundation\Request;
 	use Symfony\Component\HttpFoundation\Response;
 	use Symfony\Component\HttpFoundation\Session\Session;
-	// use Symfony\Component\HttpFoundation\Session\SessionInterface;
+	use Symfony\Component\HttpFoundation\Session\SessionInterface;
 	use Symfony\Component\Routing\Annotation\Route;
 
 	class AccountController extends AbstractController {
 		/**
 		 * @Route("/connexion", name="login")
 		 */
-		public function login(Request $request, CustomerRepository $customerRepository): Response {
+		public function login(Request $request, CustomerRepository $customerRepository, CustomerSession $session): Response {
 			$form = $this->createForm(LoginFormType::class);
 			$form->handleRequest($request);
 			$loginError = 0;
@@ -31,7 +32,7 @@
 						$customer->getCustomerPassword() == $password
 					) {
 						// User successfully connected
-						// $session->set("id", $customer->getId());
+						$session->set("customer", $customer->getCustomerEmail());
 						return $this->redirectToRoute("home");
 					}
 				}
@@ -62,12 +63,10 @@
 		/**
 		 * @Route("/compte", name="account")
 		 */
-		public function account(): Response {
-			// if ($session->get("id")) {
-				return $this->render("account/index.html.twig", [
-					// "session" => $session->get("id")
-				]);
-			// } else return $this->redirectToRoute("login");
+		public function account(CustomerSession $session): Response {
+			if ($session->get("customer")) {
+				return $this->render("account/account.html.twig");
+			} else return $this->redirectToRoute("login");
 		}
 		/**
 		 * @Route("/compte/admin/{id}", name="compte_admin")
@@ -78,7 +77,8 @@
 		/**
 		 * @Route("/deconnexion", name="disconnect")
 		 */
-		public function disconnect(): Response {
+		public function disconnect(CustomerSession $session): Response {
+			$session->clear("customer");
 			return $this->redirectToRoute("home");
 		}
 	}
