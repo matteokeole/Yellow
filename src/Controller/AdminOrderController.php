@@ -14,7 +14,7 @@ class AdminOrderController extends AbstractController
      */
     public function manageProduct(ProductRepository $productRepository): Response
     {
-        return $this->render('interfaceAdmin/manageProduct/product.html.twig', [
+        return $this->render('account/manageProduct/product.html.twig', [
             'products' => $productRepository->findAll(),
         ]);
     }
@@ -33,7 +33,7 @@ class AdminOrderController extends AbstractController
             $entityManager->flush();
             return $this->redirectToRoute("manageProduct");
         }
-        return $this->render("interfaceAdmin/manageProduct/productNew&Update.html.twig",[
+        return $this->render("account/manageProduct/productNew&Update.html.twig",[
             "product" => $product,
             "form_Product" => $form->createView()
         ]);
@@ -45,7 +45,7 @@ class AdminOrderController extends AbstractController
      */
     public function manageProductId(Product $product, ProductRepository $productRepository): Response
     {
-        return $this->render('interfaceAdmin/manageProduct/productId.html.twig', [
+        return $this->render('account/manageProduct/productId.html.twig', [
             'product' => $product,
         ]);
     }
@@ -65,7 +65,7 @@ class AdminOrderController extends AbstractController
             return $this->redirectToRoute('manageProduct');
         }
 
-        return $this->render('interfaceAdmin/manageProduct/productNew&Update.html.twig', [
+        return $this->render('account/manageProduct/productNew&Update.html.twig', [
             'product' => $product,
             'form_Product' => $form->createView(),
         ]);

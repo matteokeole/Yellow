@@ -20,7 +20,7 @@ class AdminCustomerController extends AbstractController
      */
     public function manageCustomer(CustomerRepository $customerRepository): Response
     {
-        return $this->render('interfaceAdmin/manageCustomer/customer.html.twig', [
+        return $this->render('account/manageCustomer/customer.html.twig', [
             'customers' => $customerRepository->findAll(),
         ]);
     }
@@ -40,7 +40,7 @@ class AdminCustomerController extends AbstractController
             $entityManager->flush();
             return $this->redirectToRoute("manageCustomer");
         }
-        return $this->render("interfaceAdmin/manageCustomer/customerNew&Update.html.twig",[
+        return $this->render("account/manageCustomer/customerNew&Update.html.twig",[
             "customer" => $customer,
             "form_customer" => $form->createView()
         ]);
@@ -52,7 +52,7 @@ class AdminCustomerController extends AbstractController
      */
     public function manageCustomerId(Customer $customer, CustomerRepository $customerRepository): Response
     {
-        return $this->render('interfaceAdmin/manageCustomer/customerId.html.twig', [
+        return $this->render('account/manageCustomer/customerId.html.twig', [
             'customer' => $customer,
         ]);
     }
@@ -72,7 +72,7 @@ class AdminCustomerController extends AbstractController
             return $this->redirectToRoute('manageCustomer');
         }
 
-        return $this->render('interfaceAdmin/manageCustomer/customerNew&Update.html.twig', [
+        return $this->render('account/manageCustomer/customerNew&Update.html.twig', [
             'customer' => $customer,
             'form_customer' => $form->createView(),
         ]);
