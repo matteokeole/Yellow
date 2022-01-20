@@ -7,8 +7,9 @@
 	use Doctrine\ORM\EntityManagerInterface;
 	use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 	use Symfony\Component\HttpFoundation\Request;
-	use Symfony\Component\HttpFoundation\Session\Session;
 	use Symfony\Component\HttpFoundation\Response;
+	use Symfony\Component\HttpFoundation\Session\Session;
+	// use Symfony\Component\HttpFoundation\Session\SessionInterface;
 	use Symfony\Component\Routing\Annotation\Route;
 
 	class AccountController extends AbstractController {
@@ -30,9 +31,7 @@
 						$customer->getCustomerPassword() == $password
 					) {
 						// User successfully connected
-						$session = new Session();
-						$session->start();
-						$session->set("id", $customer->getId());
+						// $session->set("id", $customer->getId());
 						return $this->redirectToRoute("home");
 					}
 				}
@@ -64,9 +63,11 @@
 		 * @Route("/compte", name="account")
 		 */
 		public function account(): Response {
-			if ($this->get("session")) {
-				return $this->render("account/index.html.twig");
-			} else return $this->redirectToRoute("login");
+			// if ($session->get("id")) {
+				return $this->render("account/index.html.twig", [
+					// "session" => $session->get("id")
+				]);
+			// } else return $this->redirectToRoute("login");
 		}
 		/**
 		 * @Route("/compte/admin/{id}", name="compte_admin")
@@ -78,8 +79,7 @@
 		 * @Route("/deconnexion", name="disconnect")
 		 */
 		public function disconnect(): Response {
-			$session->clear();
-			$this->redirectToRoute("home");
+			return $this->redirectToRoute("home");
 		}
 	}
 ?>
