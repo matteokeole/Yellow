@@ -9,14 +9,14 @@
 
 /* Colors (border colors are a brighter variant of background colors) */
 :root {
-	--alert-error: rgba(171, 46, 70, .3);
-	--alert-error-border: #AB2E46;
-	--alert-info: rgba(84, 120, 228, .3);
-	--alert-info-border: #5478E4;
-	--alert-success: rgba(57, 172, 72, .3);
-	--alert-success-border: #39AC48;
-	--alert-warning: rgba(255, 193, 7, .3);
-	--alert-warning-border: #FFC107;
+	--error: rgba(171, 46, 70, .3);
+	--error-border: #AB2E46;
+	--info: rgba(84, 120, 228, .3);
+	--info-border: #5478E4;
+	--success: rgba(57, 172, 72, .3);
+	--success-border: #39AC48;
+	--warning: rgba(255, 193, 7, .3);
+	--warning-border: #FFC107;
 	--primary: #F5C943; /* Light yellow */
 	--secondary: #7A6421 /* Light brown (based on primary) */
 }
