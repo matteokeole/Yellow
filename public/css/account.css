@@ -1,0 +1,42 @@
+/* Settings list */
+
+.settings-list {
+	padding: 0;
+	list-style-type: none;
+}
+
+.settings-list li {
+	margin-bottom: 4px;
+	font-size: 18px
+}
+
+.settings-list li a:hover {
+	opacity: .65;
+	text-decoration: underline
+}
+
+/* Actions */
+.actions {
+	display: flex;
+	margin-bottom: 20px;
+	justify-content: space-between
+}
+
+table {
+	border-collapse: collapse;
+	background-color: #EEE
+}
+
+table th, td {
+	border: 1px solid #BBB
+}
+
+table th {
+	padding: 0 8px;
+	font-style: italic
+}
+
+table td {padding: 4px 8px}
+
+table tr:hover {background-color: #CCC}
+table tr:hover td {border-color: #AAA}

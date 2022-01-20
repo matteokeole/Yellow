@@ -1,25 +1,54 @@
 {% extends "base.html.twig" %}
 
-{% block title %}Gestion des produits
-{% endblock %}
-
+{% block title %}Gestion des produits • Yellow{% endblock %}
 {% block body %}
+	<link rel="stylesheet" href="/css/account.css">
 	<main>
 		<h1>Gestion des produits</h1>
-		<button type="submit">
-			<a href="{{path('manageProductNew')}}">Ajouter un produit</a>
-		</button>
-		<div>
+		<div class="actions">
+			<!-- Back to catalog link -->
+			<a href="{{path('manageProduct')}}" class="back">
+				<ion-icon name="chevron-back-outline"></ion-icon>
+				Retour
+			</a>
+			<a href="{{path('manageProductNew')}}" class="new-product">
+				<ion-icon name="add-outline"></ion-icon>
+				Nouveau produit
+			</a>
+		</div>
+		<!-- Products table -->
+		<table>
+			<tr>
+				<th>ID</th>
+				<th>Titre</th>
+				<th>Auteur</th>
+				<th>Année</th>
+				<th>Description</th>
+				<th>Nom du fichier de couverture</th>
+				<th>Prix</th>
+				<th>Stock</th>
+				<th>Catégorie</th>
+				<th>Actions</th>
+			</tr>
 			{%for product in products %}
-				<ul>
-					<li>
-						<a href="{{path('manageProductId',{id:product.id})}}">{{product.ProductName}}</a>
-						~
-						{{product.ProductCategory}}
-						~
-						{{product.ProductPrice}}</li>
-				</ul>
+				<tr>
+					<td>{{product.id}}</td>
+					<td>{{product.productName}}</td>
+					<td>{{product.productAuthor}}</td>
+					<td>{{product.productDate}}</td>
+					<td>{{product.productDesc}}</td>
+					<td>{{product.productCover}}</td>
+					<td>{{product.productPrice}}</td>
+					<td>{{product.productStock}}</td>
+					<td>{{product.productCategory}}</td>
+					<td>
+						<a href="{{path('manageProductId', {id: product.id})}}">Modifier</a>
+						<a href="#">Supprimer</a>
+					</td>
+				</tr>
 			{% endfor %}
+		</table> 
+		<div>
 		</div>
 	</main>
 {% endblock %}

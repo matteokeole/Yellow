@@ -1,11 +1,20 @@
 {% extends "base.html.twig" %}
 
-{% block title %}Compte • Yellow{% endblock %}
+{% block title %}Options d'administration • Yellow{% endblock %}
 {% block body %}
+	<link rel="stylesheet" href="/css/account.css">
 	<main>
-		<h1>Compte Administrateur</h1>
-		<button type="submit"><a href="{{path('manageProduct')}}">Gestion des produits</a></button>
-		<button type="submit"><a href="{{path('manageCustomer')}}">Gestion des clients</a></button>
-		<button type="submit"><a href="">Gestion des commandes</a></button>
+		<h1>Administration</h1>
+		<ul class="settings-list">
+			<li>
+				<a href="{{path('manageProduct')}}">Gestion des produits</a>
+			</li>
+			<li>
+				<a href="{{path('manageCustomer')}}">Gestion des clients</a>
+			</li>
+			<li>
+				<a href="#">Gestion des commandes</a>
+			</li>
+		</ul>
 	</main>
 {% endblock %}

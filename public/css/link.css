@@ -1,20 +1,63 @@
 a {
+	display: inline-block;
 	color: #000;
 	text-decoration: none;
 	transition-duration: .2s
 }
 
-.back-to-catalog {
-	display: flex;
+/* Back to catalog link */
+
+.back {
+	display: inline-flex;
 	align-items: center;
-	width: fit-content;
 	padding: 20px 0;
-	color: #000 !important;
+	color: #000;
 	font-size: 18px
 }
-.back-to-catalog:hover {
+.actions .back {padding: 10px 0}
+.back:hover {
 	opacity: .65;
 	text-decoration: underline
 }
 
-.back-to-catalog ion-icon {margin-right: 5px}
+.back ion-icon {margin-right: 4px}
+
+/* Disconnection link */
+
+.disconnect {
+	display: inline-flex;
+	align-items: center;
+	padding: 8px 12px;
+	border-radius: 8px;
+	color: var(--error);
+	font-size: 18px
+}
+.disconnect:hover {background-color: var(--error-light)}
+.disconnect:active {
+	-webkit-transform: scale(.9);
+	transform: scale(.9);
+	transition-duration: .1s
+}
+
+.disconnect ion-icon {
+	margin-right: 4px;
+	font-size: 22px
+}
+
+/* New product link */
+
+.new-product {
+	display: inline-flex;
+	align-items: center;
+	color: var(--success);
+	font-size: 18px
+}
+.new-product:hover {
+	opacity: .65;
+	text-decoration: underline
+}
+
+.new-product ion-icon {
+	margin-right: 4px;
+	font-size: 22px
+}

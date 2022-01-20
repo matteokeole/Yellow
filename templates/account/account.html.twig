@@ -1,9 +1,13 @@
 {% extends "base.html.twig" %}
 
-{% block title %}Compte • Yellow{% endblock %}
+{% block title %}Options du compte • Yellow{% endblock %}
 {% block body %}
+	<link rel="stylesheet" href="/css/account.css">
 	<main>
-		<h1>Options du compte</h1>
-		<a href="{{path('disconnect')}}">Se déconnecter</a>
+		<h1>{{account.first_name}} {{account.last_name}}</h1>
+		<a href="{{path('disconnect')}}" class="disconnect">
+			<ion-icon name="exit-outline"></ion-icon>
+			Se déconnecter
+		</a>
 	</main>
 {% endblock %}

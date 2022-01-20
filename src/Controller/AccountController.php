@@ -32,7 +32,12 @@
 						$customer->getCustomerPassword() == $password
 					) {
 						// User successfully connected
-						$session->set("customer", $customer->getCustomerEmail());
+						$session->set("customer", [
+							"id" => $customer->getId(),
+							"first_name" => $customer->getCustomerFirstName(),
+							"last_name" => $customer->getCustomerLastName(),
+							"email" => $customer->getCustomerEmail()
+						]);
 						return $this->redirectToRoute("account");
 					}
 				}
@@ -64,9 +69,10 @@
 		 * @Route("/compte", name="account")
 		 */
 		public function account(CustomerSession $session): Response {
-			if ($session->get("customer")) {
-				return $this->render("account/account.html.twig");
-			} else return $this->redirectToRoute("login");
+			if (!$session->get("customer")) return $this->redirectToRoute("login");
+			else return $this->render("account/account.html.twig", [
+				"account" => $session->get("customer")
+			]);
 		}
 		/**
 		 * @Route("/compte/admin/{id}", name="compte_admin")
