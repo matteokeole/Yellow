@@ -24,5 +24,11 @@
 		public function retoursRemboursements(): Response {
 			return $this->render("footer/retours-remboursements.html.twig");
 		}
+		/**
+		 * @Route("/contact", name="contact")
+		 */
+		public function contact(): Response {
+			return $this->render("footer/contact.html.twig");
+		}
 	}
 ?>
