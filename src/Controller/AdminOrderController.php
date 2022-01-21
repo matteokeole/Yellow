@@ -29,17 +29,6 @@ class AdminOrderController extends AbstractController
         ]);
     }
 
-    // /**
-    //  * @Route("/admin/gestion-des-commandes/{id}", name="manageOrderId")
-    //  */
-    // public function manageOrder(Order $order, CustomerRepository $customerRepository): Response
-    // {
-    //     return $this->render('account/manageOrder/order.html.twig', [
-    //         'order' => $order,
-    //         'customers' => $customerRepository->findBy(['order'=>$order]),
-    //     ]);
-    // }
-
     // //Afficher la fiche d'une commande
     // /**
     //  * @Route("/admin/gestion-des-commandes/{id}", name="manageorderId")

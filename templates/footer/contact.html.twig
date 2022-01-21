@@ -2,7 +2,37 @@
 
 {% block title %}Contact • Yellow{% endblock %}
 {% block body %}
+
+	<style>
+		input, textarea{
+			width: 300px;
+			margin-bottom: 15px;
+		}
+		.contact{
+			padding: 10px;
+		}
+		textarea{
+			height: 150px
+		}
+		.button-contact {
+			display: inline-block;
+			padding: 10px 30px;
+			border-radius: 10px;
+			background-color: var(--primary);
+			border: none;
+			transition-duration: 0.5s
+		}
+		a{
+			color: #fff;
+		}
+	</style>
+
 	<main>
 		<h1>Nous contacter</h1>
+		<input class="contact" type="text" placeholder="Nom" required pattern="[A-Za-z]+"></p>
+		<input class="contact" type="text" placeholder="Prénom" required pattern="[A-Za-z]+"></p>
+		<input class="contact" type="email" placeholder="email"></p>
+		<textarea class="contact" placeholder="Message"></textarea></p>
+		<button class="button-contact" type="submit"><a href="{{path('home')}}">Envoyer</a></button>
 	</main>
 {% endblock %}

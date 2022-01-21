@@ -3,6 +3,8 @@
 namespace App\Repository;
 
 use App\Entity\Order;
+use App\Entity\Customer;
+use App\Entity\Basket;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 

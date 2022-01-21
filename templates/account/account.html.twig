@@ -4,7 +4,17 @@
 {% block body %}
 	<link rel="stylesheet" href="/css/account.css">
 	<main>
-		<h1>{{account.first_name}} {{account.last_name}}</h1>
+		<h1>Session de {{customer.customerFirstName}} {{customer.customerLastName}}</h1>
+
+		<section>
+		<h3>Vos informations personnelles</h3>
+		</section>
+
+		<section>
+		<h3>Historique des commandes</h3>
+		</section>
+
+
 		<a href="{{path('disconnect')}}" class="disconnect">
 			<ion-icon name="exit-outline"></ion-icon>
 			Se déconnecter
