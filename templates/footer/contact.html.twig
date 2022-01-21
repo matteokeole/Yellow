@@ -5,11 +5,17 @@
 	<link rel="stylesheet" href="/css/contact.css">
 	<main>
 		<div class="contact-container">
-			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2888.669713877663!2d3.8276385157042236!3d43.61341816301986!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12b6ae8733f603c9%3A0x16aa83e0a224f5fe!2s3%20Rue%20de%20la%20Condamine%2C%2034080%20Montpellier!5e0!3m2!1sen!2sfr!4v1642780440327!5m2!1sen!2sfr" id="maps-iframe" width="600" height="450" allowfullscreen="" loading="lazy"></iframe>
+			<div class="map-container">
+				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2888.669713877663!2d3.8276385157042236!3d43.61341816301986!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12b6ae8733f603c9%3A0x16aa83e0a224f5fe!2s3%20Rue%20de%20la%20Condamine%2C%2034080%20Montpellier!5e0!3m2!1sen!2sfr!4v1642780440327!5m2!1sen!2sfr" id="maps-iframe" allowfullscreen="" loading="lazy"></iframe>
+				<p class="location">
+					<span class="address">3 rue de la Condamine</span>
+					<span class="city">34080 Montpellier</span>
+				</p>
+			</div>
 			<form id="contact-form" action="{{path('home')}}">
 				<h1>Nous contacter</h1>
 				<p class="contact-info">
-					Un avis ? Une question ?
+					Un avis ? Une question ?<br>
 					N'hésitez pas à nous en faire part dans le formulaire ci-dessous !
 				</p>
 				<label for="name">Nom</label>
@@ -25,6 +31,16 @@
 					</button>
 				</div>
 			</form>
+		</div>
+		<div class="other-contact-container">
+			<div class="contact-section email">
+				<h3 class="contact-section-subtitle">Par mail</h3>
+				<a href="mailto:contact@yellow.com" target="_blank">contact@yellow.com</a>
+			</div>
+			<div class="contact-section phone">
+				<h3 class="contact-section-subtitle">Par téléphone</h3>
+				<a href="tel:0448579572" target="_blank">04 48 57 95 72</a>
+			</div>
 		</div>
 	</main>
 {% endblock %}

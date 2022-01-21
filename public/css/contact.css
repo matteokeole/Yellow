@@ -1,28 +1,42 @@
-/* Main & contact container */
+/* Main & inner containers */
 
 main {
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	padding-top: 60px
 }
+
 
 .contact-container {
 	display: flex;
 	justify-content: center
 }
 
+.map-container {margin-right: 1vw}
+
 /* Google Maps iframe */
 #maps-iframe {
-	margin-right: 2%;
+	display: block;
+	width: 600px;
+	height: 450px;
 	border: 0;
 	border-radius: 8px
+}
+
+/* Address & city */
+.location {
+	display: flex;
+	justify-content: space-between;
+	margin: 10px 0;
+	font-size: 18px
 }
 
 /* Contact form */
 
 #contact-form {
 	width: 300px;
-	margin-left: 2%
+	margin-left: 1vw
 }
 
 #contact-form .blank {height: 20px}
@@ -67,7 +81,7 @@ label {
 /* Actions container (with submit button) */
 #contact-form .actions {
 	display: flex;
-	justify-content: end;
+	justify-content: end
 }
 
 /* Form submit button */
@@ -85,8 +99,69 @@ label {
 	transition-duration: .2s
 }
 #contact-form .actions #submit:hover {color: #000}
+#contact-form .actions #submit:active {
+	-webkit-transform: scale(.9);
+	transform: scale(.9);
+	transition-duration: .1s
+}
 
 #contact-form .actions #submit ion-icon {
 	margin-left: 8px;
 	font-size: 20px
+}
+
+/* Other contact methods */
+
+.other-contact-container {
+	display: flex;
+	justify-content: center;
+	margin-top: 60px
+}
+
+.contact-section {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 250px;
+	height: 150px;
+	border-radius: 8px;
+	background-color: rgba(245, 201, 67, .2);
+	text-align: center;
+	font-size: 18px
+}
+.contact-section.email {margin-right: 1vw}
+.contact-section.phone {margin-left: 1vw}
+
+.contact-section-subtitle {
+	margin-bottom: 20px;
+	color: #000;
+	font-size: 20px
+}
+
+.contact-section a {color: var(--secondary)}
+
+/* Media queries */
+
+@media screen and (max-width: 1000px) {
+	main {padding-top: 20px}
+	.contact-container {flex-direction: column}
+	#contact-form {
+		width: 100%;
+		margin: 0
+	}
+	.map-container {margin: 0}
+	#maps-iframe {width: 100%}
+}
+
+@media screen and (max-width: 650px) {
+	.contact-container {width: 100%}
+	.other-contact-container {flex-direction: column}
+	.contact-section {
+		width: 100%;
+		margin: 0 0 12px 0 !important
+	}
+}
+
+@media screen and (max-width: 400px) {
+	.location {flex-direction: column}
 }
