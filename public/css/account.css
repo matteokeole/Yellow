@@ -40,3 +40,39 @@ table td {padding: 4px 8px}
 
 table tr:hover {background-color: #CCC}
 table tr:hover td {border-color: #AAA}
+
+main{
+	font-size: 1.10rem;
+}
+section{
+	background-color: rgb(228, 225, 225);
+	border-radius: 10px;
+	padding: 20px;
+	margin: 0 200px 0 200px;
+}
+h2{
+	margin-bottom: 15px;
+	border-bottom: solid 2px;
+	border-color: var(--primary);
+}
+button {
+	display: inline-block;
+	padding: 10px 30px;
+	border-radius: 10px;
+	background-color: var(--primary);
+	border: none;
+	transition-duration: 0.5s;
+	margin-top: 10px;
+}
+a{
+	color: #fff;
+}
+.info{
+	margin-bottom: 30px
+}
+.form-user{
+	margin-bottom: 6px;
+}
+.disconnect{
+	margin-left: 875px;
+}
