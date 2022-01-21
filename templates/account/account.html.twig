@@ -3,57 +3,57 @@
 {% block title %}Options du compte • Yellow{% endblock %}
 {% block body %}
 	<link rel="stylesheet" href="/css/account-customer.css">
-
 	<main>
-		<h1>Session de {{customer.customerFirstName}} {{customer.customerLastName}}
+		<h1>
+			{{customer.customerFirstName}} {{customer.customerLastName}}
+			<!-- Disconnection link -->
 			<a href="{{path('disconnect')}}" class="disconnect">
 				<ion-icon name="exit-outline"></ion-icon>
 				Se déconnecter
 			</a>
 		</h1>
-
+		<!-- User informations -->
 		<section class="info">
-		<h2>Informations personnelles</h2>
-
-		<form>
-			<div class="form-user">
-				Nom :
-				{{customer.customerFirstName}}
-			</div>
-			<div class="form-user">
-				Prénom :
-				{{customer.customerLastName}}
-			</div>
-			<div class="form-user">
-				Email :
-				{{customer.customerEmail}}
-			</div>
-			<div class="form-user">
-				Téléphone :
-				{{customer.customerPhone}}
-			</div>
-			<div class="form-user">
-				<span type="password">Mot de passe :
-				{{customer.customerPassword}}
-			</div>
-						<div class="form-user">
-				Adresse :
-				{{customer.customerAddress}}
-			</div>
-			<div class="form-user">
-				Code postal :
-				{{customer.customerPostCode}}
-			</div>
-						<div class="form-user">
-				Ville :
-				{{customer.customerCity}}
-			</div>
-		</form>
-		<button><a href="{{path('accountIdUpdate', {id: customer.Id}) }}">Modifier</a></button>
+			<h2>Mes informations personnelles</h2>
+			<form>
+				<div class="form-user">
+					Prénom :
+					{{customer.customerFirstName}}
+				</div>
+				<div class="form-user">
+					Nom :
+					{{customer.customerLastName}}
+				</div>
+				<div class="form-user">
+					Email :
+					{{customer.customerEmail}}
+				</div>
+				<div class="form-user">
+					Téléphone :
+					{{customer.customerPhone}}
+				</div>
+				<div class="form-user">
+					<span type="password">Mot de passe :</span>
+					<input type="password" value="{{customer.customerPassword}}">
+				</div>
+				<div class="form-user">
+					Adresse :
+					{{customer.customerAddress}}
+				</div>
+				<div class="form-user">
+					Code postal :
+					{{customer.customerPostCode}}
+				</div>
+				<div class="form-user">
+					Ville :
+					{{customer.customerCity}}
+				</div>
+			</form>
+			<button><a href="{{path('accountIdUpdate', {id: customer.Id})}}">Modifier</a></button>
 		</section>
-
+		<!-- Commandes -->
 		<section class="order">
-		<h2>Historique des commandes</h2>
+		<h2>Mes commandes</h2>
 			{# <div class="form-user">
 				Numéro :
 				{{orders.id}}

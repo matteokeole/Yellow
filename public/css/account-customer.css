@@ -1,15 +1,13 @@
 /* Settings list */
 
-main{
-	font-size: 1.10rem;
-}
-section{
+main {font-size: 1.1rem}
+section {
 	background-color: rgb(228, 225, 225);
 	border-radius: 10px;
 	padding: 20px;
 	margin: 0 200px 0 200px;
 }
-h2{
+h2 {
 	margin-bottom: 15px;
 	border-bottom: solid 2px;
 	border-color: var(--primary);
@@ -23,15 +21,7 @@ button {
 	transition-duration: 0.5s;
 	margin-top: 10px;
 }
-a{
-	color: #fff;
-}
-.info{
-	margin-bottom: 30px
-}
-.form-user{
-	margin-bottom: 6px;
-}
-.disconnect{
-	margin-left: 875px;
-}
+a {color: #FFF}
+.info {margin-bottom: 30px}
+.form-user {margin-bottom: 6px}
+.disconnect {margin-left: 875px}

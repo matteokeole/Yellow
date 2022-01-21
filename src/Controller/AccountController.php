@@ -14,7 +14,7 @@
 		/**
 		 * @Route("/compte", name="account")
 		 */
-		public function account(Request $request, CustomerRepository $customerRepository, EntityManagerInterface $entityManager, Session $session): Response {
+		public function account(Request $request, Customer $customer, EntityManagerInterface $entityManager, Session $session): Response {
 			if (!$session->get("customer")) return $this->redirectToRoute("login");
 			else {
 				$form = $this->createForm(EditAccountFormType::class);
@@ -28,6 +28,7 @@
 				}
 				return $this->render("account/account.html.twig", [
 					"account" => $session->get("customer"),
+					"customer" => $customer,
 					"form" => $form->createView()
 				]);
 			}
