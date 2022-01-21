@@ -3,21 +3,103 @@
 {% block title %}Options du compte • Yellow{% endblock %}
 {% block body %}
 	<link rel="stylesheet" href="/css/account.css">
+
+	<style>
+		main{
+			font-size: 1.10rem;
+		}
+		section{
+			background-color: rgb(228, 225, 225);
+			border-radius: 10px;
+			padding: 20px;
+			margin: 0 200px 0 200px;
+		}
+		h2{
+			margin-bottom: 15px;
+			border-bottom: solid 2px;
+			border-color: var(--primary);
+		}
+		button {
+			display: inline-block;
+			padding: 10px 30px;
+			border-radius: 10px;
+			background-color: var(--primary);
+			border: none;
+			transition-duration: 0.5s;
+			margin-top: 10px;
+		}
+		a{
+			color: #fff;
+		}
+		.info{
+			margin-bottom: 30px
+		}
+		.form-user{
+			margin-bottom: 6px;
+		}
+		.disconnect{
+			margin-left: 875px;
+		}
+	</style>
+
 	<main>
-		<h1>Session de {{customer.customerFirstName}} {{customer.customerLastName}}</h1>
+		<h1>Session de {{customer.customerFirstName}} {{customer.customerLastName}}
+			<a href="{{path('disconnect')}}" class="disconnect">
+				<ion-icon name="exit-outline"></ion-icon>
+				Se déconnecter
+			</a>
+		</h1>
 
-		<section>
-		<h3>Vos informations personnelles</h3>
+
+
+		<section class="info">
+		<h2>Informations personnelles</h2>
+
+		<form>
+			<div class="form-user">
+				Nom :
+				{{customer.customerFirstName}}
+			</div>
+			<div class="form-user">
+				Prénom :
+				{{customer.customerLastName}}
+			</div>
+			<div class="form-user">
+				Email :
+				{{customer.customerEmail}}
+			</div>
+			<div class="form-user">
+				Téléphone :
+				{{customer.customerPhone}}
+			</div>
+			<div class="form-user">
+				<span type="password">Mot de passe :
+				{{customer.customerPassword}}
+			</div>
+						<div class="form-user">
+				Adresse :
+				{{customer.customerAddress}}
+			</div>
+			<div class="form-user">
+				Code postal :
+				{{customer.customerPostCode}}
+			</div>
+						<div class="form-user">
+				Ville :
+				{{customer.customerCity}}
+			</div>
+		</form>
+		<button><a href="{{path('accountIdUpdate', {id: customer.Id}) }}">Modifier</a></button>
 		</section>
 
-		<section>
-		<h3>Historique des commandes</h3>
+		<section class="order">
+		<h2>Historique des commandes</h2>
+			{# <div class="form-user">
+				Numéro :
+				{{orders.id}}
+			</div> #}
 		</section>
 
 
-		<a href="{{path('disconnect')}}" class="disconnect">
-			<ion-icon name="exit-outline"></ion-icon>
-			Se déconnecter
-		</a>
 	</main>
 {% endblock %}
