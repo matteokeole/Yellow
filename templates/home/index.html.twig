@@ -1,6 +1,7 @@
 {% extends "base.html.twig" %}
 
 {% block title %}Yellow : bienvenue dans l'univers des mangas{% endblock %}
+
 {% block body %}
 	<style>
 		html {box-sizing: border-box}
@@ -18,33 +19,33 @@
 			border-radius: 10px;
 			background-color: var(--primary);
 			color: #fff;
-			transition-duration: .5s
+			transition-duration: 0.5s
 		}
-		{# searchbar #}
-		.searchbar {
+
+				.searchbar {
 			display: flex;
 			justify-content: center;
 			align-items: center;
 			margin: 30px 0
 		}
-		form {
+		.search-form {
 			width: 30%;
 			position: relative;
 			border-radius: 10px
 		}
-		input, .btn-search {
+		.search-input, .btn-search {
 			height: 80px;
 			border: 0;
 			color: #000
 		}
-		input {
+		.search-input {
 			width: 100%;
 			padding: 0 25px;
 			position: relative;
 			outline: 0;
 			border-radius: 10px;
 			background-color: lightgrey;
-			transition-duration: .5s
+			transition-duration: 0.5s
 		}
 		.btn-search {
 			display: none;
@@ -56,13 +57,13 @@
 			font-weight: bold;
 			background-color: var(--primary)
 		}
-		input:not(:placeholder-shown) {
+		.search-input:not(:placeholder-shown) {
 			width: calc(100% - 100px);
 			border-radius: 10px 0 0 10px
 		}
-		input:not(:placeholder-shown) + .btn-search {display: block}
-		{# best sellers #}
-		.bs-cadre {
+		.search-input:not(:placeholder-shown) + .btn-search {display: block}
+
+				.bs-cadre {
 			padding: 5px;
 			background-color: var(--primary)
 		}
@@ -75,49 +76,121 @@
 			justify-content: space-evenly;
 			align-items: center
 		}
-		.cover {width: 150px}
-		.text-center {text-align: center}
+		.cover {width: 150px;}
+
+		.text-center {text-align: center;}
+
+		.hr {
+			align-items: center;
+			display: flex;
+			text-align: center;
+			padding: 20px 0 20px 0;
+			color: gray;
+		}
+
+		.hr::before, .hr::after {
+			border-top: 0.1em solid;
+			color: gray;
+			content: "";
+			flex: 1;
+			margin: 0 3em;
+		}
+
+				.soldes {
+			margin-top: 30px;
+		}
+
+		.texte-soldes {
+			border: 3px solid var(--primary);
+		}
+
+		.produits-soldes {
+			background-color: gray;
+			padding: 20px 20px 0 20px;
+		}
+
+		.cover-soldes {width: 110px}
+
+		.ml-30 {margin-left: 30px;}		
+
 	</style>
 	<div class="banner">
 		<a href="/produit">
 			<span class="button-accueil">Consulter notre catalogue de manga</span>
 		</a>
 	</div>
-	<main>
-		<div class="searchbar">
-			<form>
-				<input id="search" type="search" placeholder="Rechercher un produit">
-				<button type="submit" class="btn-search">Go</button>
-			</form>
-		</div>
-		<div class="bs-cadre">
-			<div class="best-seller">
-				<hr>
-				<div class="flex">NOS BEST-SELLERS</div>
-				<div class="bs-produit flex">
-					<div class="text-center">
-						<a href="/produit/1">
-							<img src="images/cover/onepiece.jpg" class="cover">
-						</a>
-						<p>One Piece</p>
-						<p>6.90€</p>
-					</div>
-					<div class="text-center">
-						<a href="/produit/2">
-							<img src="images/cover/dragonball.jpg" class="cover">
-						</a>
-						<p>Dragon Ball</p>
-						<p>6.90€</p>
-					</div>
-					<div class="text-center">
-						<a href="/produit/3">
-							<img src="images/cover/naruto.jpg" class="cover">
-						</a>
-						<p>Naruto</p>
-						<p>6.90€</p>
-					</div>
+	<div class="searchbar">
+		<form class="search-form">
+			<input class="search-input" id="search" type="search" placeholder="Rechercher un produit">
+			<button type="submit" class="btn-search">Go</button>
+		</form>
+	</div>
+	<div class="bs-cadre">
+		<div class="best-seller">
+			<h3 class="hr">NOS BEST-SELLERS</h3>
+			<div class="bs-produit flex">
+				<div class="text-center">
+					<a href="/produit/1">
+						<img src="images/cover/onepiece.jpg" class="cover">
+					</a>
+					<p>One Piece</p>
+					<p>6.90€</p>
+				</div>
+				<div class="text-center">
+					<a href="/produit/2">
+						<img src="images/cover/dragonball.jpg" class="cover">
+					</a>
+					<p>Dragon Ball</p>
+					<p>6.90€</p>
+				</div>
+				<div class="text-center">
+					<a href="/produit/3">
+						<img src="images/cover/naruto.jpg" class="cover">
+					</a>
+					<p>Naruto</p>
+					<p>6.90€</p>
 				</div>
 			</div>
 		</div>
-	</main>
+	</div>
+	<div class="flex soldes">
+		<div class="texte-soldes">
+			<h3>Nos produits soldés</h3>
+			<p>Profitez de nos remises exeptionnelles sur des centaines d'articles</p>
+		</div>
+		<div class="produits-soldes">
+			<div class="flex">
+				<div class="text-center">
+					<a href="/produit/1">
+						<img src="images/cover/onepiece.jpg" class="cover-soldes">
+					</a>
+					<p>One Piece</p>
+					<p>6.90€</p>
+				</div>
+				<div class="text-center ml-30">
+					<a href="/produit/5">
+						<img src="images/cover/berserk.jpg" class="cover-soldes">
+					</a>
+					<p>Berserk</p>
+					<p>6.90€</p>
+				</div>
+			</div>
+			<div class="flex">
+				<div class="text-center">
+					<a href="/produit/4">
+						<img src="images/cover/fullmetalalchemist.jpg" class="cover-soldes">
+					</a>
+					<p>Fullmetal Alchemist</p>
+					<p>6.60€</p>
+				</div>
+				<div class="text-center ml-30">
+					<a href="/produit/15">
+						<img src="images/cover/pokemon.jpg" class="cover-soldes">
+					</a>
+					<p>Pokemon</p>
+					<p>9.90€</p>
+				</div>
+			</div>
+		</div>
+	</div>
 {% endblock %}
