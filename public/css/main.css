@@ -21,9 +21,12 @@
 	--warning: #FFC107
 }
 
+html {box-sizing: border-box}
+
 * {
 	margin: 0;
 	padding: 0;
+	box-sizing: inherit;
 	font-family: Coolvetica, Arial, sans-serif;
 	font-weight: normal
 }

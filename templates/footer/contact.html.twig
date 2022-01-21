@@ -1,38 +1,30 @@
 {% extends "base.html.twig" %}
 
-{% block title %}Contact • Yellow{% endblock %}
+{% block title %}Nous contacter • Yellow{% endblock %}
 {% block body %}
-
-	<style>
-		input, textarea{
-			width: 300px;
-			margin-bottom: 15px;
-		}
-		.contact{
-			padding: 10px;
-		}
-		textarea{
-			height: 150px
-		}
-		.button-contact {
-			display: inline-block;
-			padding: 10px 30px;
-			border-radius: 10px;
-			background-color: var(--primary);
-			border: none;
-			transition-duration: 0.5s
-		}
-		a{
-			color: #fff;
-		}
-	</style>
-
+	<link rel="stylesheet" href="/css/contact.css">
 	<main>
-		<h1>Nous contacter</h1>
-		<input class="contact" type="text" placeholder="Nom" required pattern="[A-Za-z]+"></p>
-		<input class="contact" type="text" placeholder="Prénom" required pattern="[A-Za-z]+"></p>
-		<input class="contact" type="email" placeholder="email"></p>
-		<textarea class="contact" placeholder="Message"></textarea></p>
-		<button class="button-contact" type="submit"><a href="{{path('home')}}">Envoyer</a></button>
+		<div class="contact-container">
+			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2888.669713877663!2d3.8276385157042236!3d43.61341816301986!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12b6ae8733f603c9%3A0x16aa83e0a224f5fe!2s3%20Rue%20de%20la%20Condamine%2C%2034080%20Montpellier!5e0!3m2!1sen!2sfr!4v1642780440327!5m2!1sen!2sfr" id="maps-iframe" width="600" height="450" allowfullscreen="" loading="lazy"></iframe>
+			<form id="contact-form" action="{{path('home')}}">
+				<h1>Nous contacter</h1>
+				<p class="contact-info">
+					Un avis ? Une question ?
+					N'hésitez pas à nous en faire part dans le formulaire ci-dessous !
+				</p>
+				<label for="name">Nom</label>
+				<input type="text" name="name" id="name">
+				<label for="email">E-mail</label>
+				<input type="email" name="email" id="email">
+				<label for="message">Message</label>
+				<textarea name="message" id="message"></textarea>
+				<div class="actions">
+					<button type="submit" id="submit">
+						Envoyer
+						<ion-icon name="send"></ion-icon>
+					</button>
+				</div>
+			</form>
+		</div>
 	</main>
 {% endblock %}

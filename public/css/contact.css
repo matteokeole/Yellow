@@ -1,0 +1,92 @@
+/* Main & contact container */
+
+main {
+	display: flex;
+	justify-content: center;
+	padding-top: 60px
+}
+
+.contact-container {
+	display: flex;
+	justify-content: center
+}
+
+/* Google Maps iframe */
+#maps-iframe {
+	margin-right: 2%;
+	border: 0;
+	border-radius: 8px
+}
+
+/* Contact form */
+
+#contact-form {
+	width: 300px;
+	margin-left: 2%
+}
+
+#contact-form .blank {height: 20px}
+
+/* Contact information paragraph */
+.contact-info {
+	margin: 20px 0;
+	opacity: .65;
+	font-size: 16px
+}
+
+/* Inputs & textareas */
+
+input, textarea {
+	display: block;
+	width: 100%;
+	margin-bottom: 16px;
+	padding: 8px;
+	outline: none;
+	border: 1px solid rgba(245, 201, 67, .4);
+	border-radius: 4px;
+	background-color: rgba(245, 201, 67, .1);
+	font-size: 17px
+}
+input:focus, textarea:focus {border-color: var(--primary)}
+
+textarea {
+	min-height: 100px;
+	height: 150px;
+	max-height: 300px;
+	resize: vertical
+}
+
+/* Input labels */
+label {
+	display: block;
+	margin-bottom: 4px;
+	color: var(--primary);
+	font-size: 16px
+}
+
+/* Actions container (with submit button) */
+#contact-form .actions {
+	display: flex;
+	justify-content: end;
+}
+
+/* Form submit button */
+
+#contact-form .actions #submit {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	border-radius: 8px;
+	background-color: var(--primary);
+	color: var(--secondary);
+	cursor: pointer;
+	font-size: 17px;
+	transition-duration: .2s
+}
+#contact-form .actions #submit:hover {color: #000}
+
+#contact-form .actions #submit ion-icon {
+	margin-left: 8px;
+	font-size: 20px
+}
