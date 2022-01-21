@@ -54,6 +54,15 @@
 				post_code: false,
 				city: false
 			};
+		// Clean up fields
+		signup.form.first_name.value = "";
+		signup.form.last_name.value = "";
+		signup.form.email.value = "";
+		signup.form.phone.value = "";
+		signup.form.password.value = "";
+		signup.form.address.value = "";
+		signup.form.post_code.value = "";
+		signup.form.city.value = "";
 		signup.form.addEventListener("submit", e => {
 			e.preventDefault();
 			// Clear form error container
@@ -119,6 +128,13 @@
 				// At least one empty required field
 				displayFormError("Champs non renseignés", "Veuillez renseigner les champs requis du formulaire.")
 			}
+			let validFields = 0;
+			for (let i = 0; i < validation.length; i++) {
+				console.log(validation.i)
+				if (validation.i) validFields++;
+			}
+			alert(validFields)
+			if (validFields == validation.length) alert("tt bon")
 		})
 	</script>
 {% endblock %}
