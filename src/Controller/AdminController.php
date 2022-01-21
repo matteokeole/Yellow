@@ -9,7 +9,7 @@
 	use Symfony\Component\HttpFoundation\Response;
 	use Symfony\Component\Routing\Annotation\Route;
 
-	class InterfaceAdminController extends AbstractController {
+	class AdminController extends AbstractController {
 		/**
 		 * @Route("/admin", name="interfaceAdmin")
 		 */

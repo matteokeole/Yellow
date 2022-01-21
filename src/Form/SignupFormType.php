@@ -1,11 +1,9 @@
 <?php
 	namespace App\Form;
 	use App\Entity\Customer;
-	use Symfony\Component\Form\Extension\Core\Type\TextType;
-	use Symfony\Component\Form\Extension\Core\Type\EmailType;
-	use Symfony\Component\Form\Extension\Core\Type\IntegerType;
-	use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 	use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+	use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+	use Symfony\Component\Form\Extension\Core\Type\TextType;
 	use Symfony\Component\Form\AbstractType;
 	use Symfony\Component\Form\FormBuilderInterface;
 	use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -15,15 +13,15 @@
 			$builder
 				->add("customer_first_name", TextType::class, [
 					"label" => "Votre prénom *",
-					"required" => true
+					"required" => false
 				])
 				->add("customer_last_name", TextType::class, [
 					"label" => "Votre nom *",
-					"required" => true
+					"required" => false
 				])
-				->add("customer_email", EmailType::class, [
+				->add("customer_email", TextType::class, [
 					"label" => "Votre email *",
-					"required" => true
+					"required" => false
 				])
 				->add("customer_phone", TextType::class, [
 					"label" => "Votre téléphone",
@@ -31,19 +29,19 @@
 				])
 				->add("customer_password", PasswordType::class, [
 					"label" => "Votre mot de passe *",
-					"required" => true
+					"required" => false
 				])
 				->add("customer_address", TextType::class, [
 					"label" => "Votre adresse postale *",
-					"required" => true
+					"required" => false
 				])
-				->add("customer_post_code", IntegerType::class, [
+				->add("customer_post_code", TextType::class, [
 					"label" => "Votre code postal *",
-					"required" => true
+					"required" => false
 				])
 				->add("customer_city", TextType::class, [
 					"label" => "Votre ville *",
-					"required" => true
+					"required" => false
 				])
 				->add("submit", SubmitType::class, [
 					"label" => "S'inscrire"

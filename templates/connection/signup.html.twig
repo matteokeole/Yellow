@@ -1,0 +1,58 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Inscription • Yellow{% endblock %}
+{% block body %}
+	<link rel="stylesheet" href="/css/form-signup.css">
+	<script src="/js/formError.js"></script>
+	<main>
+		<h1>Inscription</h1>
+		<span class="required-fields">Les champs marqués d'un * sont obligatoires.</span>
+		{{form(form)}}
+		<p>
+			Vous avez déjà un compte ?
+			<a href="{{path('login')}}">Connectez-vous</a>
+		</p>
+	</main>
+	<script>
+		// Select form elements
+		const signup = {
+				form: document.querySelector("form[name='signup_form']"),
+				get first_name() {return this.form.querySelector("#signup_form_customer_first_name")},
+				get last_name() {return this.form.querySelector("#signup_form_customer_last_name")},
+				get email() {return this.form.querySelector("#signup_form_customer_email")},
+				get phone() {return this.form.querySelector("#signup_form_customer_phone")},
+				get password() {return this.form.querySelector("#signup_form_customer_password")},
+				get address() {return this.form.querySelector("#signup_form_customer_address")},
+				get post_code() {return this.form.querySelector("#signup_form_customer_post_code")},
+				get city() {return this.form.querySelector("#signup_form_customer_city")}
+			},
+			expr = {
+				first_name: /^[A-Za-z]+$/,
+				email: /^[\w-]+@[\w-]+\.[\w-]{2,}$/,
+				password: null,
+				blank: /^\s*$/
+			},
+			validation = {
+				email: false,
+				password: false
+			},
+			formError = document.querySelector(".form-error");
+		signup.form.addEventListener("submit", e => {
+			e.preventDefault();
+			// Clear form error container
+			formError.textContent = "";
+			// Email check-up
+			if (!emailExpr.test(emailInput)) {
+				// Invalid email
+				formError.textContent += "L'email que vous avez rentré est invalide.\n"
+			} else validEmail = true;
+			// Password check-up
+			if (!passwordExpr.test(passwordInput)) {
+				// Invalid password
+				formError.textContent += "Le mot de pass que vous avez rentré est invalide.\n"
+			} else validPassword = true;
+			// Final check-up
+			if (validEmail && validPassword) form.submit()
+		})
+	</script>
+{% endblock %}

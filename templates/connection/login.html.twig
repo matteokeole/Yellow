@@ -2,7 +2,8 @@
 
 {% block title %}Connexion • Yellow{% endblock %}
 {% block body %}
-	<script src="/js/displayFormError.js"></script>
+<link rel="stylesheet" href="/css/form-login.css">
+	<script src="/js/formError.js"></script>
 	<main class="login-container">
 		<h1>Connexion</h1>
 		<div class="form-error-alert">
@@ -25,21 +26,25 @@
 		{% if loginError == 1 %}
 			displayFormError("Impossible de se connecter", "Veuillez vérifier vos identifiants de connexion.")
 		{% endif %}
-		const form = document.querySelector("form[name='login_form']"),
-			emailInput = document.querySelector("#login_form_customer_email"),
-			passwordInput = document.querySelector("#login_form_customer_password"),
-			blankExpr = /^\s*$/;
+		// Select form elements
+		const login = {
+				form: document.querySelector("form[name='login_form']"),
+				get email() {return this.form.querySelector("#login_form_customer_email")},
+				get password() {return this.form.querySelector("#login_form_customer_password")}
+			},
+			formError = document.querySelector(".form-error");
 		// Clean up fields
-		emailInput.value = "";
-		passwordInput.value = "";
-		form.addEventListener("submit", e => {
+		login.email.value = "";
+		login.password.value = "";
+		login.form.addEventListener("submit", e => {
 			e.preventDefault();
+			// Clear form error container
 			clearFormError();
 			// Form check-up
-			if (blankExpr.test(emailInput.value) || blankExpr.test(passwordInput.value)) {
-				// Invalid field value
+			if (/^\s*$/.test(login.email.value) || /^\s*$/.test(login.password.value)) {
+				// Empty field(s)
 				displayFormError("Champs non renseignés", "Veuillez renseigner tous les champs du formulaire.")
-			} else form.submit()
+			} else login.form.submit()
 		})
 	</script>
 {% endblock %}
