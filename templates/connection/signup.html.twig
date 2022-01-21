@@ -21,6 +21,9 @@
 		</p>
 	</main>
 	<script>
+		{% if signupError == 1 %}
+			displayFormError("E-mail déjà utilisé", "Veuillez renseigner un autre e-mail.")
+		{% endif %}
 		// Select form elements
 		const signup = {
 				form: document.querySelector("form[name='signup_form']"),
@@ -92,11 +95,12 @@
 				displayFormError("Mot de passe faible", "Veuillez entrer un mot de passe d'au moins 8 caractères.")
 			} else validation.password = true;
 			// Phone check-up
-			if (!expr.phone.test(signup.phone.value)) {
+			if (expr.phone.test(signup.phone.value) || expr.blank.test(signup.phone.value)) validation.phone = true;
+			else {
 				// Invalid phone
 				validation.phone = false;
 				displayFormError("Numéro de téléphone invalide", "Les espaces ne sont pas demandés.")
-			} else validation.phone = true;
+			}
 			// Email check-up
 			if (!expr.email.test(signup.email.value)) {
 				// Invalid email
