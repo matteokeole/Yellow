@@ -55,14 +55,14 @@
 				city: false
 			};
 		// Clean up fields
-		signup.form.first_name.value = "";
-		signup.form.last_name.value = "";
-		signup.form.email.value = "";
-		signup.form.phone.value = "";
-		signup.form.password.value = "";
-		signup.form.address.value = "";
-		signup.form.post_code.value = "";
-		signup.form.city.value = "";
+		signup.first_name.value = "";
+		signup.last_name.value = "";
+		signup.email.value = "";
+		signup.phone.value = "";
+		signup.password.value = "";
+		signup.address.value = "";
+		signup.post_code.value = "";
+		signup.city.value = "";
 		signup.form.addEventListener("submit", e => {
 			e.preventDefault();
 			// Clear form error container
@@ -128,13 +128,20 @@
 				// At least one empty required field
 				displayFormError("Champs non renseignés", "Veuillez renseigner les champs requis du formulaire.")
 			}
-			let validFields = 0;
-			for (let i = 0; i < validation.length; i++) {
-				console.log(validation.i)
-				if (validation.i) validFields++;
+			// Last check-up and form submit
+			if (
+				validation.first_name &&
+				validation.last_name &&
+				validation.email &&
+				validation.phone &&
+				validation.password &&
+				validation.address &&
+				validation.post_code &&
+				validation.city
+			) {
+				// Submit form
+				signup.form.submit()
 			}
-			alert(validFields)
-			if (validFields == validation.length) alert("tt bon")
 		})
 	</script>
 {% endblock %}
