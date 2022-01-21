@@ -2,7 +2,7 @@
 
 {% block title %}Connexion • Yellow{% endblock %}
 {% block body %}
-<link rel="stylesheet" href="/css/form-login.css">
+	<link rel="stylesheet" href="/css/form-login.css">
 	<script src="/js/formError.js"></script>
 	<main class="login-container">
 		<h1>Connexion</h1>
@@ -31,8 +31,7 @@
 				form: document.querySelector("form[name='login_form']"),
 				get email() {return this.form.querySelector("#login_form_customer_email")},
 				get password() {return this.form.querySelector("#login_form_customer_password")}
-			},
-			formError = document.querySelector(".form-error");
+			};
 		// Clean up fields
 		login.email.value = "";
 		login.password.value = "";

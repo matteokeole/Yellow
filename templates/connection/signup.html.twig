@@ -6,6 +6,13 @@
 	<script src="/js/formError.js"></script>
 	<main>
 		<h1>Inscription</h1>
+		<div class="form-error-alert">
+			<ion-icon name="alert-circle-outline" class="error-icon"></ion-icon>
+			<span class="error-content">
+				<span class="error-title"></span>
+				<span class="error-subtitle"></span>
+			</span>
+		</div>
 		<span class="required-fields">Les champs marqués d'un * sont obligatoires.</span>
 		{{form(form)}}
 		<p>
@@ -27,32 +34,91 @@
 				get city() {return this.form.querySelector("#signup_form_customer_city")}
 			},
 			expr = {
-				first_name: /^[A-Za-z]+$/,
+				first_name: /^[A-Za-zÀ-ú- ]+$/,
+				last_name: /^[A-Za-zÀ-ú- ]+$/,
 				email: /^[\w-]+@[\w-]+\.[\w-]{2,}$/,
-				password: null,
+				phone: /^0\d{9}$/,
+				password: /^.{8,}$/,
+				address: /^[\wÀ-ú- ]+$/,
+				post_code: /^\d{5}$/,
+				city: /^[A-Za-zÀ-ú- ]+$/,
 				blank: /^\s*$/
 			},
 			validation = {
+				first_name: false,
+				last_name: false,
 				email: false,
-				password: false
-			},
-			formError = document.querySelector(".form-error");
+				phone: false,
+				password: false,
+				address: false,
+				post_code: false,
+				city: false
+			};
 		signup.form.addEventListener("submit", e => {
 			e.preventDefault();
 			// Clear form error container
-			formError.textContent = "";
-			// Email check-up
-			if (!emailExpr.test(emailInput)) {
-				// Invalid email
-				formError.textContent += "L'email que vous avez rentré est invalide.\n"
-			} else validEmail = true;
+			clearFormError();
+			// City check-up
+			if (!expr.city.test(signup.city.value)) {
+				// Invalid city
+				validation.city = false;
+				displayFormError("Champ invalide", "Veuillez renseigner une ville correcte.")
+			} else validation.city = true;
+			// Post code check-up
+			if (!expr.post_code.test(signup.post_code.value)) {
+				// Invalid post code
+				validation.post_code = false;
+				displayFormError("Champ invalide", "Veuillez renseigner un code postal correct.")
+			} else validation.post_code = true;
+			// Address check-up
+			if (!expr.address.test(signup.address.value)) {
+				// Invalid address
+				validation.address = false;
+				displayFormError("Champ invalide", "Veuillez renseigner une adresse postale correcte.")
+			} else validation.address = true;
 			// Password check-up
-			if (!passwordExpr.test(passwordInput)) {
-				// Invalid password
-				formError.textContent += "Le mot de pass que vous avez rentré est invalide.\n"
-			} else validPassword = true;
-			// Final check-up
-			if (validEmail && validPassword) form.submit()
+			if (!expr.password.test(signup.password.value)) {
+				// Weak password
+				validation.password = false;
+				displayFormError("Mot de passe faible", "Veuillez entrer un mot de passe d'au moins 8 caractères.")
+			} else validation.password = true;
+			// Phone check-up
+			if (!expr.phone.test(signup.phone.value)) {
+				// Invalid phone
+				validation.phone = false;
+				displayFormError("Numéro de téléphone invalide", "Les espaces ne sont pas demandés.")
+			} else validation.phone = true;
+			// Email check-up
+			if (!expr.email.test(signup.email.value)) {
+				// Invalid email
+				validation.email = false;
+				displayFormError("E-mail invalide", "L'e-mail que vous avez rentré est invalide.")
+			} else validation.email = true;
+			// Last name check-up
+			if (!expr.last_name.test(signup.last_name.value)) {
+				// Invalid last name
+				validation.last_name = false;
+				displayFormError("Champ invalide", "Veuillez renseigner une valeur alphabétique dans le nom.")
+			} else validation.last_name = true;
+			// First name check-up
+			if (!expr.first_name.test(signup.first_name.value)) {
+				// Invalid first name
+				validation.first_name = false;
+				displayFormError("Champ invalide", "Veuillez renseigner une valeur alphabétique dans le prénom.")
+			} else validation.first_name = true;
+			// Empty fields check-up
+			if (
+				expr.blank.test(signup.first_name.value) ||
+				expr.blank.test(signup.last_name.value) ||
+				expr.blank.test(signup.email.value) ||
+				expr.blank.test(signup.password.value) ||
+				expr.blank.test(signup.address.value) ||
+				expr.blank.test(signup.post_code.value) ||
+				expr.blank.test(signup.city.value)
+			) {
+				// At least one empty required field
+				displayFormError("Champs non renseignés", "Veuillez renseigner les champs requis du formulaire.")
+			}
 		})
 	</script>
 {% endblock %}
