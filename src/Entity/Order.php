@@ -107,14 +107,14 @@ class Order
         return $this;
     }
 
-    public function getBasketId(): ?Basket
+    public function getBasket(): ?Basket
     {
         return $this->basket;
     }
 
-    public function setBasketId(Basket $basket_id): self
+    public function setBasket(Basket $basket): self
     {
-        $this->basket = $basket_id;
+        $this->basket = $basket;
 
         return $this;
     }

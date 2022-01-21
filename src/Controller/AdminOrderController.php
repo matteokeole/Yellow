@@ -4,10 +4,12 @@ namespace App\Controller;
 
 use App\Entity\Customer;
 use App\Entity\Order;
+use App\Entity\Basket;
 use App\Form\OrderFormType;
 use App\Repository\CustomerRepository;
 use App\Repository\OrderRepository;
 use App\Repository\ProductRepository;
+use App\Repositoy\BasketRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,11 +22,10 @@ class AdminOrderController extends AbstractController
     /**
      * @Route("/admin/gestion-des-commandes", name="manageOrder")
      */
-    public function manageOrder(CustomerRepository $customerRepository, OrderRepository $orderRepository): Response
+    public function manageOrder(OrderRepository $orderRepository): Response
     {
         return $this->render('account/manageOrder/order.html.twig', [
-            'orders' => $orderRepository->findAll(),
-            'customers' => $customerRepository->findAll(),
+            'orders' => $orderRepository->findAllCustomer(), 
         ]);
     }
 

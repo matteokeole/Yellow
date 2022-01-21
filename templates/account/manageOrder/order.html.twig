@@ -7,20 +7,20 @@
 	<main>
 		<h1>Gestion des commandes</h1>
 		<div>
-			{%for order in orders %} {%for customer in customers %}
+			{% for order in orders %}
 
 				<ul>
 					<li>
-						<a href="">{{order.id}}</a> <a href="">{{customer.id}}</a>
-						{{customer.customerFirstName}}
+						<a href="">{{order.id}}</a>
 						~
 						{{order.orderContent}}
 						~
-						{{order.Date}}						
+						{{order.Date}}
+						~	
+						{{order.basket.customer.id}}					
 						</li>
 				</ul>
 			{% endfor %}
-						{% endfor %}
 
 		</div>
 	</main>
