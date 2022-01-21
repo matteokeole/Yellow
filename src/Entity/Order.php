@@ -19,9 +19,9 @@ class Order
     private $id;
 
     /**
-     * @ORM\Column(type="json")
+     * @ORM\Column(type="string")
      */
-    private $order_content = [];
+    private $order_content;
 
     /**
      * @ORM\Column(type="date")
@@ -44,17 +44,22 @@ class Order
      */
     private $basket;
 
+    public function __toString(): string
+	{
+			return $this->id;
+	}
+
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getOrderContent(): ?array
+    public function getOrderContent(): ?string
     {
         return $this->order_content;
     }
 
-    public function setOrderContent(array $order_content): self
+    public function setOrderContent(string $order_content): self
     {
         $this->order_content = $order_content;
 
@@ -71,6 +76,11 @@ class Order
         $this->order_date = $order_date;
 
         return $this;
+    }
+
+    public function getDate(): string
+    {
+        return  $this->order_date->format("d/m/Y");
     }
 
     public function getOrderTotal(): ?string

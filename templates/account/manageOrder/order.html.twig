@@ -1,23 +1,24 @@
 {% extends "base.html.twig" %}
 
-{% block title %}Gestion des produits
+{% block title %}Gestion des commandes
 {% endblock %}
 
 {% block body %}
 	<main>
-		<h1>Gestion des produits</h1>
-		<button type="submit">
-			<a href="{{path('manageProductNew')}}">Ajouter un produit</a>
-		</button>
+		<h1>Gestion des commandes</h1>
 		<div>
-			{%for product in products %}
+			{%for order in orders %}
 				<ul>
 					<li>
-						<a href="{{path('manageProductId',{id:product.id})}}">{{product.ProductName}}</a>
+						<a href="">{{order.id}}</a>
 						~
-						{{product.ProductCategory}}
+						{{order.orderContent}}
 						~
-						{{product.ProductPrice}}</li>
+						{{order.Date}}
+						~
+						{{order.orderTotal}}
+
+						</li>
 				</ul>
 			{% endfor %}
 		</div>
