@@ -50,22 +50,34 @@
 		/**
 		 * @Route("/inscription", name="signup")
 		 */
-		public function signup(Request $request, EntityManagerInterface $entityManager): Response {
+		public function signup(Request $request, CustomerRepository $customerRepository, EntityManagerInterface $entityManager): Response {
 			// Signup
-			$loginError = 0;
+			$signupError = 0;
 			$customer = new Customer();
 			$form = $this->createForm(SignupFormType::class, $customer);
 			$form->handleRequest($request);
 			if ($form->isSubmitted() && $form->isValid()) {
-				// Set customer admin parameter to 0
-				$customer->setCustomerAdmin(0);
-				$entityManager->persist($customer);
-				$entityManager->flush();
-				return $this->redirectToRoute("login");
+				// Check if the e-mail is not already used
+				// Get customers list
+				$customers = $customerRepository->findAll();
+				$email_already_used = false;
+				foreach ($customers as $c) {
+					if ($c->getCustomerEmail() == $form["customer_email"]->getData()) $email_already_used = true;
+				}
+				if ($email_already_used) {
+					// Used e-mail, return error
+					$signupError = 1;
+				} else {
+					// Set customer admin parameter to 0
+					$customer->setCustomerAdmin(0);
+					$entityManager->persist($customer);
+					$entityManager->flush();
+					return $this->redirectToRoute("login");
+				}
 			}
 			return $this->render("connection/signup.html.twig", [
 				"form" => $form->createView(),
-				"loginError" => $loginError
+				"signupError" => $signupError
 			]);
 		}
 	}
