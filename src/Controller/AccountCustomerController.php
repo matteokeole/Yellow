@@ -38,7 +38,7 @@ class AccountCustomerController extends AbstractController
             $entityManager->persist($customer);
             $entityManager->flush();
 
-            return $this->redirectToRoute('accountId');
+            return $this->redirectToRoute('accountId', ['id'=> $customer->getId()]);
         }
 
         return $this->render('account/accountUpdate.html.twig', [

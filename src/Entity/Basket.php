@@ -28,14 +28,14 @@ class Basket
         return $this->id;
     }
 
-    public function getCustomerId(): ?Customer
+    public function getCustomer(): ?Customer
     {
         return $this->customer;
     }
 
-    public function setCustomerId(Customer $customer_id): self
+    public function setCustomer(Customer $customer): self
     {
-        $this->customer = $customer_id;
+        $this->customer = $customer;
 
         return $this;
     }
