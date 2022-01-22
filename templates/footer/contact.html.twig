@@ -12,16 +12,16 @@
 					<span class="city">34080 Montpellier</span>
 				</p>
 			</div>
-			<form id="contact-form" action="{{path('home')}}">
+			<form id="contact-form" method="POST" action="{{path('home')}}">
 				<h1>Nous contacter</h1>
 				<p class="contact-info">
 					Un avis ? Une question ?<br>
 					N'hésitez pas à nous en faire part dans le formulaire ci-dessous !
 				</p>
 				<label for="name">Nom</label>
-				<input type="text" name="name" id="name">
+				<input type="text" name="name" id="name" required>
 				<label for="email">E-mail</label>
-				<input type="email" name="email" id="email">
+				<input type="email" name="email" id="email" required>
 				<label for="message">Message</label>
 				<textarea name="message" id="message"></textarea>
 				<div class="actions">

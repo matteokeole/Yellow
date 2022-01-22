@@ -30,7 +30,11 @@
 				<div class="actions">
 					{% if product.productStock > 0 %}
 						<span class="product-stock valid">En stock</span>
-						<a href="#" class="add-to-basket">Ajouter au panier</a>
+						<!-- Add to basket link -->
+						<a href="#" class="add-to-basket">
+							<ion-icon name="bag-add-outline"></ion-icon>
+							Ajouter au panier
+						</a>
 					{% else %}
 						<span class="product-stock invalid">Rupture de stock</span>
 					{% endif %}

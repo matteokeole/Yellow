@@ -51,13 +51,15 @@
 .invalid {color: var(--error)}
 
 /* Add to basket link */
+
 .add-to-basket {
-	padding: 6px 12px;
-	border-radius: 50px;
+	display: flex;
+	align-items: center;
+	padding: 8px 12px;
+	border-radius: 8px;
 	background-color: #000;
-	color: #fff !important;
+	color: #fff;
 	font-size: 18px;
-	text-decoration: none !important;
 	transition-duration: .2s
 }
 .add-to-basket:hover {opacity: .8}
@@ -66,6 +68,11 @@
 	-webkit-transform: scale(.95);
 	transform: scale(.95);
 	transition-duration: .1s
+}
+
+.add-to-basket ion-icon {
+	margin-right: 6px;
+	font-size: 22px
 }
 
 /* Product author/date */
