@@ -1,0 +1,18 @@
+main {
+	display: flex;
+	flex-direction: column;
+	align-items: center
+}
+
+/* Page title */
+h1 {text-align: center}
+
+/* Form */
+form {margin-bottom: 20px}
+
+/* Connection redirection link */
+.connection-redirection a {transition-duration: .2s}
+.connection-redirection a:hover {
+	opacity: .65;
+	text-decoration: underline
+}

@@ -2,21 +2,24 @@
 
 {% block title %}Connexion • Yellow{% endblock %}
 {% block body %}
-	<link rel="stylesheet" href="/css/form-login.css">
+	<link rel="stylesheet" href="/css/form.css">
+	<link rel="stylesheet" href="/css/connection.css">
 	<script src="/js/formError.js"></script>
-	<main class="login-container">
-		<h1>Connexion</h1>
-		<div class="form-error-alert">
-			<ion-icon name="alert-circle-outline" class="error-icon"></ion-icon>
-			<span class="error-content">
-				<span class="error-title"></span>
-				<span class="error-subtitle"></span>
-			</span>
-		</div>
-		<div class="login-container">
-			<span class="required-fields">Les champs marqués d'un * sont obligatoires.</span>
+	<main>
+		<div class="form-container">
+			<h1>Connexion</h1>
+			<!-- Form error alert -->
+			<div class="form-error-alert">
+				<ion-icon name="alert-circle-outline" class="error-icon"></ion-icon>
+				<span class="error-content">
+					<span class="error-title"></span>
+					<span class="error-subtitle"></span>
+				</span>
+			</div>
+			<!-- Login form -->
 			{{form(form)}}
-			<p>
+			<!-- Connection redirection -->
+			<p class="connection-redirection">
 				Vous n'avez pas encore de compte ?
 				<a href="{{path('signup')}}">Inscrivez-vous</a>
 			</p>

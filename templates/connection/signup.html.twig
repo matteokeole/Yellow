@@ -2,23 +2,28 @@
 
 {% block title %}Inscription • Yellow{% endblock %}
 {% block body %}
-	<link rel="stylesheet" href="/css/form-signup.css">
+	<link rel="stylesheet" href="/css/form.css">
+	<link rel="stylesheet" href="/css/connection.css">
 	<script src="/js/formError.js"></script>
 	<main>
-		<h1>Inscription</h1>
-		<div class="form-error-alert">
-			<ion-icon name="alert-circle-outline" class="error-icon"></ion-icon>
-			<span class="error-content">
-				<span class="error-title"></span>
-				<span class="error-subtitle"></span>
-			</span>
+		<div class="form-container">
+			<h1>Inscription</h1>
+			<!-- Form error alert -->
+			<div class="form-error-alert">
+				<ion-icon name="alert-circle-outline" class="error-icon"></ion-icon>
+				<span class="error-content">
+					<span class="error-title"></span>
+					<span class="error-subtitle"></span>
+				</span>
+			</div>
+			<!-- Signup form -->
+			{{form(form)}}
+			<!-- Connection redirection -->
+			<p class="connection-redirection">
+				Vous avez déjà un compte ?
+				<a href="{{path('login')}}">Connectez-vous</a>
+			</p>
 		</div>
-		<span class="required-fields">Les champs marqués d'un * sont obligatoires.</span>
-		{{form(form)}}
-		<p>
-			Vous avez déjà un compte ?
-			<a href="{{path('login')}}">Connectez-vous</a>
-		</p>
 	</main>
 	<script>
 		{% if signupError == 1 %}

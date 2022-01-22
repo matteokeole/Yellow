@@ -12,11 +12,11 @@
 		public function buildForm(FormBuilderInterface $builder, array $options): void {
 			$builder
 				->add("customer_email", TextType::class, [
-					"label" => "E-mail *",
+					"label" => "E-mail",
 					"required" => false
 				])
 				->add("customer_password", PasswordType::class, [
-					"label" => "Mot de passe *",
+					"label" => "Mot de passe",
 					"required" => false
 				])
 				->add("submit", SubmitType::class, [

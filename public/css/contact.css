@@ -48,69 +48,10 @@ main {
 	font-size: 16px
 }
 
-/* Inputs & textareas */
-
-input, textarea {
-	display: block;
-	width: 100%;
-	margin-bottom: 16px;
-	padding: 8px;
-	outline: none;
-	border: 1px solid rgba(245, 201, 67, .4);
-	border-radius: 4px;
-	background-color: rgba(245, 201, 67, .1);
-	font-size: 17px;
-	transition: border-color .2s
-}
-input:focus, textarea:focus {border-color: var(--primary)}
-
-textarea {
-	min-height: 100px;
-	height: 150px;
-	max-height: 300px;
-	resize: vertical
-}
-
-/* Input labels */
-label {
-	display: block;
-	margin-bottom: 4px;
-	color: var(--primary);
-	font-size: 16px
-}
-
 /* Actions container (with submit button) */
 #contact-form .actions {
 	display: flex;
 	justify-content: end
-}
-
-/* Form submit button */
-
-#contact-form .actions #submit {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: 100%;
-	padding: 8px 0;
-	border: none;
-	border-radius: 8px;
-	background-color: var(--primary);
-	color: var(--secondary);
-	cursor: pointer;
-	font-size: 17px;
-	transition-duration: .2s
-}
-#contact-form .actions #submit:hover {color: #000}
-#contact-form .actions #submit:active {
-	-webkit-transform: scale(.9);
-	transform: scale(.9);
-	transition-duration: .1s
-}
-
-#contact-form .actions #submit ion-icon {
-	margin-left: 8px;
-	font-size: 20px
 }
 
 /* Other contact methods */
