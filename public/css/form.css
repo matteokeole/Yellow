@@ -52,7 +52,7 @@ form #submit:active, form button:active {
 	transition-duration: .1s
 }
 
-form #submit, form button ion-icon {
+form #submit ion-icon, form button ion-icon {
 	margin-left: 8px;
 	font-size: 20px
 }
