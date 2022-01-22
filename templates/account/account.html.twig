@@ -12,52 +12,62 @@
 				Se déconnecter
 			</a>
 		</h1>
-		<!-- User informations -->
-		<section class="info">
-			<h2>Mes informations personnelles</h2>
-			<form>
-				<div class="form-user">
-					Prénom :
-					{{customer.customerFirstName}}
-				</div>
-				<div class="form-user">
-					Nom :
-					{{customer.customerLastName}}
-				</div>
-				<div class="form-user">
-					Email :
-					{{customer.customerEmail}}
-				</div>
-				<div class="form-user">
-					Téléphone :
-					{{customer.customerPhone}}
-				</div>
-				<div class="form-user">
-					<span type="password">Mot de passe :</span>
-					<input type="password" value="{{customer.customerPassword}}">
-				</div>
-				<div class="form-user">
-					Adresse :
-					{{customer.customerAddress}}
-				</div>
-				<div class="form-user">
-					Code postal :
-					{{customer.customerPostCode}}
-				</div>
-				<div class="form-user">
-					Ville :
-					{{customer.customerCity}}
-				</div>
-			</form>
-			<button><a href="{{path('accountIdUpdate', {id: customer.Id})}}">Modifier</a></button>
-		</section>
-		<!-- Commandes -->
-		<section class="order">
-		<h2>Mes commandes</h2>
-			{# <div class="form-user">
-				Numéro :
-				{{orders.id}}
-			</div> #}
-		</section>
+		<div class="account-container">
+			<!-- User informations -->
+			<section class="account-section primary-information">
+				<h2>
+					Mes informations
+					<button class="open-edit-account-form">Modifier</button>
+				</h2>
+				<form method="POST" id="edit-account-form">
+					<div class="editable-input-container">
+						<label for="customer_first_name">Prénom</label>
+						<input type="text" id="customer_first_name" value="{{customer.customerFirstName}}" readonly>
+					</div>
+					<div class="editable-input-container">
+						<label for="customer_last_name">Nom</label>
+						<input type="text" id="customer_last_name" value="{{customer.customerLastName}}" readonly>
+					</div>
+					<div class="editable-input-container">
+						<label for="customer_email">Email</label>
+						<input type="text" id="customer_email" value="{{customer.customerEmail}}" readonly>
+					</div>
+					<div class="editable-input-container">
+						<label for="customer_phone">Téléphone</label>
+						<input type="text" id="customer_phone" value="{{customer.customerPhone}}" readonly>
+					</div>
+					<div class="editable-input-container">
+						<label for="custmer_password">Mot de passe</label>
+						<input type="password" id="custmer_password" value="{{customer.customerPassword}}" readonly>
+					</div>
+					<div class="editable-input-container">
+						<label for="customer_address">Adresse</label>
+						<input type="text" id="customer_address" value="{{customer.customerAddress}}" readonly>
+					</div>
+					<div class="editable-input-container">
+						<label for="customer_post_code">Code postal</label>
+						<input type="text" id="customer_post_code" value="{{customer.customerPostCode}}" readonly>
+					</div>
+					<div class="editable-input-container">
+						<label for="customer_city">Ville</label>
+						<input type="text" id="customer_city" value="{{customer.customerCity}}" readonly>
+					</div>
+					<div class="actions">
+						<button type="button" class="cancel-changes">Annuler</button>
+						<button type="submit" class="apply-changes">Enregistrer les modifications</button>
+					</div>
+					<!-- <button><a href="{{path('accountIdUpdate', {id: customer.id})}}">Modifier</a></button> -->
+				</form>
+			</section>
+			<!-- Commandes -->
+			<section class="account-section order">
+				<h2>Mes commandes</h2>
+				{# <div class="form-user">
+					Numéro :
+					{{orders.id}}
+				</div> #}
+			</section>
+		</div>
 	</main>
+	<script src="/js/edit-account.js"></script>
 {% endblock %}
