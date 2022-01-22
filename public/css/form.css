@@ -56,3 +56,11 @@ form #submit ion-icon, form button ion-icon {
 	margin-left: 8px;
 	font-size: 20px
 }
+
+/* Required fields paragraph */
+.required-fields {
+	margin-bottom: 20px;
+	opacity: .65;
+	font-size: 16px;
+	font-style: italic
+}

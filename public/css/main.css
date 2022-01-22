@@ -4,7 +4,6 @@
 @import url(link.css);
 @import url(titles.css);
 @import url(formErrorAlert.css);
-@import url(required-fields.css);
 
 /* Colors (border colors are a brighter variant of background colors) */
 :root {
