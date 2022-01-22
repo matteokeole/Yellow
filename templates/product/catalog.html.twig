@@ -5,6 +5,21 @@
 	<link rel="stylesheet" href="/css/catalog.css">
 	<main>
 		<h1>Nos mangas</h1>
+
+		<div class="form-group">
+			<form method="get">
+				<label for="category" class="col-form-label">Catégorie</label>
+				<select type="text" class="form-control" id="category_search" name="category_search">
+					{% for category in categories %}
+						<option {{ (category == category_search ? 'selected') }}>{{ category }}</option>
+					{% endfor %}
+				</select>
+			</form>
+		</div>
+		<div class="col-12 text-center">
+			<a href="">Rechercher</a>
+		</div>
+
 		<div class="catalog-container">
 			{% for product in products %}
 				<a href="{{path('product', {id: product.id})}}" class="product" style="background-image: url(/images/cover/{{product.productCover}}.jpg)">

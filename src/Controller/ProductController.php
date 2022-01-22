@@ -1,7 +1,8 @@
 <?php
 	namespace App\Controller;
 	use App\Entity\Product;
-	use App\Repository\ProductRepository;
+use App\Form\SearchFormType;
+use App\Repository\ProductRepository;
 	use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 	use Symfony\Component\HttpFoundation\Request;
 	use Symfony\Component\HttpFoundation\Response;
@@ -11,9 +12,14 @@
 		/**
 		* @Route("/mangas", name="catalog")
 		*/
-		public function catalog(ProductRepository $productRepository): Response {
+		public function catalog(ProductRepository $productRepository, Request $request): Response {
+			$categories = $productRepository->searchCategory();
+			$categorySearch = $request->query->get('category_search', '');
+
 			return $this->render("product/catalog.html.twig", [
-				"products" => $productRepository->findAll()
+				'category_search' => $categorySearch,
+				'categories' => $categories,
+				"products" => $productRepository->findAll(),
 			]);
 		}
 		/**
@@ -22,6 +28,15 @@
 		public function product(Product $product): Response {
 			return $this->render("product/product.html.twig", [
 				"product" => $product
+			]);
+		}
+		/**
+		* @Route("/mangas/recherche/{category}", name="categorySearch")
+		*/
+		public function categorySearch(Product $product): Response
+		{
+			return $this->render('product/categorySearch.html.twig', [
+				'products' => $product
 			]);
 		}
 	}

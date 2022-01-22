@@ -19,6 +19,18 @@ class ProductRepository extends ServiceEntityRepository
         parent::__construct($registry, Product::class);
     }
 
+    public function searchCategory(){
+        $category = [];
+        foreach ($this->createQueryBuilder('c')
+        ->select('c.product_category')
+        ->distinct(true)
+        ->getQuery()
+        ->getResult() as $cols) {
+            $category[] = $cols['product_category'];
+        }
+        return $category;
+    }
+
     // /**
     //  * @return Product[] Returns an array of Product objects
     //  */

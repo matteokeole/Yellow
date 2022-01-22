@@ -1,0 +1,54 @@
+{% extends "base.html.twig" %}
+
+{# {% block title %}{{product.ProductName}} ({{product.ProductCategory}}) • Yellow{% endblock %} #}
+{% block body %}
+	<link rel="stylesheet" href="/css/product.css">
+	<style>
+		{# @media screen and (max-width: 1000px) {
+			.cover::before {background-image: url(/images/cover/{{product.productCover}}.jpg)}
+		} #}
+	</style>
+	<main>
+		<h1>Rechercher</h1>
+		{# <!-- Back to catalog link -->
+		<a href="{{path('catalog')}}" class="back">
+			<ion-icon name="chevron-back-outline"></ion-icon>
+			Retour au catalogue
+		</a>
+		<!-- Product container -->
+		<div class="product-container">
+			<div class="cover">
+				<img src="/images/cover/{{product.productCover}}.jpg" alt="Image de couverture">
+			</div>
+			<div class="informations">
+				<!-- Product title & price -->
+				<h1 class="title">
+					<span class="product-title">{{product.productName}}</span>
+					<span class="product-price">{{product.productPrice}}€</span>
+				</h1>
+				<div class="blank"></div>
+				<!-- Actions -->
+				<div class="actions">
+					{% if product.productStock > 0 %}
+						<span class="product-stock valid">En stock</span>
+						<a href="#" class="add-to-basket">Ajouter au panier</a>
+					{% else %}
+						<span class="product-stock invalid">Rupture de stock</span>
+					{% endif %}
+				</div>
+				<div class="blank"></div>
+				<!-- Product author & date (year) -->
+				<div class="product-author">
+					Ecrit par {{product.productAuthor}} <span class="product-date">• {{product.productDate}}</span>
+				</div>
+				<!-- Product category name -->
+				<div class="product-category">
+					<span>{{product.productCategory}}</span> • 
+					<a href="#">En voir plus de ce type</a>
+				</div>
+				<!-- Product description -->
+				<div class="product-desc">{{product.productDesc}}</div>
+			</div>
+		</div> #}
+	</main>
+{% endblock %}
