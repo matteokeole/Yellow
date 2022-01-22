@@ -150,7 +150,10 @@ label {
 		margin: 0
 	}
 	.map-container {margin: 0}
-	#maps-iframe {width: 100%}
+	#maps-iframe {
+		width: 100%;
+		height: 350px
+	}
 }
 
 @media screen and (max-width: 650px) {
@@ -160,8 +163,10 @@ label {
 		width: 100%;
 		margin: 0 0 12px 0 !important
 	}
+	#maps-iframe {height: 250px}
 }
 
 @media screen and (max-width: 400px) {
+	#maps-iframe {height: 200px}
 	.location {flex-direction: column}
 }
