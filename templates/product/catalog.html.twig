@@ -8,17 +8,14 @@
 
 		<div class="form-group">
 			<form method="get">
-				<label for="category" class="col-form-label">Catégorie</label>
-				<select type="text" class="form-control" id="category_search" name="category_search">
+				<label for="category" class="col-form-label">Filtrer par catégorie</label>
+				<select type="text" class="form-control" id="category_search" name="category_search" onchange="chargeURL()">
+					<option value="">(Aucun)</option>
 					{% for category in categories %}
-						<option {{ (category == category_search ? 'selected') }}>{{ category }}</option>
+						<option {{ (category == category_search ? 'selected') }} value="{{path('categorySearch', {category: products})}}">{{ category }}</option>
 					{% endfor %}
 				</select>
 			</form>
-		</div>
-		<div class="col-12 text-center">
-			<a href="">Rechercher</a>
-		</div>
 
 		<div class="catalog-container">
 			{% for product in products %}
@@ -39,4 +36,11 @@
 			{% endfor %}
 		</div>
 	</main>
+<script>
+function chargeURL()
+{
+window.location.href=document.getElementById('category_search').value;
+}
+</script>
 {% endblock %}
+

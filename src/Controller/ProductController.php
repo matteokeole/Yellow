@@ -31,7 +31,7 @@ use App\Repository\ProductRepository;
 			]);
 		}
 		/**
-		* @Route("/mangas/recherche/{category}", name="categorySearch")
+		* @Route("/mangas/{category}", name="categorySearch")
 		*/
 		public function categorySearch(Product $product): Response
 		{

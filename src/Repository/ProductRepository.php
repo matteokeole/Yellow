@@ -20,15 +20,16 @@ class ProductRepository extends ServiceEntityRepository
     }
 
     public function searchCategory(){
-        $category = [];
-        foreach ($this->createQueryBuilder('c')
+        $query = $this->createQueryBuilder('c')
         ->select('c.product_category')
         ->distinct(true)
-        ->getQuery()
-        ->getResult() as $cols) {
-            $category[] = $cols['product_category'];
+        ->getQuery();
+
+        $categories = [];
+        foreach ($query->getResult() as $cols) {
+            $categories[] = $cols['product_category'];
         }
-        return $category;
+        return $categories;
     }
 
     // /**
