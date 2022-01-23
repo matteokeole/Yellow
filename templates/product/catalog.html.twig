@@ -12,7 +12,7 @@
 				<select type="text" class="form-control" id="category_search" name="category_search" onchange="chargeURL()">
 					<option value="">(Aucun)</option>
 					{% for category in categories %}
-						<option {{ (category == category_search ? 'selected') }} value="{{path('categorySearch', {category: products})}}">{{ category }}</option>
+						<option {{ (category == category_search ? 'selected') }} value="">{{ category }}</option>
 					{% endfor %}
 				</select>
 			</form>

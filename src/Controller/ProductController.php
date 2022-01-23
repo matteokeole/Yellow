@@ -33,11 +33,9 @@ use App\Repository\ProductRepository;
 		/**
 		* @Route("/mangas/{category}", name="categorySearch")
 		*/
-		public function categorySearch(Product $product): Response
+		public function categorySearch(ProductRepository $productRepository): Response
 		{
-			return $this->render('product/categorySearch.html.twig', [
-				'products' => $product
-			]);
+			return $this->render('product/categorySearch.html.twig');
 		}
 	}
 ?>
