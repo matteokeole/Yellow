@@ -5,6 +5,7 @@
 {% block body %}
 	<style>
 		html {box-sizing: border-box}
+		body{background-color: #fff;}
 		.banner {
 			display: flex;
 			justify-content: center;
@@ -21,8 +22,7 @@
 			color: #fff;
 			transition-duration: 0.5s
 		}
-
-				.searchbar {
+		.searchbar {
 			display: flex;
 			justify-content: center;
 			align-items: center;
@@ -63,13 +63,13 @@
 		}
 		.search-input:not(:placeholder-shown) + .btn-search {display: block}
 
-				.bs-cadre {
+		.bs-cadre {
 			padding: 5px;
 			background-color: var(--primary)
 		}
 		.best-seller {
 			margin: 5px;
-			background-color: #fff
+			background-color: #fff;
 		}
 		.flex {
 			display: flex;
@@ -87,7 +87,6 @@
 			padding: 20px 0 20px 0;
 			color: gray;
 		}
-
 		.hr::before, .hr::after {
 			border-top: 0.1em solid;
 			color: gray;
@@ -95,34 +94,44 @@
 			flex: 1;
 			margin: 0 3em;
 		}
-
-				.soldes {
-			margin-top: 30px;
+		.soldes {
+			margin-top: 40px;
+			margin-bottom: 40px;
+			position: relative;
 		}
-
 		.texte-soldes {
 			border: 3px solid var(--primary);
+			padding: 150px 70px 150px 50px;
+			width: 300px;
+			z-index: 1;
+			margin-left: 0;
 		}
-
+		.texte-soldes h1 {
+			margin-bottom: 40px;
+		}
+		.texte-soldes p {
+			font-size: 20px;
+		}
 		.produits-soldes {
 			background-color: gray;
-			padding: 20px 20px 0 20px;
+			padding: 70px 150px 70px 150px;
+			position: absolute;
+			right: 0;
 		}
-
 		.cover-soldes {width: 110px}
 
-		.ml-30 {margin-left: 30px;}		
+		.ml-30 {margin-left: 200px}		
 
 	</style>
 	<div class="banner">
-		<a href="{{path('catalog')}}">
+		<a href="/produit">
 			<span class="button-accueil">Consulter notre catalogue de manga</span>
 		</a>
 	</div>
 	<div class="searchbar">
 		<form class="search-form">
 			<input class="search-input" id="search" type="search" placeholder="Rechercher un produit">
-			<button type="submit" class="btn-search"><a href="{{path('search')}}">Go</a></button>
+			<button type="submit" class="btn-search">Go</button>
 		</form>
 	</div>
 	<div class="bs-cadre">
@@ -130,21 +139,21 @@
 			<h3 class="hr">NOS BEST-SELLERS</h3>
 			<div class="bs-produit flex">
 				<div class="text-center">
-					<a href="{{path('product', {id: 1})}}">
+					<a href="/produit/1">
 						<img src="images/cover/onepiece.jpg" class="cover">
 					</a>
 					<p>One Piece</p>
 					<p>6.90€</p>
 				</div>
 				<div class="text-center">
-					<a href="{{path('product', {id: 2})}}">
+					<a href="/produit/2">
 						<img src="images/cover/dragonball.jpg" class="cover">
 					</a>
 					<p>Dragon Ball</p>
 					<p>6.90€</p>
 				</div>
 				<div class="text-center">
-					<a href="{{path('product', {id: 3})}}">
+					<a href="/produit/3">
 						<img src="images/cover/naruto.jpg" class="cover">
 					</a>
 					<p>Naruto</p>
@@ -155,20 +164,20 @@
 	</div>
 	<div class="flex soldes">
 		<div class="texte-soldes">
-			<h3>Nos produits soldés</h3>
+			<h1>Nos produits soldés</h1>
 			<p>Profitez de nos remises exeptionnelles sur des centaines d'articles</p>
 		</div>
 		<div class="produits-soldes">
 			<div class="flex">
 				<div class="text-center">
-					<a href="{{path('product', {id: 1})}}">
+					<a href="/produit/1">
 						<img src="images/cover/onepiece.jpg" class="cover-soldes">
 					</a>
 					<p>One Piece</p>
 					<p>6.90€</p>
 				</div>
 				<div class="text-center ml-30">
-					<a href="{{path('product', {id: 5})}}">
+					<a href="/produit/5">
 						<img src="images/cover/berserk.jpg" class="cover-soldes">
 					</a>
 					<p>Berserk</p>
@@ -177,14 +186,14 @@
 			</div>
 			<div class="flex">
 				<div class="text-center">
-					<a href="{{path('product', {id: 4})}}">
+					<a href="/produit/4">
 						<img src="images/cover/fullmetalalchemist.jpg" class="cover-soldes">
 					</a>
 					<p>Fullmetal Alchemist</p>
 					<p>6.60€</p>
 				</div>
 				<div class="text-center ml-30">
-					<a href="{{path('product', {id: 15})}}">
+					<a href="/produit/15">
 						<img src="images/cover/pokemon.jpg" class="cover-soldes">
 					</a>
 					<p>Pokemon</p>
