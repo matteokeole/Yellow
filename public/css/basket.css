@@ -1,0 +1,172 @@
+/* Basket container */
+.basket-container {
+	display: flex;
+	justify-content: center
+}
+
+/* Basket content container */
+
+.basket {
+	width: 700px;
+	margin: 0 1vw 30px 0
+}
+
+.basket .basket-count {
+	opacity: .65;
+	font-size: 16px;
+	font-style: italic
+}
+
+/* Basket content list & items */
+
+.basket-content {
+	margin-top: 8px;
+	list-style-type: none
+}
+
+.basket-content li {
+	display: flex;
+	padding: 8px 0;
+	border-top: 1px solid #DDD;
+	font-size: 18px
+}
+
+/* Product information section */
+
+.basket-content li .product-info-container {
+	display: flex;
+	flex-grow: 1
+}
+
+.product-info-container .product-cover {
+	display: block;
+	height: 100px;
+	margin-right: 8px;
+	border-radius: 4px
+}
+
+.product-info-container .product-info {
+	display: flex;
+	flex-direction: column
+}
+
+.product-info-container .product-title {font-size: 22px}
+
+.product-info-container .product-subtitle {
+	opacity: .65;
+	font-size: 16px
+}
+
+.product-info-container .product-price {
+	margin-top: 8px;
+	opacity: .9;
+	font-size: 20px
+}
+
+/* Product actions section */
+
+.basket-content li .product-actions {
+	display: flex;
+	align-items: center
+}
+
+.product-actions .product-quantity {
+	margin-right: 24px;
+	color: var(--info)
+}
+
+.product-actions .product-quantity input {
+	width: 40px;
+	padding: 4px 0 4px 4px;
+	outline: none;
+	border: 1px solid var(--info);
+	border-radius: 4px;
+	color: var(--info);
+	font-size: 18px
+}
+
+.product-actions .remove-from-basket {
+	display: flex;
+	align-items: center;
+	padding: 4px 8px;
+	border: none;
+	border-radius: 8px;
+	background-color: transparent;
+	color: var(--error);
+	cursor: pointer;
+	font-size: 18px;
+	transition-duration: .2s
+}
+.product-actions .remove-from-basket:hover {background-color: var(--error-light)}
+.product-actions .remove-from-basket:active {
+	-webkit-transform: scale(.9);
+	transform: scale(.9);
+	transition-duration: .1s
+}
+
+.product-actions .remove-from-basket ion-icon {margin-right: 4px}
+
+/* Recap container */
+.recap {
+	width: 300px;
+	height: fit-content;
+	margin-left: 1vw;
+	padding: 4px 8px;
+	border-radius: 8px;
+	background-color: rgba(245, 201, 67, .2)
+}
+
+/* Total price */
+.recap .total-price {
+	padding: 8px 0;
+	/*background-color: orange;*/
+	text-align: center;
+	text-decoration: underline;
+	font-size: 30px
+}
+
+/* Validate basket button */
+
+#validate-basket {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 12px 0 4px 0;
+	padding: 8px 0;
+	border: none;
+	border-radius: 8px;
+	background-color: var(--primary);
+	color: var(--secondary);
+	font-size: 17px;
+	transition-duration: .2s
+}
+#validate-basket:hover {color: #000}
+#validate-basket:active {
+	-webkit-transform: scale(.9);
+	transform: scale(.9);
+	transition-duration: .1s
+}
+
+#validate-basket ion-icon {
+	margin-right: 8px;
+	font-size: 22px
+}
+
+/* Media queries */
+
+@media screen and (max-width: 768px) {
+	.basket-container {flex-direction: column}
+	.basket {width: 100%}
+	.recap {width: 100%}
+}
+
+@media screen and (max-width: 480px) {
+	.product-actions {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-end !important;
+		padding-left: 8px;
+		border-left: 1px solid #DDD
+	}
+	.product-quantity {margin: 0 0 8px 0 !important}
+}

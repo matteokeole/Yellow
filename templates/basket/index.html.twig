@@ -3,13 +3,93 @@
 {% block title %}Panier • Yellow{% endblock %}
 
 {% block body %}
+	<link rel="stylesheet" href="/css/basket.css">
 	<main>
 		<h1>Panier</h1>
 		<div class="basket-container">
 			<div class="basket">
-				Basket
+				<h2>Contenu du panier</h2>
+				<span class="basket-count">3 items</span>
+				<ul class="basket-content">
+					<li>
+						<div class="product-info-container">
+							<img src="/images/cover/onepiece.jpg" class="product-cover">
+							<div class="product-info">
+								<span class="product-title">One Piece</span>
+								<span class="product-subtitle">
+									<span class="product-author">Eiichirō Oda</span> • 
+									<span class="product-date">1997</span>
+								</span>
+								<span class="product-price">6.90€</span>
+							</div>
+						</div>
+						<div class="product-actions">
+							<label class="product-quantity">
+								Quantité
+								<input type="number" value="1">
+							</label>
+							<button class="remove-from-basket">
+								<ion-icon name="trash-outline"></ion-icon>
+								Retirer
+							</button>
+						</div>
+					</li>
+					<li>
+						<div class="product-info-container">
+							<img src="/images/cover/dragonball.jpg" class="product-cover">
+							<div class="product-info">
+								<span class="product-title">Dragon Ball</span>
+								<span class="product-subtitle">
+									<span class="product-author">Eiichirō Oda</span> • 
+									<span class="product-date">1997</span>
+								</span>
+								<span class="product-price">6.90€</span>
+							</div>
+						</div>
+						<div class="product-actions">
+							<label class="product-quantity">
+								Quantité
+								<input type="number" value="1">
+							</label>
+							<button class="remove-from-basket">
+								<ion-icon name="trash-outline"></ion-icon>
+								Retirer
+							</button>
+						</div>
+					</li>
+					<li>
+						<div class="product-info-container">
+							<img src="/images/cover/naruto.jpg" class="product-cover">
+							<div class="product-info">
+								<span class="product-title">Naruto</span>
+								<span class="product-subtitle">
+									<span class="product-author">Eiichirō Oda</span> • 
+									<span class="product-date">1997</span>
+								</span>
+								<span class="product-price">6.90€</span>
+							</div>
+						</div>
+						<div class="product-actions">
+							<label class="product-quantity">
+								Quantité
+								<input type="number" value="1">
+							</label>
+							<button class="remove-from-basket">
+								<ion-icon name="trash-outline"></ion-icon>
+								Retirer
+							</button>
+						</div>
+					</li>
+				</ul>
 			</div>
-			<div class="validate-basket">Passer commande</div>
+			<div class="recap">
+				<h2>Prix total (TTC) :</h2>
+				<div class="total-price">20.70€</div>
+				<a href="#" id="validate-basket">
+					<ion-icon name="bag-check-outline"></ion-icon>
+					Passer commande
+				</a>
+			</div>
 		</div>
 	</main>
 {% endblock %}
