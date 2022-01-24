@@ -97,18 +97,17 @@
 			margin: 0 3em;
 		}
 		.soldes {
-			margin-top: 40px;
-			margin-bottom: 40px;
+			margin-top: 90px;
+			margin-bottom: 90px;
 			position: relative;
 			display: flex;
 			align-items: center;
 		}
 		.texte-soldes {
 			border: 3px solid var(--primary);
-			padding: 150px 70px 150px 70px;
-			width: 550px;
-			z-index: 1;
-			margin-left: 300px;
+			padding: 150px 7vw 150px 4vw;
+			width: 35vw;
+			margin-left: 20vw;
 		}
 		.texte-soldes h1 {
 			margin-bottom: 40px;
@@ -118,28 +117,43 @@
 		}
 		.produits-soldes {
 			background-color: gray;
-			padding: 50px 150px 50px 150px;
+			width: 50vw;
+			padding: 50px 10vw 50px 10vw;
 			position: absolute;
 			right: 0;
+			z-index: -1;
 		}
 		.cover-soldes {width: 110px}
 
-		.ml-30 {margin-left: 200px}
+		.margin {margin-left: 5vw}
 
-		@media (max-width: 700px) {
+		@media (max-width: 800px) {
 			.search-form {
 				width: 85%;
 			}
-
 			.hr::before, .hr::after {
 				border-top:0;
 				margin:0 0;
 			}
-
 			.bs-produit {
 				display: block;
 			}
-
+			.soldes {
+				display: block;
+				position: static;
+			}
+			.produits-soldes {
+				position: static;
+				margin: auto;
+				margin-top: 50px;
+				width: 80vw;
+			}
+			.texte-soldes {
+				margin: auto;
+				width: 80vw;
+				padding-top: 80px;
+				padding-bottom: 80px;
+			}
 		}
 
 
@@ -197,7 +211,7 @@
 					<p>One Piece</p>
 					<p>6.90€</p>
 				</div>
-				<div class="text-center ml-30">
+				<div class="text-center margin">
 					<a href="/manga/5">
 						<img src="images/cover/berserk.jpg" class="cover-soldes">
 					</a>
@@ -213,7 +227,7 @@
 					<p>Fullmetal Alchemist</p>
 					<p>6.60€</p>
 				</div>
-				<div class="text-center ml-30">
+				<div class="text-center margin">
 					<a href="/manga/15">
 						<img src="images/cover/pokemon.jpg" class="cover-soldes">
 					</a>
