@@ -17,7 +17,7 @@
 			if ($session->get("customer")) {
 				return $this->render("account/index.html.twig", [
 					"account" => $session->get("customer"),
-					"orders" => $orderRepository->findAllCustomer()
+					"orders" => $orderRepository->findAll()
 				]);
 			} else return $this->redirectToRoute("login");
 		}

@@ -12,7 +12,7 @@
 		/**
 		 * @Route("/compte/{id}/modification", name="accountIdUpdate")
 		 */
-		public function updateCustomerId(Customer $customer, Request $request, EntityManagerInterface $entityManager): Response {
+		public function updateCustomerId(Request $request, Customer $customer, EntityManagerInterface $entityManager): Response {
 			// Edit personal account informations
 			$form = $this->createForm(CustomerFormType::class, $customer);
 			$form->handleRequest($request);

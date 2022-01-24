@@ -5,7 +5,7 @@
 	<main>
 		<link rel="stylesheet" href="/css/admin.css">
 		<h1>Gestion des commandes</h1>
-				<!-- Actions -->
+		<!-- Actions -->
 		<div class="actions">
 			<!-- Back to catalog link -->
 			<a href="{{path('admin')}}" class="back">
@@ -17,20 +17,24 @@
 		<table>
 			<tr>
 				<th>Ref de la commande</th>
+				<th>ID du client</th>
 				<th>Nom du client</th>
-				<th>Ref des produits</th>
+				<th>Ref(s) du (des) produit(s)</th>
 				<th>Date de la commande</th>
 				<th>Montant total</th>
-				<th>Action</th>
+				<th>Actions</th>
 			</tr>
 			{% for order in orders %}
 				<tr>
 					<td>{{order.id}}</td>
+					<td>{{order.basket.customer.id}}</td>
 					<td>{{order.basket.customer.customerFirstName ~ ' ' ~ order.basket.customer.customerLastName}}</td>
 					<td>{{order.orderContent}}</td>
-					<td>{{order.Date}}</td>
+					<td>{{order.date}}</td>
 					<td>{{order.orderTotal}}</td>
-					<td><a href="#">Supprimer</a></td>
+					<td class="actions">
+						<a href="#" class="delete">Supprimer</a>
+					</td>
 				</tr>
 			{% endfor %}
 		</table>
