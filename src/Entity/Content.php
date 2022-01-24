@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Content
 {
     /**
-     * @ORM\Id
+    * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
@@ -25,19 +25,13 @@ class Content
     private $content_product_quantity;
 
     /**
-     * @ORM\OneToOne(targetEntity=Basket::class)
+     * @ORM\ManyToOne(targetEntity=Basket::class, inversedBy="contents")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $basket;
 
-    /**
-     * @ORM\OneToOne(targetEntity=Product::class)
-     */
-    private $product;
-
     public function __construct()
     {
-        $this->basket = new ArrayCollection();
-        $this->product = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -57,50 +51,14 @@ class Content
         return $this;
     }
 
-    /**
-     * @return Collection|Basket[]
-     */
-    public function getBasketId(): Collection
+    public function getBasket(): ?Basket
     {
         return $this->basket;
     }
 
-    public function addBasketId(Basket $basketId): self
+    public function setBasket(?Basket $basket): self
     {
-        if (!$this->basket->contains($basketId)) {
-            $this->basket[] = $basketId;
-        }
-
-        return $this;
-    }
-
-    public function removeBasketId(Basket $basketId): self
-    {
-        $this->basket->removeElement($basketId);
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Product[]
-     */
-    public function getProductId(): Collection
-    {
-        return $this->product;
-    }
-
-    public function addProductId(Product $productId): self
-    {
-        if (!$this->product->contains($productId)) {
-            $this->product[] = $productId;
-        }
-
-        return $this;
-    }
-
-    public function removeProductId(Product $productId): self
-    {
-        $this->product->removeElement($productId);
+        $this->basket = $basket;
 
         return $this;
     }
