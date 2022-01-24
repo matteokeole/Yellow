@@ -28,44 +28,43 @@
 					Mes informations
 					<button class="open-edit-account-form">Modifier</button>
 				</h2>
-				<form method="POST" id="edit-account-form">
+				<form method="POST" action="{{path('edit-account')}}" id="edit-account-form">
 					<div class="editable-input-container">
 						<label for="account_first_name">Prénom</label>
-						<input type="text" id="account_first_name" value="{{account.first_name}}" readonly>
+						<input type="text" name="account_first_name" id="account_first_name" value="{{account.first_name}}" readonly>
 					</div>
 					<div class="editable-input-container">
 						<label for="account_last_name">Nom</label>
-						<input type="text" id="account_last_name" value="{{account.last_name}}" readonly>
+						<input type="text" name="account_last_name" id="account_last_name" value="{{account.last_name}}" readonly>
 					</div>
 					<div class="editable-input-container">
 						<label for="account_email">Email</label>
-						<input type="text" id="account_email" value="{{account.email}}" readonly>
+						<input type="text" name="account_email" id="account_email" value="{{account.email}}" readonly>
 					</div>
 					<div class="editable-input-container">
 						<label for="account_phone">Téléphone</label>
-						<input type="text" id="account_phone" value="{{account.phone}}" readonly>
+						<input type="text" name="account_phone" id="account_phone" value="{{account.phone}}" readonly>
 					</div>
 					<div class="editable-input-container">
 						<label for="account_password">Mot de passe</label>
-						<input type="password" id="account_password" value="" readonly>
+						<input type="password" name="account_password" id="account_password" value="" readonly>
 					</div>
 					<div class="editable-input-container">
 						<label for="account_address">Adresse</label>
-						<input type="text" id="account_address" value="{{account.address}}" readonly>
+						<input type="text" name="account_address" id="account_address" value="{{account.address}}" readonly>
 					</div>
 					<div class="editable-input-container">
 						<label for="account_post_code">Code postal</label>
-						<input type="text" id="account_post_code" value="{{account.post_code}}" readonly>
+						<input type="text" name="account_post_code" id="account_post_code" value="{{account.post_code}}" readonly>
 					</div>
 					<div class="editable-input-container">
 						<label for="account_city">Ville</label>
-						<input type="text" id="account_city" value="{{account.city}}" readonly>
+						<input type="text" name="account_city" id="account_city" value="{{account.city}}" readonly>
 					</div>
 					<div class="actions">
 						<button type="button" class="cancel-changes">Annuler</button>
 						<button type="submit" class="apply-changes">Enregistrer les modifications</button>
 					</div>
-					<!-- <button><a href="{{path('edit-account')}}">Modifier</a></button> -->
 				</form>
 			</section>
 			<!-- Commandes -->
@@ -75,6 +74,9 @@
 					Numéro :
 					{{orders.id}}
 				</div> #}
+			</section>
+			<section class="account-section order">
+				
 			</section>
 		</div>
 	</main>
