@@ -1,27 +1,39 @@
 {% extends "base.html.twig" %}
 
-{% block title %}Gestion des commandes
-{% endblock %}
-
+{% block title %}Gestion des commandes • Yellow{% endblock %}
 {% block body %}
 	<main>
+		<link rel="stylesheet" href="/css/account.css">
 		<h1>Gestion des commandes</h1>
-		<div>
-			{% for order in orders %}
-
-				<ul>
-					<li>
-						<a href="">{{order.id}}</a>
-						~
-						{{order.orderContent}}
-						~
-						{{order.Date}}
-						~	
-						{{order.basket.customer.id}}			
-						</li>
-				</ul>
-			{% endfor %}
-
+				<!-- Actions -->
+		<div class="actions">
+			<!-- Back to catalog link -->
+			<a href="{{path('admin')}}" class="back">
+				<ion-icon name="chevron-back-outline"></ion-icon>
+				Retour
+			</a>
 		</div>
+		<!-- Orders table -->
+		<table>
+			<tr>
+				<th>Ref de la commande</th>
+				<th>Nom du client</th>
+				<th>Ref des produits</th>
+				<th>Date de la commande</th>
+				<th>Montant total</th>
+				<th>Action</th>
+			</tr>
+
+			{% for order in orders %}
+			<tr>
+						<td>{{order.id}}</td>
+						<td>{{order.basket.customer.customerFirstName ~ ' ' ~ order.basket.customer.customerLastName}}</td>
+						<td>{{order.orderContent}}</td>
+						<td>{{order.Date}}</td>
+						<td>{{order.orderTotal}}</td>
+						<td><a href="#">Supprimer</a></td>
+			</tr>	
+			{% endfor %}
+		</table>
 	</main>
 {% endblock %}
