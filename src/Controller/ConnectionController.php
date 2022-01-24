@@ -1,8 +1,10 @@
 <?php
 	namespace App\Controller;
+	use App\Entity\Basket;
 	use App\Entity\Customer;
 	use App\Form\LoginFormType;
 	use App\Form\SignupFormType;
+	use App\Repository\BasketRepository;
 	use App\Repository\CustomerRepository;
 	use App\Session\Session;
 	use Doctrine\ORM\EntityManagerInterface;
@@ -74,9 +76,15 @@
 					// Used e-mail, return error
 					$signupError = 1;
 				} else {
+					// Create new user account
 					// Set customer admin parameter to 0
 					$customer->setCustomerAdmin(0);
 					$entityManager->persist($customer);
+					// Create new basket for this user
+					$basket = new Basket();
+					$basket->setCustomer($customer);
+					$entityManager->persist($basket);
+					// Commit changes
 					$entityManager->flush();
 					return $this->redirectToRoute("login");
 				}
