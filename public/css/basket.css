@@ -112,7 +112,11 @@
 	height: fit-content;
 	margin-left: 1vw;
 	padding: 4px 8px;
+	top: 76px;
+	position: -webkit-sticky;
+	position: sticky;
 	border-radius: 8px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, .1);
 	background-color: rgba(245, 201, 67, .2)
 }
 
