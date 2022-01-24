@@ -26,7 +26,7 @@
 		 */
 		public function admin(Session $session): Response {
 			// Goto admin page if the user is admin
-			if ($session->get("customer")["admin"] == 1) {
+			if (is_array($session->get("customer")) && $session->get("customer")["admin"] == 1) {
 				return $this->render("account/admin.html.twig");
 			} else return $this->redirectToRoute("account");
 		}
