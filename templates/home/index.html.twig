@@ -76,11 +76,11 @@
 		.flex {
 			display: flex;
 			justify-content: space-evenly;
-			align-items: center
+			align-items: center;
 		}
 		.cover {width: 150px;}
 
-		.text-center {text-align: center;}
+		.text-center {text-align: center}
 
 		.hr {
 			align-items: center;
@@ -100,6 +100,10 @@
 			margin-top: 40px;
 			margin-bottom: 40px;
 			position: relative;
+			display: flex;
+			align-items: center;
+			padding-left: 500px;
+			margin-right: 80px;
 		}
 		.texte-soldes {
 			border: 3px solid var(--primary);
@@ -123,6 +127,23 @@
 		.cover-soldes {width: 110px}
 
 		.ml-30 {margin-left: 200px}
+
+		@media (max-width: 700px) {
+			.search-form {
+				width: 85%;
+			}
+
+			.hr::before, .hr::after {
+				border-top:0;
+				margin:0 0;
+			}
+
+			.bs-produit {
+				display: block;
+			}
+
+		}
+
 
 	</style>
 	<div class="banner">
@@ -164,7 +185,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="flex soldes">
+	<div class="soldes">
 		<div class="texte-soldes">
 			<h1>Nos produits soldés</h1>
 			<p>Profitez de nos remises exeptionnelles sur des centaines d'articles</p>
