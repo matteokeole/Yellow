@@ -2,7 +2,7 @@
 
 {% block title %}Gestion des clients • Yellow{% endblock %}
 {% block body %}
-	<link rel="stylesheet" href="/css/account.css">
+	<link rel="stylesheet" href="/css/admin.css">
 	<main>
 		<h1>Gestion des clients</h1>
 		<!-- Actions -->
@@ -43,9 +43,15 @@
 					<td>{{customer.customerAddress}}</td>
 					<td>{{customer.customerPostCode}}</td>
 					<td>{{customer.customerCity}}</td>
-					<td>
-						<a href="{{path('manageCustomerId', {id: customer.id})}}">Modifier</a>
-						<a href="#">Supprimer</a>
+					<td class="actions">
+						<a href="{{path('manageCustomerId', {id: customer.id})}}" class="edit">
+							<ion-icon name="pencil-outline"></ion-icon>
+							Modifier
+						</a>
+						<a href="#" class="delete">
+							<ion-icon name="trash-outline"></ion-icon>
+							Supprimer
+						</a>
 					</td>
 				</tr>
 			{% endfor %}

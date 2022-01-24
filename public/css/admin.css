@@ -1,0 +1,67 @@
+/* Settings list */
+
+.settings-list {
+	padding: 0;
+	list-style-type: none;
+}
+
+.settings-list li {
+	margin-bottom: 4px;
+	font-size: 18px
+}
+
+.settings-list li a:hover {
+	opacity: .65;
+	text-decoration: underline
+}
+
+/* Actions */
+div.actions {
+	display: flex;
+	margin-bottom: 20px;
+	justify-content: space-between
+}
+
+/* Table content */
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+	background-color: #EEE
+}
+
+table tr:hover {background-color: #CCC}
+
+table th {
+	padding: 0 8px;
+	border: 1px solid #BBB;
+	font-style: italic
+}
+
+table td {
+	padding: 4px 8px;
+	border: 1px solid #BBB;
+	text-align: center
+}
+table tr:hover td {border-color: #AAA}
+table td.actions {
+	display: flex;
+	justify-content: space-between
+}
+
+table td.actions a {
+	display: flex;
+	align-items: center;
+	transition-duration: .2s
+}
+table td.actions a:hover {
+	opacity: .65;
+	text-decoration: underline
+}
+table td.actions a.edit {color: var(--info)}
+table td.actions a.delete {color: var(--error)}
+
+table td.actions a ion-icon {
+	margin-right: 4px;
+	font-size: 20px
+}
