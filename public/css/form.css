@@ -20,6 +20,18 @@ input:focus, textarea:focus {border-color: var(--primary)}
     border-radius: 10px;
 }
 
+.form-header{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.form-logo{
+	width: 80px;
+	border-radius:10px;
+}
+
 textarea {
 	min-height: 100px;
 	height: 150px;
