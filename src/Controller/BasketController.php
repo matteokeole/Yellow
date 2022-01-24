@@ -30,12 +30,13 @@
 				}
 				// Render the basket page with the current user basket
 				return $this->render("basket/index.html.twig", [
-					"content" => $products
+					"content" => $content,
+					"items" => $products
 				]);
 			} else return $this->redirectToRoute("login");
 		}
 		/**
-		* @Route("/ajouteraupanier/{id}", name="addtobasket")
+		* @Route("/ajouteraupanier/{id}", name="add-to-basket")
 		*/
 		public function addToBasket(
 			Request $request,
@@ -61,6 +62,20 @@
 				// Redirect to the customer basket
 				return $this->redirectToRoute("basket");
 			} else return $this->redirectToRoute("login");
+		}
+		/**
+		* @Route("/supprimerdupanier/{id}", name="remove-from-basket")
+		*/
+		public function removeFromBasket(Request $request, EntityManagerInterface $entityManager, ContentRepository $contentRepository): Response {
+			// Remove product from customer basket
+			$content = $contentRepository->findBy(array("id" => $request->get("id")));
+			foreach ($content as $item) {
+				$entityManager->remove($item);
+			}
+			// Commit changes
+			$entityManager->flush();
+			// Redirect to the customer basket
+			return $this->redirectToRoute("basket");
 		}
 	}
 ?>
