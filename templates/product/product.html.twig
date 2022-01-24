@@ -31,7 +31,7 @@
 					{% if product.productStock > 0 %}
 						<span class="product-stock valid">En stock</span>
 						<!-- Add to basket link -->
-						<a href="#" class="add-to-basket">
+						<a href="{{path('addtobasket', {id: product.id})}}" class="add-to-basket">
 							<ion-icon name="bag-add-outline"></ion-icon>
 							Ajouter au panier
 						</a>
