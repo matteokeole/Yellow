@@ -31,9 +31,10 @@
 					) {
 						// User successfully connected
 						$loginError = 0;
-						// Create session
+						// Create user session
 						$session->set("customer", [
 							"id" => $customer->getId(),
+							"admin" => $customer->getCustomerAdmin(),
 							"first_name" => $customer->getCustomerFirstName(),
 							"last_name" => $customer->getCustomerLastName(),
 							"email" => $customer->getCustomerEmail(),

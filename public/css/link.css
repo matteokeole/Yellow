@@ -44,6 +44,31 @@ a {
 	font-size: 22px
 }
 
+/* Admin page link */
+
+.goto-admin {
+	display: inline-flex;
+	align-items: center;
+	padding: 8px 12px;
+	border-radius: 8px;
+	color: var(--warning);
+	font-size: 18px
+}
+.goto-admin:hover {
+	background-color: var(--warning-light);
+	color: rgba(0, 0, 0, .65)
+}
+.goto-admin:active {
+	-webkit-transform: scale(.9);
+	transform: scale(.9);
+	transition-duration: .1s
+}
+
+.goto-admin ion-icon {
+	margin-right: 4px;
+	font-size: 22px
+}
+
 /* Add row link */
 
 .add-row {

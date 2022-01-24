@@ -6,11 +6,20 @@
 	<main>
 		<h1>
 			{{account.first_name}} {{account.last_name}}
-			<!-- Disconnection link -->
-			<a href="{{path('disconnect')}}" class="disconnect">
-				<ion-icon name="exit-outline"></ion-icon>
-				Se déconnecter
-			</a>
+			<div class="actions">
+				{% if account.id == 1 %}
+					<!-- Admin page link -->
+					<a href="{{path('admin')}}" target="_blank" class="goto-admin">
+						<ion-icon name="build-outline"></ion-icon>
+						Administration
+					</a>
+				{% endif %}
+				<!-- Disconnection link -->
+				<a href="{{path('disconnect')}}" class="disconnect">
+					<ion-icon name="exit-outline"></ion-icon>
+					Se déconnecter
+				</a>
+			</div>
 		</h1>
 		<div class="account-container">
 			<!-- User informations -->
