@@ -16,6 +16,7 @@
 		 * @Route("/compte", name="account")
 		 */
 		public function account(OrderRepository $orderRepository, Session $session): Response {
+			// Goto user account page if there is an active session
 			if ($session->get("customer")) {
 				return $this->render("account/index.html.twig", [
 					"account" => $session->get("customer"),
