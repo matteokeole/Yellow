@@ -1,9 +1,7 @@
 <?php
 	namespace App\Controller;
 	use App\Entity\Product;
-	use App\Form\SearchFormType;
 	use App\Repository\ProductRepository;
-	use App\Session\Session;
 	use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 	use Symfony\Component\HttpFoundation\Request;
 	use Symfony\Component\HttpFoundation\Response;
@@ -36,16 +34,6 @@
 			return $this->render("product/product.html.twig", [
 				"product" => $product
 			]);
-		}
-		/**
-		* @Route("/ajouteraupanier/{id}", name="addtobasket")
-		*/
-		public function addToBasket(Product $product, Session $session): Response {
-			if ($session->get("customer")) {
-				// Add product to customer basket
-			}
-			// Redirect to the customer basket
-			return $this->redirectToRoute("basket");
 		}
 	}
 ?>

@@ -1,5 +1,6 @@
 <?php
 	namespace App\Controller;
+	use App\Entity\Product;
 	use App\Session\Session;
 	use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 	use Symfony\Component\HttpFoundation\Response;
@@ -16,6 +17,16 @@
 				// Render the basket page with the current user basket
 				return $this->render("basket/index.html.twig");
 			} else return $this->redirectToRoute("login");
+		}
+		/**
+		* @Route("/ajouteraupanier/{id}", name="addtobasket")
+		*/
+		public function addToBasket(Product $product, Session $session): Response {
+			if ($session->get("customer")) {
+				// Add product to customer basket
+			}
+			// Redirect to the customer basket
+			// return $this->redirectToRoute("basket");
 		}
 	}
 ?>
