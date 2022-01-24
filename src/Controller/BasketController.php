@@ -17,13 +17,21 @@
 		/**
 		 * @Route("/panier", name="basket")
 		 */
-		public function basket(BasketRepository $basketRepository, Session $session): Response {
+		public function basket(BasketRepository $basketRepository, ContentRepository $contentRepository, ProductRepository $productRepository, Session $session): Response {
 			// Display user basket content
 			if ($session->get("customer")) {
 				// There is an active session
+				// Get basket content
 				$basket = $basketRepository->findBy(array("customer" => $session->get("customer")["id"]))[0];
+				$content = $contentRepository->findBy(array("basket" => $basket->getId()));
+				$products = [];
+				for ($i = 0; $i < count($content); $i++) {
+					array_push($products, $productRepository->findBy(array("id" => $content[$i]->getProduct()))[0]);
+				}
 				// Render the basket page with the current user basket
-				return $this->render("basket/index.html.twig");
+				return $this->render("basket/index.html.twig", [
+					"content" => $products
+				]);
 			} else return $this->redirectToRoute("login");
 		}
 		/**
@@ -52,9 +60,6 @@
 				$entityManager->flush();
 				// Redirect to the customer basket
 				return $this->redirectToRoute("basket");
-				/*return $this->render("test.html.twig", [
-					"basket" => $basket
-				]);*/
 			} else return $this->redirectToRoute("login");
 		}
 	}
