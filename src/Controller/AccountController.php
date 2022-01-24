@@ -6,6 +6,7 @@
 	use App\Repository\OrderRepository;
 	use App\Session\Session;
 	use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+	use Symfony\Component\HttpFoundation\Request;
 	use Symfony\Component\HttpFoundation\Response;
 	use Symfony\Component\Routing\Annotation\Route;
 
@@ -20,6 +21,23 @@
 					"orders" => $orderRepository->findAll()
 				]);
 			} else return $this->redirectToRoute("login");
+		}
+		/**
+		 * @Route("/compte/modifier", name="edit-account")
+		 */
+		public function editAccount(Request $request, Customer $customer, EntityManagerInterface $entityManager, Session $session): Response {
+			// Edit personal account informations
+			$form = $this->createForm(CustomerFormType::class, $customer);
+			$form->handleRequest($request);
+			if ($form->isSubmitted() && $form->isValid()) {
+				$entityManager->persist($customer);
+				$entityManager->flush();
+				return $this->redirectToRoute("account");
+			}
+			return $this->render("account/edit.html.twig", [
+				"account" => $customer,
+				"form" => $form->createView()
+			]);
 		}
 	}
 ?>
