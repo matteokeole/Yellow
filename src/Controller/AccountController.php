@@ -1,8 +1,10 @@
 <?php
 	namespace App\Controller;
 	use App\Entity\Customer;
-	use App\Form\EditAccountFormType;
+	use App\Entity\Order;
+	use App\Form\CustomerFormType;
 	use App\Repository\CustomerRepository;
+	use App\Repository\OrderRepository;
 	use App\Session\Session;
 	use Doctrine\ORM\EntityManagerInterface;
 	use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -14,22 +16,12 @@
 		/**
 		 * @Route("/compte", name="account")
 		 */
-		public function account(Request $request, EntityManagerInterface $entityManager, Session $session): Response {
+		public function account(Request $request, EntityManagerInterface $entityManager, OrderRepository $orderRepository, Session $session): Response {
 			if (!$session->get("customer")) return $this->redirectToRoute("login");
 			else {
-				$form = $this->createForm(EditAccountFormType::class);
-				$form->handleRequest($request);
-				// $customer = [];
-				if ($form->isSubmitted() && $form->isValid()) {
-					/*$customer = $customerRepository->findBy(array("id" => array_values($session->get("customer"))[0]));
-					$customer[0]->setCustomerPassword($form["customer_password"]->getData());
-					$entityManager->persist($customer);
-					$entityManager->flush();*/
-				}
 				return $this->render("account/account.html.twig", [
 					"account" => $session->get("customer"),
-					// "customer" => $customer,
-					"form" => $form->createView()
+					"orders" => $orderRepository->findAllCustomer()
 				]);
 			}
 		}

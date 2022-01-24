@@ -5,7 +5,7 @@
 	<link rel="stylesheet" href="/css/account-customer.css">
 	<main>
 		<h1>
-			{{customer.customerFirstName}} {{customer.customerLastName}}
+			{{account.first_name}} {{account.last_name}}
 			<!-- Disconnection link -->
 			<a href="{{path('disconnect')}}" class="disconnect">
 				<ion-icon name="exit-outline"></ion-icon>
@@ -21,42 +21,42 @@
 				</h2>
 				<form method="POST" id="edit-account-form">
 					<div class="editable-input-container">
-						<label for="customer_first_name">Prénom</label>
-						<input type="text" id="customer_first_name" value="{{customer.customerFirstName}}" readonly>
+						<label for="account_first_name">Prénom</label>
+						<input type="text" id="account_first_name" value="{{account.first_name}}" readonly>
 					</div>
 					<div class="editable-input-container">
-						<label for="customer_last_name">Nom</label>
-						<input type="text" id="customer_last_name" value="{{customer.customerLastName}}" readonly>
+						<label for="account_last_name">Nom</label>
+						<input type="text" id="account_last_name" value="{{account.last_name}}" readonly>
 					</div>
 					<div class="editable-input-container">
-						<label for="customer_email">Email</label>
-						<input type="text" id="customer_email" value="{{customer.customerEmail}}" readonly>
+						<label for="account_email">Email</label>
+						<input type="text" id="account_email" value="{{account.email}}" readonly>
 					</div>
 					<div class="editable-input-container">
-						<label for="customer_phone">Téléphone</label>
-						<input type="text" id="customer_phone" value="{{customer.customerPhone}}" readonly>
+						<label for="account_phone">Téléphone</label>
+						<input type="text" id="account_phone" value="{{account.phone}}" readonly>
 					</div>
 					<div class="editable-input-container">
-						<label for="custmer_password">Mot de passe</label>
-						<input type="password" id="custmer_password" value="{{customer.customerPassword}}" readonly>
+						<label for="account_password">Mot de passe</label>
+						<input type="password" id="account_password" value="" readonly>
 					</div>
 					<div class="editable-input-container">
-						<label for="customer_address">Adresse</label>
-						<input type="text" id="customer_address" value="{{customer.customerAddress}}" readonly>
+						<label for="account_address">Adresse</label>
+						<input type="text" id="account_address" value="{{account.address}}" readonly>
 					</div>
 					<div class="editable-input-container">
-						<label for="customer_post_code">Code postal</label>
-						<input type="text" id="customer_post_code" value="{{customer.customerPostCode}}" readonly>
+						<label for="account_post_code">Code postal</label>
+						<input type="text" id="account_post_code" value="{{account.post_code}}" readonly>
 					</div>
 					<div class="editable-input-container">
-						<label for="customer_city">Ville</label>
-						<input type="text" id="customer_city" value="{{customer.customerCity}}" readonly>
+						<label for="account_city">Ville</label>
+						<input type="text" id="account_city" value="{{account.city}}" readonly>
 					</div>
 					<div class="actions">
 						<button type="button" class="cancel-changes">Annuler</button>
 						<button type="submit" class="apply-changes">Enregistrer les modifications</button>
 					</div>
-					<!-- <button><a href="{{path('accountIdUpdate', {id: customer.id})}}">Modifier</a></button> -->
+					<!-- <button><a href="{{path('accountIdUpdate', {id: account.id})}}">Modifier</a></button> -->
 				</form>
 			</section>
 			<!-- Commandes -->

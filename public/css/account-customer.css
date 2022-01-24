@@ -98,12 +98,8 @@ h2 {
 	font-size: 16px;
 	transition-duration: .2s
 }
-#edit-account-form .actions button.cancel-changes {
-	color: var(--error);
-}
-#edit-account-form .actions button.apply-changes {
-	color: var(--success);
-}
+#edit-account-form .actions button.cancel-changes {color: var(--error)}
+#edit-account-form .actions button.apply-changes {color: var(--success)}
 #edit-account-form .actions button:hover {
 	opacity: .65;
 	text-decoration: underline

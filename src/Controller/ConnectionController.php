@@ -36,7 +36,12 @@
 							"id" => $customer->getId(),
 							"first_name" => $customer->getCustomerFirstName(),
 							"last_name" => $customer->getCustomerLastName(),
-							"email" => $customer->getCustomerEmail()
+							"email" => $customer->getCustomerEmail(),
+							"phone" => $customer->getCustomerPhone(),
+							"password" => $customer->getCustomerPassword(),
+							"address" => $customer->getCustomerAddress(),
+							"post_code" => $customer->getCustomerPostCode(),
+							"city" => $customer->getCustomerCity()
 						]);
 						return $this->redirectToRoute("account");
 					}
