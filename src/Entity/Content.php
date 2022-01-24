@@ -30,6 +30,12 @@ class Content
      */
     private $basket;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Product::class, inversedBy="contents")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $product;
+
     public function __construct()
     {
     }
@@ -59,6 +65,18 @@ class Content
     public function setBasket(?Basket $basket): self
     {
         $this->basket = $basket;
+
+        return $this;
+    }
+
+    public function getProduct(): ?Product
+    {
+        return $this->product;
+    }
+
+    public function setProduct(?Product $product): self
+    {
+        $this->product = $product;
 
         return $this;
     }

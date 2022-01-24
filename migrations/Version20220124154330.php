@@ -20,6 +20,7 @@ final class Version20220124154330 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
+        $this->addSql('DELETE FROM content');
         $this->addSql('ALTER TABLE content DROP INDEX UNIQ_FEC530A91BE1FB52, ADD INDEX IDX_FEC530A91BE1FB52 (basket_id)');
         $this->addSql('ALTER TABLE content DROP FOREIGN KEY FK_FEC530A94584665A');
         $this->addSql('DROP INDEX UNIQ_FEC530A94584665A ON content');

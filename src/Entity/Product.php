@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ProductRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -56,6 +58,16 @@ class Product
      * @ORM\Column(type="string", length=250, nullable=true)
      */
     private $product_category;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Content::class, mappedBy="product", orphanRemoval=true)
+     */
+    private $contents;
+
+    public function __construct()
+    {
+        $this->contents = new ArrayCollection();
+    }
 
     public function __toString(): string
     {
@@ -159,6 +171,36 @@ class Product
     public function setProductCategory(?string $product_category): self
     {
         $this->product_category = $product_category;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Content[]
+     */
+    public function getContents(): Collection
+    {
+        return $this->contents;
+    }
+
+    public function addContent(Content $content): self
+    {
+        if (!$this->contents->contains($content)) {
+            $this->contents[] = $content;
+            $content->setProduct($this);
+        }
+
+        return $this;
+    }
+
+    public function removeContent(Content $content): self
+    {
+        if ($this->contents->removeElement($content)) {
+            // set the owning side to null (unless already changed)
+            if ($content->getProduct() === $this) {
+                $content->setProduct(null);
+            }
+        }
 
         return $this;
     }
