@@ -10,10 +10,10 @@
 			<!-- Back to catalog link -->
 			<a href="{{path('admin')}}" class="back">
 				<ion-icon name="chevron-back-outline"></ion-icon>
-				Retour
+				Retour à la page d'administration
 			</a>
 			<!-- Add new product -->
-			<a href="{{path('manageProductNew')}}" class="add-row">
+			<a href="{{path('new-product')}}" class="add-row">
 				<ion-icon name="add-outline"></ion-icon>
 				Nouveau produit
 			</a>
@@ -43,9 +43,9 @@
 					<td>{{product.productPrice}}</td>
 					<td>{{product.productStock}}</td>
 					<td>{{product.productCategory}}</td>
-					<td>
-						<a href="{{path('manageProductId', {id: product.id})}}">Modifier</a>
-						<a href="#">Supprimer</a>
+					<td class="actions">
+						<a href="{{path('edit-product', {id: product.id})}}" class="edit">Modifier</a>
+						<a href="#" class="delete">Supprimer</a>
 					</td>
 				</tr>
 			{% endfor %}

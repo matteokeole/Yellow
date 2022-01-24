@@ -1,0 +1,18 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Modifier un produit • Yellow{% endblock %}
+{% block body %}
+	<main>
+		<h1>Modifier le produit</h1>
+		<!-- Actions -->
+		<div class="actions">
+			<!-- Back to product list -->
+			<a href="{{path('product-list')}}" class="back">
+				<ion-icon name="chevron-back-outline"></ion-icon>
+				Retour à la liste
+			</a>
+		</div>
+		<!-- Product form -->
+		{{form(form)}}
+	</main>
+{% endblock %}

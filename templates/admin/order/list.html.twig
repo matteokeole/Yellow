@@ -10,7 +10,7 @@
 			<!-- Back to catalog link -->
 			<a href="{{path('admin')}}" class="back">
 				<ion-icon name="chevron-back-outline"></ion-icon>
-				Retour
+				Retour à la page d'administration
 			</a>
 		</div>
 		<!-- Orders table -->
@@ -23,16 +23,15 @@
 				<th>Montant total</th>
 				<th>Action</th>
 			</tr>
-
 			{% for order in orders %}
-			<tr>
-						<td>{{order.id}}</td>
-						<td>{{order.basket.customer.customerFirstName ~ ' ' ~ order.basket.customer.customerLastName}}</td>
-						<td>{{order.orderContent}}</td>
-						<td>{{order.Date}}</td>
-						<td>{{order.orderTotal}}</td>
-						<td><a href="#">Supprimer</a></td>
-			</tr>	
+				<tr>
+					<td>{{order.id}}</td>
+					<td>{{order.basket.customer.customerFirstName ~ ' ' ~ order.basket.customer.customerLastName}}</td>
+					<td>{{order.orderContent}}</td>
+					<td>{{order.Date}}</td>
+					<td>{{order.orderTotal}}</td>
+					<td><a href="#">Supprimer</a></td>
+				</tr>
 			{% endfor %}
 		</table>
 	</main>

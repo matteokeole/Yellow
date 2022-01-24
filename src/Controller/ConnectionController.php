@@ -86,5 +86,13 @@
 				"signupError" => $signupError
 			]);
 		}
+		/**
+		 * @Route("/deconnexion", name="disconnect")
+		 */
+		public function disconnect(Session $session): Response {
+			// Clear session and disconnect user
+			$session->clear("customer");
+			return $this->redirectToRoute("login");
+		}
 	}
 ?>

@@ -9,12 +9,11 @@
 	use Symfony\Component\Routing\Annotation\Route;
 
 	class AccountCustomerController extends AbstractController {
-		// Modification données personnelles
-		// Mise à jour d"une fiche client
 		/**
 		 * @Route("/compte/{id}/modification", name="accountIdUpdate")
 		 */
 		public function updateCustomerId(Customer $customer, Request $request, EntityManagerInterface $entityManager): Response {
+			// Edit personal account informations
 			$form = $this->createForm(CustomerFormType::class, $customer);
 			$form->handleRequest($request);
 			if ($form->isSubmitted() && $form->isValid()) {
@@ -22,7 +21,7 @@
 				$entityManager->flush();
 				return $this->redirectToRoute("accountId", ["id" => $customer->getId()]);
 			}
-			return $this->render("account/accountUpdate.html.twig", [
+			return $this->render("account/edit.html.twig", [
 				"account" => $customer,
 				"form_customer" => $form->createView()
 			]);

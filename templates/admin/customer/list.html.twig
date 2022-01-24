@@ -10,10 +10,10 @@
 			<!-- Back to catalog link -->
 			<a href="{{path('admin')}}" class="back">
 				<ion-icon name="chevron-back-outline"></ion-icon>
-				Retour
+				Retour à la page d'administration
 			</a>
 			<!-- Add new customer -->
-			<a href="{{path('manageCustomerNew')}}" class="add-row">
+			<a href="{{path('new-customer')}}" class="add-row">
 				<ion-icon name="add-outline"></ion-icon>
 				Nouveau client
 			</a>
@@ -44,7 +44,7 @@
 					<td>{{customer.customerPostCode}}</td>
 					<td>{{customer.customerCity}}</td>
 					<td class="actions">
-						<a href="{{path('manageCustomerId', {id: customer.id})}}" class="edit">
+						<a href="{{path('edit-customer', {id: customer.id})}}" class="edit">
 							<ion-icon name="pencil-outline"></ion-icon>
 							Modifier
 						</a>
