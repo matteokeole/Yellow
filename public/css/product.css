@@ -62,7 +62,10 @@
 	font-size: 18px;
 	transition-duration: .2s
 }
-.add-to-basket:hover {opacity: .8}
+.add-to-basket:hover {
+	opacity: .8;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, .3)
+}
 .add-to-basket:active {
 	opacity: .65;
 	-webkit-transform: scale(.95);
