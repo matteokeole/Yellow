@@ -26,20 +26,22 @@
 				<th>Auteur</th>
 				<th>Année</th>
 				<th>Description</th>
-				<th>Nom du fichier de couverture</th>
+				<th>Image de couverture</th>
 				<th>Prix</th>
 				<th>Stock</th>
 				<th>Catégorie</th>
 				<th>Actions</th>
 			</tr>
-			{%for product in products %}
+			{% for product in products %}
 				<tr>
 					<td>{{product.id}}</td>
 					<td>{{product.productName}}</td>
 					<td>{{product.productAuthor}}</td>
 					<td>{{product.productDate}}</td>
 					<td>{{product.productDesc}}</td>
-					<td>{{product.productCover}}</td>
+					<td>
+						<img src="/images/cover/{{product.productCover}}.jpg" class="cover">
+					</td>
 					<td>{{product.productPrice}}</td>
 					<td>{{product.productStock}}</td>
 					<td>{{product.productCategory}}</td>
