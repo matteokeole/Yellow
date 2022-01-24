@@ -4,7 +4,6 @@
 	use App\Entity\Customer;
 	use App\Form\LoginFormType;
 	use App\Form\SignupFormType;
-	use App\Repository\BasketRepository;
 	use App\Repository\CustomerRepository;
 	use App\Session\Session;
 	use Doctrine\ORM\EntityManagerInterface;
