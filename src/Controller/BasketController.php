@@ -6,7 +6,7 @@
 
 	class BasketController extends AbstractController {
 		/**
-		 * @Route("/panier/", name="basket")
+		 * @Route("/panier", name="basket")
 		 */
 		public function basket(): Response {
 			return $this->render("basket/index.html.twig");

@@ -1,7 +1,6 @@
 <?php
 	namespace App\Controller;
 	use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-	use Symfony\Component\HttpFoundation\Request;
 	use Symfony\Component\HttpFoundation\Response;
 	use Symfony\Component\Routing\Annotation\Route;
 
@@ -15,13 +14,13 @@
 		/**
 		 * @Route("/mentions-legales", name="mentions-legales")
 		 */
-		public function mentionsLegales(): Response {
+		public function legalMentions(): Response {
 			return $this->render("footer/mentions-legales.html.twig");
 		}
 		/**
 		 * @Route("/retours-remboursements", name="retours-remboursements")
 		 */
-		public function retoursRemboursements(): Response {
+		public function returnPolicy(): Response {
 			return $this->render("footer/retours-remboursements.html.twig");
 		}
 		/**
