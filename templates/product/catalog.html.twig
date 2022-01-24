@@ -1,22 +1,37 @@
 {% extends "base.html.twig" %}
 
-{% block title %}Nos mangas • Yellow{% endblock %}
+{% block title %}
+	{% if filter == "all" %}
+		Notre catalogue
+	{% else %}
+		Nos {{filter}}s
+	{% endif %} • Yellow
+{% endblock %}
 {% block body %}
 	<link rel="stylesheet" href="/css/catalog.css">
 	<main>
-		<h1>Nos mangas</h1>
-
+		<h1>
+			{% if filter == "all" %}
+				Tous nos mangas
+			{% else %}
+				Nos {{filter}}s
+			{% endif %}
+		</h1>
 		<div class="form-group">
-			<form method="get">
-				<label for="category" class="col-form-label">Filtrer par catégorie</label>
-				<select type="text" class="form-control" id="category_search" name="category_search" onchange="chargeURL()">
-					<option value="">(Aucun)</option>
+			<form method="POST" id="form-search-by-category">
+				<label for="category">Filtrer par catégorie :</label>
+				<select id="select-category" onchange="chargeURL()">
+					<option value="all" selected>(Tout)</option>
 					{% for category in categories %}
-						<option {{ (category == category_search ? 'selected') }} value="">{{ category }}</option>
+						{% if category == filter %}
+							<option value="{{category}}" selected>{{category}}</option>
+						{% else %}
+							<option value="{{category}}">{{category}}</option>
+						{% endif %}
 					{% endfor %}
 				</select>
 			</form>
-
+		</div>
 		<div class="catalog-container">
 			{% for product in products %}
 				<a href="{{path('product', {id: product.id})}}" class="product" style="background-image: url(/images/cover/{{product.productCover}}.jpg)">
@@ -36,11 +51,13 @@
 			{% endfor %}
 		</div>
 	</main>
-<script>
-function chargeURL()
-{
-window.location.href=document.getElementById('category_search').value;
-}
-</script>
+	<script>
+		const chargeURL = () => {
+			const form = document.querySelector("#form-search-by-category"),
+				url = "{{path('catalog', {category: 'value'})}}"
+				.replace("value", form.querySelector("#select-category").value);
+			form.setAttribute("action", url);
+			form.submit()
+		}
+	</script>
 {% endblock %}
-
