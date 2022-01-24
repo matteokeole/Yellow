@@ -1,20 +1,15 @@
 main.login {
 	display: flex;
 	flex-direction: column;
-	align-items: center;
     justify-content: center;
-	height: 70vh;
-}
-@media screen and (max-height: 475px) {
-	main.login {
-		height: 120vh;
-	}
+	align-items: center;
+	height: 70vh
 }
 main.signup {
 	display: flex;
 	flex-direction: column;
-	align-items: center;
     justify-content: center;
+	align-items: center
 }
 
 /* Page title */
@@ -28,4 +23,9 @@ form {margin-bottom: 20px}
 .connection-redirection a:hover {
 	opacity: .65;
 	text-decoration: underline
+}
+
+/* Media queries */
+@media screen and (max-height: 475px) {
+	main.login {height: 120vh}
 }

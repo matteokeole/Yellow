@@ -16,27 +16,31 @@
 		<!-- Orders table -->
 		<table>
 			<tr>
+				<th>Date de la commande</th>
 				<th>Ref de la commande</th>
 				<th>ID du client</th>
 				<th>Nom du client</th>
 				<th>Ref(s) du (des) produit(s)</th>
-				<th>Date de la commande</th>
 				<th>Montant total</th>
 				<th>Actions</th>
 			</tr>
 			{% for order in orders %}
 				<tr>
+					<td>{{order.date}}</td>
 					<td>{{order.id}}</td>
 					<td>{{order.basket.customer.id}}</td>
 					<td>{{order.basket.customer.customerFirstName ~ ' ' ~ order.basket.customer.customerLastName}}</td>
 					<td>
-					{% for content in order.basket.contents %}
-					{{content.product.productName}}
-					{% endfor %}</td>
-					<td>{{order.date}}</td>
+						{% for content in order.basket.contents %}
+							{{content.product.productName}}
+						{% endfor %}
+					</td>
 					<td>{{order.orderTotal}}</td>
-					<td class="actions">
-						<a href="#" class="delete">Supprimer</a>
+					<td>
+						<a href="#" class="delete">
+							<ion-icon name="trash-outline"></ion-icon>
+							Supprimer
+						</a>
 					</td>
 				</tr>
 			{% endfor %}

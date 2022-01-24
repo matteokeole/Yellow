@@ -2,7 +2,7 @@
 
 .settings-list {
 	padding: 0;
-	list-style-type: none;
+	list-style-type: none
 }
 
 .settings-list li {
@@ -49,19 +49,19 @@ table td.actions {
 	justify-content: space-between
 }
 
-table td.actions a {
-	display: flex;
+table a {
+	display: inline-flex;
 	align-items: center;
 	transition-duration: .2s
 }
-table td.actions a:hover {
+table a:hover {
 	opacity: .65;
 	text-decoration: underline
 }
-table td.actions a.edit {color: var(--info)}
-table td.actions a.delete {color: var(--error)}
+table a.edit {color: var(--info)}
+table a.delete {color: var(--error)}
 
-table td.actions a ion-icon {
+table a ion-icon {
 	margin-right: 4px;
 	font-size: 20px
 }
