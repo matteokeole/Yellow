@@ -26,6 +26,14 @@ form {margin-bottom: 20px}
 }
 
 /* Media queries */
-@media screen and (max-height: 475px) {
+@media screen and (max-height: 875px){
 	main.login {height: 120vh}
+}
+@media screen and (max-width: 450px){
+	.cloud{display:none}
+	main.login {height: 120vh}
+}
+@media screen and (max-height: 500px){
+	main.login {height: 150vh}
+	.cloud{display:none}
 }
