@@ -19,9 +19,7 @@
 					"label" => "Mot de passe",
 					"required" => false
 				])
-				->add("submit", SubmitType::class, [
-					"label" => "Se connecter"
-				]);
+				->add("submit", SubmitType::class, ["label" => "Se connecter"]);
 		}
 		public function configureOptions(OptionsResolver $resolver): void {
 			$resolver->setDefaults([
