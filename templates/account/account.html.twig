@@ -7,7 +7,7 @@
 		<h1>
 			{{account.first_name}} {{account.last_name}}
 			<div class="actions">
-				{% if account.id == 1 %}
+				{% if account.admin == 1 %}
 					<!-- Admin page link -->
 					<a href="{{path('admin')}}" target="_blank" class="goto-admin">
 						<ion-icon name="build-outline"></ion-icon>
