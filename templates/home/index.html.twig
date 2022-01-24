@@ -3,7 +3,7 @@
 {% block title %}Yellow : bienvenue dans l'univers des mangas{% endblock %}
 
 {% block body %}
-<script src="https://kit.fontawesome.com/e85851ea11.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="/css/catalog.css">
 
 	<style>
 		html {box-sizing: border-box}
@@ -109,6 +109,7 @@
 			padding: 150px 7vw 150px 4vw;
 			width: 35vw;
 			margin-left: 20vw;
+			z-index: 1;
 		}
 		.texte-soldes h1 {
 			margin-bottom: 40px;
@@ -119,14 +120,20 @@
 		.produits-soldes {
 			background-color: gray;
 			width: 50vw;
-			padding: 50px 10vw 50px 10vw;
+			padding: 50px 5vw 50px 5vw;
 			position: absolute;
 			right: 0;
-			z-index: -1;
+			z-index: 0;
 		}
 		.cover-soldes {width: 110px}
 
 		.margin {margin-left: 5vw}
+
+		.product {margin-bottom: 35px;}
+
+		.size{width: 150px;
+			height: 200px;
+		}
 
 		@media (max-width: 800px) {
 			.search-form {width: 85%;}
@@ -135,8 +142,11 @@
 				border-top:0;
 				margin:0 0;
 			}
-			.bs-produit {display: block;}
-			
+			.bs-produit {
+				display: block;
+				text-align: center;
+			}
+
 			.soldes {
 				display: block;
 				position: static;
@@ -176,27 +186,48 @@
 		<div class="best-seller">
 			<h2 class="hr">NOS BEST-SELLERS</h2>
 			<div class="bs-produit flex">
-				<div class="text-center">
-					<a href="/manga/1">
-						<img src="images/cover/onepiece.jpg" class="cover">
-					</a>
-					<p>One Piece</p>
-					<p>6.90€</p>
-				</div>
-				<div class="text-center">
-					<a href="/manga/2">
-						<img src="images/cover/dragonball.jpg" class="cover">
-					</a>
-					<p>Dragon Ball</p>
-					<p>6.90€</p>
-				</div>
-				<div class="text-center">
-					<a href="/manga/3">
-						<img src="images/cover/naruto.jpg" class="cover">
-					</a>
-					<p>Naruto</p>
-					<p>6.90€</p>
-				</div>
+				<a href="/manga/1" class="product" style="background-image: url(/images/cover/onepiece.jpg)">
+					<div class="product-footer">
+						<div class="product-primary-info">
+							<div class="product-info">
+								<span class="product-title">One Piece</span>
+								<div class="product-subtitle">
+									Eiichirō Oda •<span class="product-date">1997</span>
+								</div>
+							</div>
+							<div class="product-price">6.90€</div>
+						</div>
+						<div class="product-desc">Nous sommes à l’ère des pirates ! Luffy, un garç...</div>
+					</div>
+				</a>
+				<a href="/manga/2" class="product" style="background-image: url(/images/cover/dragonball.jpg)">
+					<div class="product-footer">
+						<div class="product-primary-info">
+							<div class="product-info">
+								<span class="product-title">Dragon Ball</span>
+								<div class="product-subtitle">
+									Akira Toriyama •<span class="product-date">1985</span>
+								</div>
+							</div>
+							<div class="product-price">6.90€</div>
+						</div>
+						<div class="product-desc">Dans un monde fantastique semblable à la Terre et ...</div>
+					</div>
+				</a>
+				<a href="/manga/3" class="product" style="background-image: url(/images/cover/naruto.jpg)">
+					<div class="product-footer">
+						<div class="product-primary-info">
+							<div class="product-info">
+								<span class="product-title">Naruto</span>
+								<div class="product-subtitle">
+									Masashi Kishimoto •<span class="product-date">1999</span>
+								</div>
+							</div>
+							<div class="product-price">3.00</div>
+						</div>
+						<div class="product-desc">Naruto est un garçon un peu spécial. Solitaire au ...</div>
+					</div>
+				</a>
 			</div>
 		</div>
 	</div>
@@ -207,36 +238,64 @@
 		</div>
 		<div class="produits-soldes">
 			<div class="flex">
-				<div class="text-center">
-					<a href="/manga/1">
-						<img src="images/cover/onepiece.jpg" class="cover-soldes">
-					</a>
-					<p>One Piece</p>
-					<p>6.90€</p>
-				</div>
-				<div class="text-center margin">
-					<a href="/manga/5">
-						<img src="images/cover/berserk.jpg" class="cover-soldes">
-					</a>
-					<p>Berserk</p>
-					<p>6.90€</p>
-				</div>
+				<a href="/manga/1" class="product size" style="background-image: url(/images/cover/onepiece.jpg)">
+					<div class="product-footer">
+						<div class="product-primary-info">
+							<div class="product-info">
+								<span class="product-title">One Piece</span>
+								<div class="product-subtitle">
+									Eiichirō Oda •<span class="product-date">1997</span>
+								</div>
+							</div>
+							<div class="product-price">6.90€</div>
+						</div>
+						<div class="product-desc">Nous sommes à l’ère des pirates ! Luffy, un garç...</div>
+					</div>
+				</a>
+				<a href="/manga/5" class="product size" style="background-image: url(/images/cover/berserk.jpg)">
+					<div class="product-footer">
+						<div class="product-primary-info">
+							<div class="product-info">
+								<span class="product-title">Berserk</span>
+								<div class="product-subtitle">
+									Kentarō Miura •<span class="product-date">1989</span>
+								</div>
+							</div>
+							<div class="product-price">6.90€</div>
+						</div>
+						<div class="product-desc">Dans un monde médiéval et fantastique, erre un gue...</div>
+					</div>
+				</a>
 			</div>
 			<div class="flex">
-				<div class="text-center">
-					<a href="/manga/4">
-						<img src="images/cover/fullmetalalchemist.jpg" class="cover-soldes">
-					</a>
-					<p>Fullmetal Alchemist</p>
-					<p>6.60€</p>
-				</div>
-				<div class="text-center margin">
-					<a href="/manga/15">
-						<img src="images/cover/pokemon.jpg" class="cover-soldes">
-					</a>
-					<p>Pokemon</p>
-					<p>9.90€</p>
-				</div>
+				<a href="/manga/4" class="product size" style="background-image: url(/images/cover/fullmetalalchemist.jpg)">
+					<div class="product-footer">
+						<div class="product-primary-info">
+							<div class="product-info">
+								<span class="product-title">Fullmetal Alchemist</span>
+								<div class="product-subtitle">
+									Hiromu Arakawa •<span class="product-date">2001</span>
+								</div>
+							</div>
+							<div class="product-price">6.60€</div>
+						</div>
+						<div class="product-desc">En voulant ressusciter leur mère, Edward et Alphon...</div>
+					</div>
+				</a>
+				<a href="/manga/15" class="product size" style="background-image: url(/images/cover/pokemon.jpg)">
+					<div class="product-footer">
+						<div class="product-primary-info">
+							<div class="product-info">
+								<span class="product-title">Pokémon</span>
+								<div class="product-subtitle">
+									Asada Miho •<span class="product-date">1997</span>
+								</div>
+							</div>
+							<div class="product-price">9.90€</div>
+						</div>
+						<div class="product-desc">Nos jeunes héros sont prêts à tout pour devenir le...</div>
+					</div>
+				</a>
 			</div>
 		</div>
 	</div>
