@@ -5,6 +5,7 @@
 	use App\Repository\CustomerRepository;
 	use App\Repository\OrderRepository;
 	use App\Session\Session;
+	use Doctrine\ORM\EntityManagerInterface;
 	use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 	use Symfony\Component\HttpFoundation\Request;
 	use Symfony\Component\HttpFoundation\Response;
@@ -27,16 +28,10 @@
 		 */
 		public function editAccount(Request $request, Customer $customer, EntityManagerInterface $entityManager, Session $session): Response {
 			// Edit personal account informations
-			$form = $this->createForm(CustomerFormType::class, $customer);
-			$form->handleRequest($request);
-			if ($form->isSubmitted() && $form->isValid()) {
-				$entityManager->persist($customer);
-				$entityManager->flush();
-				return $this->redirectToRoute("account");
-			}
-			return $this->render("account/edit.html.twig", [
-				"account" => $customer,
-				"form" => $form->createView()
+			$test = $request->get("customer_first_name");
+			// return $this->redirectToRoute("account");
+			return $this->render("account/index.html.twig", [
+				"test" => $test
 			]);
 		}
 	}
