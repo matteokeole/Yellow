@@ -26,7 +26,7 @@ class OrderRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('o')
             ->join('o.basket', 'b')
             ->join('b.customer', 'c')
-            ->join('b.content', 'd')
+            ->join('b.contents', 'd')
             ->join('d.product', 'p')
             ->setMaxResults(100)
             ->getQuery()

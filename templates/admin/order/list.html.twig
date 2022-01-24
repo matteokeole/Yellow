@@ -29,7 +29,10 @@
 					<td>{{order.id}}</td>
 					<td>{{order.basket.customer.id}}</td>
 					<td>{{order.basket.customer.customerFirstName ~ ' ' ~ order.basket.customer.customerLastName}}</td>
-					<td>{{order.basket.customer.content.productName}}</td>
+					<td>
+					{% for content in order.basket.contents %}
+					{{content.product.productName}}
+					{% endfor %}</td>
 					<td>{{order.date}}</td>
 					<td>{{order.orderTotal}}</td>
 					<td class="actions">
