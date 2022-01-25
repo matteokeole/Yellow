@@ -36,10 +36,19 @@
 									</div>
 								</div>
 								<div class="product-actions">
-									<label class="product-quantity">
+									<form method="POST" class="product-quantity" data-item="{{content[loop.index - 1].id}}">
 										Quantité
-										<input type="number" value="{{content[loop.index - 1].contentProductQuantity}}">
-									</label>
+										<select id="edit-quantity" onchange="editQuantity(this)">
+											{% set quantity = content[loop.index - 1].contentProductQuantity %}
+											{% for i in range(1, 10) %}
+												{% if quantity == i %}
+													<option value="{{i}}" selected>{{i}}</option>
+												{% else %}
+													<option value="{{i}}">{{i}}</option>
+												{% endif %}
+											{% endfor %}
+										</select>
+									</form>
 									<a href="{{path('remove-from-basket', {id: content[loop.index - 1].id})}}" class="remove-from-basket">
 										<ion-icon name="trash-outline"></ion-icon>
 										Retirer
@@ -68,4 +77,14 @@
 			{% endif %}
 		</div>
 	</main>
+	<script>
+		const editQuantity = select => {
+			const form = select.parentNode,
+				url = "{{path('edit-quantity', {id: 'item', quantity: 'value'})}}"
+					.replace("item", form.dataset.item)
+					.replace("value", select.value);
+			form.setAttribute("action", url);
+			form.submit()
+		}
+	</script>
 {% endblock %}

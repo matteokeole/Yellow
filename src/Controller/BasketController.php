@@ -51,17 +51,39 @@
 				// There is an active session
 				$basket = $basketRepository->findBy(array("customer" => $session->get("customer")["id"]))[0];
 				$product = $productRepository->findBy(array("id" => $request->get("id")))[0];
-				// Create basket content
-				$content = new Content();
-				$content->setBasket($basket);
-				$content->setProduct($product);
-				$content->setContentProductQuantity(1);
-				$entityManager->persist($content);
+				$content = $contentRepository->findBy(array(
+					"basket" => $basket->getId(),
+					"product" => $request->get("id")
+				));
+				if (array($content) && count($content) == 1) {
+					// The product is already in the basket
+					// Increment product quantity by 1
+					$content[0]->setContentProductQuantity($content[0]->getContentProductQuantity() + 1);
+				} else {
+					// Create basket content
+					$content = new Content();
+					$content->setBasket($basket);
+					$content->setProduct($product);
+					$content->setContentProductQuantity(1);
+					$entityManager->persist($content);
+				}
 				// Commit changes
 				$entityManager->flush();
 				// Redirect to the customer basket
 				return $this->redirectToRoute("basket");
 			} else return $this->redirectToRoute("login");
+		}
+		/**
+		* @Route("/quantite/{id}/{quantity}", name="edit-quantity")
+		*/
+		public function editQuantity(Request $request, EntityManagerInterface $entityManager, ContentRepository $contentRepository): Response {
+			// Remove product from customer basket
+			$content = $contentRepository->findBy(array("id" => $request->get("id")))[0];
+			$content->setContentProductQuantity($request->get("quantity"));
+			// Commit changes
+			$entityManager->flush();
+			// Redirect to the customer basket
+			return $this->redirectToRoute("basket");
 		}
 		/**
 		* @Route("/supprimerdupanier/{id}", name="remove-from-basket")
