@@ -83,3 +83,9 @@
 	font-style: italic;
 	white-space: nowrap
 }
+
+/* Icones next et previous paginator */
+ion-icon{
+	font-size: 30px;
+  width: 50px;
+}

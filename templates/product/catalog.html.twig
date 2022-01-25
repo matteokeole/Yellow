@@ -50,6 +50,16 @@
 				</a>
 			{% endfor %}
 		</div>
+		{% if previous >= 0 %}
+		<a href="{{ path('catalog', { offset: previous, category: 'all' }) }}" class="page">
+			<ion-icon name="chevron-back"></ion-icon>
+		</a>
+		{% endif %}
+		{% if next < products|length %}
+		<a href="{{ path('catalog', { offset: next, category: 'all' }) }}" class="page">
+			<ion-icon name="chevron-forward"></ion-icon>
+		</a>
+		{% endif %}
 	</main>
 	<script>
 		const chargeURL = () => {

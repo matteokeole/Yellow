@@ -13,16 +13,13 @@
 		*/
 		public function catalog(Request $request, ProductRepository $productRepository): Response {
 			$categories = $productRepository->searchCategory();
-			$products = $productRepository->findAll();
-			$category = "all";
-			if ($request->get("category") != "all") {
-				// This is a search by category
-				// Select all products with the requested category
-				$category = $request->get("category");
-				$products = $productRepository->findBy(array("product_category" => $category));
-			}
+			$category = $request->get("category");
+			$offset = max(0, $request->query->getInt('offset', 0));
+			$paginator = $productRepository->getProductPaginator($offset, $category);
 			return $this->render("product/catalog.html.twig", [
-				"products" => $products,
+				"products" => $paginator,
+				"previous" => $offset - ProductRepository::PAGINATOR_PER_PAGE,
+				"next" => min (count($paginator), $offset + ProductRepository::PAGINATOR_PER_PAGE),
 				"categories" => $categories,
 				"filter" => $category
 			]);

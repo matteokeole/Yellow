@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Product;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -30,6 +31,25 @@ class ProductRepository extends ServiceEntityRepository
             $categories[] = $cols['product_category'];
         }
         return $categories;
+    }
+
+    public const PAGINATOR_PER_PAGE = 8;
+
+    public function getProductPaginator (int $offset, string $category): Paginator
+    {
+        $query = $this->createQueryBuilder('p')
+            ->orderBy('p.product_price', 'ASC');
+
+        if ($category != 'all') {
+            $query = $query->andWhere('p.product_category = :category')->setParameter('category', $category);
+        }
+
+        $query = $query->setMaxResults(self::PAGINATOR_PER_PAGE)
+            ->setFirstResult($offset)
+            ->getQuery()
+            ;
+
+        return new Paginator($query);
     }
 
     // /**
