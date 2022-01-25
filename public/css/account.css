@@ -29,11 +29,11 @@ h1 {
     }
 
 	.editable-input-container {
-		display: contents;
+		display: contents!important;
 	}
 
     .editable-input-container input {
-        text-align: left;
+        text-align: left!important;
         margin-bottom: 10px;
     }
 }
