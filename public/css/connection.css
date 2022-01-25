@@ -3,13 +3,14 @@ main.login {
 	flex-direction: column;
     justify-content: center;
 	align-items: center;
-	height: 70vh
+	height: 70vh;
 }
 main.signup {
 	display: flex;
 	flex-direction: column;
     justify-content: center;
-	align-items: center
+	align-items: center;
+	height: 110vh;
 }
 
 /* Page title */
@@ -28,12 +29,15 @@ form {margin-bottom: 20px}
 /* Media queries */
 @media screen and (max-height: 875px){
 	main.login {height: 120vh}
+	main.signup {height: 160vh}
 }
 @media screen and (max-width: 450px){
 	.cloud{display:none}
 	main.login {height: 120vh}
+	main.signup {height: 160vh}
 }
 @media screen and (max-height: 500px){
 	main.login {height: 150vh}
+	main.signup {height: 220vh}
 	.cloud{display:none}
 }
