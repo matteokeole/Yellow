@@ -20,7 +20,7 @@
 		<div class="form-group">
 			<form method="POST" id="form-search-by-category">
 				<label for="category">Filtrer par catégorie :</label>
-				<select id="select-category" onchange="chargeURL()">
+				<select id="select-category" onchange="filterByCategory()">
 					<option value="all" selected>(Tout)</option>
 					{% for category in categories %}
 						{% if category == filter %}
@@ -62,10 +62,10 @@
 		{% endif %}
 	</main>
 	<script>
-		const chargeURL = () => {
+		const filterByCategory = () => {
 			const form = document.querySelector("#form-search-by-category"),
 				url = "{{path('catalog', {category: 'value'})}}"
-				.replace("value", form.querySelector("#select-category").value);
+					.replace("value", form.querySelector("#select-category").value);
 			form.setAttribute("action", url);
 			form.submit()
 		}

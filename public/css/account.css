@@ -16,12 +16,33 @@ h1 {
 }
 
 .account-section {
-	width: 700px;
+	width: 50vw;
 	margin-top: 20px;
 	padding: 8px 12px;
 	border-radius: 8px;
 	background-color: rgba(245, 201, 67, .2)
 }
+
+@media (max-width: 800px) {
+    .account-section {
+        width: 80vw!important;
+    }
+
+	.editable-input-container {
+		display: contents!important;
+	}
+
+    .editable-input-container input {
+        text-align: left!important;
+        margin-bottom: 10px;
+		margin-left: 0!important;
+    }
+
+	.editable-input-container label {
+		font-size: 16px;
+	}
+}
+
 
 /* Account section subtitle */
 h2 {

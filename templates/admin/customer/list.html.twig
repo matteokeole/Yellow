@@ -12,18 +12,18 @@
 				<ion-icon name="chevron-back-outline"></ion-icon>
 				Retour à la page d'administration
 			</a>
-			<!-- Add new customer -->
-			<a href="{{path('new-customer')}}" class="add-row">
-				<ion-icon name="add-outline"></ion-icon>
-				Ajouter un client
-			</a>
+			<div class="actions-inner">
+				<!-- Add new customer -->
+				<a href="{{path('new-customer')}}" class="add-row">
+					<ion-icon name="add-outline"></ion-icon>
+					Ajouter un client
+				</a>
+				<!-- Add new administrator -->
+				<a href="{{path('new-admin')}}" class="add-row">
+					<ion-icon name="add-outline"></ion-icon>
+					Ajouter un administrateur
+				</a>
 			</div>
-			<div class="actions2">
-			<!-- Add new admin -->
-			<a href="{{path('new-admin')}}" class="add-row">
-				<ion-icon name="add-outline"></ion-icon>
-				Ajouter un administrateur
-			</a>
 		</div>
 		<!-- Customers table -->
 		<table>
