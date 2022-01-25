@@ -73,5 +73,19 @@
 				displayFormError("Champs non renseignés", "Veuillez renseigner tous les champs du formulaire.")
 			} else login.form.submit()
 		})
+
+		window.addEventListener('mousemove', onMouseMove);
+
+		const clouds = document.querySelectorAll('.cloud')
+
+		function onMouseMove(e) {
+			const pouet = (e.clientX - window.innerWidth / 2) / window.innerWidth;
+			const pit = (e.clientY - window.innerHeight / 2) / window.innerHeight;
+
+			clouds.forEach((cloud,i) => {
+				cloud.style.transform = `translate3d(calc(${pouet*(i+1)} * -1vw), calc(${pit*(i+1)} * -1vh), 0)`;
+			})
+				
+		}
 	</script>
 {% endblock %}

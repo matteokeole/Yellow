@@ -19,7 +19,8 @@ input:focus, textarea:focus {border-color: var(--primary)}
     border: 1px solid #DDD;
     border-radius: 10px;
 	box-shadow: 1px 1px 10px rgba(0, 0, 0, .6);
-	background-color: #FFF;
+	backdrop-filter: blur(10px);
+	background-color: rgba(255, 255, 255, .65);
 	z-index: 2
 }
 
@@ -37,7 +38,8 @@ input:focus, textarea:focus {border-color: var(--primary)}
 
 .cloud {
 	position: absolute;
-	z-index: 0
+	z-index: 0;
+	opacity: 0.5;
 }
 
 .c1{
@@ -52,7 +54,7 @@ input:focus, textarea:focus {border-color: var(--primary)}
 	top: 50%;
     left: 25%;
 }
-.c4{
+.login > .c4{
 	top: 65%;
     left: 50%;
 }
@@ -66,6 +68,26 @@ input:focus, textarea:focus {border-color: var(--primary)}
 }
 .c7{
 	top: 10%;
+    left: 20%;
+}
+.signup > .c4{
+	top: 105%;
+    left: 50%;
+}
+.c8{
+	top: 70%;
+    left: 10%;
+}
+.c10{
+	top: 60%;
+    left: 70%;
+}
+.c11{
+	top: 90%;
+    left: 80%;
+}
+.c13{
+	top: 90%;
     left: 20%;
 }
 
