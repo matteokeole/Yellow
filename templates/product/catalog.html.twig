@@ -50,6 +50,7 @@
 				</a>
 			{% endfor %}
 		</div>
+		<div class="page-container">
 		{% if previous >= 0 %}
 		<a href="{{ path('catalog', { offset: previous, category: 'all' }) }}" class="page">
 			<ion-icon name="chevron-back"></ion-icon>
@@ -60,6 +61,7 @@
 			<ion-icon name="chevron-forward"></ion-icon>
 		</a>
 		{% endif %}
+		</div>
 	</main>
 	<script>
 		const filterByCategory = () => {
