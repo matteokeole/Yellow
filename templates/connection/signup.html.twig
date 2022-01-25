@@ -27,6 +27,18 @@
 		<div class="cloud c7">
 		<img class="form-logo" src="/images/background.png" alt="Logo">
 		</div>
+		<div class="cloud c8">
+		<img class="form-logo" src="/images/background.png" alt="Logo">
+		</div>
+		<div class="cloud c10">
+		<img class="form-logo" src="/images/background.png" alt="Logo">
+		</div>
+		<div class="cloud c11">
+		<img class="form-logo" src="/images/background.png" alt="Logo">
+		</div>
+		<div class="cloud c13">
+		<img class="form-logo" src="/images/background.png" alt="Logo">
+		</div>
 		<div class="form-container signup-container">
 			<div class="form-header">
 				<img class="form-logo" src="/favicon.ico" alt="Logo">
@@ -178,5 +190,31 @@
 				signup.form.submit()
 			}
 		})
+
+			/*
+			let body = document.querySelector('body');
+			body.addEventListener('mousemove', function(e) {
+			let cloud = document.querySelector('.cloud');
+			let positionLeft = cloud.style.left;
+			let positionTop = cloud.style.top;
+			let left = (e.clientY)/100;
+			let top = (e.clientX)/100;
+			cloud.style.left = left + '%';
+			cloud.style.top = top + '%';
+			});
+			*/
+		window.addEventListener('mousemove', onMouseMove);
+
+		const clouds = document.querySelectorAll('.cloud')
+
+		function onMouseMove(e) {
+			const pouet = (e.clientX - window.innerWidth / 2) / window.innerWidth;
+			const pit = (e.clientY - window.innerHeight / 2) / window.innerHeight;
+
+			clouds.forEach((cloud,i) => {
+				cloud.style.transform = `translate3d(calc(${pouet*(i+1)} * -1vw), calc(${pit*(i+1)} * -1vh), 0)`;
+			})
+				
+		}
 	</script>
 {% endblock %}
