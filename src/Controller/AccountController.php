@@ -35,6 +35,15 @@
 			} else return $this->redirectToRoute("login");
 		}
 		/**
+		 * @Route("/compte/commande{id}", name="consult-order")
+		 */
+		public function consulOrder(Order $order)
+		{
+			return $this->render("account/consult.html.twig", [
+				'order' => $order,
+			]);
+		}
+		/**
 		 * @Route("/compte/modifier", name="edit-account")
 		 */
 		public function editAccount(

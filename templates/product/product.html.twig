@@ -28,7 +28,15 @@
 				<div class="blank"></div>
 				<!-- Actions -->
 				<div class="actions">
-					{% if product.productStock > 0 %}
+					{% if product.productStock > 0 and product.productStock < 5 %}
+						<span class="iconify product-stock valid" data-icon="gg:danger"></span>
+						<span class="product-stock valid">Plus que {{product.productStock}} en stock</span>
+						<!-- Add to basket link -->
+						<a href="{{path('add-to-basket', {id: product.id})}}" class="add-to-basket">
+							<ion-icon name="bag-add-outline"></ion-icon>
+							Ajouter au panier
+						</a>
+					{% elseif product.productStock > 5 %}
 						<span class="product-stock valid">En stock</span>
 						<!-- Add to basket link -->
 						<a href="{{path('add-to-basket', {id: product.id})}}" class="add-to-basket">
@@ -54,4 +62,5 @@
 			</div>
 		</div>
 	</main>
+	<script src="https://code.iconify.design/2/2.1.1/iconify.min.js"></script>
 {% endblock %}
