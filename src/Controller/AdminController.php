@@ -28,7 +28,7 @@
 		}
 		// Customer edition routes
 		/**
-		 * @Route("/admin/clients", name="customer-list")
+		 * @Route("/admin/utilisateurs", name="customer-list")
 		 */
 		public function customerList(CustomerRepository $customerRepository): Response {
 			// Display database customers
@@ -37,7 +37,7 @@
 			]);
 		}
 		/**
-		 * @Route("/admin/clients/nouveau", name="new-customer")
+		 * @Route("/admin/utilisateurs/nouveau", name="new-customer")
 		 */
 		public function newCustomer(Request $request, EntityManagerInterface $entityManager): Response {
 			// Add new customer
@@ -56,7 +56,26 @@
 			]);
 		}
 		/**
-		 * @Route("/admin/clients/{id}", name="edit-customer")
+		 * @Route("/admin/utilisateur/nouvel-admin", name="new-admin")
+		 */
+		public function newAdmin(Request $request, EntityManagerInterface $entityManager): Response {
+			// Add new admin
+			$customer = new Customer();
+			$form = $this->createForm(CustomerFormType::class, $customer);
+			$form->handleRequest($request);
+			if ($form->isSubmitted() && $form->isValid()) {
+				$customer->setCustomerAdmin(1);
+				$entityManager->persist($customer);
+				$entityManager->flush();
+				return $this->redirectToRoute("customer-list");
+			}
+			return $this->render("admin/customer/edit.html.twig",[
+				"customer" => $customer,
+				"form" => $form->createView()
+			]);
+		}
+		/**
+		 * @Route("/admin/utilisateurs/{id}", name="edit-customer")
 		 */
 		public function editCustomer(Request $request, Customer $customer, EntityManagerInterface $entityManager): Response {
 			// Edit customer informations

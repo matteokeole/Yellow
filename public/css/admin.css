@@ -21,6 +21,11 @@ div.actions {
 	margin-bottom: 20px;
 	justify-content: space-between
 }
+div.actions2 {
+	display: flex;
+	margin-bottom: 20px;
+	justify-content: flex-end
+}
 
 /* Table content */
 

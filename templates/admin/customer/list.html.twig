@@ -1,10 +1,10 @@
 {% extends "base.html.twig" %}
 
-{% block title %}Gestion des clients • Yellow{% endblock %}
+{% block title %}Gestion des utilisateurs • Yellow{% endblock %}
 {% block body %}
 	<link rel="stylesheet" href="/css/admin.css">
 	<main>
-		<h1>Gestion des clients</h1>
+		<h1>Gestion des utilisateurs</h1>
 		<!-- Actions -->
 		<div class="actions">
 			<!-- Back to catalog link -->
@@ -15,7 +15,14 @@
 			<!-- Add new customer -->
 			<a href="{{path('new-customer')}}" class="add-row">
 				<ion-icon name="add-outline"></ion-icon>
-				Nouveau client
+				Ajouter un client
+			</a>
+			</div>
+			<div class="actions2">
+			<!-- Add new admin -->
+			<a href="{{path('new-admin')}}" class="add-row">
+				<ion-icon name="add-outline"></ion-icon>
+				Ajouter un administrateur
 			</a>
 		</div>
 		<!-- Customers table -->
