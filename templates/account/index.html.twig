@@ -137,8 +137,8 @@
 						{% for order in orders %}
 					<tr>
 						<td>{{order}}</td>
-						<td>{{order}}</td>
-						<td>{{order}}</td>
+						<td>{{order.Date}}</td>
+						<td>{{order.orderTotal}}</td>
 						<td><a href="{{path('consult-order', {id:order.id})}}"> Voir </a></td>
 					</tr>			
 						{% endfor %}

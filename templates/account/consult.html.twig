@@ -3,15 +3,20 @@
 {% block title %}Modification du compte • Yellow{% endblock %}
 {% block body %}
 	<link rel="stylesheet" href="/css/form.css">
+	<style>
+		img{
+			width: 50px;
+		}
+	</style>
 	<main>
-		<h1>Consultation de la commande</h1>
-		{{order.id}}
-		{# <td>{{orders.basket.id}}</td>
-					<td>{{orders.basket.customer.id}}</td>
-					<td>{{orders.basket.customer.customerFirstName}}</td>
-					<td>{% for content in orders.basket.contents %}
-							{{content.product.productName}}</td>
-						{% endfor %} #}
+		<h1>Consultation de la commande ref {{order.id}}</h1>
+		Date de la commande : {{order.date}}</p>
+		Produits commandés :</p>
+		{% for content in order.basket.contents %}
+			<img src="/images/cover/{{content.product.productCover}}.jpg" alt="Image de couverture">
+			{{content.product.productName ~ " x" ~ content.contentProductQuantity}}</p>
+			{% endfor %}
+		Montant de la commande : {{order.orderTotal}}
 
 	</main>
 {% endblock %}

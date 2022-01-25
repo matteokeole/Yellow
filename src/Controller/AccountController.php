@@ -35,7 +35,7 @@
 			} else return $this->redirectToRoute("login");
 		}
 		/**
-		 * @Route("/compte/commande{id}", name="consult-order")
+		 * @Route("/compte/commande-ref{id}", name="consult-order")
 		 */
 		public function consulOrder(Order $order)
 		{
