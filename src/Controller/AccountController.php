@@ -29,7 +29,6 @@
 				$order = $orderRepository->findBy(array("basket" => $basket->getId()));
 				return $this->render("account/index.html.twig", [
 					"account" => $session->get("customer"),
-					"basket" => $basket,
 					"orders" => $order,
 					"update" => $updatedAccount
 				]);
