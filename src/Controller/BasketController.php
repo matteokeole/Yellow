@@ -78,10 +78,14 @@
 		*/
 		public function editQuantity(Request $request, EntityManagerInterface $entityManager, ContentRepository $contentRepository): Response {
 			// Remove product from customer basket
-			$content = $contentRepository->findBy(array("id" => $request->get("id")))[0];
-			$content->setContentProductQuantity($request->get("quantity"));
-			// Commit changes
-			$entityManager->flush();
+			$quantity = $request->get("quantity");
+			if ((int)$quantity && $quantity > 0 && $quantity <= 10) {
+				// Valid parameter
+				$content = $contentRepository->findBy(array("id" => $request->get("id")))[0];
+				$content->setContentProductQuantity($request->get("quantity"));
+				// Commit changes
+				$entityManager->flush();
+			}
 			// Redirect to the customer basket
 			return $this->redirectToRoute("basket");
 		}
