@@ -91,6 +91,20 @@
 				"form" => $form->createView()
 			]);
 		}
+		/**
+		* @Route("/admin/{id}", name="remove-from-customer")
+		*/
+		public function removeFromUser(Request $request, EntityManagerInterface $entityManager, CustomerRepository $customerRepository): Response {
+			// Remove product from product list
+			$customer = $customerRepository->findBy(array("id" => $request->get("id")));
+			foreach ($customer as $item) {
+				$entityManager->remove($item);
+			}
+			// Commit changes
+			$entityManager->flush();
+			// Redirect to the customer basket
+			return $this->redirectToRoute("customer-list");
+		}
 		// Order edition routes
 		/**
 		 * @Route("/admin/commandes", name="order-list")
@@ -162,6 +176,20 @@
 				"product" => $product,
 				"form" => $form->createView()
 			]);
+		}
+		/**
+		* @Route("/admin/product/{id}", name="remove-from-product")
+		*/
+		public function removeFromProduct(Request $request, EntityManagerInterface $entityManager, ProductRepository $productRepository): Response {
+			// Remove product from product list
+			$product = $productRepository->findBy(array("id" => $request->get("id")));
+			foreach ($product as $item) {
+				$entityManager->remove($item);
+			}
+			// Commit changes
+			$entityManager->flush();
+			// Redirect to the customer basket
+			return $this->redirectToRoute("product-list");
 		}
 	}
 ?>
