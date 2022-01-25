@@ -51,6 +51,10 @@
 }
 
 .product-info-container .product-title {font-size: 22px}
+.product-info-container .product-title:hover {
+	opacity: .65;
+	text-decoration: underline
+}
 
 .product-info-container .product-subtitle {
 	opacity: .65;

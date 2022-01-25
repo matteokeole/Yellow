@@ -27,7 +27,7 @@
 								<div class="product-info-container">
 									<img src="/images/cover/{{item.productCover}}.jpg" class="product-cover">
 									<div class="product-info">
-										<a href="{{path('product', {id: item.id})}}" class="product-title">{{item.productName}}</a>
+										<a href="{{path('product', {id: item.id})}}" class="product-title" title="Voir le manga" aria-label="Voir le manga">{{item.productName}}</a>
 										<span class="product-subtitle">
 											<span class="product-author">{{item.productAuthor}}</span> • 
 											<span class="product-date">{{item.productDate}}</span>
@@ -38,7 +38,7 @@
 								<div class="product-actions">
 									<label class="product-quantity">
 										Quantité
-										<input type="number" value="1">
+										<input type="number" value="{{content[loop.index - 1].contentProductQuantity}}">
 									</label>
 									<a href="{{path('remove-from-basket', {id: content[loop.index - 1].id})}}" class="remove-from-basket">
 										<ion-icon name="trash-outline"></ion-icon>
@@ -56,9 +56,9 @@
 					<div class="total-price">
 						{% set total = 0 %}
 						{% for item in items %}
-							{% set total = total + item.productPrice %}
+							{% set total = total + (item.productPrice * content[loop.index - 1].contentProductQuantity) %}
 						{% endfor %}
-						{{total}}€
+						{{total|number_format(2)}}€
 					</div>
 					<a href="#" id="validate-basket">
 						<ion-icon name="bag-check-outline"></ion-icon>
