@@ -2,6 +2,8 @@
 	namespace App\Controller;
 	use App\Entity\Customer;
 	use App\Entity\Order;
+	use App\Form\CustomerFormType;
+	use App\Repository\BasketRepository;
 	use App\Repository\CustomerRepository;
 	use App\Repository\OrderRepository;
 	use App\Session\Session;
@@ -15,12 +17,16 @@
 		/**
 		 * @Route("/compte", name="account")
 		 */
-		public function account(OrderRepository $orderRepository, Session $session): Response {
+		public function account(OrderRepository $orderRepository, Session $session, BasketRepository $basketRepository): Response {
 			// Goto user account page if there is an active session
+			$basket = $basketRepository->findBy(array("customer" => $session->get("customer")["id"]))[0];
+			$order = $orderRepository->findBy(array("id" => $session->get("customer")["id"]));
+
 			if ($session->get("customer")) {
 				return $this->render("account/index.html.twig", [
 					"account" => $session->get("customer"),
-					"orders" => $orderRepository->findAll()
+					"basket" => $basket,
+					"orders" => $order
 				]);
 			} else return $this->redirectToRoute("login");
 		}
@@ -29,11 +35,21 @@
 		 */
 		public function editAccount(Request $request, Customer $customer, EntityManagerInterface $entityManager, Session $session): Response {
 			// Edit personal account informations
-			$test = $request->get("customer_first_name");
+			// $test = $request->get("customer_first_name");
+			$form = $this->createForm(CustomerFormType::class, $customer);
+			$form->handleRequest($request);
+			if ($form->isSubmitted() && $form->isValid()) {
+				$entityManager->persist($customer);
+				$entityManager->flush();
+				return $this->redirectToRoute("edit-account");
+
 			// return $this->redirectToRoute("account");
 			return $this->render("account/index.html.twig", [
-				"test" => $test
+				// "test" => $test,
+				"customer" => $customer,
+				"form" => $form->createView()
 			]);
+			}
 		}
 	}
 ?>
