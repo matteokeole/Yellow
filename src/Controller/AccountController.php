@@ -19,10 +19,10 @@
 		 */
 		public function account(OrderRepository $orderRepository, Session $session, BasketRepository $basketRepository): Response {
 			// Goto user account page if there is an active session
-			$basket = $basketRepository->findBy(array("customer" => $session->get("customer")["id"]))[0];
-			$order = $orderRepository->findBy(array("id" => $session->get("customer")["id"]));
-
 			if ($session->get("customer")) {
+				$basket = $basketRepository->findBy(array("customer" => $session->get("customer")["id"]))[0];
+				$order = $orderRepository->findBy(array("basket" => $basket->getId()));
+
 				return $this->render("account/index.html.twig", [
 					"account" => $session->get("customer"),
 					"basket" => $basket,

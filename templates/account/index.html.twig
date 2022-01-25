@@ -106,7 +106,15 @@
 				<h2>Mes commandes</h2>
 				<div class="form-user">
 					Numéro :
-					{{basket.orders.id}}
+					{% for order in orders %}
+					{{order}}
+					{{order.basket.id}}
+					{{order.basket.customer.id}}
+					{{order.basket.customer.customerFirstName}}
+					{% for content in order.basket.contents %}
+							{{content.product.productName}}
+						{% endfor %}
+					{% endfor %}
 				</div>
 			</section>
 			{% endif %}
