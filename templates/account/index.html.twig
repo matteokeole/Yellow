@@ -67,6 +67,7 @@
 					</div>
 				</form>
 			</section>
+			{% if account.admin == 0 %}
 			<!-- Commandes -->
 			<section class="account-section order">
 				<h2>Mes commandes</h2>
@@ -75,7 +76,8 @@
 					{{orders.id}}
 				</div> #}
 			</section>
-		</div>
+			{% endif %}
+			</div>
 	</main>
 	<script src="/js/edit-account.js"></script>
 {% endblock %}
