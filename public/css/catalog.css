@@ -9,7 +9,7 @@
 .product {
 	width: 280px;
 	height: 400px;
-	margin: 20px 8px;
+	margin: 30px 40px;
 	position: relative;
 	overflow: hidden;
 	border-radius: 8px;
@@ -88,4 +88,19 @@
 ion-icon{
 	font-size: 30px;
   width: 50px;
+}
+
+.page-container{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 30px;
+	font-size: 20px;
+}
+
+.page{
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }

@@ -26,44 +26,77 @@
 			<section class="account-section primary-information">
 				<h2>
 					Mes informations
-					<button class="open-edit-account-form">Modifier</button>
+					<button class="open-edit-account-form">
+						<ion-icon name="pencil-outline"></ion-icon>
+						Modifier
+					</button>
 				</h2>
 				<form method="POST" action="{{path('edit-account')}}" id="edit-account-form">
 					<div class="editable-input-container">
-						<label for="account_first_name">Prénom</label>
+						<label for="account_first_name">
+							<ion-icon name="person-circle-outline"></ion-icon>
+							Prénom
+						</label>
 						<input type="text" name="account_first_name" id="account_first_name" value="{{account.first_name}}" readonly>
 					</div>
 					<div class="editable-input-container">
-						<label for="account_last_name">Nom</label>
+						<label for="account_last_name">
+							<ion-icon name="person-circle-outline"></ion-icon>
+							Nom
+						</label>
 						<input type="text" name="account_last_name" id="account_last_name" value="{{account.last_name}}" readonly>
 					</div>
 					<div class="editable-input-container">
-						<label for="account_email">Email</label>
+						<label for="account_email">
+							<ion-icon name="mail-outline"></ion-icon>
+							E-mail
+						</label>
 						<input type="text" name="account_email" id="account_email" value="{{account.email}}" readonly>
 					</div>
 					<div class="editable-input-container">
-						<label for="account_phone">Téléphone</label>
+						<label for="account_phone">
+							<ion-icon name="call-outline"></ion-icon>
+							Téléphone
+						</label>
 						<input type="text" name="account_phone" id="account_phone" value="{{account.phone}}" readonly>
 					</div>
 					<div class="editable-input-container">
-						<label for="account_password">Mot de passe</label>
+						<label for="account_password">
+							<ion-icon name="lock-closed-outline"></ion-icon>
+							Mot de passe
+						</label>
 						<input type="password" name="account_password" id="account_password" value="" readonly>
 					</div>
 					<div class="editable-input-container">
-						<label for="account_address">Adresse</label>
+						<label for="account_address">
+							<ion-icon name="home-outline"></ion-icon>
+							Adresse
+						</label>
 						<input type="text" name="account_address" id="account_address" value="{{account.address}}" readonly>
 					</div>
 					<div class="editable-input-container">
-						<label for="account_post_code">Code postal</label>
+						<label for="account_post_code">
+							<ion-icon name="home-outline"></ion-icon>
+							Code postal
+						</label>
 						<input type="text" name="account_post_code" id="account_post_code" value="{{account.post_code}}" readonly>
 					</div>
 					<div class="editable-input-container">
-						<label for="account_city">Ville</label>
+						<label for="account_city">
+							<ion-icon name="business-outline"></ion-icon>
+							Ville
+						</label>
 						<input type="text" name="account_city" id="account_city" value="{{account.city}}" readonly>
 					</div>
 					<div class="actions">
-						<button type="button" class="cancel-changes">Annuler</button>
-						<button type="submit" class="apply-changes">Enregistrer les modifications</button>
+						<button type="button" class="cancel-changes">
+							<ion-icon name="close-circle-outline"></ion-icon>
+							Annuler
+						</button>
+						<button type="submit" class="apply-changes">
+							<ion-icon name="checkmark-circle-outline"></ion-icon>
+							Enregistrer les modifications
+						</button>
 					</div>
 				</form>
 			</section>

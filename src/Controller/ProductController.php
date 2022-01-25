@@ -18,6 +18,7 @@
 			$paginator = $productRepository->getProductPaginator($offset, $category);
 			return $this->render("product/catalog.html.twig", [
 				"products" => $paginator,
+				"offset" => $offset,
 				"previous" => $offset - ProductRepository::PAGINATOR_PER_PAGE,
 				"next" => min (count($paginator), $offset + ProductRepository::PAGINATOR_PER_PAGE),
 				"categories" => $categories,

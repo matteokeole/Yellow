@@ -14,24 +14,30 @@ input, textarea {
 }
 input:focus, textarea:focus {border-color: var(--primary)}
 
-.form-container{
-	box-shadow: 1px 2px 10px;
+.form-container {
     padding: 40px;
+    border: 1px solid #DDD;
     border-radius: 10px;
-	background-color: #ffffff;
-	z-index: 2;
+	box-shadow: 1px 1px 10px rgba(0, 0, 0, .6);
+	background-color: #FFF;
+	z-index: 2
 }
 
-.form-header{
+.signup-container{
+	padding: 20px;
+
+}
+
+.form-header {
 	display: flex;
-	justify-content: center;
-	align-items: center;
 	flex-direction: column;
+	justify-content: center;
+	align-items: center
 }
 
-.cloud{
+.cloud {
 	position: absolute;
-	z-index:0;
+	z-index: 0
 }
 
 .c1{
@@ -117,4 +123,8 @@ form #submit ion-icon, form button ion-icon {
 	opacity: .65;
 	font-size: 16px;
 	font-style: italic
+}
+
+.signup{
+	height: 110vh;
 }

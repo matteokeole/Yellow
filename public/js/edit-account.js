@@ -14,7 +14,7 @@ openEditAccountForm.addEventListener("click", () => {
 });
 cancelChanges.addEventListener("click", () => {
 	// Cancel changes & close edit form
-	openEditAccountForm.style.display = "block";
+	openEditAccountForm.style.display = "flex";
 	editAccountForm.lastElementChild.style.display = "none";
 	editableInputs.forEach(e => {
 		e.lastElementChild.readOnly = true;

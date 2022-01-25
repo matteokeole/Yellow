@@ -50,16 +50,27 @@
 				</a>
 			{% endfor %}
 		</div>
+		<div class="page-container">
 		{% if previous >= 0 %}
 		<a href="{{ path('catalog', { offset: previous, category: 'all' }) }}" class="page">
-			<ion-icon name="chevron-back"></ion-icon>
+			<ion-icon name="chevron-back"></ion-icon> 
 		</a>
+		{% if offset == 8 %}
+		2/3
+		{% endif %}
+		{% if offset == 16 %}
+		3/3
+		{% endif %}
 		{% endif %}
 		{% if next < products|length %}
+		{% if offset == 0 %}
+		1/3
+		{% endif %}
 		<a href="{{ path('catalog', { offset: next, category: 'all' }) }}" class="page">
 			<ion-icon name="chevron-forward"></ion-icon>
 		</a>
 		{% endif %}
+		</div>
 	</main>
 	<script>
 		const filterByCategory = () => {
