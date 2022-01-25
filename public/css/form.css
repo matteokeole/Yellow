@@ -19,7 +19,8 @@ input:focus, textarea:focus {border-color: var(--primary)}
     border: 1px solid #DDD;
     border-radius: 10px;
 	box-shadow: 1px 1px 10px rgba(0, 0, 0, .6);
-	background-color: #FFF;
+	backdrop-filter: blur(10px);
+	background-color: rgba(255, 255, 255, .65);
 	z-index: 2
 }
 
