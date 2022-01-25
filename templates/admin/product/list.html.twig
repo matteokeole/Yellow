@@ -46,8 +46,14 @@
 					<td>{{product.productStock}}</td>
 					<td>{{product.productCategory}}</td>
 					<td class="actions">
-						<a href="{{path('edit-product', {id: product.id})}}" class="edit">Modifier</a>
-						<a href="#" class="delete">Supprimer</a>
+						<a href="{{path('edit-product', {id: product.id})}}" class="edit">
+							<ion-icon name="pencil-outline"></ion-icon>
+							Modifier 
+						</a>
+						<a href="#" class="delete">
+							<ion-icon name="trash-outline"></ion-icon>
+							Supprimer
+						</a>
 					</td>
 				</tr>
 			{% endfor %}
