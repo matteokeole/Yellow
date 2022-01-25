@@ -1,0 +1,17 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Modification du compte • Yellow{% endblock %}
+{% block body %}
+	<link rel="stylesheet" href="/css/form.css">
+	<main>
+		<h1>Consultation de la commande</h1>
+		{{order.id}}
+		{# <td>{{orders.basket.id}}</td>
+					<td>{{orders.basket.customer.id}}</td>
+					<td>{{orders.basket.customer.customerFirstName}}</td>
+					<td>{% for content in orders.basket.contents %}
+							{{content.product.productName}}</td>
+						{% endfor %} #}
+
+	</main>
+{% endblock %}
