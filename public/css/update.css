@@ -1,0 +1,37 @@
+.update-alert {
+	display: flex;
+	align-items: center;
+	padding: 8px;
+	border: 1px solid var(--success);
+	border-radius: 8px;
+	background-color: var(--success-light);
+	color: var(--success);
+	font-size: 17px
+}
+
+.update-alert .icon {
+	margin-right: 8px;
+	font-size: 30px
+}
+
+.update-alert .content {flex-grow: 1}
+
+.update-alert .close-alert {
+	display: flex;
+	align-items: center;
+	border: none;
+	background-color: transparent;
+	cursor: pointer;
+	color: var(--success);
+	font-size: 16px;
+	transition-duration: .2s
+}
+.update-alert .close-alert:hover {
+	opacity: .65;
+	text-decoration: underline
+}
+
+.update-alert .close-alert ion-icon {
+	margin-right: 2px;
+	font-size: 22px
+}

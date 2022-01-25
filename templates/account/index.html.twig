@@ -3,6 +3,8 @@
 {% block title %}Options du compte • Yellow{% endblock %}
 {% block body %}
 	<link rel="stylesheet" href="/css/account.css">
+	<link rel="stylesheet" href="/css/required-fields.css">
+	<script src="/js/form-error.js"></script>
 	<main>
 		<h1>
 			{{account.first_name}} {{account.last_name}}
@@ -21,16 +23,36 @@
 				</a>
 			</div>
 		</h1>
+		{% if update %}
+			<div class="update-alert">
+				<ion-icon name="checkmark-done-outline" class="icon"></ion-icon>
+				<span class="content">{{update}}</span>
+				<button class="close-alert" title="Fermer" aria-label="Fermer">
+					<ion-icon name="close-outline"></ion-icon>
+					Fermer
+				</button>
+			</div>
+		{% endif %}
 		<div class="account-container">
 			<!-- User informations -->
 			<section class="account-section primary-information">
 				<h2>
 					Mes informations
+					<div class="required-fields">Les champs laissés vides seront inchangés.</div>
 					<button class="open-edit-account-form">
 						<ion-icon name="pencil-outline"></ion-icon>
 						Modifier
 					</button>
 				</h2>
+				<!-- Form error alert -->
+				<div class="form-error-alert">
+					<ion-icon name="alert-circle-outline" class="error-icon"></ion-icon>
+					<span class="error-content">
+						<span class="error-title"></span>
+						<span class="error-subtitle"></span>
+					</span>
+				</div>
+				<!-- Edit account form -->
 				<form method="POST" action="{{path('edit-account')}}" id="edit-account-form">
 					<div class="editable-input-container">
 						<label for="account_first_name">
@@ -101,30 +123,34 @@
 				</form>
 			</section>
 			{% if account.admin == 0 %}
-			<!-- Commandes -->
-			<section class="account-section order">
-				<h2>Mes commandes</h2>
-				<div class="form-user">
-				<table>
+				<!-- Commandes -->
+				<section class="account-section order">
+					<h2>Mes commandes</h2>
+					<div class="form-user">
+					<table>
+						<tr>
+						<th>Ref de la commande</th>
+						<th>Date de la commande</th>
+						<th>Montant total</th>
+						<th>Actions</th>
+					</tr>
+						{% for order in orders %}
 					<tr>
-					<th>Ref de la commande</th>
-					<th>Date de la commande</th>
-					<th>Montant total</th>
-					<th>Actions</th>
-				</tr>
-					{% for order in orders %}
-				<tr>
-					<td>{{order}}</td>
-					<td>{{order}}</td>
-					<td>{{order}}</td>
-					<td><a href=""> Voir </a></td>
-				</tr>			
-					{% endfor %}
-				</table>
-				</div>
-			</section>
+						<td>{{order}}</td>
+						<td>{{order}}</td>
+						<td>{{order}}</td>
+						<td><a href=""> Voir </a></td>
+					</tr>			
+						{% endfor %}
+					</table>
+					</div>
+				</section>
 			{% endif %}
-			</div>
+		</div>
 	</main>
 	<script src="/js/edit-account.js"></script>
+	<script>
+		// Close update alert
+		document.querySelector(".close-alert").addEventListener("click", e => {e.target.parentNode.remove()})
+	</script>
 {% endblock %}

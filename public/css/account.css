@@ -32,6 +32,9 @@ h2 {
 	border-bottom: none
 }
 
+/* Required fields */
+.required-fields {display: none}
+
 /* Open edit form button */
 .open-edit-account-form {
 	display: flex;
@@ -135,6 +138,13 @@ h2 {
 @media screen and (max-width: 768px) {
 	h1 {flex-direction: column}
 	.account-section {width: 100%}
+}
+
+@media screen and (max-width: 600px) {
+	h2 {
+		flex-direction: column;
+		text-align: center
+	}
 }
 
 @media screen and (max-width: 400px) {

@@ -4,7 +4,7 @@
 {% block body %}
 	<link rel="stylesheet" href="/css/form.css">
 	<link rel="stylesheet" href="/css/connection.css">
-	<script src="/js/formError.js"></script>
+	<script src="/js/form-error.js"></script>
 	<main class="signup">
 		<div class="cloud c1">
 		<img class="form-logo" src="/images/background.png" alt="Logo">
@@ -70,7 +70,7 @@
 			expr = {
 				first_name: /^[A-Za-zÀ-ú- ]+$/,
 				last_name: /^[A-Za-zÀ-ú- ]+$/,
-				email: /^[\w-]+@[\w-]+\.[\w-]{2,}$/,
+				email: /^[\w-\.]+@[\w-]+\.[\w-]{2,}$/,
 				phone: /^0\d{9}$/,
 				password: /^.{8,}$/,
 				address: /^[\wÀ-ú- ]+$/,
@@ -105,19 +105,19 @@
 			if (!expr.city.test(signup.city.value)) {
 				// Invalid city
 				validation.city = false;
-				displayFormError("Champ invalide", "Veuillez renseigner une ville correcte.")
+				displayFormError("Champ invalide", "Veuillez renseigner un nom de ville valide.")
 			} else validation.city = true;
 			// Post code check-up
 			if (!expr.post_code.test(signup.post_code.value)) {
 				// Invalid post code
 				validation.post_code = false;
-				displayFormError("Champ invalide", "Veuillez renseigner un code postal correct.")
+				displayFormError("Champ invalide", "Veuillez renseigner un code postal valide.")
 			} else validation.post_code = true;
 			// Address check-up
 			if (!expr.address.test(signup.address.value)) {
 				// Invalid address
 				validation.address = false;
-				displayFormError("Champ invalide", "Veuillez renseigner une adresse postale correcte.")
+				displayFormError("Champ invalide", "Veuillez renseigner une adresse postale valide.")
 			} else validation.address = true;
 			// Password check-up
 			if (!expr.password.test(signup.password.value)) {

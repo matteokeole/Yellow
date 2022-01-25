@@ -3,7 +3,8 @@
 @import url(footer.css);
 @import url(link.css);
 @import url(titles.css);
-@import url(formErrorAlert.css);
+@import url(form-error.css);
+@import url(update.css);
 
 /* Colors (border colors are a brighter variant of background colors) */
 :root {
