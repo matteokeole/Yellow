@@ -38,6 +38,8 @@ main {
 	margin-left: 1vw
 }
 
+#contact-form h1 {padding-top: 0}
+
 #contact-form .blank {height: 20px}
 
 /* Contact information paragraph */
