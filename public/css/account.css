@@ -16,33 +16,12 @@ h1 {
 }
 
 .account-section {
-	width: 50vw;
+	width: 700px;
 	margin-top: 20px;
 	padding: 8px 12px;
 	border-radius: 8px;
 	background-color: rgba(245, 201, 67, .2)
 }
-
-@media (max-width: 800px) {
-    .account-section {
-        width: 80vw!important;
-    }
-
-	.editable-input-container {
-		display: contents!important;
-	}
-
-    .editable-input-container input {
-        text-align: left!important;
-        margin-bottom: 10px;
-		margin-left: 0!important;
-    }
-
-	.editable-input-container label {
-		font-size: 16px;
-	}
-}
-
 
 /* Account section subtitle */
 h2 {
@@ -55,6 +34,8 @@ h2 {
 
 /* Open edit form button */
 .open-edit-account-form {
+	display: flex;
+	align-items: center;
 	border: none;
 	background-color: transparent;
 	cursor: pointer;
@@ -64,6 +45,11 @@ h2 {
 .open-edit-account-form:hover {
 	opacity: .65;
 	text-decoration: underline
+}
+
+.open-edit-account-form ion-icon {
+	margin-right: 4px;
+	font-size: 20px
 }
 
 /* Edit account form */
@@ -91,9 +77,21 @@ h2 {
 	color: var(--secondary)
 }
 
+.editable-input-container label {
+	display: flex;
+	align-items: center;
+	white-space: nowrap
+}
+
+.editable-input-container label ion-icon {
+	margin-right: 6px;
+	font-size: 22px
+}
+
 .editable-input-container input {
+	width: 100%;
 	flex-grow: 1;
-	margin-left: 4px;
+	margin-left: 6px;
 	outline: none;
 	border: none;
 	background-color: transparent;
@@ -102,7 +100,6 @@ h2 {
 	font-size: 18px;
 	transition-duration: .2s
 }
-.editable-input-container.editable input {color: var(--secondary)}
 
 /* Form actions */
 
@@ -112,6 +109,8 @@ h2 {
 }
 
 #edit-account-form .actions button {
+	display: flex;
+	align-items: center;
 	padding: 8px;
 	border: none;
 	background-color: transparent;
@@ -124,4 +123,26 @@ h2 {
 #edit-account-form .actions button:hover {
 	opacity: .65;
 	text-decoration: underline
+}
+
+#edit-account-form .actions button ion-icon {
+	margin-right: 4px;
+	font-size: 20px
+}
+
+/* Media queries */
+
+@media screen and (max-width: 768px) {
+	h1 {flex-direction: column}
+	.account-section {width: 100%}
+}
+
+@media screen and (max-width: 400px) {
+	.editable-input-container {font-size: 16px}
+	.editable-input-container label ion-icon {font-size: 20px}
+	.editable-input-container input {font-size: 16px}
+	#edit-account-form .actions {
+		flex-direction: column;
+		align-items: flex-end
+	}
 }
