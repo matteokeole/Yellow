@@ -10,6 +10,11 @@
 	text-align: center
 }
 
+.basket-empty a:hover {
+	opacity: .65;
+	text-decoration: underline
+}
+
 /* Basket content container */
 
 .basket {
