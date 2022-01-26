@@ -53,12 +53,13 @@ class ProductRepository extends ServiceEntityRepository
 			->getResult();
 	}
 
-	public const PAGINATOR_PER_PAGE = 8;
+	public const PAGINATOR_PER_PAGE = 10;
 
 	public function getProductPaginator (int $offset, string $category): Paginator
 	{
 		$query = $this->createQueryBuilder('p')
-			->orderBy('p.product_price', 'ASC');
+			->orderBy('p.product_price', 'ASC')
+			->where('p.product_stock >= 0');
 
 		if ($category != 'all') {
 			$query = $query->andWhere('p.product_category = :category')->setParameter('category', $category);

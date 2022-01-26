@@ -26,20 +26,22 @@
 		<!-- Catalog container -->
 		<div class="catalog-container">
 			{% for product in products %}
-				<a href="{{path('product', {id: product.id})}}" class="product" style="background-image: url(/images/cover/{{product.productCover}}.jpg)">
-					<div class="product-footer">
-						<div class="product-primary-info">
-							<div class="product-info">
-								<span class="product-title">{{product.productName}}</span>
-								<div class="product-subtitle">
-									{{product.productAuthor}} •<span class="product-date">{{product.productDate}}</span>
+				{% if product.productStock >= 0 %}
+					<a href="{{path('product', {id: product.id})}}" class="product" style="background-image: url(/images/cover/{{product.productCover}}.jpg)">
+						<div class="product-footer">
+							<div class="product-primary-info">
+								<div class="product-info">
+									<span class="product-title">{{product.productName}}</span>
+									<div class="product-subtitle">
+										{{product.productAuthor}} •<span class="product-date">{{product.productDate}}</span>
+									</div>
 								</div>
+								<div class="product-price">{{product.productPrice}}€</div>
 							</div>
-							<div class="product-price">{{product.productPrice}}€</div>
+							<div class="product-desc">{{product.productDesc}}</div>
 						</div>
-						<div class="product-desc">{{product.productDesc}}</div>
-					</div>
-				</a>
+					</a>
+				{% endif %}
 			{% endfor %}
 		</div>
 	</main>

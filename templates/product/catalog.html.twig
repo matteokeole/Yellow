@@ -50,7 +50,6 @@
 		</div>
 		<div class="catalog-container">
 			{% for product in products %}
-			{% if product.productStock %}
 				<a href="{{path('product', {id: product.id})}}" class="product" style="background-image: url(/images/cover/{{product.productCover}}.jpg)">
 					<div class="product-footer">
 						<div class="product-primary-info">
@@ -65,7 +64,6 @@
 						<div class="product-desc">{{product.productDesc}}</div>
 					</div>
 				</a>
-			{% endif %}
 			{% endfor %}
 		</div>
 		<div class="page-container">
@@ -73,10 +71,10 @@
 		<a href="{{ path('catalog', { offset: previous, category: 'all' }) }}" class="page">
 			<ion-icon name="chevron-back"></ion-icon> 
 		</a>
-		{% if offset == 8 %}
+		{% if offset == 10 %}
 		2/3
 		{% endif %}
-		{% if offset == 16 %}
+		{% if offset == 20 %}
 		3/3
 		{% endif %}
 		{% endif %}
