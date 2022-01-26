@@ -192,3 +192,10 @@
 	}
 	.product-quantity {margin: 0 0 8px 0 !important}
 }
+
+/* Thanks page */
+
+.center {
+	text-align: center;
+	padding-top: 50px;
+}
