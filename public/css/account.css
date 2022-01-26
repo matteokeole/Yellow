@@ -156,3 +156,8 @@ h2 {
 		align-items: flex-end
 	}
 }
+
+table {
+	table-layout: fixed;
+	width: 100%;
+  }
