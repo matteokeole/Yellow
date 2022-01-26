@@ -71,6 +71,7 @@
 							{% set total = total + (item.productPrice * content[loop.index - 1].contentProductQuantity) %}
 						{% endfor %}
 						{{total|number_format(2)}}€
+						<a class="continue-buy" href="{{path('catalog', {category: 'all'})}}">Continuer vos achats</a>
 					</div>
 					<a href="{{path('make-order')}}" id="validate-basket">
 						<ion-icon name="bag-check-outline"></ion-icon>
