@@ -15,17 +15,19 @@
 		</main>
 	{% endblock %}
 
-{% else if orderError == 1 %}
+{% elseif orderError == 1 %}
 	{% block title %}Commande refusée • Yellow{% endblock %}
 
 	{% block body %}
-			<main>
-				<h1>Stock insuffisant</h1>
-				<p>
+		<link rel="stylesheet" href="/css/basket.css">
+		<main class="center">
+			<img src="images/chopper.jpg">
+			<h1>Stock insuffisant</h1>
+			<p>
 					{% for product in orderErrorProducts %}
 					{{orderErrorProducts}}
 					{% endfor %}
-				</p>
-			</main>
+			</p>
+		</main>
 	{% endblock %}
-
+{% endif %}

@@ -147,7 +147,7 @@
 						$pouet = $product->getProductStock()-$content->getContentProductQuantity();
 						if ($pouet < 0){
 							$ordererror = 1;
-							$ordererrorproducts += $product;
+							array_push($ordererrorproducts, $product);
 						} else{
 							$product->setProductStock($pouet);
 							$contentOrder->setProduct($content->getProduct());
