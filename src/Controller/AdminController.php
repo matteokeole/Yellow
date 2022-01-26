@@ -4,8 +4,8 @@
 	use App\Entity\Order;
 	use App\Entity\Product;
 	use App\Form\CustomerFormType;
-	use App\Form\ProductFormType;
 	use App\Form\OrderFormType;
+	use App\Form\ProductFormType;
 	use App\Repository\CustomerRepository;
 	use App\Repository\OrderRepository;
 	use App\Repository\ProductRepository;
@@ -32,7 +32,7 @@
 		 */
 		public function customerList(CustomerRepository $customerRepository): Response {
 			// Display database customers
-			return $this->render("admin/customer/list.html.twig", [
+			return $this->render("admin/customer/index.html.twig", [
 				"customers" => $customerRepository->findAll()
 			]);
 		}
@@ -56,7 +56,7 @@
 			]);
 		}
 		/**
-		 * @Route("/admin/utilisateur/nouvel-admin", name="new-admin")
+		 * @Route("/admin/utilisateurs/nouvel-admin", name="new-admin")
 		 */
 		public function newAdmin(Request $request, EntityManagerInterface $entityManager): Response {
 			// Add new admin
@@ -92,17 +92,15 @@
 			]);
 		}
 		/**
-		* @Route("/admin/{id}", name="remove-from-customer")
+		* @Route("/admin/utilisateurs/supprimer/{id}", name="remove-customer")
 		*/
-		public function removeFromUser(Request $request, EntityManagerInterface $entityManager, CustomerRepository $customerRepository): Response {
-			// Remove product from product list
-			$customer = $customerRepository->findBy(array("id" => $request->get("id")));
-			foreach ($customer as $item) {
-				$entityManager->remove($item);
-			}
+		public function removeUser(Request $request, CustomerRepository $customerRepository, EntityManagerInterface $entityManager): Response {
+			// Remove customer from user list
+			$customer = $customerRepository->findBy(array("id" => $request->get("id")))[0];
+			$entityManager->remove($customer);
 			// Commit changes
 			$entityManager->flush();
-			// Redirect to the customer basket
+			// Redirect to the user list
 			return $this->redirectToRoute("customer-list");
 		}
 		// Order edition routes
@@ -111,26 +109,21 @@
 		 */
 		public function orderList(OrderRepository $orderRepository): Response {
 			// Display database orders
-			return $this->render("admin/order/list.html.twig", [
+			return $this->render("admin/order/index.html.twig", [
 				"orders" => $orderRepository->findAll()
 			]);
 		}
 		/**
-		 * @Route("/admin/commandes/{id}", name="edit-order")
+		 * @Route("/admin/commandes/{id}", name="remove-order")
 		 */
-		public function editOrder(Request $request, Order $order, EntityManagerInterface $entityManager): Response {
-			// Edit order information
-			$form = $this->createForm(OrderFormType::class, $order);
-			$form->handleRequest($request);
-			if ($form->isSubmitted() && $form->isValid()) {
-				$entityManager->persist($order);
-				$entityManager->flush();
-				return $this->redirectToRoute("order-list");
-			}
-			return $this->render("admin/order/edit.html.twig", [
-				"order" => $order,
-				"form" => $form->createView()
-			]);
+		public function removeOrder(Request $request, OrderRepository $orderRepository, EntityManagerInterface $entityManager): Response {
+			// Remove order from order list
+			$order = $orderRepository->findBy(array("id" => $request->get("id")))[0];
+			$entityManager->remove($order);
+			// Commit changes
+			$entityManager->flush();
+			// Redirect to the order list
+			return $this->redirectToRoute("order-list");
 		}
 		// Product edition routes
 		/**
@@ -138,7 +131,7 @@
 		 */
 		public function productList(ProductRepository $productRepository): Response {
 			// Display database products
-			return $this->render("admin/product/list.html.twig", [
+			return $this->render("admin/product/index.html.twig", [
 				"products" => $productRepository->findAll()
 			]);
 		}
@@ -178,17 +171,15 @@
 			]);
 		}
 		/**
-		* @Route("/admin/product/{id}", name="remove-from-product")
+		* @Route("/admin/product/{id}", name="remove-product")
 		*/
-		public function removeFromProduct(Request $request, EntityManagerInterface $entityManager, ProductRepository $productRepository): Response {
+		public function removeProduct(Request $request, ProductRepository $productRepository, EntityManagerInterface $entityManager): Response {
 			// Remove product from product list
-			$product = $productRepository->findBy(array("id" => $request->get("id")));
-			foreach ($product as $item) {
-				$entityManager->remove($item);
-			}
+			$product = $productRepository->findBy(array("id" => $request->get("id")))[0];
+			$entityManager->remove($product);
 			// Commit changes
 			$entityManager->flush();
-			// Redirect to the customer basket
+			// Redirect to the product list
 			return $this->redirectToRoute("product-list");
 		}
 	}
