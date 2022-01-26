@@ -12,7 +12,7 @@
 	</style>
 	<main>
 		<h1>Commande n°
-			{{order.id}}</h1>
+			{{orders.id}}</h1>
 		<a href="{{path('account')}}" class="back">
 			<ion-icon name="chevron-back-outline"></ion-icon>
 			Retour à la page précédente
@@ -25,7 +25,7 @@
 					Date de la commande
 				</div>
 				<div class="data">
-					{{order.date}}
+					{{orders.date}}
 				</div>
 			</div>
 			<div class="editable-input-container">
@@ -33,9 +33,9 @@
 					Produits commandés</p>
 			</span>
 			<span class="data">
-				{% for content in order.contentOrders.contents %}
-							<img src="/images/cover/{{content.product.productCover}}.jpg" alt="Image de couverture">
-							{{content.product.productName ~ " x" ~ content.contentProductQuantity}}</p>
+				{% for order in orders.customer %}
+							<img src="/images/cover/{{contentOrder.product.productCover}}.jpg" alt="Image de couverture">
+							{{contentOrder.product.productName ~ " x" ~ contentOrder.contentProductQuantity}}</p>
 						{% endfor %}
 			</span>
 		</div>
@@ -44,7 +44,7 @@
 				Montant de la commande
 			</span>
 			<span class="data">
-				{{order.orderTotal}} €
+				{{orders.orderTotal}} €
 			</span>
 		</div>
 	</section>
