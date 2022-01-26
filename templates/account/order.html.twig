@@ -5,49 +5,34 @@
 {% block body %}
 	<link rel="stylesheet" href="/css/account.css">
 	<link rel="stylesheet" href="/css/titles.css">
-	<style>
-		img {
-			width: 50px;
-		}
-	</style>
+	<style>img {width: 50px}</style>
 	<main>
-		<h1>Commande n°
-			{{orders.id}}</h1>
+		<h1>Commande n°{{order.id}}</h1>
+		<!-- Back to account page -->
 		<a href="{{path('account')}}" class="back">
 			<ion-icon name="chevron-back-outline"></ion-icon>
-			Retour à la page précédente
+			Retour au compte
 		</a>
 		<div class="account-container">
 		<section class="account-section">
-			<h2>Détails de la commande</h2>
+			<h2>Détails</h2>
 			<div class="editable-input-container">
-				<div class="field">
-					Date de la commande
-				</div>
-				<div class="data">
-					{{orders.date}}
-				</div>
+				<div class="field">Date</div>
+				<div class="data">{{order.date}}</div>
 			</div>
 			<div class="editable-input-container">
-				<span class="field">
-					Produits commandés</p>
-			</span>
-			<span class="data">
-				{% for order in orders.customer %}
-							<img src="/images/cover/{{contentOrder.product.productCover}}.jpg" alt="Image de couverture">
-							{{contentOrder.product.productName ~ " x" ~ contentOrder.contentProductQuantity}}</p>
-						{% endfor %}
-			</span>
-		</div>
-		<div class="editable-input-container">
-			<span class="field">
-				Montant de la commande
-			</span>
-			<span class="data">
-				{{orders.orderTotal}} €
-			</span>
-		</div>
-	</section>
-	</div>
-</main>
+				<span class="field">Contenu de la commande</p></span>
+				<span class="data">
+					{% for order in order.customer %}
+						<img src="/images/cover/{{contentOrder.product.productCover}}.jpg" alt="Image de couverture">
+						{{contentOrder.product.productName ~ " x" ~ contentOrder.contentProductQuantity}}</p>
+					{% endfor %}
+				</span>
+			</div>
+			<div class="editable-input-container">
+				<span class="field">Montant</span>
+				<span class="data">{{order.orderTotal}}€</span>
+			</div>
+		</section>
+	</main>
 {% endblock %}
