@@ -164,6 +164,22 @@
 	font-size: 30px
 }
 
+/* Continue browsing link */
+.continue-browsing {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 12px 0 4px 0;
+	padding: 4px 0;
+	border: none;
+	border-radius: 8px;
+	background-color: rgba(0, 0, 0, .1);
+	color: var(--secondary);
+	font-size: 17px;
+	transition-duration: .2s
+}
+.continue-browsing:hover {color: #000}
+
 /* Validate basket button */
 
 #validate-basket {
@@ -180,13 +196,13 @@
 	transition-duration: .2s
 }
 #validate-basket:hover {color: #000}
-#validate-basket:active {
+#validate-basket:active, .continue-browsing:active {
 	-webkit-transform: scale(.9);
 	transform: scale(.9);
 	transition-duration: .1s
 }
 
-#validate-basket ion-icon {
+#validate-basket ion-icon, .continue-browsing ion-icon {
 	margin-right: 8px;
 	font-size: 22px
 }
