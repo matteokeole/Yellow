@@ -127,22 +127,22 @@
 				<section class="account-section order">
 					<h2>Mes commandes</h2>
 					<div class="form-user">
-					<table>
-						<tr>
-							<th>Ref de la commande</th>
-							<th>Date de la commande</th>
-							<th>Montant total</th>
-							<th>Actions</th>
-						</tr>
-						{% for order in orders %}
+						<table>
 							<tr>
-								<td>{{order}}</td>
-								<td>{{order.date}}</td>
-								<td>{{order.orderTotal}}</td>
-								<td><a href="{{path('order-details', {id: order.id})}}">Voir</a></td>
+								<th>Ref de la commande</th>
+								<th>Date de la commande</th>
+								<th>Montant total</th>
+								<th>Actions</th>
 							</tr>
-						{% endfor %}
-					</table>
+							{% for order in orders %}
+								<tr>
+									<td>{{order}}</td>
+									<td>{{order.date}}</td>
+									<td>{{order.orderTotal}}</td>
+									<td><a href="{{path('order-details', {id: order.id})}}">Voir</a></td>
+								</tr>
+							{% endfor %}
+						</table>
 					</div>
 				</section>
 		</div>

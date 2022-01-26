@@ -24,8 +24,12 @@
 				<span class="field">Contenu de la commande</p></span>
 				<span class="data">
 					{% for product in products %}
-						{# <img src="/images/cover/{{product.productCover}}.jpg" alt="Image de couverture">
-						{{product.productName ~ " x" ~ product.contentProductQuantity}}</p> #}
+						{% for content in contents %}
+							{% if content.id == product.id %}
+								{{content.Quantity}}
+								<img src="/images/cover/{{content.product.productCover}}.jpg" alt="Image de couverture">
+							{% endif %}
+						{% endfor %}
 					{% endfor %}
 				</span>
 			</div>
