@@ -15,69 +15,77 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class ProductRepository extends ServiceEntityRepository
 {
-    public function __construct(ManagerRegistry $registry)
-    {
-        parent::__construct($registry, Product::class);
-    }
+	public function __construct(ManagerRegistry $registry)
+	{
+		parent::__construct($registry, Product::class);
+	}
 
-    public function searchCategory(){
-        $query = $this->createQueryBuilder('c')
-        ->select('c.product_category')
-        ->distinct(true)
-        ->getQuery();
+	public function searchCategory(){
+		$query = $this->createQueryBuilder('c')
+		->select('c.product_category')
+		->distinct(true)
+		->getQuery();
 
-        $categories = [];
-        foreach ($query->getResult() as $cols) {
-            $categories[] = $cols['product_category'];
-        }
-        return $categories;
-    }
+		$categories = [];
+		foreach ($query->getResult() as $cols) {
+			$categories[] = $cols['product_category'];
+		}
+		return $categories;
+	}
 
-    public const PAGINATOR_PER_PAGE = 8;
+	public function searchName($value) {
+		return $this->createQueryBuilder("p")
+			->andWhere("p.product_name LIKE :query")
+			->setParameter("query", "%" . $value . "%")
+			->getQuery()
+			->getResult();
+	}
 
-    public function getProductPaginator (int $offset, string $category): Paginator
-    {
-        $query = $this->createQueryBuilder('p')
-            ->orderBy('p.product_price', 'ASC');
+	public const PAGINATOR_PER_PAGE = 8;
 
-        if ($category != 'all') {
-            $query = $query->andWhere('p.product_category = :category')->setParameter('category', $category);
-        }
+	public function getProductPaginator (int $offset, string $category): Paginator
+	{
+		$query = $this->createQueryBuilder('p')
+			->orderBy('p.product_price', 'ASC');
 
-        $query = $query->setMaxResults(self::PAGINATOR_PER_PAGE)
-            ->setFirstResult($offset)
-            ->getQuery()
-            ;
+		if ($category != 'all') {
+			$query = $query->andWhere('p.product_category = :category')->setParameter('category', $category);
+		}
 
-        return new Paginator($query);
-    }
+		$query = $query->setMaxResults(self::PAGINATOR_PER_PAGE)
+			->setFirstResult($offset)
+			->getQuery()
+			;
 
-    // /**
-    //  * @return Product[] Returns an array of Product objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('p.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
+		return new Paginator($query);
+	}
 
-    /*
-    public function findOneBySomeField($value): ?Product
-    {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
+	// /**
+	//  * @return Product[] Returns an array of Product objects
+	//  */
+	/*
+	public function findByExampleField($value)
+	{
+		return $this->createQueryBuilder('p')
+			->andWhere('p.exampleField = :val')
+			->setParameter('val', $value)
+			->orderBy('p.id', 'ASC')
+			->setMaxResults(10)
+			->getQuery()
+			->getResult()
+		;
+	}
+	*/
+
+	/*
+	public function findOneBySomeField($value): ?Product
+	{
+		return $this->createQueryBuilder('p')
+			->andWhere('p.exampleField = :val')
+			->setParameter('val', $value)
+			->getQuery()
+			->getOneOrNullResult()
+		;
+	}
+	*/
 }

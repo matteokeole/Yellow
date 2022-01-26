@@ -12,10 +12,4 @@
 	public function index(): Response {
 		return $this->render("home/index.html.twig");
 	}
-	/**
-	 * @Route("/recherche", name="search")
-	 */
-	public function search(Request $request) {
-		return $this->render("home/search.html.twig");
-	}
 }

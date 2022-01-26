@@ -1,54 +1,45 @@
 {% extends "base.html.twig" %}
 
-{# {% block title %}{{product.ProductName}} ({{product.ProductCategory}}) • Yellow{% endblock %} #}
+{% block title %}"{{query}}" • Recherche • Yellow{% endblock %}
 {% block body %}
-	<link rel="stylesheet" href="/css/product.css">
-	<style>
-		{# @media screen and (max-width: 1000px) {
-			.cover::before {background-image: url(/images/cover/{{product.productCover}}.jpg)}
-		} #}
-	</style>
+	<link rel="stylesheet" href="/css/catalog.css">
 	<main>
-		<h1>Rechercher</h1>
-		{# <!-- Back to catalog link -->
-		<a href="{{path('catalog')}}" class="back">
-			<ion-icon name="chevron-back-outline"></ion-icon>
-			Retour au catalogue
-		</a>
-		<!-- Product container -->
-		<div class="product-container">
-			<div class="cover">
-				<img src="/images/cover/{{product.productCover}}.jpg" alt="Image de couverture">
-			</div>
-			<div class="informations">
-				<!-- Product title & price -->
-				<h1 class="title">
-					<span class="product-title">{{product.productName}}</span>
-					<span class="product-price">{{product.productPrice}}€</span>
-				</h1>
-				<div class="blank"></div>
-				<!-- Actions -->
-				<div class="actions">
-					{% if product.productStock > 0 %}
-						<span class="product-stock valid">En stock</span>
-						<a href="#" class="add-to-basket">Ajouter au panier</a>
-					{% else %}
-						<span class="product-stock invalid">Rupture de stock</span>
-					{% endif %}
-				</div>
-				<div class="blank"></div>
-				<!-- Product author & date (year) -->
-				<div class="product-author">
-					Ecrit par {{product.productAuthor}} <span class="product-date">• {{product.productDate}}</span>
-				</div>
-				<!-- Product category name -->
-				<div class="product-category">
-					<span>{{product.productCategory}}</span> • 
-					<a href="#">En voir plus de ce type</a>
-				</div>
-				<!-- Product description -->
-				<div class="product-desc">{{product.productDesc}}</div>
-			</div>
-		</div> #}
+		<h1>Résultats pour "{{query}}"</h1>
+		<!-- Searchbar container -->
+		<div class="searchbar">
+			<form method="POST" class="search-form">
+				<input class="search-input" id="search" name="query" type="search" placeholder="Rechercher un produit">
+				<button type="submit" class="btn-search"><ion-icon name="search-outline" size="large"></ion-icon></button>
+			</form>
+			<script>
+				// Send form with search query
+				document.querySelector(".search-form").addEventListener("submit", e => {
+					e.preventDefault();
+					const url = "{{path('search', {query: 'search-value'})}}"
+						.replace("search-value", e.target.children[0].value);
+					e.target.setAttribute("action", url);
+					e.target.submit()
+				})
+			</script>
+		</div>
+		<!-- Catalog container -->
+		<div class="catalog-container">
+			{% for product in products %}
+				<a href="{{path('product', {id: product.id})}}" class="product" style="background-image: url(/images/cover/{{product.productCover}}.jpg)">
+					<div class="product-footer">
+						<div class="product-primary-info">
+							<div class="product-info">
+								<span class="product-title">{{product.productName}}</span>
+								<div class="product-subtitle">
+									{{product.productAuthor}} •<span class="product-date">{{product.productDate}}</span>
+								</div>
+							</div>
+							<div class="product-price">{{product.productPrice}}€</div>
+						</div>
+						<div class="product-desc">{{product.productDesc}}</div>
+					</div>
+				</a>
+			{% endfor %}
+		</div>
 	</main>
 {% endblock %}
