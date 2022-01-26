@@ -22,7 +22,7 @@
 				"products" => $paginator,
 				"offset" => $offset,
 				"previous" => $offset - ProductRepository::PAGINATOR_PER_PAGE,
-				"next" => min (count($paginator), $offset + ProductRepository::PAGINATOR_PER_PAGE),
+				"next" => min(count($paginator), $offset + ProductRepository::PAGINATOR_PER_PAGE),
 				"categories" => $categories,
 				"filter" => $category,
 				"stocks" => $stocks,
@@ -35,6 +35,16 @@
 		public function product(Product $product): Response {
 			return $this->render("product/product.html.twig", [
 				"product" => $product
+			]);
+		}
+		/**
+		* @Route("/recherche/{query}", name="search")
+		*/
+		public function search(ProductRepository $productRepository, Request $request): Response {
+			$products = $productRepository->searchName($request->get("query"));
+			return $this->render("home/search.html.twig", [
+				"query" => $request->get("query"),
+				"products" => $products
 			]);
 		}
 	}
