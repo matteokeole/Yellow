@@ -22,9 +22,9 @@
 				<label for="stock">Filtrer par produit en stock :</label>
 				<select type="text" class="form-control" id="stock_search" name="stock_search">
 						<option value="">Tous les produits</option>
-						{% if stocks > 0 %}
-							<option {{ stocks == stock_search ? 'selected'}}>Les produits en stock</option>
-						{% endif %}
+						{% for stock in stocks %}
+							<option {{ stocks == stock_search ? 'selected'}}>{{stock}}</option>
+						{% endfor %}
 				</select>
 				<button class="btn btn-primary" type="submit">Rechercher</button>
 			</form>

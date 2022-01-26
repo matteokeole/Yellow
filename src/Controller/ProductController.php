@@ -15,7 +15,7 @@
 			$categories = $productRepository->searchCategory();
 			$category = $request->get("category");
 			$stocks = $productRepository->getProductStock();
-			$stock_search = "";
+			$stock_search = $request->query->get('stock_search', '');
 			$offset = max(0, $request->query->getInt('offset', 0));
 			$paginator = $productRepository->getProductPaginator($offset, $category);
 			return $this->render("product/catalog.html.twig", [
