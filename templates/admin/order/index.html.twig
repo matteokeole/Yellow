@@ -4,6 +4,7 @@
 {% block body %}
 	<main>
 		<link rel="stylesheet" href="/css/admin.css">
+		<style>img {width: 50px}</style>
 		<h1>Gestion des commandes</h1>
 		<!-- Actions -->
 		<div class="actions">
@@ -30,9 +31,10 @@
 					<td>{{order.id}}</td>
 					<td>{{order.customer.id}}</td>
 					<td>{{order.customer.customerFirstName ~ ' ' ~ order.customer.customerLastName}}</td>
-					<td>
+					<td class="content">
 						{% for contentOrder in order.contentOrders %}
-							{{contentOrder.product.productCover ~ ' ' ~ contentOrder.product.productName ~ ' X ' ~ contentOrder.quantity}}
+							<img src="/images/cover/{{contentOrder.product.productCover}}.jpg" alt="Image de couverture">
+							{{contentOrder.product.productName ~ ' x ' ~ contentOrder.quantity}}</p>
 						{% endfor %}
 					</td>
 					<td>{{order.orderTotal}}</td>

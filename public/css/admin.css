@@ -72,3 +72,7 @@ table a ion-icon {
 }
 
 table .cover {height: 100px}
+
+td.content{
+	text-align: left;
+}
