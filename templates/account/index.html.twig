@@ -127,16 +127,14 @@
 				<section class="account-section order">
 					<h2>Mes commandes</h2>
 					<div class="form-user">
-						<table>
+						<table class="table-container">
 							<tr>
-								<th>Ref de la commande</th>
-								<th>Date de la commande</th>
-								<th>Montant total</th>
-								<th>Actions</th>
+								<th class="table-field">Date de la commande</th>
+								<th class="table-field">Montant total</th>
+								<th class="table-field">Action</th>
 							</tr>
 							{% for order in orders %}
-								<tr>
-									<td>{{order}}</td>
+								<tr class="table-data">
 									<td>{{order.date}}</td>
 									<td>{{order.orderTotal}}</td>
 									<td><a href="{{path('order-details', {id: order.id})}}">Voir</a></td>

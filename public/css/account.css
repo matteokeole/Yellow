@@ -110,6 +110,20 @@ h2 {
 	transition-duration: .2s
 }
 
+.table-container {
+	margin-bottom: 4px;
+	padding: 4px 8px;
+	border-radius: 8px;
+	color: #000;
+	font-size: 18px;
+	transition-duration: .2s
+}
+
+.table-field{
+	border-bottom: solid 1px;
+	border-color: rgba(128, 128, 128, 0.555);
+}
+
 /* Form actions */
 
 #edit-account-form .actions {
