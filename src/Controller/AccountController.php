@@ -25,11 +25,10 @@
 				$session->clear("updated-account");
 			}
 			if ($session->get("customer")) {
-				$basket = $basketRepository->findBy(array("customer" => $session->get("customer")["id"]))[0];
-				$order = $orderRepository->findBy(array("basket" => $basket->getId()));
+				$orders = $orderRepository->findBy(array("customer" => $session->get("customer")["id"]));
 				return $this->render("account/index.html.twig", [
 					"account" => $session->get("customer"),
-					"orders" => $order,
+					"orders" => $orders,
 					"update" => $updatedAccount
 				]);
 			} else return $this->redirectToRoute("login");
