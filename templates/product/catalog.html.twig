@@ -28,21 +28,6 @@
 				</select>
 			</form>
 		</div>
-		<div class="form-group">
-			<form method="POST" id="form-search-by-category">
-				<label for="category">Filtrer par catégorie :</label>
-				<select id="select-category" onchange="filterByCategory()">
-					<option value="all" selected>(Tout)</option>
-					{% for category in categories %}
-						{% if category == filter %}
-							<option value="{{category}}" selected>{{category}}</option>
-						{% else %}
-							<option value="{{category}}">{{category}}</option>
-						{% endif %}
-					{% endfor %}
-				</select>
-			</form>
-		</div>
 		<div class="searchbar">
 			<form method="POST" class="search-form">
 				<input class="search-input" id="search" name="query" type="search" placeholder="Rechercher un produit">
@@ -61,20 +46,22 @@
 		</div>
 		<div class="catalog-container">
 			{% for product in products %}
-				<a href="{{path('product', {id: product.id})}}" class="product" style="background-image: url(/images/cover/{{product.productCover}}.jpg)">
-					<div class="product-footer">
-						<div class="product-primary-info">
-							<div class="product-info">
-								<span class="product-title">{{product.productName}}</span>
-								<div class="product-subtitle">
-									{{product.productAuthor}} •<span class="product-date">{{product.productDate}}</span>
+				{% if product.productStock %}
+					<a href="{{path('product', {id: product.id})}}" class="product" style="background-image: url(/images/cover/{{product.productCover}}.jpg)">
+						<div class="product-footer">
+							<div class="product-primary-info">
+								<div class="product-info">
+									<span class="product-title">{{product.productName}}</span>
+									<div class="product-subtitle">
+										{{product.productAuthor}} •<span class="product-date">{{product.productDate}}</span>
+									</div>
 								</div>
+								<div class="product-price">{{product.productPrice}}€</div>
 							</div>
-							<div class="product-price">{{product.productPrice}}€</div>
+							<div class="product-desc">{{product.productDesc}}</div>
 						</div>
-						<div class="product-desc">{{product.productDesc}}</div>
-					</div>
-				</a>
+					</a>
+				{% endif %}
 			{% endfor %}
 		</div>
 		<div class="page-container">
