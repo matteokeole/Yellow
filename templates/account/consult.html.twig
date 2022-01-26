@@ -1,22 +1,31 @@
 {% extends "base.html.twig" %}
 
-{% block title %}Modification du compte • Yellow{% endblock %}
+{% block title %}Modification du compte • Yellow
+{% endblock %}
 {% block body %}
-	<link rel="stylesheet" href="/css/form.css">
+	<link rel="stylesheet" href="/css/account.css">
+	<link rel="stylesheet" href="/css/titles.css">
 	<style>
-		img{
+		img {
 			width: 50px;
 		}
 	</style>
 	<main>
-		<h1>Consultation de la commande ref {{order.id}}</h1>
-		Date de la commande : {{order.date}}</p>
-		Produits commandés :</p>
+		<h1>Commande n°
+			{{order.id}}</h1>
+		<a href="{{path('account')}}" class="back">
+			<ion-icon name="chevron-back-outline"></ion-icon>
+			Retour à la page précédente
+		</a>
+		<div class="account-container">
+			<section class="account-section">
+				Date de la commande :
+				{{order.date}}</p>
+			Produits commandés :</p>
 		{% for content in order.basket.contents %}
 			<img src="/images/cover/{{content.product.productCover}}.jpg" alt="Image de couverture">
 			{{content.product.productName ~ " x" ~ content.contentProductQuantity}}</p>
-			{% endfor %}
-		Montant de la commande : {{order.orderTotal}}
-
-	</main>
-{% endblock %}
+	{% endfor %}
+	Montant de la commande :
+	{{order.orderTotal}}
+</section></div></main>{% endblock %}
