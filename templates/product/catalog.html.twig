@@ -17,13 +17,13 @@
 				Nos {{filter}}s
 			{% endif %}
 		</h1>
-		<form method="get">
+		<form method="GET">
 		<div class="form-group">
 				<label for="stock">Filtrer par produit en stock :</label>
 				<select type="text" class="form-control" id="stock_search" name="stock_search" onchange="chargeURL()">
-						<option value="">Tous les produits</option>
+						<option value="all" selected>Tous les produits</option>
 						{% if stocks > 0 %}
-							<option {{ stocks == stock_search ? 'selected'}}>Nos produits en stock</option>
+							<option {{ stocks == stock_search ? 'selected'}} selected>Les produits en stock</option>
 						{% endif %}
 				</select>
 			</form>
