@@ -24,9 +24,10 @@ class OrderRepository extends ServiceEntityRepository
     public function findAllCustomer()
     {
         return $this->createQueryBuilder('o')
-            ->join('o.basket', 'b')
-            ->join('b.customer', 'c')
-            ->join('b.contents', 'd')
+            ->join('o.customer', 'c')
+            ->join('o.contentOrders','e')
+            ->join('c.basket', 'b')
+            ->join('c.contents', 'd')
             ->join('d.product', 'p')
             ->setMaxResults(100)
             ->getQuery()
