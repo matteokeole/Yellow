@@ -2,9 +2,12 @@
 	namespace App\Controller;
 	use App\Entity\Basket;
 	use App\Entity\Content;
+	use App\Entity\Order;
 	use App\Entity\Product;
 	use App\Repository\BasketRepository;
 	use App\Repository\ContentRepository;
+	use App\Repository\CustomerRepository;
+	use App\Repository\OrderRepository;
 	use App\Repository\ProductRepository;
 	use App\Session\Session;
 	use Doctrine\ORM\EntityManagerInterface;
@@ -102,6 +105,52 @@
 			$entityManager->flush();
 			// Redirect to the customer basket
 			return $this->redirectToRoute("basket");
+		}
+		/**
+		* @Route("/commander", name="make-order")
+		*/
+		public function makeOrder(
+			Session $session,
+			BasketRepository $basketRepository,
+			ContentRepository $contentRepository,
+			CustomerRepository $customerRepository,
+			ProductRepository $productRepository,
+			EntityManagerInterface $entityManager
+		): Response {
+			// Order basket content as session user
+			if ($session->get("customer")) {
+				// There is an active session
+				// Create a new order
+				$order = new Order();
+				// Set order customer ID
+				$customer = $customerRepository->findBy(array("id" => $session->get("customer")["id"]))[0];
+				$order->setCustomer($customer);
+				// Set order total price
+				$basket = $basketRepository->findBy(array("customer" => $customer->getId()))[0];
+				$contents = $contentRepository->findBy(array("basket" => $basket->getId()));
+				if (count($contents) > 0) {
+					// The basket is not empty, make order
+					$total = 0;
+					foreach ($contents as $content) {
+						$product = $productRepository->findBy(array("id" => $content->getProduct()))[0];
+						$total += $product->getProductPrice() * $content->getContentProductQuantity();
+						$entityManager->remove($content);
+					}
+					$order->setOrderTotal($total);
+					// Set order status
+					$order->setOrderStatus(0);
+					$entityManager->persist($order);
+					// Commit changes
+					$entityManager->flush();
+					// Render the thank you page
+					return $this->render("basket/thanks.html.twig", [
+						"total" => $total
+					]);
+				} else {
+					// The basket is empty, redirection to the basket
+					return $this->redirectToRoute("basket");
+				}
+			} else return $this->redirectToRoute("login");
 		}
 	}
 ?>
