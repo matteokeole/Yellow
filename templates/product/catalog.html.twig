@@ -43,6 +43,22 @@
 				</select>
 			</form>
 		</div>
+		<div class="searchbar">
+			<form method="POST" class="search-form">
+				<input class="search-input" id="search" name="query" type="search" placeholder="Rechercher un produit">
+				<button type="submit" class="btn-search"><ion-icon name="search-outline" size="large"></ion-icon></button>
+			</form>
+			<script>
+				// Send form with search query
+				document.querySelector(".search-form").addEventListener("submit", e => {
+					e.preventDefault();
+					const url = "{{path('search', {query: 'search-value'})}}"
+						.replace("search-value", e.target.children[0].value);
+					e.target.setAttribute("action", url);
+					e.target.submit()
+				})
+			</script>
+		</div>
 		<div class="catalog-container">
 			{% for product in products %}
 				<a href="{{path('product', {id: product.id})}}" class="product" style="background-image: url(/images/cover/{{product.productCover}}.jpg)">
