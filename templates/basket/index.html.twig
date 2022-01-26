@@ -9,8 +9,11 @@
 		<div class="basket-container">
 			<div class="basket">
 				{% if items|length == 0 %}
+				<div class="basket-empty">
+					<img src="images/coffee.png">
 					<h2>Votre panier est vide !</h2>
-					<p>Commencez à explorer notre catalogue.</p>
+					<a href="/mangas/all"><p>Commencez à explorer notre catalogue.</p></a>
+				</div>
 				{% else %}
 					<h2>Contenu du panier</h2>
 					<span class="basket-count">

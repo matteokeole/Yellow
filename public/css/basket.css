@@ -4,6 +4,17 @@
 	justify-content: center
 }
 
+/* Basket empty */
+.basket-empty {
+	justify-content: center;
+	text-align: center
+}
+
+.basket-empty a:hover {
+	opacity: .65;
+	text-decoration: underline
+}
+
 /* Basket content container */
 
 .basket {
@@ -15,6 +26,10 @@
 	opacity: .65;
 	font-size: 16px;
 	font-style: italic
+}
+
+.basket-empty img {
+	width: 200px;
 }
 
 /* Basket content list & items */
