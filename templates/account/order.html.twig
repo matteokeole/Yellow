@@ -33,10 +33,10 @@
 					Produits commandés</p>
 			</span>
 			<span class="data">
-				{# {% for content in order.basket.contents %}
+				{% for content in order.contentOrders.contents %}
 							<img src="/images/cover/{{content.product.productCover}}.jpg" alt="Image de couverture">
 							{{content.product.productName ~ " x" ~ content.contentProductQuantity}}</p>
-						{% endfor %} #}
+						{% endfor %}
 			</span>
 		</div>
 		<div class="editable-input-container">
