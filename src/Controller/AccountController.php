@@ -34,12 +34,11 @@
 			} else return $this->redirectToRoute("login");
 		}
 		/**
-		 * @Route("/compte/commande-ref{id}", name="consult-order")
+		 * @Route("/compte/commande/{id}", name="order-details")
 		 */
-		public function consulOrder(Order $order)
-		{
-			return $this->render("account/consult.html.twig", [
-				'order' => $order,
+		public function orderDetails(Order $order) {
+			return $this->render("account/order.html.twig", [
+				"order" => $order
 			]);
 		}
 		/**
