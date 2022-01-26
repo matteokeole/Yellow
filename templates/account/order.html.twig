@@ -21,13 +21,13 @@
 				<div class="data">{{order.date}}</div>
 			</div>
 			<div class="editable-input-container">
-				<span class="field">Contenu de la commande</p></span>
+				<span class="field">Contenu de la commande</span>
 				<span class="data">
 					{% for product in products %}
 						{% for content in contents %}
 							{% if content.id == product.id %}
 								{{content.Quantity}} x 
-								<img src="/images/cover/{{content.product.productCover}}.jpg" alt="Image de couverture"></p>
+								<img src="/images/cover/{{content.product.productCover}}.jpg" alt="Image de couverture">
 							{% endif %}
 						{% endfor %}
 					{% endfor %}
