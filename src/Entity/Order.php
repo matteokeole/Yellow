@@ -21,11 +21,6 @@ class Order
     private $id;
 
     /**
-     * @ORM\Column(type="string")
-     */
-    private $order_content;
-
-    /**
      * @ORM\Column(type="date")
      */
     private $order_date;
@@ -64,18 +59,6 @@ class Order
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getOrderContent(): ?string
-    {
-        return $this->order_content;
-    }
-
-    public function setOrderContent(string $order_content): self
-    {
-        $this->order_content = $order_content;
-
-        return $this;
     }
 
     public function getOrderDate(): ?\DateTimeInterface
