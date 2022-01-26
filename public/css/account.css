@@ -80,7 +80,7 @@ h2 {
 	color: var(--secondary)
 }
 
-.editable-input-container label {
+.editable-input-container label, .field span {
 	display: flex;
 	align-items: center;
 	white-space: nowrap
@@ -91,7 +91,7 @@ h2 {
 	font-size: 22px
 }
 
-.editable-input-container input {
+.editable-input-container input, .data span {
 	width: 100%;
 	flex-grow: 1;
 	margin-left: 6px;
