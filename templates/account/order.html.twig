@@ -26,8 +26,12 @@
 					{% for product in products %}
 						{% for content in contents %}
 							{% if content.id == product.id %}
-								{{content.Quantity}} x 
-								<img src="/images/cover/{{content.product.productCover}}.jpg" alt="Image de couverture">
+								<div class="item">
+									{{content.Quantity}}x 
+									<a href="{{path('product', {id: content.product.id})}}">
+										<img src="/images/cover/{{content.product.productCover}}.jpg" alt="Image de couverture">
+									</a>
+								</div>
 							{% endif %}
 						{% endfor %}
 					{% endfor %}

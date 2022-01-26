@@ -123,30 +123,31 @@
 					</div>
 				</form>
 			</section>
-				<!-- Commandes -->
-				<section class="account-section order">
-					<h2>Mes commandes</h2>
-					{% if orders|length == 0 %}
-					<div class="table-container">Aucun historique de commande</div>
-					{% else %}
-					<div class="form-user">
-						<table class="table-container">
-							<tr>
-								<th class="table-field">Date de la commande</th>
-								<th class="table-field">Montant total</th>
-								<th class="table-field">Action</th>
-							</tr>
-							{% for order in orders %}
-								<tr class="table-data">
-									<td>{{order.date}}</td>
-									<td>{{order.orderTotal}}</td>
-									<td><a href="{{path('order-details', {id: order.id})}}">Voir</a></td>
-								</tr>
-							{% endfor %}
-						</table>
-					</div>
-					{% endif %}
-				</section>
+			<!-- Commandes -->
+			<section class="account-section order">
+				<h2>Mes commandes</h2>
+				{% if orders|length == 0 %}
+					<div class="no-orders">Aucun historique de commande</div>
+				{% else %}
+					<ul class="order-list">
+						{% for order in orders %}
+							<li>
+								<div class="content">
+									<div class="order-ref">#{{order.id}}</div>
+									<div class="order-date">le {{order.date}}</div>
+									<div class="order-total">{{order.orderTotal}}€</div>
+								</div>
+								<div class="actions">
+									<a href="{{path('order-details', {id: order.id})}}" class="get-order-details">
+										Plus de détails
+										<ion-icon name="arrow-forward-circle-outline"></ion-icon>
+									</a>
+								</div>
+							</li>
+						{% endfor %}
+					</ul>
+				{% endif %}
+			</section>
 		</div>
 	</main>
 	<script src="/js/edit-account.js"></script>

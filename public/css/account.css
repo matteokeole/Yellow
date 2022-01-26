@@ -177,8 +177,66 @@ h2 {
 	}
 }
 
-table {
-	table-layout: fixed;
-	width: 100%;
-	text-align: center;
-  }
+/* Orders */
+
+.no-orders {
+	opacity: .65;
+	font-size: 17px
+}
+
+.order-list {list-style-type: none}
+
+.order-list li {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 8px;
+	padding: 4px 8px;
+	border-radius: 6px;
+	background-color: rgba(0, 0, 0, .05);
+	font-size: 17px
+}
+
+.order-list li .content {
+	display: flex;
+	align-items: center
+}
+
+.order-list li .order-ref {
+	margin-right: 16px;
+	opacity: .65;
+	font-size: 15px
+}
+
+.order-list li .order-date {
+	margin-right: 16px;
+	color: var(--secondary)
+}
+
+.order-list li .order-total {text-decoration: underline}
+
+.get-order-details {
+	display: flex;
+	align-items: center;
+	transition-duration: .2s
+}
+.get-order-details:hover {
+	opacity: .65;
+	text-decoration: underline
+}
+
+.get-order-details ion-icon {
+	margin-left: 4px;
+	font-size: 20px
+}
+
+/* Order details */
+
+.item {
+	display: flex;
+	align-items: center;
+	margin-bottom: 4px;
+	color: var(--secondary)
+}
+
+.item a {margin-left: 4px}
