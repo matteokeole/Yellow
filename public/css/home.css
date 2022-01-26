@@ -20,7 +20,7 @@ body {background-color: #FFF}
 }
 .searchbar {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     margin-top: 40px;
     margin-bottom: 40px;
@@ -28,12 +28,20 @@ body {background-color: #FFF}
 .search-form {
     width: 30%;
     position: relative;
-    border-radius: 10px
+    border-radius: 10px;
+    overflow: hidden;
 }
+
+.form-logo{
+    width: 80px;
+	border-radius:10px;
+}
+
 .search-input, .btn-search {
     height: 80px;
     border: 0;
-    color: #000
+    color: #000;
+    transition-duration: 0.5s;
 }
 .search-input {
     width: 100%;
@@ -42,24 +50,28 @@ body {background-color: #FFF}
     outline: 0;
     border-radius: 10px;
     background-color: lightgrey;
-    transition-duration: 0.5s
 }
 .btn-search {
-    display: none;
     width: 100px;
     position: absolute;
     top: 0;
-    right: 0;
+    right: -100px;
     border-radius: 0 10px 10px 0;
     font-weight: bold;
-    background-color: var(--primary)
+    background-color: var(--primary);
+    cursor: pointer;
 }
-.search-input:not(:placeholder-shown) {
+.search-input:focus {
     width: calc(100% - 100px);
-    border-radius: 10px 0 0 10px
+    border-radius: 10px 0 0 10px;
+    transition-duration: 0.5s;
 }
 
-.search-input:not(:placeholder-shown) + .btn-search {display: block}
+.search-input:focus + .btn-search {
+    right:0;
+    transition-duration: 0.5s;
+    display: block;
+}
 
 .bs-cadre {
     padding: 5px;
@@ -167,5 +179,8 @@ body {background-color: #FFF}
     .searchbar {
         margin-top: 50px;
         margin-bottom: 50px;
+    }
+    .form-logo{
+        display: none;
     }
 }
