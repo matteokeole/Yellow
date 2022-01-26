@@ -20,13 +20,12 @@
 		<form method="get">
 		<div class="form-group">
 				<label for="stock">Filtrer par produit en stock :</label>
-				<select type="text" class="form-control" id="stock_search" name="stock_search">
+				<select type="text" class="form-control" id="stock_search" name="stock_search" onchange="chargeURL()">
 						<option value="">Tous les produits</option>
-						{% for stock in stocks %}
-							<option {{ stocks == stock_search ? 'selected'}}>{{stock}}</option>
-						{% endfor %}
+						{% if stocks > 0 %}
+							<option {{ stocks == stock_search ? 'selected'}}>Nos produits en stock</option>
+						{% endif %}
 				</select>
-				<button class="btn btn-primary" type="submit">Rechercher</button>
 			</form>
 		</div>
 		<div class="form-group">
@@ -91,6 +90,10 @@
 					.replace("value", form.querySelector("#select-category").value);
 			form.setAttribute("action", url);
 			form.submit()
+		}
+		function chargeURL()
+		{
+		window.location.href=document.getElementById('stock_search').value;
 		}
 	</script>
 {% endblock %}
