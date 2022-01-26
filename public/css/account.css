@@ -166,4 +166,5 @@ h2 {
 table {
 	table-layout: fixed;
 	width: 100%;
+	text-align: center;
   }
