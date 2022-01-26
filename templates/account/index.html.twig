@@ -126,6 +126,9 @@
 				<!-- Commandes -->
 				<section class="account-section order">
 					<h2>Mes commandes</h2>
+					{% if orders|length == 0 %}
+					<div class="table-container">Aucun historique de commande</div>
+					{% else %}
 					<div class="form-user">
 						<table class="table-container">
 							<tr>
@@ -142,6 +145,7 @@
 							{% endfor %}
 						</table>
 					</div>
+					{% endif %}
 				</section>
 		</div>
 	</main>

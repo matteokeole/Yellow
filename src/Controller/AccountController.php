@@ -32,7 +32,7 @@
 				return $this->render("account/index.html.twig", [
 					"account" => $session->get("customer"),
 					"orders" => $orders,
-					"update" => $updatedAccount
+					"update" => $updatedAccount,
 				]);
 			} else return $this->redirectToRoute("login");
 		}
