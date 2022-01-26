@@ -1,15 +1,31 @@
 {% extends "base.html.twig" %}
 
-{% block title %}Merci de votre achat ! • Yellow{% endblock %}
+{% if orderError == 0 %}
+	{% block title %}Merci de votre achat ! • Yellow{% endblock %}
 
-{% block body %}
-	<link rel="stylesheet" href="/css/basket.css">
-	<main class="center">
-		<img src="images/chopper.jpg">
-		<h1>Merci de votre achat !</h1>
-		<p>
-			Total de votre commande : {{total|number_format(2)}}€<br>
-			Vous pouvez consulter à tout moment vos achats sur <a href="{{path('account')}}">votre compte</a>.
-		</p>
-	</main>
-{% endblock %}
+	{% block body %}
+		<link rel="stylesheet" href="/css/basket.css">
+		<main class="center">
+			<img src="images/chopper.jpg">
+			<h1>Merci de votre achat !</h1>
+			<p>
+				Total de votre commande : {{total|number_format(2)}}€<br>
+				Vous pouvez consulter à tout moment vos achats sur <a href="{{path('account')}}">votre compte</a>.
+			</p>
+		</main>
+	{% endblock %}
+
+{% else if orderError == 1 %}
+	{% block title %}Commande refusée • Yellow{% endblock %}
+
+	{% block body %}
+			<main>
+				<h1>Stock insuffisant</h1>
+				<p>
+					{% for product in orderErrorProducts %}
+					{{orderErrorProducts}}
+					{% endfor %}
+				</p>
+			</main>
+	{% endblock %}
+

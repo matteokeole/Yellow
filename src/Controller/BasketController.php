@@ -133,7 +133,9 @@
 				$contents = $contentRepository->findBy(array("basket" => $basket->getId()));
 				if (count($contents) > 0) {
 					// The basket is not empty, can make order
+					$ordererror = 0;
 					$total = 0;
+					$ordererrorproducts = [];
 					foreach ($contents as $content) {
 						$product = $productRepository->findBy(array("id" => $content->getProduct()))[0];
 						$total += $product->getProductPrice() * $content->getContentProductQuantity();
@@ -141,19 +143,33 @@
 						$contentOrder = new ContentOrder();
 						$contentOrder->setOrder($order);
 						$contentOrder->setQuantity($content->getContentProductQuantity());
-						$contentOrder->setProduct($content->getProduct());
-						$entityManager->persist($contentOrder);
-						// Empty basket by removing its content
-						$entityManager->remove($content);
+
+						$pouet = $product->getProductStock()-$content->getContentProductQuantity();
+						if ($pouet < 0){
+							$ordererror = 1;
+							$ordererrorproducts += $product;
+						} else{
+							$product->setProductStock($pouet);
+							$contentOrder->setProduct($content->getProduct());
+							$entityManager->persist($contentOrder);
+							// Empty basket by removing its content
+							$entityManager->remove($content);
+						}
 					}
-					$order->setOrderTotal($total);
-					// Set order status
-					$order->setOrderStatus(0);
-					$entityManager->persist($order);
-					// Commit changes
-					$entityManager->flush();
+
+					if ($ordererror == 0){
+						$order->setOrderTotal($total);
+						// Set order status
+						$order->setOrderStatus(0);
+						$entityManager->persist($order);
+						// Commit changes
+						$entityManager->flush();
+					}
+
 					// Render the thank you page
 					return $this->render("basket/thanks.html.twig", [
+						"orderError" => $ordererror,
+						"orderErrorProducts" => $ordererrorproducts,
 						"total" => $total
 					]);
 				} else {
