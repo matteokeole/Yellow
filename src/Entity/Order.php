@@ -10,6 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass=OrderRepository::class)
  * @ORM\Table(name="`order`")
+ * @var \DateTime
  */
 class Order
 {
@@ -49,6 +50,7 @@ class Order
     public function __construct()
     {
         $this->contentOrders = new ArrayCollection();
+        $this->order_date = new \DateTime();
     }
 
     public function __toString(): string

@@ -1,0 +1,12 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Merci de votre achat ! • Yellow{% endblock %}
+
+{% block body %}
+	<main>
+		<h1>Merci de votre achat !</h1>
+		<p>
+			Total de votre commande : {{total|number_format(2)}}€<br>
+			Vous pouvez consulter à tout moment vos achats sur <a href="{{path('account')}}">votre compte</a>.
+	</main>
+{% endblock %}
