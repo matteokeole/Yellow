@@ -33,6 +33,18 @@ class ProductRepository extends ServiceEntityRepository
         return $categories;
     }
 
+    public function getProductStock(){
+        $stocks = [];
+        foreach ($this->createQueryBuilder('p')
+        ->select('p.product_stock')
+        ->distinct(true)
+        ->getQuery()
+        ->getResult() as $cols){
+            $stocks[] = $cols['product_stock'];
+        }
+        return $stocks;
+    }
+
     public const PAGINATOR_PER_PAGE = 8;
 
     public function getProductPaginator (int $offset, string $category): Paginator

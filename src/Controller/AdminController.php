@@ -91,18 +91,6 @@
 				"form" => $form->createView()
 			]);
 		}
-		/**
-		* @Route("/admin/utilisateurs/supprimer/{id}", name="remove-customer")
-		*/
-		public function removeUser(Request $request, CustomerRepository $customerRepository, EntityManagerInterface $entityManager): Response {
-			// Remove customer from user list
-			$customer = $customerRepository->findBy(array("id" => $request->get("id")))[0];
-			$entityManager->remove($customer);
-			// Commit changes
-			$entityManager->flush();
-			// Redirect to the user list
-			return $this->redirectToRoute("customer-list");
-		}
 		// Order edition routes
 		/**
 		 * @Route("/admin/commandes", name="order-list")
