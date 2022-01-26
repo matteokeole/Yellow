@@ -31,8 +31,8 @@
 					<td>{{order.customer.id}}</td>
 					<td>{{order.customer.customerFirstName ~ ' ' ~ order.customer.customerLastName}}</td>
 					<td>
-						{% for content in order.basket.contents %}
-							{{content.product.productName}}
+						{% for contentOrder in order.contentOrders %}
+							{{contentOrder.product.productName ~ ' X ' ~ contentOrder.quantity}}
 						{% endfor %}
 					</td>
 					<td>{{order.orderTotal}}</td>

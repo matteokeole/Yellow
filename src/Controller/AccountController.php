@@ -38,8 +38,7 @@
 		 */
 		public function orderDetails(Order $order) {
 			return $this->render("account/order.html.twig", [
-				"order" => $order,
-				"contentorder" =>
+				"order" => $order
 			]);
 		}
 		/**
