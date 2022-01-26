@@ -2,10 +2,12 @@
 	namespace App\Controller;
 	use App\Entity\Basket;
 	use App\Entity\Content;
+	use App\Entity\ContentOrder;
 	use App\Entity\Order;
 	use App\Entity\Product;
 	use App\Repository\BasketRepository;
 	use App\Repository\ContentRepository;
+	use App\Repository\ContentOrderRepository;
 	use App\Repository\CustomerRepository;
 	use App\Repository\OrderRepository;
 	use App\Repository\ProductRepository;
@@ -113,6 +115,7 @@
 			Session $session,
 			BasketRepository $basketRepository,
 			ContentRepository $contentRepository,
+			ContentOrderRepository $contentOrderRepository,
 			CustomerRepository $customerRepository,
 			ProductRepository $productRepository,
 			EntityManagerInterface $entityManager
@@ -129,11 +132,18 @@
 				$basket = $basketRepository->findBy(array("customer" => $customer->getId()))[0];
 				$contents = $contentRepository->findBy(array("basket" => $basket->getId()));
 				if (count($contents) > 0) {
-					// The basket is not empty, make order
+					// The basket is not empty, can make order
 					$total = 0;
 					foreach ($contents as $content) {
 						$product = $productRepository->findBy(array("id" => $content->getProduct()))[0];
 						$total += $product->getProductPrice() * $content->getContentProductQuantity();
+						// Create new order item
+						$contentOrder = new ContentOrder();
+						$contentOrder->setOrder($order);
+						$contentOrder->setQuantity($content->getContentProductQuantity());
+						$contentOrder->setProduct($content->getProduct());
+						$entityManager->persist($contentOrder);
+						// Empty basket by removing its content
 						$entityManager->remove($content);
 					}
 					$order->setOrderTotal($total);
