@@ -7,27 +7,35 @@
 		Commande refusée
 	{% endif %} • Yellow
 {% endblock %}
-
 {% block body %}
 	<link rel="stylesheet" href="/css/basket.css">
+	<link rel="stylesheet" href="/css/thanks.css">
 	<main class="center">
 		{% if orderError == 0 %}
 			<img src="images/chopper.png">
-			<h1>Merci de votre achat !</h1>
-			<p>
-				Total de votre commande : {{total|number_format(2)}}€<br>
-				Vous pouvez consulter à tout moment vos achats sur <a href="{{path('account')}}">votre compte</a>.
-			</p>
+			<h1 class="thank-you">Merci !</h1>
+			<p class="order-info">Total de votre commande : {{total|number_format(2)}}€</p>
+			<a href="{{path('account')}}" class="goto">
+				Accéder à mon compte
+				<ion-icon name="arrow-forward-circle-outline"></ion-icon>
+			</a>
 		{% elseif orderError == 1 %}
 			<img class="sadchopper" src="images/sadchopper.png">
-			<h1>Stock insuffisant</h1>
-			<p>
-				Nous sommes désolés, les produits suivants ne peuvent pas être commandés :<br>
+			<h1 class="thank-you">Stock insuffisant</h1>
+			<p class="error-info">Nous sommes désolés, les produits suivants ne peuvent pas être commandés :</p>
+			<ul class="product-list">
 				{% for product in orderErrorProducts %}
-				{{product.productName ~ ' (stock actuel : ' ~ product.productStock ~ ')'}}<br>
-				<img class="producterroricon" src="/images/cover/{{product.productCover}}.jpg" alt="Image de couverture">
+					<li>
+						<div class="content">
+							<img src="/images/cover/{{product.productCover}}.jpg" alt="Image de couverture">
+							<span class="count">{{product.productStock}}x</span>{{product.productName}}
+						</div>
+						<div class="actions">
+							<a href="{{path('product', {id: product.id})}}">Voir le produit</a>
+						</div>
+					</li>
 				{% endfor %}
-			</p>
+			</ul>
 		{% endif %}
 	</main>
 {% endblock %}

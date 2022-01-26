@@ -16,18 +16,18 @@
 	font-size: 24px
 }
 
-.basket-empty a {
+a.goto {
 	display: inline-flex;
 	align-items: center;
 	opacity: .65;
 	font-size: 18px
 }
-.basket-empty a:hover {
+a.goto:hover {
 	opacity: 1;
 	text-decoration: underline
 }
 
-.basket-empty a ion-icon {
+a.goto ion-icon {
 	margin-left: 4px;
 	font-size: 20px
 }

@@ -1,0 +1,70 @@
+main {
+	display: flex;
+	flex-direction: column;
+	align-items: center
+}
+
+.thank-you {border-bottom: none}
+
+.order-info {
+	margin-bottom: 8px;
+	font-size: 24px
+}
+
+.error-info {
+	margin-bottom: 8px;
+	font-size: 18px;
+}
+
+.goto {font-size: 20px !important}
+
+.goto ion-icon {font-size: 22px !important}
+
+/* Product list */
+
+.product-list {
+	width: 600px;
+	border-radius: 8px;
+	margin-top: 8px;
+	padding: 8px 8px 0 8px;
+	background-color: rgba(245, 201, 67, .2);
+	list-style-type: none
+}
+
+.product-list li {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 8px;
+	font-size: 18px
+}
+
+.product-list li .content {
+	display: flex;
+	align-items: center
+}
+
+.product-list li img {
+	height: 50px;
+	margin-right: 6px;
+	border-radius: 4px
+}
+
+.product-list li .count {
+	margin-right: 6px;
+	opacity: .65
+}
+
+.product-list li .actions a {
+	font-size: 16px;
+	transition-duration: .2s
+}
+.product-list li .actions a:hover {
+	opacity: .65;
+	text-decoration: underline
+}
+
+/* Media queries */
+@media screen and (max-width: 650px) {
+	.product-list {width: 100%}
+}
