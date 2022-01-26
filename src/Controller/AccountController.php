@@ -1,11 +1,14 @@
 <?php
 	namespace App\Controller;
+	use App\Entity\ContentOrder;
 	use App\Entity\Customer;
 	use App\Entity\Order;
 	use App\Form\CustomerFormType;
 	use App\Repository\BasketRepository;
+	use App\Repository\ContentOrderRepository;
 	use App\Repository\CustomerRepository;
 	use App\Repository\OrderRepository;
+	use App\Repository\ProductRepository;
 	use App\Session\Session;
 	use Doctrine\ORM\EntityManagerInterface;
 	use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -32,14 +35,6 @@
 					"update" => $updatedAccount
 				]);
 			} else return $this->redirectToRoute("login");
-		}
-		/**
-		 * @Route("/compte/commande/{id}", name="order-details")
-		 */
-		public function orderDetails(Order $order) {
-			return $this->render("account/order.html.twig", [
-				"order" => $order
-			]);
 		}
 		/**
 		 * @Route("/compte/modifier", name="edit-account")
@@ -91,6 +86,18 @@
 			$session->set("updated-account", "Votre compte a été mis à jour.");
 			// Redirect to account page
 			return $this->redirectToRoute("account");
+		}
+		/**
+		 * @Route("/compte/commande/{id}", name="order-details")
+		 */
+		public function orderDetails(Order $order, ContentOrderRepository $contentOrderRepository, ProductRepository $productRepository) {
+			$content = $contentOrderRepository->findBy(array("order" => $order->getId()));
+			$products = $productRepository->findAll();
+			return $this->render("account/order.html.twig", [
+				"order" => $order,
+				"content" => $content,
+				"products" => $products
+			]);
 		}
 	}
 ?>
