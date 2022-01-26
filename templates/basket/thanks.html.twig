@@ -22,9 +22,9 @@
 			<img src="images/chopper.jpg">
 			<h1>Stock insuffisant</h1>
 			<p>
-				Les produits suivants ne peuvent pas être commandés :<br>
+				Nous sommes désolés, les produits suivants ne peuvent pas être commandés :<br>
 				{% for product in orderErrorProducts %}
-				{{orderErrorProducts}}
+				{{product.productName ~ ' (stock actuel : ' ~ product.productStock ~ ')'}}
 				{% endfor %}
 			</p>
 		{% endif %}
