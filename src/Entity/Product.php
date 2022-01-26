@@ -64,9 +64,15 @@ class Product
      */
     private $contents;
 
+    /**
+     * @ORM\OneToMany(targetEntity=ContentOrder::class, mappedBy="product", orphanRemoval=true)
+     */
+    private $contentOrders;
+
     public function __construct()
     {
         $this->contents = new ArrayCollection();
+        $this->contentOrders = new ArrayCollection();
     }
 
     public function __toString(): string
@@ -199,6 +205,36 @@ class Product
             // set the owning side to null (unless already changed)
             if ($content->getProduct() === $this) {
                 $content->setProduct(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|ContentOrder[]
+     */
+    public function getContentOrders(): Collection
+    {
+        return $this->contentOrders;
+    }
+
+    public function addContentOrder(ContentOrder $contentOrder): self
+    {
+        if (!$this->contentOrders->contains($contentOrder)) {
+            $this->contentOrders[] = $contentOrder;
+            $contentOrder->setProduct($this);
+        }
+
+        return $this;
+    }
+
+    public function removeContentOrder(ContentOrder $contentOrder): self
+    {
+        if ($this->contentOrders->removeElement($contentOrder)) {
+            // set the owning side to null (unless already changed)
+            if ($contentOrder->getProduct() === $this) {
+                $contentOrder->setProduct(null);
             }
         }
 

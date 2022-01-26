@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\OrderRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -39,10 +41,20 @@ class Order
     private $order_status;
 
     /**
-     * @ORM\OneToOne(targetEntity=Basket::class, cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity=Customer::class, inversedBy="orders")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $basket;
+    private $customer;
+
+    /**
+     * @ORM\OneToMany(targetEntity=ContentOrder::class, mappedBy="order", orphanRemoval=true)
+     */
+    private $contentOrders;
+
+    public function __construct()
+    {
+        $this->contentOrders = new ArrayCollection();
+    }
 
     public function __toString(): string
 	{
@@ -107,14 +119,44 @@ class Order
         return $this;
     }
 
-    public function getBasket(): ?Basket
+    public function getCustomer(): ?Customer
     {
-        return $this->basket;
+        return $this->customer;
     }
 
-    public function setBasket(Basket $basket): self
+    public function setCustomer(?Customer $customer): self
     {
-        $this->basket = $basket;
+        $this->customer = $customer;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|ContentOrder[]
+     */
+    public function getContentOrders(): Collection
+    {
+        return $this->contentOrders;
+    }
+
+    public function addContentOrder(ContentOrder $contentOrder): self
+    {
+        if (!$this->contentOrders->contains($contentOrder)) {
+            $this->contentOrders[] = $contentOrder;
+            $contentOrder->setCommande($this);
+        }
+
+        return $this;
+    }
+
+    public function removeContentOrder(ContentOrder $contentOrder): self
+    {
+        if ($this->contentOrders->removeElement($contentOrder)) {
+            // set the owning side to null (unless already changed)
+            if ($contentOrder->getCommande() === $this) {
+                $contentOrder->setCommande(null);
+            }
+        }
 
         return $this;
     }

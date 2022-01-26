@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\CustomerRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -62,120 +64,160 @@ class Customer
 	 */
 	private $customer_city;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Order::class, mappedBy="customer", orphanRemoval=true)
+     */
+    private $orders;
+
+    public function __construct()
+    {
+        $this->orders = new ArrayCollection();
+    }
+
 	public function __toString(): string
-	{
-			return $this->customer_name;
-	}
+                        	{
+                        			return $this->customer_name;
+                        	}
 
 	public function getId(): ?int {
-		return $this->id;
-	}
+                        		return $this->id;
+                        	}
 
 	public function getCustomerAdmin(): ?int
-	{
-		return $this->customer_admin;
-	}
+                        	{
+                        		return $this->customer_admin;
+                        	}
 
 	public function setCustomerAdmin(int $customer_admin): self
-	{
-		$this->customer_admin = $customer_admin;
-
-		return $this;
-	}
+                        	{
+                        		$this->customer_admin = $customer_admin;
+                        
+                        		return $this;
+                        	}
 
 	public function getCustomerFirstName(): ?string
-	{
-		return $this->customer_first_name;
-	}
+                        	{
+                        		return $this->customer_first_name;
+                        	}
 
 	public function setCustomerFirstName(string $customer_first_name): self
-	{
-		$this->customer_first_name = $customer_first_name;
-
-		return $this;
-	}
+                        	{
+                        		$this->customer_first_name = $customer_first_name;
+                        
+                        		return $this;
+                        	}
 
 	public function getCustomerLastName(): ?string
-	{
-		return $this->customer_last_name;
-	}
+                        	{
+                        		return $this->customer_last_name;
+                        	}
 
 	public function setCustomerLastName(string $customer_last_name): self
-	{
-		$this->customer_last_name = $customer_last_name;
-
-		return $this;
-	}
+                        	{
+                        		$this->customer_last_name = $customer_last_name;
+                        
+                        		return $this;
+                        	}
 
 	public function getCustomerEmail(): ?string
-	{
-		return $this->customer_email;
-	}
+                        	{
+                        		return $this->customer_email;
+                        	}
 
 	public function setCustomerEmail(string $customer_email): self
-	{
-		$this->customer_email = $customer_email;
-
-		return $this;
-	}
+                        	{
+                        		$this->customer_email = $customer_email;
+                        
+                        		return $this;
+                        	}
 
 	public function getCustomerPhone(): ?string
-	{
-		return $this->customer_phone;
-	}
+                        	{
+                        		return $this->customer_phone;
+                        	}
 
 	public function setCustomerPhone(?string $customer_phone): self
-	{
-		$this->customer_phone = $customer_phone;
-
-		return $this;
-	}
+                        	{
+                        		$this->customer_phone = $customer_phone;
+                        
+                        		return $this;
+                        	}
 
 	public function getCustomerPassword(): ?string
-	{
-		return $this->customer_password;
-	}
+                        	{
+                        		return $this->customer_password;
+                        	}
 
 	public function setCustomerPassword(string $customer_password): self
-	{
-		$this->customer_password = md5($customer_password);
-
-		return $this;
-	}
+                        	{
+                        		$this->customer_password = md5($customer_password);
+                        
+                        		return $this;
+                        	}
 
 	public function getCustomerAddress(): ?string
-	{
-		return $this->customer_address;
-	}
+                        	{
+                        		return $this->customer_address;
+                        	}
 
 	public function setCustomerAddress(string $customer_address): self
-	{
-		$this->customer_address = $customer_address;
-
-		return $this;
-	}
+                        	{
+                        		$this->customer_address = $customer_address;
+                        
+                        		return $this;
+                        	}
 
 	public function getCustomerPostCode(): ?string
-	{
-		return $this->customer_post_code;
-	}
+                        	{
+                        		return $this->customer_post_code;
+                        	}
 
 	public function setCustomerPostCode(string $customer_post_code): self
-	{
-		$this->customer_post_code = $customer_post_code;
-
-		return $this;
-	}
+                        	{
+                        		$this->customer_post_code = $customer_post_code;
+                        
+                        		return $this;
+                        	}
 
 	public function getCustomerCity(): ?string
-	{
-		return $this->customer_city;
-	}
+                        	{
+                        		return $this->customer_city;
+                        	}
 
 	public function setCustomerCity(string $customer_city): self
-	{
-		$this->customer_city = $customer_city;
+                        	{
+                        		$this->customer_city = $customer_city;
+                        
+                        		return $this;
+                        	}
 
-		return $this;
-	}
+    /**
+     * @return Collection|Order[]
+     */
+    public function getOrders(): Collection
+    {
+        return $this->orders;
+    }
+
+    public function addOrder(Order $order): self
+    {
+        if (!$this->orders->contains($order)) {
+            $this->orders[] = $order;
+            $order->setCustomer($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOrder(Order $order): self
+    {
+        if ($this->orders->removeElement($order)) {
+            // set the owning side to null (unless already changed)
+            if ($order->getCustomer() === $this) {
+                $order->setCustomer(null);
+            }
+        }
+
+        return $this;
+    }
 }
