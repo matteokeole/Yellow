@@ -32,7 +32,7 @@
 					<td>{{order.customer.customerFirstName ~ ' ' ~ order.customer.customerLastName}}</td>
 					<td>
 						{% for contentOrder in order.contentOrders %}
-							{{contentOrder.product.productName ~ ' X ' ~ contentOrder.quantity}}
+							{{contentOrder.product.productCover ~ ' ' ~ contentOrder.product.productName ~ ' X ' ~ contentOrder.quantity}}
 						{% endfor %}
 					</td>
 					<td>{{order.orderTotal}}</td>
