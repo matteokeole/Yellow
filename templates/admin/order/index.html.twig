@@ -21,7 +21,7 @@
 				<th>Ref de la commande</th>
 				<th>ID du client</th>
 				<th>Nom du client</th>
-				<th>Ref(s) du (des) produit(s)</th>
+				<th>Produit(s) commandé(s)</th>
 				<th>Montant total</th>
 				<th>Actions</th>
 			</tr>
@@ -37,7 +37,7 @@
 							{{contentOrder.product.productName ~ ' x ' ~ contentOrder.quantity}}</p>
 						{% endfor %}
 					</td>
-					<td>{{order.orderTotal}}</td>
+					<td>{{order.orderTotal}} €</td>
 					<td>
 						<a href="#" class="delete">
 							<ion-icon name="trash-outline"></ion-icon>
