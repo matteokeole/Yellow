@@ -104,3 +104,6 @@ ion-icon{
     justify-content: center;
     align-items: center;
 }
+.product{
+	box-shadow: 1px 1px 8px grey;
+}
