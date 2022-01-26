@@ -91,11 +91,11 @@
 		 * @Route("/compte/commande/{id}", name="order-details")
 		 */
 		public function orderDetails(Order $order, ContentOrderRepository $contentOrderRepository, ProductRepository $productRepository) {
-			$content = $contentOrderRepository->findBy(array("order" => $order->getId()));
+			$contents = $contentOrderRepository->findBy(array("order" => $order->getId()));
 			$products = $productRepository->findAll();
 			return $this->render("account/order.html.twig", [
 				"order" => $order,
-				"content" => $content,
+				"contents" => $contents,
 				"products" => $products
 			]);
 		}
