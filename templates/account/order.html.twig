@@ -23,9 +23,7 @@
 			<div class="editable-input-container">
 				<span class="field">Contenu</span>
 				<span class="data">
-					{% for product in products %}
 						{% for content in contents %}
-							{% if content.id == product.id %}
 								<div class="item">
 									{{content.Quantity}}x 
 									<a class ="details-content" href="{{path('product', {id: content.product.id})}}">
@@ -33,9 +31,7 @@
 										<img src="/images/cover/{{content.product.productCover}}.jpg" alt="Image de couverture">
 									</a>
 								</div>
-							{% endif %}
 						{% endfor %}
-					{% endfor %}
 				</span>
 			</div>
 			<div class="editable-input-container">
