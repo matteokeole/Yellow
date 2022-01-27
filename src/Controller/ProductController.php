@@ -37,9 +37,10 @@
 		* @Route("/recherche/{query}", name="search")
 		*/
 		public function search(ProductRepository $productRepository, Request $request): Response {
-			$products = $productRepository->searchName($request->get("query"));
+			$query = $request->get("query");
+			$products = $productRepository->searchName($query);
 			return $this->render("home/search.html.twig", [
-				"query" => $request->get("query"),
+				"query" => $query,
 				"products" => $products
 			]);
 		}

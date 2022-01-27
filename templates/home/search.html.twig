@@ -18,33 +18,40 @@
 				// Send form with search query
 				document.querySelector(".search-form").addEventListener("submit", e => {
 					e.preventDefault();
-					const url = "{{path('search', {query: 'search-value'})}}"
-						.replace("search-value", e.target.children[0].value);
-					e.target.setAttribute("action", url);
-					e.target.submit()
+					const query = e.target.children[0].value;
+					if (query.length > 0) {
+						const url = "{{path('search', {query: 'search-value'})}}"
+							.replace("search-value", e.target.children[0].value);
+						e.target.setAttribute("action", url);
+						e.target.submit()
+					}
 				})
 			</script>
 		</div>
 		<!-- Catalog container -->
 		<div class="catalog-container">
-			{% for product in products %}
-				{% if product.productStock >= 0 %}
-					<a href="{{path('product', {id: product.id})}}" class="product" style="background-image: url(/images/cover/{{product.productCover}}.jpg)">
-						<div class="product-footer">
-							<div class="product-primary-info">
-								<div class="product-info">
-									<span class="product-title">{{product.productName}}</span>
-									<div class="product-subtitle">
-										{{product.productAuthor}} •<span class="product-date">{{product.productDate}}</span>
+			{% if products|length == 0 %}
+				<div class="no-result">Aucun résultat trouvé.</div>
+			{% else %}
+				{% for product in products %}
+					{% if product.productStock >= 0 %}
+						<a href="{{path('product', {id: product.id})}}" class="product" style="background-image: url(/images/cover/{{product.productCover}}.jpg)">
+							<div class="product-footer">
+								<div class="product-primary-info">
+									<div class="product-info">
+										<span class="product-title">{{product.productName}}</span>
+										<div class="product-subtitle">
+											{{product.productAuthor}} •<span class="product-date">{{product.productDate}}</span>
+										</div>
 									</div>
+									<div class="product-price">{{product.productPrice}}€</div>
 								</div>
-								<div class="product-price">{{product.productPrice}}€</div>
+								<div class="product-desc">{{product.productDesc}}</div>
 							</div>
-							<div class="product-desc">{{product.productDesc}}</div>
-						</div>
-					</a>
-				{% endif %}
-			{% endfor %}
+						</a>
+					{% endif %}
+				{% endfor %}
+			{% endif %}
 		</div>
 	</main>
 {% endblock %}
