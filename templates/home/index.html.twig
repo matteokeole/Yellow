@@ -11,42 +11,25 @@
 			<span class="button-accueil">Consulter notre catalogue de manga</span>
 		</a>
 	</div>
-	<div class="searchbar">
-		<div class="cloud c1">
-			<img class="form-logo" src="/images/background.png" alt="Logo">
-		</div>
+	<!-- Searchbar -->
+	<div class="search-container">
 		<form method="POST" class="search-form">
-			<input class="search-input" id="search" name="query" type="search" placeholder="Rechercher un produit">
-			<button type="submit" id ="btn-search" class="btn-search"><ion-icon name="search-outline" size="large"></ion-icon></button>
+			<input type="text" name="query" id="search-bar" placeholder="Rechercher un produit...">
+			<button type="submit" id="btn-search">
+				<ion-icon name="search-outline"></ion-icon>
+			</button>
 		</form>
-		<div class="cloud c2">
-			<img class="form-logo" src="/images/background.png" alt="Logo">
-		</div>
-		<script>
-			window.addEventListener('mousemove', onMouseMove);
-
-			const clouds = document.querySelectorAll('.cloud')
-
-			function onMouseMove(e) {
-				const pouet = (e.clientX - window.innerWidth / 2) / window.innerWidth;
-				const pit = (e.clientY - window.innerHeight / 2) / window.innerHeight;
-
-				clouds.forEach((cloud,i) => {
-					cloud.style.transform = `translate3d(calc(${pouet*(i+1)} * -1vw), calc(${pit*(i+1)} * -1vh), 0)`;
-			})
-				
-		}
-
-			// Send form with search query
-			document.querySelector(".search-form").addEventListener("submit", e => {
-				e.preventDefault();
-				const url = "{{path('search', {query: 'search-value'})}}"
-					.replace("search-value", e.target.children[0].value);
-				e.target.setAttribute("action", url);
-				e.target.submit()
-			})
-		</script>
 	</div>
+	<script>
+		// Send form with search query
+		document.querySelector(".search-form").addEventListener("submit", e => {
+			e.preventDefault();
+			const url = "{{path('search', {query: 'search-value'})}}"
+				.replace("search-value", e.target.children[0].value);
+			e.target.setAttribute("action", url);
+			e.target.submit()
+		})
+	</script>
 	<div class="bs-cadre">
 		<div class="best-seller">
 			<h2 class="hr">NOS BEST-SELLERS</h2>
