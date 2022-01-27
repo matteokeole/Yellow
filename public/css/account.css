@@ -92,6 +92,11 @@ h2 {
 	white-space: nowrap
 }
 
+.details-content{
+	display: contents;
+	align-items: center;
+}
+
 .editable-input-container label ion-icon {
 	margin-right: 6px;
 	font-size: 22px
