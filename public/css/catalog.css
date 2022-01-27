@@ -1,3 +1,5 @@
+body {background-color: var(--primary) !important}
+
 /* Catalog container */
 .catalog-container {
 	display: flex;
