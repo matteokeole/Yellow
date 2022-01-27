@@ -55,7 +55,7 @@
 				<!-- Product category name -->
 				<div class="product-category">
 					<span>{{product.productCategory}}</span> • 
-					<a href="#">En voir plus de ce type</a>
+					<a href="{{path('catalog', {category: product.productCategory})}}">En voir plus de ce type</a>
 				</div>
 				<!-- Product description -->
 				<div class="product-desc">{{product.productDesc}}</div>
