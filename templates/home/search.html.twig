@@ -31,7 +31,10 @@
 		<!-- Catalog container -->
 		<div class="catalog-container">
 			{% if products|length == 0 %}
-				<div class="no-result">Aucun résultat trouvé.</div>
+				<div class="no-result">
+					<img src="/images/not-found.jpg">
+					<span>Aucun résultat trouvé.</span>
+				</div>
 			{% else %}
 				{% for product in products %}
 					{% if product.productStock >= 0 %}

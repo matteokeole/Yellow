@@ -98,17 +98,24 @@ ion-icon{
 	font-size: 20px;
 }
 
-.page{
+.page {
 	display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: center
 }
-.product{
-	box-shadow: 1px 1px 8px grey;
-}
+.product {box-shadow: 1px 1px 8px grey}
 
 .no-result {
-	opacity: .65;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 	font-size: 18px
 }
+
+.no-result img {
+	width: 300px;
+	margin-bottom: 16px
+}
+
+.no-result span {opacity: .65}
