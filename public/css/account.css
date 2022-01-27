@@ -4,7 +4,7 @@
 h1 {
 	display: flex;
 	justify-content: space-between;
-	border-bottom: none
+	border-bottom: none !important
 }
 
 /* Account container & inner sections */
@@ -90,6 +90,11 @@ h2 {
 	display: flex;
 	align-items: center;
 	white-space: nowrap
+}
+
+.details-content{
+	display: contents;
+	align-items: center;
 }
 
 .editable-input-container label ion-icon {
@@ -190,7 +195,7 @@ h2 {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	margin-bottom: 8px;
+	margin-top: 8px;
 	padding: 4px 8px;
 	border-radius: 6px;
 	background-color: rgba(0, 0, 0, .05);
