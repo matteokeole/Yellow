@@ -14,8 +14,6 @@
 		public function catalog(Request $request, ProductRepository $productRepository): Response {
 			$categories = $productRepository->searchCategory();
 			$category = $request->get("category");
-			$stocks = $productRepository->getProductStock();
-			$stock_search = $request->query->get('stock_search', '');
 			$offset = max(0, $request->query->getInt('offset', 0));
 			$paginator = $productRepository->getProductPaginator($offset, $category);
 			return $this->render("product/catalog.html.twig", [
@@ -25,8 +23,6 @@
 				"next" => min(count($paginator), $offset + ProductRepository::PAGINATOR_PER_PAGE),
 				"categories" => $categories,
 				"filter" => $category,
-				"stocks" => $stocks,
-				"stock_search" => $stock_search,
 			]);
 		}
 		/**

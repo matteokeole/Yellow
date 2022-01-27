@@ -33,18 +33,6 @@ class ProductRepository extends ServiceEntityRepository
 		return $categories;
 	}
 
-    public function getProductStock(){
-        $stocks = [];
-        foreach ($this->createQueryBuilder('p')
-        ->select('p.product_stock')
-        ->distinct(true)
-        ->getQuery()
-        ->getResult() as $cols){
-            $stocks[] = $cols['product_stock'];
-        }
-        return $stocks;
-    }
-
 	public function searchName($value) {
 		return $this->createQueryBuilder("p")
 			->andWhere("p.product_name LIKE :query")
