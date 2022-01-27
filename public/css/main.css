@@ -5,6 +5,7 @@
 @import url(titles.css);
 @import url(form-error.css);
 @import url(update.css);
+@import url(search.css);
 
 /* Colors (border colors are a brighter variant of background colors) */
 :root {

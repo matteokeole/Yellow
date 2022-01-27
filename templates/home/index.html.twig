@@ -11,32 +11,15 @@
 			<span class="button-accueil">Consulter notre catalogue de manga</span>
 		</a>
 	</div>
+	<!-- Searchbar -->
 	<div class="searchbar">
-		<div class="cloud c1">
-			<img class="form-logo" src="/images/background.png" alt="Logo">
-		</div>
 		<form method="POST" class="search-form">
 			<input class="search-input" id="search" name="query" type="search" placeholder="Rechercher un produit">
-			<button type="submit" id ="btn-search" class="btn-search"><ion-icon name="search-outline" size="large"></ion-icon></button>
+			<button type="submit" id="btn-search" class="btn-search">
+				<ion-icon name="search-outline" size="large"></ion-icon>
+			</button>
 		</form>
-		<div class="cloud c2">
-			<img class="form-logo" src="/images/background.png" alt="Logo">
-		</div>
 		<script>
-			window.addEventListener('mousemove', onMouseMove);
-
-			const clouds = document.querySelectorAll('.cloud')
-
-			function onMouseMove(e) {
-				const pouet = (e.clientX - window.innerWidth / 2) / window.innerWidth;
-				const pit = (e.clientY - window.innerHeight / 2) / window.innerHeight;
-
-				clouds.forEach((cloud,i) => {
-					cloud.style.transform = `translate3d(calc(${pouet*(i+1)} * -1vw), calc(${pit*(i+1)} * -1vh), 0)`;
-			})
-				
-		}
-
 			// Send form with search query
 			document.querySelector(".search-form").addEventListener("submit", e => {
 				e.preventDefault();
