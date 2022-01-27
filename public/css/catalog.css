@@ -107,3 +107,8 @@ ion-icon{
 .product{
 	box-shadow: 1px 1px 8px grey;
 }
+
+.no-result {
+	opacity: .65;
+	font-size: 18px
+}
