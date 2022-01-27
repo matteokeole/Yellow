@@ -46,8 +46,11 @@ body {background-color: #FFF}
 	border-radius: 10px;
 	background-color: lightgrey;
 }
+
+
+
 .btn-search {
-	width: 100px;
+    width: 100px;
 	position: absolute;
 	top: 0;
 	right: -100px;
@@ -57,27 +60,27 @@ body {background-color: #FFF}
 	cursor: pointer;
 }
 .search-input:focus {
-	width: calc(100% - 100px);
+    width: calc(100% - 100px);
 	border-radius: 10px 0 0 10px;
 	transition-duration: 0.5s;
 }
 
 .search-input:focus + .btn-search {
-	right:0;
+    right:0;
 	transition-duration: 0.5s;
 	display: block;
 }
 
 .bs-cadre {
-	padding: 5px;
+    padding: 5px;
 	background-color: var(--primary)
 }
 .best-seller {
-	margin: 5px;
+    margin: 5px;
 	background-color: #fff;
 }
 .flex {
-	display: flex;
+    display: flex;
 	justify-content: space-evenly;
 	align-items: center;
 }
@@ -87,28 +90,28 @@ body {background-color: #FFF}
 .text-center {text-align: center}
 
 .hr {
-	align-items: center;
+    align-items: center;
 	display: flex;
 	text-align: center;
 	padding: 20px 0 20px 0;
 	color: gray;
 }
 .hr::before, .hr::after {
-	border-top: 0.1em solid;
+    border-top: 0.1em solid;
 	color: gray;
 	content: "";
 	flex: 1;
 	margin: 0 3em;
 }
 .soldes {
-	margin-top: 90px;
+    margin-top: 90px;
 	margin-bottom: 90px;
 	position: relative;
 	display: flex;
 	align-items: center;
 }
 .texte-soldes {
-	border: 3px solid var(--primary);
+    border: 3px solid var(--primary);
 	padding: 150px 7vw 150px 4vw;
 	width: 35vw;
 	margin-left: 10%;
@@ -116,13 +119,13 @@ body {background-color: #FFF}
 	border-radius:10px;
 }
 .texte-soldes h1 {
-	margin-bottom: 40px;
+    margin-bottom: 40px;
 }
 .texte-soldes p {
-	font-size: 20px;
+    font-size: 20px;
 }
 .produits-soldes {
-	width: 50vw;
+    width: 50vw;
 	padding: 50px 5vw 50px 5vw;
 	position: absolute;
 	right: 0;
@@ -142,7 +145,7 @@ body {background-color: #FFF}
 
 @media (max-width: 1050px) {
     .search-form {width: 85%;}
-
+    
     .flex {
         flex-direction:column;
     }
@@ -154,25 +157,47 @@ body {background-color: #FFF}
         display: block;
         text-align: center;
     }
-
+    
 	.soldes {
-		display: block;
+        display: block;
 		position: static;
 	}
 	.produits-soldes {
-		position: static;
+        position: static;
 		margin: auto;
 		margin-top: 50px;
 		width: 80vw;
 	}
 	.texte-soldes {
-		margin: auto;
+        margin: auto;
 		width: 80vw;
 		padding-top: 80px;
 		padding-bottom: 80px;
 	}
 	.searchbar {
-		margin-top: 50px;
+        margin-top: 50px;
 		margin-bottom: 50px;
 	}
+}
+
+@media (max-width: 400px) {
+    .product{
+        width: 100px;
+        height: 150px;
+    }
+}
+@media (max-width: 400px){
+    .btn-search{
+        width:50px;
+        right:-50px;
+    }
+    .search-input:focus{
+        width:calc(100% - 20px);
+    }
+    .search-input, .btn-search {
+        height: 50px;
+    }
+    .search-input:focus {
+        width: calc(100% - 50px);
+    }
 }
