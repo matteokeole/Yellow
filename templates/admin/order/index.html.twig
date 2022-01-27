@@ -39,7 +39,7 @@
 					</td>
 					<td>{{order.orderTotal}} €</td>
 					<td>
-						<a href="#" class="delete">
+						<a href="{{path('remove-order', {id: order.id})}}" class="delete">
 							<ion-icon name="trash-outline"></ion-icon>
 							Supprimer
 						</a>
